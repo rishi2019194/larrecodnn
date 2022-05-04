@@ -69,6 +69,7 @@ namespace cvn
     T fInfo;
   };
 
+  typedef TrainingData<TDNuInfo> TrainingNuData;
 } // end namespace
 
 #endif // CVN_TRAININGDATA_H
