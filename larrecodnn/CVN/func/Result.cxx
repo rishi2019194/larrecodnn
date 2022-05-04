@@ -11,7 +11,7 @@
 #include <ostream>
 #include <algorithm>
 
-#include "dunereco/CVN/func/Result.h"
+#include "larrecodnn/CVN/func/Result.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
 namespace cvn

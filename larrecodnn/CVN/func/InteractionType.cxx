@@ -1,4 +1,4 @@
-#include "dunereco/CVN/func/InteractionType.h"
+#include "larrecodnn/CVN/func/InteractionType.h"
 
 namespace cvn
 {

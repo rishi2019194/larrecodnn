@@ -10,7 +10,7 @@
 #include  <cassert>
 
 
-#include "dunereco/CVN/func/Boundary.h"
+#include "larrecodnn/CVN/func/Boundary.h"
 
 namespace cvn
 {

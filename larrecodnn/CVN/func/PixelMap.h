@@ -10,8 +10,8 @@
 #include <ostream>
 #include <vector>
 
-#include "dunereco/CVN/func/Boundary.h"
-#include "dunereco/CVN/func/HitType.h"
+#include "larrecodnn/CVN/func/Boundary.h"
+#include "larrecodnn/CVN/func/HitType.h"
 #include "TH2F.h"
 
 namespace cvn

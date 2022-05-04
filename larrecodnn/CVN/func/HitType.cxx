@@ -1,4 +1,4 @@
-#include "dunereco/CVN/func/HitType.h"
+#include "larrecodnn/CVN/func/HitType.h"
 
 namespace cvn
 {

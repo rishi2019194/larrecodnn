@@ -6,7 +6,7 @@
 
 //#include "art/Framework/Services/Registry/ServiceHandle.h"
 
-#include "dunereco/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/TrainingData.h"
 
 namespace cvn
 {

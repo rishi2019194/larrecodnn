@@ -1,8 +1,8 @@
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 
-#include "dunereco/CVN/func/AssignLabels.h"
-#include "dunereco/CVN/func/InteractionType.h"
-#include "dunereco/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/AssignLabels.h"
+#include "larrecodnn/CVN/func/InteractionType.h"
+#include "larrecodnn/CVN/func/TrainingData.h"
 #include "larsim/MCCheater/BackTrackerService.h"
 #include "larsim/MCCheater/ParticleInventoryService.h"
 

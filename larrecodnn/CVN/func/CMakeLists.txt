@@ -24,7 +24,7 @@ art_make( BASENAME_ONLY
   
   ROOT_BASIC_LIB_LIST
   DICT_LIBRARIES   lardataobj_RecoBase
-  dunereco_CVN_func
+  larrecodnn_CVN_func
   )
 
 install_headers()

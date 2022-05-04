@@ -9,7 +9,7 @@
 
 #include <vector>
 
-#include "dunereco/CVN/func/PixelMap.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
 
 namespace cvn
 {
