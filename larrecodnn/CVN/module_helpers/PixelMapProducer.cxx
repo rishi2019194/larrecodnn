@@ -136,7 +136,7 @@ namespace cvn
     return CreateMapGivenBoundary(detProp, cluster, bound);
   }
 
-  template <class T, class U> virtual PixelMap PixelMapProducer<T, U>::CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
+  template <class T, class U> PixelMap PixelMapProducer<T, U>::CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
                                                     const std::vector<const T*>& cluster, const Boundary& bound)
   {
 
@@ -183,7 +183,7 @@ namespace cvn
     return os;
   }
 
-  template <class T, class U> virtual Boundary PixelMapProducer<T, U>::DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
+  template <class T, class U> Boundary PixelMapProducer<T, U>::DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
                                             const std::vector< const T*>& cluster)
   {
 
@@ -279,14 +279,14 @@ namespace cvn
     return bound;
   }
 
-  template <class T, class U> virtual void PixelMapProducer<T, U>::ConvertLocalToGlobal(geo::WireID wireid, 
+  template <class T, class U> void PixelMapProducer<T, U>::ConvertLocalToGlobal(geo::WireID wireid, 
                                       unsigned int &globalWire, unsigned int &globalPlane) const
   {
     globalWire = wireid.Wire;
     globalPlane = wireid.Plane;
   }
 
-  template <class T, class U> virtual void PixelMapProducer<T, U>::ConvertLocaltoGlobalTDC(geo::WireID wireid, double localTDC, 
+  template <class T, class U> void PixelMapProducer<T, U>::ConvertLocaltoGlobalTDC(geo::WireID wireid, double localTDC, 
                                        unsigned int &globalWire, unsigned int &globalPlane, 
                                        double &globalTDC) const
   {
