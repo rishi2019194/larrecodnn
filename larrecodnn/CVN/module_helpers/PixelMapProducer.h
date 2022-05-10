@@ -40,8 +40,8 @@ namespace cvn
       fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
     }
 
-    Waveform GetWaveform();
-    geo::WireID GetID();
+    virtual Waveform GetWaveform();
+    virtual geo::WireID GetID();
  
   private:
     recob::Hit fHit;
@@ -58,8 +58,8 @@ namespace cvn
       fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
     }
 
-    Waveform GetWaveform();
-    geo::WireID GetID();
+    virtual Waveform GetWaveform();
+    virtual geo::WireID GetID();
   
   private:
     recob::Wire fWire;
@@ -76,8 +76,8 @@ namespace cvn
       fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
     }
 
-    Waveform GetWaveform();
-    geo::WireID GetID();
+    virtual Waveform GetWaveform();
+    virtual geo::WireID GetID();
   
   private:
     sim::SimChannel fSimchan;
