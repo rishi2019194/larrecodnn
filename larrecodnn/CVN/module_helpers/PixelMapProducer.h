@@ -96,7 +96,7 @@ namespace cvn
     void SetMultipleDrifts() const {fMultipleDrifts = true;}
     
     /// Get boundaries for pixel map representation of cluster
-    Boundary DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
+    virtual Boundary DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
                             const std::vector< const T* >& cluster);
 
     virtual void ConvertLocaltoGlobal(geo::WireID wireid, 
@@ -115,7 +115,7 @@ namespace cvn
     PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
                        const std::vector< const T* >& slice);
 
-    PixelMap CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
+    virtual PixelMap CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
                                     const std::vector< const T* >& cluster,
                                     const Boundary& bound);
 
