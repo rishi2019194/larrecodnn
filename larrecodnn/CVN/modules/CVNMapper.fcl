@@ -13,6 +13,7 @@ standard_cvnmapper:
   TdcWidth:      500
   WireLength:    2880 #Unwrapped collection view max (6 x 480)
   TimeResolution: 1600
+  MultipleDrifts: false
 }
 
 standard_cvnmapper_wire:
@@ -26,6 +27,7 @@ standard_cvnmapper_wire:
   WireLength:    2880 #Unwrapped collection view max (6 x 480)
   TimeResolution: 1500
   Threshold: 0.6
+  MultipleDrifts: false
 }
 
 standard_cvnmapper_sim:
@@ -39,6 +41,7 @@ standard_cvnmapper_sim:
   WireLength:    2880 #Unwrapped collection view max (6 x 480)
   TimeResolution: 1500
   Threshold: 0.6
+  MultipleDrifts: false
 }
 
 END_PROLOG

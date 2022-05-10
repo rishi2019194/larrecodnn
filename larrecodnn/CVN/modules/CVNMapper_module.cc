@@ -87,10 +87,12 @@ namespace cvn {
   fWireLength   (pset.get<unsigned short> ("WireLength")),
   fTimeResolution   (pset.get<unsigned short> ("TimeResolution")),
   fThreshold        (pset.get<double>("Threshold")),
+  fMultipleDrifts        (pset.get<bool>("MultipleDrifts")),
   fProducer      (fWireLength, fTdcWidth, fTimeResolution, fThreshold)
   {
 
     produces< std::vector<cvn::PixelMap>   >(fClusterPMLabel);
+    fProducer.SetMultipleDrifts(fMultipleDrifts);
 
   }
 
@@ -114,7 +116,6 @@ namespace cvn {
   //......................................................................
   template <class T, class U> void CVNMapper<T, U>::produce(art::Event& evt)
   {
-    fProducer.SetMultipleDrifts(fMultipleDrifts);
 
     std::vector< art::Ptr< T > > hitlist;
     auto hitListHandle = evt.getHandle< std::vector< T > >(fHitsModuleLabel);
