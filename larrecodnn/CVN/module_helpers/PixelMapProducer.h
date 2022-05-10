@@ -94,6 +94,7 @@ namespace cvn
     PixelMapProducer();
 
     void SetMultipleDrifts() const {fMultipleDrifts = true;}
+    unsigned int NROI(){return fTotHits;};
     
     /// Get boundaries for pixel map representation of cluster
     virtual Boundary DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
@@ -130,9 +131,9 @@ namespace cvn
     geo::GeometryCore const* fGeometry;
   };
 
-  typedef PixelMapProducer<recob::Hit, HitHelper> PixelMapHitProducer;
-  typedef PixelMapProducer<recob::Wire, WireHelper> PixelMapWireProducer;
-  typedef PixelMapProducer<sim::SimChannel, SimChannelHelper> PixelMapSimProducer;
+  typedef PixelMapProducer<recob::Hit, cvn::HitHelper> PixelMapHitProducer;
+  typedef PixelMapProducer<recob::Wire, cvn::WireHelper> PixelMapWireProducer;
+  typedef PixelMapProducer<sim::SimChannel, cvn::SimChannelHelper> PixelMapSimProducer;
 
 }
 

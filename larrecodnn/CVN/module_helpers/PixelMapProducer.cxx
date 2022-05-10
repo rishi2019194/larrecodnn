@@ -114,12 +114,12 @@ namespace cvn
     fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
   }
 
-  PixelMapProducer::PixelMapProducer()
+  template <class T, class U> PixelMapProducer<T, U>::PixelMapProducer()
   {
     fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
   }
 
-  PixelMap PixelMapProducer::CreateMap(detinfo::DetectorPropertiesData const& detProp,
+  template <class T, class U> PixelMap PixelMapProducer<T, U>::CreateMap(detinfo::DetectorPropertiesData const& detProp,
                                        const std::vector< art::Ptr< T > >& cluster)
   {
     std::vector<const T*> newCluster;
@@ -129,16 +129,15 @@ namespace cvn
     return CreateMap(detProp, newCluster);
   }
 
-  PixelMap PixelMapProducer::CreateMap(detinfo::DetectorPropertiesData const& detProp,
+  template <class T, class U> PixelMap PixelMapProducer<T, U>::CreateMap(detinfo::DetectorPropertiesData const& detProp,
                                        const std::vector<const T* >& cluster)
   {
     Boundary bound = DefineBoundary(detProp, cluster);
     return CreateMapGivenBoundary(detProp, cluster, bound);
   }
 
-  PixelMap PixelMapProducer::CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
-                                                    const std::vector<const T*>& cluster,
-      const Boundary& bound)
+  template <class T, class U> virtual PixelMap PixelMapProducer<T, U>::CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
+                                                    const std::vector<const T*>& cluster, const Boundary& bound)
   {
 
     PixelMap pm(fNWire, fNTdc, bound);
@@ -177,14 +176,14 @@ namespace cvn
     return pm;
   }
 
-  std::ostream& operator<<(std::ostream& os, const PixelMapProducer& p)
+  std::ostream& operator<<(std::ostream& os, const PixelMapProducer<T, U>& p)
   {
     os << "PixelMapProducer: "
       << p.NTdc()  <<" tdcs X  " <<  p.NWire() << " wires";
     return os;
   }
 
-  Boundary PixelMapProducer::DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
+  template <class T, class U> virtual Boundary PixelMapProducer<T, U>::DefineBoundary(detinfo::DetectorPropertiesData const& detProp,
                                             const std::vector< const T*>& cluster)
   {
 
@@ -280,14 +279,14 @@ namespace cvn
     return bound;
   }
 
-  virtual void PixelMapProducer::ConvertLocalToGlobal(geo::WireID wireid, 
+  template <class T, class U> virtual void PixelMapProducer<T, U>::ConvertLocalToGlobal(geo::WireID wireid, 
                                       unsigned int &globalWire, unsigned int &globalPlane) const
   {
     globalWire = wireid.Wire;
     globalPlane = wireid.Plane;
   }
 
-  virtual void ConvertLocaltoGlobalTDC(geo::WireID wireid, double localTDC, 
+  template <class T, class U> virtual void PixelMapProducer<T, U>::ConvertLocaltoGlobalTDC(geo::WireID wireid, double localTDC, 
                                        unsigned int &globalWire, unsigned int &globalPlane, 
                                        double &globalTDC) const
   {
