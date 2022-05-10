@@ -29,8 +29,8 @@ namespace sim{class SimChannel};
 
 namespace cvn
 {
-  typedef std::map<double, double> Waveform;  
- 
+  typedef std::vector<std::map<double, double>> Waveform;  
+  
   class HitHelper
   {
   public:
