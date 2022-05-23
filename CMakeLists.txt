@@ -37,6 +37,10 @@ find_package(nutools REQUIRED PUBLIC)
 find_package(PostgreSQL REQUIRED PUBLIC)
 find_package(ROOT COMPONENTS Core Minuit Minuit2 REQUIRED PUBLIC)
 
+find_ups_product( art )
+find_ups_product( art_root_io )
+find_ups_product( canvas_root_io )
+find_ups_root()
 find_ups_product( larcoreobj )
 find_ups_product( larcorealg )
 find_ups_product( larcore )
@@ -60,6 +64,7 @@ if( DEFINED ENV{TENSORFLOW_DIR} )
   # find tensorflow library
   find_ups_product( tensorflow )
   cet_find_library(TENSORFLOW NAMES tensorflow PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
+  cet_find_library(TENSORFLOW_CC NAMES tensorflow_cc PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
   cet_find_library(FOR_TENSORFLOW NAMES tensorflow_framework PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
 endif ()
 # trtis_clients is optional
@@ -67,6 +72,12 @@ if( DEFINED ENV{TRITON_DIR} )
   find_ups_product(triton)
   find_ups_product(grpc)
 endif ()
+
+if(( DEFINED ENV{TENSORFLOW_DIR} ) AND ( DEFINED ENV{TRITON_DIR} ))
+  # find tensorflow library
+  find_ups_product( protobuf )
+  cet_find_library(PROTOBUF NAMES protobuf PATHS ENV PROTOBUF_LIB NO_DEFAULT_PATH )
+endif()
 
 include_directories( $ENV{EIGEN_INC} )
 

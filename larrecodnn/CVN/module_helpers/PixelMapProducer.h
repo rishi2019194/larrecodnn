@@ -14,19 +14,21 @@
 // Framework includes
 #include "art/Framework/Principal/Handle.h"
 
-#include "dunereco/CVN/func/PixelMap.h"
-#include "dunereco/CVN/func/SparsePixelMap.h"
-#include "dunereco/CVN/func/Boundary.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
+#include "larrecodnn/CVN/func/Boundary.h"
 #include "lardataobj/RecoBase/Hit.h"
+#include "lardataobj/RecoBase/Wire.h"
+#include "lardataobj/Simulation/SimChannel.h"
 #include "lardataobj/RecoBase/SpacePoint.h"
 
+#include "larcore/Geometry/Geometry.h"
 #include "larcorealg/Geometry/GeometryCore.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 
-namespace recob{class Hit, class Wire}; 
-namespace sim{class SimChannel};
-
+// namespace recob{class Hit, class Wire};
+// namespace sim{class SimChannel};
+//
 namespace cvn
 {
   typedef std::vector<std::map<double, double>> Waveform;  
@@ -93,7 +95,7 @@ namespace cvn
     PixelMapProducer(unsigned int nWire, unsigned int nTdc, double tRes, double threshold = 0.);
     PixelMapProducer();
 
-    void SetMultipleDrifts() const {fMultipleDrifts = true;}
+    void SetMultipleDrifts() {fMultipleDrifts = true;}
     unsigned int NROI(){return fTotHits;};
     
     /// Get boundaries for pixel map representation of cluster
@@ -107,14 +109,14 @@ namespace cvn
                                          unsigned int &globalWire, unsigned int &globalPlane, 
                                          double &globalTDC) const;    
 
-    unsigned int NWire() const {return fNWire;};
-    unsigned int NTdc() const {return fNTdc;};
-    double TRes() const {return fTRes;};
+    unsigned int NWire() const {return fNWire;}
+    unsigned int NTdc() const {return fNTdc;}
+    double TRes() const {return fTRes;}
 
     PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
-                       const std::vector< art::Ptr< T > >& slice);
+                       const std::vector< art::Ptr< T > >& cluster);
     PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
-                       const std::vector< const T* >& slice);
+                       const std::vector< const T* >& cluster);
 
     virtual PixelMap CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
                                     const std::vector< const T* >& cluster,

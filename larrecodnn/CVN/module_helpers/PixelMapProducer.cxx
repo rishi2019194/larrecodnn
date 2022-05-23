@@ -13,8 +13,8 @@
 #include  <algorithm>
 #include <numeric>
 
-#include "dunereco/CVN/art/PixelMapProducer.h"
-#include "dunereco/CVN/func/AssignLabels.h"
+#include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
+#include "larrecodnn/CVN/func/AssignLabels.h"
 #include "TVector2.h"
 #include "TH2D.h"
 #include "lardataobj/RecoBase/Hit.h"
@@ -35,7 +35,7 @@ namespace cvn
     Waveform ret;
     double pe = fHit.Integral();
     if (pe > fThreshold)
-      ret.push_back(std::map<double, double>({fHit.PeakTime(), pe}));
+      ret.push_back(std::map<double, double>({{fHit.PeakTime(), pe}}));
 
     return ret;
   }
@@ -50,7 +50,7 @@ namespace cvn
     
     Waveform ret;
     auto ROIs = fWire.SignalROI();
-    if(!(ROIs.get_ranges().size())) continue;
+    if(!(ROIs.get_ranges().size())) return ret;
     
     for(auto iROI = ROIs.begin_range(); iROI != ROIs.end_range(); ++iROI){
       auto& ROI = *iROI;
@@ -66,13 +66,14 @@ namespace cvn
   
   geo::WireID WireHelper::GetID()
   {
-    std::vector<geo::WireID> wireids = fGeometry->ChannelToWire(fWire->Channel());
-    if(!wireids.size()) continue;
-    geo::WireID ret = wireids[0];
+    geo::WireID ret;
+    std::vector<geo::WireID> wireids = fGeometry->ChannelToWire(fWire.Channel());
+    if(!wireids.size()) return ret;
+    ret = wireids[0];
     
     if(wireids.size() > 1){
       for(auto iwire : wireids)
-        if(iwire.Plane == fWire->View()) ret = iwire;
+        if(iwire.Plane == fWire.View()) ret = iwire;
     }
     return ret;
   }
@@ -82,7 +83,7 @@ namespace cvn
     
     Waveform ret;
     auto& ROIs = fSimchan.TDCIDEMap();
-    if(!(ROIs.size())) continue;
+    if(!(ROIs.size())) return ret;
 
     for(auto iROI = ROIs.begin(); iROI != ROIs.end(); ++iROI){
       auto& ROI = *iROI;
@@ -90,20 +91,21 @@ namespace cvn
       double charge =  0.005*fSimchan.Charge(tick);
 
       if(!(charge > fThreshold)) continue;
-      ret.push_back(std::map<double, double>({(double)tick, charge}));
+      ret.push_back(std::map<double, double>({{(double)tick, charge}}));
     }
     return ret;
   }
   
   geo::WireID SimChannelHelper::GetID()
   {
-    std::vector<geo::WireID> wireids = fGeometry->ChannelToWire(fSimchan->Channel());
-    if(!wireids.size()) continue;
-    geo::WireID ret = wireids[0];
+    geo::WireID ret;
+    std::vector<geo::WireID> wireids = fGeometry->ChannelToWire(fSimchan.Channel());
+    if(!wireids.size()) return ret;
+    ret = wireids[0];
     return ret;
   }
      
-  PixelMapProducer::PixelMapProducer(unsigned int nWire, unsigned int nTdc, double tRes, double threshold):
+  template <class T, class U> PixelMapProducer<T, U>::PixelMapProducer(unsigned int nWire, unsigned int nTdc, double tRes, double threshold):
     fNWire(nWire),
     fNTdc(nTdc),
     fTRes(tRes),
@@ -176,7 +178,7 @@ namespace cvn
     return pm;
   }
 
-  std::ostream& operator<<(std::ostream& os, const PixelMapProducer<T, U>& p)
+  template <class T, class U> std::ostream& operator<<(std::ostream& os, const PixelMapProducer<T, U>& p)
   {
     os << "PixelMapProducer: "
       << p.NTdc()  <<" tdcs X  " <<  p.NWire() << " wires";
@@ -214,7 +216,7 @@ namespace cvn
         double min_tick = (double)INT_MAX;
         for(auto &i: pulse){
           double temptdc = i.first;
-          double pe = i.second;
+          
           if(fMultipleDrifts)
             ConvertLocaltoGlobalTDC(wireid, i.first, tempWire, tempPlane, temptdc);
           
@@ -279,7 +281,7 @@ namespace cvn
     return bound;
   }
 
-  template <class T, class U> void PixelMapProducer<T, U>::ConvertLocalToGlobal(geo::WireID wireid, 
+  template <class T, class U> void PixelMapProducer<T, U>::ConvertLocaltoGlobal(geo::WireID wireid, 
                                       unsigned int &globalWire, unsigned int &globalPlane) const
   {
     globalWire = wireid.Wire;
@@ -294,5 +296,9 @@ namespace cvn
     globalPlane = wireid.Plane;
     globalTDC = localTDC;
   }
+
+  template class PixelMapProducer<recob::Hit, cvn::HitHelper>;
+  template class PixelMapProducer<recob::Wire, cvn::WireHelper>;
+  template class PixelMapProducer<sim::SimChannel, cvn::SimChannelHelper>;
 
 } // namespace cvn

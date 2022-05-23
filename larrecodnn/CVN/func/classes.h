@@ -1,10 +1,6 @@
 #include "larrecodnn/CVN/func/TrainingData.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/HitType.h"
-#include "larrecodnn/CVN/func/SparsePixelMap.h"
-#include "larrecodnn/CVN/func/GCNGraph.h"
-#include "larrecodnn/CVN/func/GCNGraphNode.h"
-#include "larrecodnn/CVN/func/GCNParticleFlow.h"
 #include "larrecodnn/CVN/func/Result.h"
 #include "lardataobj/RecoBase/Cluster.h"
 

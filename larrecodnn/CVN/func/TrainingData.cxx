@@ -15,10 +15,10 @@ namespace cvn
     fNuEnergy(0.),
     fLepEnergy(0.),
     fLepAngle(0.),
+    fEventWeight(1),
     fRecoNueEnergy(0.),
     fRecoNumuEnergy(0.),
     fRecoNutauEnergy(0.),
-    fEventWeight(1),
     fUseTopology(false),
     fNuPDG(0),
     fNProton(-1),
@@ -37,7 +37,7 @@ namespace cvn
     fEventWeight = weight;
   }
 
-  void TDNuInfo::SetRecoInfo(float nueEnergy, numuEnergy, nutauEnergy){
+  void TDNuInfo::SetRecoInfo(float nueEnergy, float numuEnergy, float nutauEnergy){
 
     fRecoNueEnergy = nueEnergy;
     fRecoNumuEnergy = numuEnergy;
@@ -63,7 +63,7 @@ namespace cvn
 
   //----------------------------------------------------------------------
 
-  TrainingData::TrainingData(const InteractionType& interaction,
+  template <class T> TrainingData<T>::TrainingData(const InteractionType& interaction,
                              const PixelMap& pMap,
                              const T info):
   fInt(interaction),
@@ -72,7 +72,7 @@ namespace cvn
   {  }
 
 
-  void TrainingData::FillOutputVector(float* output) const
+  template <class T> void TrainingData<T>::FillOutputVector(float* output) const
   {
     for(unsigned int i = 0; i < kNIntType; ++i)
       output[i] = 0;
@@ -80,5 +80,6 @@ namespace cvn
     output[fInt] = 1;
   }
 
+  template class TrainingData<cvn::TDNuInfo>; 
 } // end namespace cvn
 ////////////////////////////////////////////////////////////////////////

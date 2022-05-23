@@ -6,7 +6,7 @@ art_make(
 			cetlib::cetlib cetlib_except
 			TENSORFLOW
 			protobuf::libprotobuf
-			FOR_TENSORFLOW
+                        FOR_TENSORFLOW
       #rt #workaround for larsoft issue 17960
         )
 

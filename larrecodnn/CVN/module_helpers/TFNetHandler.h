@@ -10,10 +10,10 @@
 #include <vector>
 #include <memory>
 
-#include "dunereco/CVN/func/PixelMap.h"
-#include "dunereco/CVN/func/InteractionType.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
+#include "larrecodnn/CVN/func/InteractionType.h"
 #include "fhiclcpp/ParameterSet.h"
-#include "dunereco/CVN/tf/tf_graph.h"
+#include "larrecodnn/CVN/tf/tf_graph.h"
 
 namespace cvn
 {

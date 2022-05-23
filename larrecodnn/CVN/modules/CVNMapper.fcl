@@ -4,7 +4,7 @@ BEGIN_PROLOG
 
 standard_cvnmapper:
 {
-  module_type:        CVNHitMapper
+  module_type:        CVNMapper
   #==================
 #  HitsModuleLabel:   "gaushit"
   HitsModuleLabel:   "hitfd"
@@ -18,7 +18,7 @@ standard_cvnmapper:
 
 standard_cvnmapper_wire:
 {
-  module_type:        CVNWireMapper
+  module_type:        CVNMapperWire
   #==================
   HitsModuleLabel:   "wclsdatanfsp:gauss"
   ClusterPMLabel: "cvnmap"
@@ -32,7 +32,7 @@ standard_cvnmapper_wire:
 
 standard_cvnmapper_sim:
 {
-  module_type:        CVNSimMapper
+  module_type:        CVNMapperSim
   #==================
   HitsModuleLabel:   "tpcrawdecoder:simpleSC"
   ClusterPMLabel: "cvnmap"

@@ -1,5 +1,11 @@
 <lcgdict>
-  <class name="cvn::TrainingData" ClassVersion="20" >
+  
+  <class name="cvn::TDNuInfo" ClassVersion="10">
+   <version ClassVersion="10" checksum="2956136997"/>
+  </class>
+
+  <class name="cvn::TrainingNuData" ClassVersion="21" >
+   <version ClassVersion="21" checksum="1209450185"/>
    <version ClassVersion="20" checksum="4175091702"/>
    <version ClassVersion="19" checksum="1702019780"/>
    <version ClassVersion="18" checksum="3823694423"/>
@@ -63,7 +69,7 @@
 
   <class name="std::vector<std::vector<std::string>>" />
   <class name="std::vector<std::vector<std::vector<std::string>>>" />
-  
+    
 </lcgdict>
 
 

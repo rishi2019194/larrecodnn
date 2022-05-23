@@ -7,10 +7,10 @@ art_make(BASENAME_ONLY
   pthread
   PROTOBUF
   TENSORFLOW_CC
-  TENSORFLOW_FRAMEWORK
+  FOR_TENSORFLOW
+  # TENSORFLOW_FRAMEWORK
   )
 
 install_headers()
 install_fhicl()
 install_source()
-

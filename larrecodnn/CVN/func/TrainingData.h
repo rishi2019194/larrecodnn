@@ -8,6 +8,7 @@
 #define CVN_TRAININGDATA_H
 
 #include "larrecodnn/CVN/func/InteractionType.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/AssignLabels.h"
 
 namespace cvn
@@ -15,10 +16,11 @@ namespace cvn
 
   class TDNuInfo
   {
+  public:
     TDNuInfo();
     
     void SetTruthInfo(float nuEnergy, float lepEnergy, float lepAngle, float weight);
-    void SetRecoInfo(float nueEnergy, numuEnergy, nutauEnergy);
+    void SetRecoInfo(float nueEnergy, float numuEnergy, float nutauEnergy);
 
     // Set topology information separately to save having a large number of 
     // arguments in the constructor.
@@ -26,7 +28,7 @@ namespace cvn
                                 int npizero, int nneutron, int toptype,
                                 int toptypealt);
           
-    
+  private: 
     float    fNuEnergy;        ///< True energy of neutrino event
     float    fLepEnergy;       ///< True energy of outgoing lepton
     float    fLepAngle;       ///< True angle of outgoing lepton wrt neutrino
@@ -69,7 +71,7 @@ namespace cvn
     T fInfo;
   };
 
-  typedef TrainingData<TDNuInfo> TrainingNuData;
+  typedef TrainingData<cvn::TDNuInfo> TrainingNuData;
 } // end namespace
 
 #endif // CVN_TRAININGDATA_H

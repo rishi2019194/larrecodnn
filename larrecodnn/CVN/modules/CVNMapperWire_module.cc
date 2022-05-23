@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////
-// \file    CVNMapper_module.cc
+// \file    CVNMapperWire_module.cc
 // \brief   Producer module for creating CVN PixelMap objects
 // \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
@@ -30,10 +30,10 @@
 
 namespace cvn {
 
-  class CVNMapper : public art::EDProducer {
+  class CVNMapperWire : public art::EDProducer {
   public:
-    explicit CVNMapper(fhicl::ParameterSet const& pset);
-    ~CVNMapper();
+    explicit CVNMapperWire(fhicl::ParameterSet const& pset);
+    ~CVNMapperWire();
 
     void produce(art::Event& evt);
     void beginJob();
@@ -65,12 +65,12 @@ namespace cvn {
     bool fMultipleDrifts;
 
     /// PixelMapProducer does the work for us
-    PixelMapHitProducer fProducer;
+    PixelMapWireProducer fProducer;
 
   };
 
   //.......................................................................
-  CVNMapper::CVNMapper(fhicl::ParameterSet const& pset): EDProducer{pset},
+  CVNMapperWire::CVNMapperWire(fhicl::ParameterSet const& pset): EDProducer{pset},
   fHitsModuleLabel  (pset.get<std::string>    ("HitsModuleLabel")),
   fClusterPMLabel(pset.get<std::string>    ("ClusterPMLabel")),
   fMinClusterHits(pset.get<unsigned short> ("MinClusterHits")),
@@ -89,7 +89,7 @@ namespace cvn {
   }
 
   //......................................................................
-  CVNMapper::~CVNMapper()
+  CVNMapperWire::~CVNMapperWire()
   {
     //======================================================================
     // Clean up any memory allocated by your module
@@ -97,20 +97,20 @@ namespace cvn {
   }
 
   //......................................................................
-  void CVNMapper::beginJob()
+  void CVNMapperWire::beginJob()
   {  }
 
   //......................................................................
-  void CVNMapper::endJob()
+  void CVNMapperWire::endJob()
   {
   }
 
   //......................................................................
-  void CVNMapper::produce(art::Event& evt)
+  void CVNMapperWire::produce(art::Event& evt)
   {
 
-    std::vector< art::Ptr< recob::Hit > > hitlist;
-    auto hitListHandle = evt.getHandle< std::vector< recob::Hit > >(fHitsModuleLabel);
+    std::vector< art::Ptr< recob::Wire > > hitlist;
+    auto hitListHandle = evt.getHandle< std::vector< recob::Wire > >(fHitsModuleLabel);
     if (hitListHandle)
       art::fill_ptr_vector(hitlist, hitListHandle);
 
@@ -131,6 +131,6 @@ namespace cvn {
 
   //----------------------------------------------------------------------
 
-DEFINE_ART_MODULE(cvn::CVNMapper)
+DEFINE_ART_MODULE(cvn::CVNMapperWire)
 } // end namespace cvn
 ////////////////////////////////////////////////////////////////////////

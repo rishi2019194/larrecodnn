@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////
-// \file    CVNMapper_module.cc
+// \file    CVNMapperSim_module.cc
 // \brief   Producer module for creating CVN PixelMap objects
 // \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
@@ -30,10 +30,10 @@
 
 namespace cvn {
 
-  class CVNMapper : public art::EDProducer {
+  class CVNMapperSim : public art::EDProducer {
   public:
-    explicit CVNMapper(fhicl::ParameterSet const& pset);
-    ~CVNMapper();
+    explicit CVNMapperSim(fhicl::ParameterSet const& pset);
+    ~CVNMapperSim();
 
     void produce(art::Event& evt);
     void beginJob();
@@ -65,12 +65,12 @@ namespace cvn {
     bool fMultipleDrifts;
 
     /// PixelMapProducer does the work for us
-    PixelMapHitProducer fProducer;
+    PixelMapSimProducer fProducer;
 
   };
 
   //.......................................................................
-  CVNMapper::CVNMapper(fhicl::ParameterSet const& pset): EDProducer{pset},
+  CVNMapperSim::CVNMapperSim(fhicl::ParameterSet const& pset): EDProducer{pset},
   fHitsModuleLabel  (pset.get<std::string>    ("HitsModuleLabel")),
   fClusterPMLabel(pset.get<std::string>    ("ClusterPMLabel")),
   fMinClusterHits(pset.get<unsigned short> ("MinClusterHits")),
@@ -89,7 +89,7 @@ namespace cvn {
   }
 
   //......................................................................
-  CVNMapper::~CVNMapper()
+  CVNMapperSim::~CVNMapperSim()
   {
     //======================================================================
     // Clean up any memory allocated by your module
@@ -97,20 +97,20 @@ namespace cvn {
   }
 
   //......................................................................
-  void CVNMapper::beginJob()
+  void CVNMapperSim::beginJob()
   {  }
 
   //......................................................................
-  void CVNMapper::endJob()
+  void CVNMapperSim::endJob()
   {
   }
 
   //......................................................................
-  void CVNMapper::produce(art::Event& evt)
+  void CVNMapperSim::produce(art::Event& evt)
   {
 
-    std::vector< art::Ptr< recob::Hit > > hitlist;
-    auto hitListHandle = evt.getHandle< std::vector< recob::Hit > >(fHitsModuleLabel);
+    std::vector< art::Ptr< sim::SimChannel > > hitlist;
+    auto hitListHandle = evt.getHandle< std::vector< sim::SimChannel > >(fHitsModuleLabel);
     if (hitListHandle)
       art::fill_ptr_vector(hitlist, hitListHandle);
 
@@ -131,6 +131,6 @@ namespace cvn {
 
   //----------------------------------------------------------------------
 
-DEFINE_ART_MODULE(cvn::CVNMapper)
+DEFINE_ART_MODULE(cvn::CVNMapperSim)
 } // end namespace cvn
 ////////////////////////////////////////////////////////////////////////
