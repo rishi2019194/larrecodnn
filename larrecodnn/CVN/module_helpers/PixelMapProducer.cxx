@@ -121,6 +121,16 @@ namespace cvn
     fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
   }
 
+  template <class T, class U> PixelMapProducer<T, U>::PixelMapProducer(const fhicl::ParameterSet& pset):
+    fNWire(pset.get<unsigned int>("WireLength")),
+    fNTdc(pset.get<unsigned int>("TdcWidth")),
+    fTRes(pset.get<double>("TimeResolution")),
+    fThreshold(pset.get<double>("Threshold")),
+    fMultipleDrifts(pset.get<bool>("MultipleDrifts"))
+  {
+    fGeometry = &*(art::ServiceHandle<geo::Geometry>());  
+  }
+
   template <class T, class U> PixelMap PixelMapProducer<T, U>::CreateMap(detinfo::DetectorPropertiesData const& detProp,
                                        const std::vector< art::Ptr< T > >& cluster)
   {

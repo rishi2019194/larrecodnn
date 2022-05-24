@@ -49,21 +49,6 @@ namespace cvn {
     /// Minimum number of hits for cluster to be converted to pixel map
     unsigned short fMinClusterHits;
 
-    /// Width of pixel map in tdcs
-    unsigned short fTdcWidth;
-
-    /// Length of pixel map in wires
-    unsigned short fWireLength;
-
-    /// Length of pixel map in wires
-    double fTimeResolution;
-
-    /// ADC threshold for calculating charge from wires directly
-    double fThreshold;
-    
-    /// Special handling for multiple drift volumes
-    bool fMultipleDrifts;
-
     /// PixelMapProducer does the work for us
     PixelMapHitProducer fProducer;
 
@@ -74,17 +59,10 @@ namespace cvn {
   fHitsModuleLabel  (pset.get<std::string>    ("HitsModuleLabel")),
   fClusterPMLabel(pset.get<std::string>    ("ClusterPMLabel")),
   fMinClusterHits(pset.get<unsigned short> ("MinClusterHits")),
-  fTdcWidth     (pset.get<unsigned short> ("TdcWidth")),
-  fWireLength   (pset.get<unsigned short> ("WireLength")),
-  fTimeResolution   (pset.get<unsigned short> ("TimeResolution")),
-  fThreshold        (pset.get<double>("Threshold")),
-  fMultipleDrifts        (pset.get<bool>("MultipleDrifts")),
-  fProducer      (fWireLength, fTdcWidth, fTimeResolution, fThreshold) 
+  fProducer(pset.get<fhicl::ParameterSet> ("PixelMapProducer"))
   {
 
     produces< std::vector<cvn::PixelMap> >(fClusterPMLabel);
-    if(fMultipleDrifts)
-      fProducer.SetMultipleDrifts();
 
   }
 

@@ -13,6 +13,7 @@
 
 // Framework includes
 #include "art/Framework/Principal/Handle.h"
+#include "fhiclcpp/ParameterSet.h"
 
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/Boundary.h"
@@ -94,6 +95,9 @@ namespace cvn
   public:
     PixelMapProducer(unsigned int nWire, unsigned int nTdc, double tRes, double threshold = 0.);
     PixelMapProducer();
+   
+    // overload constructor for inputs from fcl  
+    PixelMapProducer(const fhicl::ParameterSet& pset);
 
     void SetMultipleDrifts() {fMultipleDrifts = true;}
     unsigned int NROI(){return fTotHits;};
