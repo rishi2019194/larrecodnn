@@ -55,6 +55,4 @@ namespace cvn
     evt.put(std::move(pmCol), fClusterPMLabel);
   }
   
-  // template class ICVNMapper<cvn::PixelMapHitProducer, recob::Hit>;
-
 } //namespace cvn

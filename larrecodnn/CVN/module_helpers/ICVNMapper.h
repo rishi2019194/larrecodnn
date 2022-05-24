@@ -3,8 +3,8 @@
 // \brief   Producer module for creating CVN PixelMap objects
 // \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
-#ifndef _ICVNMAPPER_H_
-#define _ICVNMAPPER_H_
+#ifndef CVN_ICVNMAPPER_H
+#define CVN_ICVNMAPPER_H
 
 
 
