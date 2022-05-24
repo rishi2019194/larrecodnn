@@ -80,6 +80,8 @@ namespace cvn
     os << td.fTopologyType << std::endl;
     os << td.fTopologyTypeAlt << std::endl;
     os << td.fLepAngle << std::endl;
+
+    return os;
   }
 
   //----------------------------------------------------------------------
