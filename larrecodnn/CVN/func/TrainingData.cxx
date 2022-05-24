@@ -61,6 +61,27 @@ namespace cvn
 
   }
 
+  std::ostream& operator<<(std::ostream& os, const TDNuInfo& td)
+  {
+    // keep this order because the keras python scripts depend on this
+    os << td.fNuEnergy << std::endl;
+    os << td.fLepEnergy << std::endl;
+    os << td.fRecoNueEnergy << std::endl;
+    os << td.fRecoNumuEnergy << std::endl;
+    os << td.fRecoNutauEnergy << std::endl;
+    os << td.fEventWeight << std::endl;
+    
+    os << td.fNuPDG << std::endl;
+    os << td.fNProton << std::endl;
+    os << td.fNPion << std::endl;
+    os << td.fNPizero << std::endl;
+    os << td.fNNeutron << std::endl;
+
+    os << td.fTopologyType << std::endl;
+    os << td.fTopologyTypeAlt << std::endl;
+    os << td.fLepAngle << std::endl;
+  }
+
   //----------------------------------------------------------------------
 
   template <class T> TrainingData<T>::TrainingData(const InteractionType& interaction,

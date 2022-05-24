@@ -7,6 +7,9 @@
 #ifndef CVN_TRAININGDATA_H
 #define CVN_TRAININGDATA_H
 
+#include <iostream>
+#include <ostream>
+
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/AssignLabels.h"
@@ -27,7 +30,9 @@ namespace cvn
     void SetTopologyInformation(int pdg, int nproton, int npion,
                                 int npizero, int nneutron, int toptype,
                                 int toptypealt);
-          
+
+    friend std::ostream& operator<<(std::ostream& os, const TDNuInfo& td);
+
   private: 
     float    fNuEnergy;        ///< True energy of neutrino event
     float    fLepEnergy;       ///< True energy of outgoing lepton
