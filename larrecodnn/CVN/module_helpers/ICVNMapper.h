@@ -43,7 +43,7 @@ namespace cvn {
     void beginJob();
     void endJob();
 
-  private:
+  protected:
     /// Module lablel for input clusters
     std::string    fHitsModuleLabel;
 

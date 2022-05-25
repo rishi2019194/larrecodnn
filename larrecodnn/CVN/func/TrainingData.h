@@ -36,7 +36,7 @@ namespace cvn
   private: 
     float    fNuEnergy;        ///< True energy of neutrino event
     float    fLepEnergy;       ///< True energy of outgoing lepton
-    float    fLepAngle;       ///< True angle of outgoing lepton wrt neutrino
+    float    fLepAngle;        ///< True angle of outgoing lepton wrt neutrino
     float    fEventWeight;     ///< The event weight (norm * oscProb)
     
     float    fRecoNueEnergy;   ///< Reconstructed energy under nue hypothesis

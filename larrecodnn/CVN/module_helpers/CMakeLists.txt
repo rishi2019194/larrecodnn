@@ -21,6 +21,9 @@ art_make( BASENAME_ONLY
   ART_FRAMEWORK_CORE
   ART_FRAMEWORK_PRINCIPAL
   ART_FRAMEWORK_SERVICES_REGISTRY
+  ART_ROOT_IO_TFILE_SUPPORT
+  ROOT::Core
+  ART_ROOT_IO_TFILESERVICE_SERVICE
   art::Persistency_Provenance
   messagefacility::MF_MessageLogger
   fhiclcpp::fhiclcpp
