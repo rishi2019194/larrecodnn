@@ -15,26 +15,32 @@
 #ifndef PointIdAlg_h
 #define PointIdAlg_h
 
-// Framework includes
-#include "art/Framework/Principal/Handle.h"
-#include "canvas/Persistency/Common/FindManyP.h"
-#include "canvas/Utilities/InputTag.h"
-
 // LArSoft includes
-#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
-#include "lardataobj/RecoBase/Hit.h"
-#include "lardataobj/RecoBase/Track.h"
-#include "larreco/RecoAlg/ImagePatternAlgs/DataProvider/DataProviderAlg.h"
-#include "larrecodnn/ImagePatternAlgs/Keras/keras_model.h"
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
-#include "nusimdata/SimulationBase/MCParticle.h"
 namespace detinfo {
   class DetectorClocksData;
   class DetectorPropertiesData;
 }
 
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
+#include "larrecodnn/ImagePatternAlgs/Keras/keras_model.h"
+#include "larreco/RecoAlg/ImagePatternAlgs/DataProvider/DataProviderAlg.h"
+#include "nusimdata/SimulationBase/MCParticle.h"
+
+// Framework includes
+namespace art { class Event; }
+namespace fhicl { class ParameterSet; }
+#include "canvas/Utilities/InputTag.h"
+#include "fhiclcpp/types/Atom.h"
+#include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/Name.h"
+#include "fhiclcpp/types/Sequence.h"
+#include "fhiclcpp/types/Table.h"
+
 // ROOT & C++
 #include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 namespace nnet {
   class ModelInterface;

@@ -3,9 +3,16 @@
 // Authors:     M.Wang
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "art/Utilities/ToolMacros.h"
 #include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
+#include "art/Utilities/ToolMacros.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/types/Table.h"
+#include "fhiclcpp/ParameterSet.h"
+
+#include <memory>
+#include <string>
+#include <vector>
 
 namespace PointIdAlgTools {
 

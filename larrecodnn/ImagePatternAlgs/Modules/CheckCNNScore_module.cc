@@ -7,20 +7,26 @@
 // from cetlib version v3_07_02.
 ////////////////////////////////////////////////////////////////////////
 
+#include "lardata/ArtDataHelper/MVAReader.h"
+#include "lardataobj/RecoBase/Hit.h"
+
+#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
 #include "art/Framework/Principal/Run.h"
 #include "art/Framework/Principal/SubRun.h"
-#include "art_root_io/TFileService.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
 #include "fhiclcpp/ParameterSet.h"
-#include "lardata/ArtDataHelper/MVAReader.h"
-#include "lardataobj/RecoBase/Hit.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include "TTree.h"
+
+#include <array>
+#include <string>
+#include <vector>
 
 namespace pdsp {
   class CheckCNNScore;

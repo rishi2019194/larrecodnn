@@ -14,29 +14,43 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
+#include "lardata/ArtDataHelper/MVAWriter.h"
+#include "lardata/DetectorInfoServices/DetectorClocksService.h"
+#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
+#include "lardata/Utilities/AssociationUtil.h"
+#include "lardataobj/RecoBase/Cluster.h"
+#include "lardataobj/RecoBase/Hit.h"
+#include "lardataobj/RecoBase/Track.h"
+#include "lardataobj/RecoBase/Wire.h"
+#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
+
 #include "art/Framework/Core/EDProducer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
 #include "art/Framework/Principal/Run.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "art/Framework/Services/System/TriggerNamesService.h"
+#include "canvas/Persistency/Common/Assns.h"
+#include "canvas/Persistency/Common/Ptr.h"
+#include "canvas/Persistency/Common/FindManyP.h"
 #include "canvas/Utilities/InputTag.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 #include "fhiclcpp/types/Atom.h"
+#include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/Name.h"
 #include "fhiclcpp/types/Sequence.h"
 #include "fhiclcpp/types/Table.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "cetlib_except/exception.h"
 
-#include "larcore/Geometry/Geometry.h"
-#include "lardata/ArtDataHelper/MVAWriter.h"
-#include "lardata/DetectorInfoServices/DetectorClocksService.h"
-#include "lardata/Utilities/AssociationUtil.h"
-#include "lardataobj/RecoBase/Cluster.h"
-#include "lardataobj/RecoBase/Hit.h"
-#include "lardataobj/RecoBase/Track.h"
-
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
-
+#include <iostream>
 #include <memory>
+#include <string>
+#include <unordered_map>
+#include <utility>
+#include <vector>
 
 namespace nnet {
 

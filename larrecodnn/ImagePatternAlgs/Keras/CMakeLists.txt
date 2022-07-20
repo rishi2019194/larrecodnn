@@ -1,6 +1,8 @@
-
-find_package(TBB REQUIRED PUBLIC)
-art_make(LIB_LIBRARIES TBB::tbb)
+cet_make_library(SOURCE
+  keras_model.cc
+  LIBRARIES PRIVATE
+  TBB::tbb
+)
 
 add_subdirectory(Tools)
 

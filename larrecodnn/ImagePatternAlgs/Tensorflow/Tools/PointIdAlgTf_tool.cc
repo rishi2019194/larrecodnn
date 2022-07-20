@@ -11,7 +11,7 @@
 
 #include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 #include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/quiet_session.h"
+#include "tensorflow/core/public/session.h"
 
 #include <sys/stat.h>
 

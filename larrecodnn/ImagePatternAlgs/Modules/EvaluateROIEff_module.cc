@@ -13,27 +13,33 @@
 //        is consecutive energy deposits based on tdc ticks.
 ////////////////////////////////////////////////////////////////////////
 
+#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
+#include "lardata/DetectorInfoServices/DetectorClocksService.h"
+#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
+#include "larcore/Geometry/Geometry.h"
+#include "larcore/CoreUtils/ServiceUtil.h"
+#include "lardataobj/RecoBase/Wire.h"
+#include "lardataobj/Simulation/SimChannel.h"
+#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h"
+
+#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
-#include "art_root_io/TFileService.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
-
-#include "larcore/Geometry/Geometry.h"
-#include "lardata/DetectorInfoServices/DetectorClocksService.h"
-#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
-#include "lardataobj/RecoBase/Wire.h"
-#include "lardataobj/Simulation/SimChannel.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
+#include "fhiclcpp/ParameterSet.h"
 
 #include "TEfficiency.h"
 #include "TH1D.h"
 
-using namespace std;
+#include <cstdlib> // std::abs()
+#include <string>
+#include <vector>
 
 namespace nnet {
   class EvaluateROIEff;

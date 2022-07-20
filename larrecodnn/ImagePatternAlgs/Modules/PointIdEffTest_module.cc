@@ -9,7 +9,9 @@
 // from cetpkgsupport v1_10_01.
 ////////////////////////////////////////////////////////////////////////
 
-#include "larcoreobj/SimpleTypesAndConstants/PhysicalConstants.h"
+#include "larreco/Calorimetry/CalorimetryAlg.h"
+#include "larsim/Simulation/LArG4Parameters.h"
+#include "lardata/ArtDataHelper/MVAReader.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
 #include "lardata/Utilities/DatabaseUtil.h"
@@ -19,11 +21,11 @@
 #include "lardataobj/RecoBase/Track.h"
 #include "lardataobj/RecoBase/Wire.h"
 #include "lardataobj/Simulation/SimChannel.h"
-#include "larreco/Calorimetry/CalorimetryAlg.h"
-#include "larsim/Simulation/LArG4Parameters.h"
+#include "larcoreobj/SimpleTypesAndConstants/PhysicalConstants.h"
 #include "nusimdata/SimulationBase/MCParticle.h"
 #include "nusimdata/SimulationBase/MCTruth.h"
 
+#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
@@ -31,22 +33,25 @@
 #include "art/Framework/Principal/Run.h"
 #include "art/Framework/Principal/SubRun.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
-#include "art_root_io/TFileService.h"
 #include "canvas/Persistency/Common/FindManyP.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "fhiclcpp/types/Atom.h"
-#include "fhiclcpp/types/Table.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
-
-#include "lardata/ArtDataHelper/MVAReader.h"
-#include "lardata/DetectorInfoServices/DetectorClocksService.h"
+#include "fhiclcpp/types/Atom.h"
+#include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/Name.h"
+#include "fhiclcpp/types/Table.h"
+#include "cetlib_except/exception.h"
 
 #include "TH1.h"
 #include "TTree.h"
 
+#include <array>
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <unordered_map>
+#include <vector>
 
 #define MVA_LENGTH 4
 

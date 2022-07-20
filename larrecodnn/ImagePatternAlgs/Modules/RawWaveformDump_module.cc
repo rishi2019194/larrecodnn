@@ -16,8 +16,6 @@
 //
 //////////////////////////////////////////////
 
-#include <random>
-
 // Framework includes
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
@@ -27,31 +25,42 @@
 #include "art/Framework/Principal/SubRun.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "canvas/Persistency/Common/FindManyP.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "cetlib_except/exception.h"
 
 // LArSoft libraries
-#include "larcore/Geometry/Geometry.h"
-#include "larcorealg/Geometry/PlaneGeo.h"
-#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h" // raw::ChannelID_t
+#include "larsim/MCCheater/ParticleInventoryService.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
+#include "larcore/Geometry/Geometry.h"
+#include "larcorealg/Geometry/PlaneGeo.h"
 #include "lardataobj/RawData/RawDigit.h"
 #include "lardataobj/RawData/raw.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Wire.h"
 #include "lardataobj/Simulation/SimChannel.h"
-#include "larsim/MCCheater/ParticleInventoryService.h"
+#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h" // raw::ChannelID_t
 #include "nusimdata/SimulationBase/MCParticle.h"
 #include "nusimdata/SimulationBase/MCTruth.h"
-
-#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
-
 #include "nurandom/RandomUtils/NuRandomService.h"
+
 #include "CLHEP/Random/RandFlat.h"
 #include "c2numpy.h"
+
+#include <algorithm>
+#include <chrono>
+#include <cstdlib>
+#include <map>
+#include <random>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
 
 using std::cout;
 using std::endl;

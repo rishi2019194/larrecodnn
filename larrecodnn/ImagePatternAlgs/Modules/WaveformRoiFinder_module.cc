@@ -13,6 +13,13 @@
 // Based on the Analyzer module written by Mike Wang.
 ////////////////////////////////////////////////////////////////////////
 
+#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IWaveformRecog.h"
+#include "larcore/Geometry/Geometry.h"
+#include "larcore/CoreUtils/ServiceUtil.h"
+#include "lardataobj/RawData/RawDigit.h"
+#include "lardataobj/RawData/raw.h"
+#include "lardataobj/RecoBase/Wire.h"
+
 #include "art/Framework/Core/EDProducer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
@@ -20,18 +27,15 @@
 #include "art/Framework/Principal/Run.h"
 #include "art/Framework/Principal/SubRun.h"
 #include "art/Utilities/make_tool.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
-
-#include "larcore/Geometry/Geometry.h"
-#include "larcore/CoreUtils/ServiceUtil.h"
-#include "lardataobj/RawData/RawDigit.h"
-#include "lardataobj/RawData/raw.h"
-#include "lardataobj/RecoBase/Wire.h"
-#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IWaveformRecog.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "cetlib_except/exception.h"
 
 #include <memory>
+#include <utility> // std::move()
+#include <vector>
 
 namespace nnet {
   class WaveformRoiFinder;

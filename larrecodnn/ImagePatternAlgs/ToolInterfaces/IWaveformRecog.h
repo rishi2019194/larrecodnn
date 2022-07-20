@@ -3,7 +3,16 @@
 
 #include "canvas/Utilities/Exception.h"
 #include "fhiclcpp/ParameterSet.h"
+#include "cetlib/search_path.h"
+#include "cetlib_except/exception.h"
+
+#include <algorithm>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <string>
 #include <sys/stat.h>
+#include <vector>
 
 namespace wavrec_tool {
   class IWaveformRecog {

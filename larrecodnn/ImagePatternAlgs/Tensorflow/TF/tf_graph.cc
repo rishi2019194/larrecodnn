@@ -10,7 +10,6 @@
 
 #include "tf_graph.h"
 
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/quiet_session.h"
 #include "tensorflow/core/platform/env.h"
 #include "tensorflow/cc/saved_model/loader.h"
 #include "tensorflow/cc/saved_model/tag_constants.h"

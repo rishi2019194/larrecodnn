@@ -1,9 +1,13 @@
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/triton_utils.h"
+#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/Span.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
-#include "canvas/Utilities/Exception.h"
+#include "cetlib_except/exception.h"
 
-#include <sstream>
+#include <algorithm>
 #include <experimental/iterator>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 namespace triton_utils {
 

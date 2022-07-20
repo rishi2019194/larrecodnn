@@ -1,8 +1,7 @@
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonData.h"
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/triton_utils.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
-
-#include "model_config.pb.h"
+#include "cetlib_except/exception.h"
 
 #include <cstring>
 #include <sstream>

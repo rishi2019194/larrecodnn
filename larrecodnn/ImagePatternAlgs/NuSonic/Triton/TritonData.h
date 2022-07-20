@@ -1,19 +1,17 @@
 #ifndef NuSonic_Triton_TritonData
 #define NuSonic_Triton_TritonData
 
-#include "canvas/Utilities/Exception.h"
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/Span.h"
 
-#include <vector>
+#include <algorithm>
+#include <any>
+#include <memory>
+#include <numeric>
 #include <string>
 #include <unordered_map>
-#include <numeric>
-#include <algorithm>
-#include <memory>
-#include <any>
+#include <vector>
 
 #include "grpc_client.h"
-#include "grpc_service.pb.h"
 
 namespace lartriton {
 

@@ -8,38 +8,43 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
+#include "larrecodnn/ImagePatternAlgs/Modules/c2numpy.h"
+#include "lardata/DetectorInfoServices/DetectorClocksService.h"
+#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
 #include "larcore/Geometry/Geometry.h"
 #include "larcorealg/Geometry/GeometryCore.h"
-#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
-#include "lardata/DetectorInfoServices/DetectorClocksService.h"
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
-
-// Framework includes
-#include "art/Framework/Core/EDAnalyzer.h"
-#include "art/Framework/Core/ModuleMacros.h"
-#include "art/Framework/Principal/Event.h"
-#include "art_root_io/TFileService.h"
-#include "canvas/Utilities/Exception.h"
-#include "canvas/Utilities/InputTag.h"
-#include "fhiclcpp/types/Atom.h"
-#include "fhiclcpp/types/Sequence.h"
-#include "fhiclcpp/types/Table.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
 
 // art extensions
 #include "nurandom/RandomUtils/NuRandomService.h"
-#include "CLHEP/Random/RandFlat.h"
 
-// C++ Includes
-#include <cmath>
-#include <fstream>
-#include <string>
-#include <vector>
+// Framework includes
+#include "art_root_io/TFileService.h"
+#include "art/Framework/Core/EDAnalyzer.h"
+#include "art/Framework/Core/ModuleMacros.h"
+#include "art/Framework/Principal/Event.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "canvas/Utilities/Exception.h"
+#include "canvas/Utilities/InputTag.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/types/Atom.h"
+#include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/Name.h"
+#include "fhiclcpp/types/Sequence.h"
+#include "fhiclcpp/types/Table.h"
+
+#include "CLHEP/Random/RandFlat.h"
 
 #include "TH2F.h" // ADC and deposit maps
 #include "TH2I.h" // PDG+vertex info map
 
-#include "larrecodnn/ImagePatternAlgs/Modules/c2numpy.h"
+// C++ Includes
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 namespace {
   template <typename Hist>
