@@ -1013,13 +1013,12 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
           max_pdg = trackToPDG[tc.first];
         }
       }
+      
+      int tick_idx = clockData.TPCTDC2Tick(ttc.first) + fAdcDelay;
 
-      if (ttc.first < labels_size) {
-        int tick_idx = ttc.first + fAdcDelay;
-        if (tick_idx < labels_size) {
-          labels_deposit[tick_idx] = max_deposit;
-          labels_pdg[tick_idx] = max_pdg & type_pdg_mask;
-        }
+      if (tick_idx < labels_size && tick_idx > 0) {
+        labels_deposit[tick_idx] = max_deposit;
+        labels_pdg[tick_idx] = max_pdg & type_pdg_mask;
       }
     }
 
