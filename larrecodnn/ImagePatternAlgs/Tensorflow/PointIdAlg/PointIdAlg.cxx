@@ -1016,7 +1016,7 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
       
       int tick_idx = clockData.TPCTDC2Tick(ttc.first) + fAdcDelay;
 
-      if (tick_idx < labels_size && tick_idx > 0) {
+      if (tick_idx < labels_size && tick_idx >= 0) {
         labels_deposit[tick_idx] = max_deposit;
         labels_pdg[tick_idx] = max_pdg & type_pdg_mask;
       }
