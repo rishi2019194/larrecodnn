@@ -25,7 +25,7 @@ cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
 # needed because we call cet_make_plugin_builder
 cet_cmake_module_directories(Modules BINARY)
 
-find_package(larfinder REQUIRED)
+find_package(larfinder REQUIRED EXPORT)
 
 find_package(larreco REQUIRED EXPORT)
 find_package(larsim REQUIRED EXPORT)
