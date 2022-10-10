@@ -442,7 +442,7 @@ nnet::TrainingDataAlg::WireDrift nnet::TrainingDataAlg::getProjection(
   wd.Cryo = -1;
 
   try {
-    double vtx[3] = {tvec.X(), tvec.Y(), tvec.Z()};
+    geo::Point_t vtx{tvec.X(), tvec.Y(), tvec.Z()};
     if (fGeometry->FindTPCAtPosition(vtx).isValid) {
       geo::TPCID tpcid = fGeometry->FindTPCAtPosition(vtx);
       unsigned int tpc = tpcid.TPC, cryo = tpcid.Cryostat;
@@ -454,15 +454,15 @@ nnet::TrainingDataAlg::WireDrift nnet::TrainingDataAlg::getProjection(
       else if (driftDir != -1) {
         throw cet::exception("nnet::TrainingDataAlg") << "drift direction is not X." << std::endl;
       }
-      vtx[0] = tvec.X() + dx;
+      vtx.SetX(tvec.X() + dx);
 
-      wd.Wire = fGeometry->NearestWire(vtx, plane, tpc, cryo);
-      wd.Drift = detProp.ConvertXToTicks(vtx[0], plane, tpc, cryo);
+      wd.Wire = fGeometry->NearestWireID(vtx, geo::PlaneID{tpcid, plane}).Wire;
+      wd.Drift = detProp.ConvertXToTicks(vtx.X(), plane, tpc, cryo);
       wd.TPC = tpc;
       wd.Cryo = cryo;
     }
   }
-  catch (const geo::InvalidWireIDError& e) {
+  catch (const geo::InvalidWireError& e) {
     mf::LogWarning("TrainingDataAlg")
       << "Vertex projection out of wire planes, just skipping this vertex.";
   }
