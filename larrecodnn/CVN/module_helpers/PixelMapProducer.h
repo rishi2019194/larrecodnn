@@ -46,7 +46,7 @@ namespace cvn
     virtual Waveform GetWaveform();
     virtual geo::WireID GetID();
  
-  private:
+  protected:
     recob::Hit fHit;
     double fThreshold;
     geo::GeometryCore const* fGeometry;
@@ -64,7 +64,7 @@ namespace cvn
     virtual Waveform GetWaveform();
     virtual geo::WireID GetID();
   
-  private:
+  protected:
     recob::Wire fWire;
     double fThreshold;
     geo::GeometryCore const* fGeometry;
@@ -82,7 +82,7 @@ namespace cvn
     virtual Waveform GetWaveform();
     virtual geo::WireID GetID();
   
-  private:
+  protected:
     sim::SimChannel fSimchan;
     double fThreshold;
     geo::GeometryCore const* fGeometry;
@@ -117,16 +117,16 @@ namespace cvn
     unsigned int NTdc() const {return fNTdc;}
     double TRes() const {return fTRes;}
 
-    PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
+    virtual PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
                        const std::vector< art::Ptr< T > >& cluster);
-    PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
+    virtual PixelMap CreateMap(detinfo::DetectorPropertiesData const& detProp,
                        const std::vector< const T* >& cluster);
 
     virtual PixelMap CreateMapGivenBoundary(detinfo::DetectorPropertiesData const& detProp,
                                     const std::vector< const T* >& cluster,
                                     const Boundary& bound);
 
-  private:
+  protected:
     unsigned int      fNWire;  ///< Number of wires, length for pixel maps
     unsigned int      fNTdc;   ///< Number of tdcs, width of pixel map
     double            fTRes;   ///< Timing resolution for pixel map

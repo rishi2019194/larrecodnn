@@ -2,15 +2,13 @@
 #include "larrecodnn/CVN/module_helpers/ICVNMapper.cxx"
 
 #include "lardataobj/RecoBase/Hit.h"
-#include "lardataobj/RecoBase/Wire.h"
-#include "lardataobj/Simulation/SimChannel.h"
 
 #include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
 
 namespace cvn {
 
-  typedef ICVNMapper<cvn::PixelMapHitProducer, recob::Hit> CVNMapper;
+  typedef ICVNMapper<cvn::PixelMapHitProducer, recob::Hit> LArCVNHitMapper;
   template class ICVNMapper<cvn::PixelMapHitProducer, recob::Hit>;
 
-DEFINE_ART_MODULE(cvn::CVNMapper)
+DEFINE_ART_MODULE(cvn::LArCVNHitMapper)
 }

@@ -1,6 +1,6 @@
 BEGIN_PROLOG
 
-#   This file defines the configuration for the CVNMapper and CVNMapperProtoDUNE modules
+#   This file defines the configuration for the CVNMapper modules
 standard_pixelmapproducer:
 {
   TdcWidth:      500
@@ -12,7 +12,7 @@ standard_pixelmapproducer:
 
 standard_cvnmapper:
 {
-  module_type:        CVNMapper
+  module_type:        LArCVNHitMapper
   #==================
 #  HitsModuleLabel:   "gaushit"
   HitsModuleLabel:   "hitfd"
@@ -23,7 +23,7 @@ standard_cvnmapper:
 
 standard_cvnmapper_wire:
 {
-  module_type:        CVNMapperWire
+  module_type:        LArCVNWireMapper
   #==================
   HitsModuleLabel:   "wclsdatanfsp:gauss"
   ClusterPMLabel: "cvnmap"
@@ -38,7 +38,7 @@ standard_cvnmapper_wire:
 
 standard_cvnmapper_sim:
 {
-  module_type:        CVNMapperSim
+  module_type:        LArCVNSimMapper
   #==================
   HitsModuleLabel:   "tpcrawdecoder:simpleSC"
   ClusterPMLabel: "cvnmap"
