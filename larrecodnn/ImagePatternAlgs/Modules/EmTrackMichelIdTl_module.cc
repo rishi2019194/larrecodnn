@@ -48,11 +48,7 @@ namespace nnet {
   {}
   // ------------------------------------------------------
 
-  void
-  EmTrackMichelIdTl::produce(art::Event& evt)
-  {
-    fEmTrack.produce(evt);
-  }
+  void EmTrackMichelIdTl::produce(art::Event& evt) { fEmTrack.produce(evt); }
   // ------------------------------------------------------
 
   DEFINE_ART_MODULE(EmTrackMichelIdTl)

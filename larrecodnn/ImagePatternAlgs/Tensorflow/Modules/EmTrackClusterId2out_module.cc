@@ -13,7 +13,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
+#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
 #include "lardata/ArtDataHelper/MVAWriter.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
@@ -22,7 +22,7 @@
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Track.h"
 #include "lardataobj/RecoBase/Wire.h"
-#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
 
 #include "art/Framework/Core/EDProducer.h"
 #include "art/Framework/Core/ModuleMacros.h"
@@ -36,14 +36,14 @@
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Persistency/Common/PtrVector.h"
 #include "canvas/Utilities/InputTag.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "cetlib_except/exception.h"
+#include "fhiclcpp/ParameterSet.h"
 #include "fhiclcpp/types/Atom.h"
 #include "fhiclcpp/types/Comment.h"
 #include "fhiclcpp/types/Name.h"
 #include "fhiclcpp/types/Sequence.h"
 #include "fhiclcpp/types/Table.h"
-#include "fhiclcpp/ParameterSet.h"
-#include "cetlib_except/exception.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include <iostream>
 #include <memory>
@@ -157,8 +157,7 @@ namespace nnet {
   }
   // ------------------------------------------------------
 
-  void
-  EmTrackClusterId2out::produce(art::Event& evt)
+  void EmTrackClusterId2out::produce(art::Event& evt)
   {
     mf::LogVerbatim("EmTrackClusterId2out")
       << "next event: " << evt.run() << " / " << evt.id().event();
@@ -418,8 +417,7 @@ namespace nnet {
   }
   // ------------------------------------------------------
 
-  bool
-  EmTrackClusterId2out::isViewSelected(int view) const
+  bool EmTrackClusterId2out::isViewSelected(int view) const
   {
     if (fViews.empty())
       return true;

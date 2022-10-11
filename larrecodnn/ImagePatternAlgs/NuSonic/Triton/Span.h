@@ -32,6 +32,6 @@ namespace triton_span {
     const T begin_;
     const T end_;
   };
-}  // namespace triton_span
+} // namespace triton_span
 
 #endif

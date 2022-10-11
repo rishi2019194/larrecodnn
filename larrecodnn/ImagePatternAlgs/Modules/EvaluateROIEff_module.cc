@@ -13,26 +13,26 @@
 //        is consecutive energy deposits based on tdc ticks.
 ////////////////////////////////////////////////////////////////////////
 
-#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
+#include "larcore/CoreUtils/ServiceUtil.h"
+#include "larcore/Geometry/Geometry.h"
+#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
-#include "larcore/Geometry/Geometry.h"
-#include "larcore/CoreUtils/ServiceUtil.h"
 #include "lardataobj/RecoBase/Wire.h"
 #include "lardataobj/Simulation/SimChannel.h"
-#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
 
-#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "art_root_io/TFileService.h"
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
 #include "fhiclcpp/ParameterSet.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include "TEfficiency.h"
 #include "TH1D.h"
@@ -96,8 +96,7 @@ nnet::EvaluateROIEff::EvaluateROIEff(fhicl::ParameterSet const& p)
   // Call appropriate consumes<>() for any products to be retrieved by this module.
 }
 
-void
-nnet::EvaluateROIEff::analyze(art::Event const& e)
+void nnet::EvaluateROIEff::analyze(art::Event const& e)
 {
 
   auto const* geo = lar::providerFrom<geo::Geometry>();
@@ -196,10 +195,10 @@ nnet::EvaluateROIEff::analyze(art::Event const& e)
         wire->Signal(); // a zero-padded full length vector filled with RoI signal.
 
       // loop over signals:
-      // a) if signal s is not in any ROI (including the case no ROI), fill h_energy 
+      // a) if signal s is not in any ROI (including the case no ROI), fill h_energy
       //    with signal_energy_max[s];
       // b) if signal s is in a ROI, check following signals that are also in this ROI,
-      //    then use the maximum of signal_energy_max to fill h_energy and h_energy_roi. 
+      //    then use the maximum of signal_energy_max to fill h_energy and h_energy_roi.
       //    After this, the loop will skip to the signal that is not in this ROI.
       for (size_t s = 0; s < signal_starttick.size(); s++) {
         // case a: signal is not in any ROI
@@ -423,8 +422,7 @@ nnet::EvaluateROIEff::analyze(art::Event const& e)
   }
 }
 
-void
-nnet::EvaluateROIEff::beginJob()
+void nnet::EvaluateROIEff::beginJob()
 {
 
   art::ServiceHandle<art::TFileService const> tfs;
@@ -457,8 +455,7 @@ nnet::EvaluateROIEff::beginJob()
   h_purity_all = tfs->make<TH1D>("h_purity_all", "All Planes; Purity;", 20, 0, 1);
 }
 
-void
-nnet::EvaluateROIEff::endJob()
+void nnet::EvaluateROIEff::endJob()
 {
   art::ServiceHandle<art::TFileService const> tfs;
 
@@ -470,17 +467,16 @@ nnet::EvaluateROIEff::endJob()
   }
 }
 
-bool
-nnet::EvaluateROIEff::isSignalInROI(int starttick,
-                                    int endtick,
-                                    int maxtick,
-                                    int roistart,
-                                    int roiend)
+bool nnet::EvaluateROIEff::isSignalInROI(int starttick,
+                                         int endtick,
+                                         int maxtick,
+                                         int roistart,
+                                         int roiend)
 {
   // For a signal in the ROI, two cases are considered:
   //   (i) signal is totally in the ROI
   //   (ii) signal is partially in the ROI
-  // Equivalently, we can just check whether the maxtick is in the ROI (simple one). 
+  // Equivalently, we can just check whether the maxtick is in the ROI (simple one).
   return roistart <= maxtick && maxtick < roiend;
 }
 

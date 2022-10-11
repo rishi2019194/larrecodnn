@@ -3,12 +3,12 @@
 // Authors:     M.Wang
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
-#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
 #include "art/Utilities/ToolMacros.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
-#include "fhiclcpp/types/Table.h"
 #include "fhiclcpp/ParameterSet.h"
+#include "fhiclcpp/types/Table.h"
+#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
+#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include <memory>
 #include <string>
@@ -55,14 +55,14 @@ namespace PointIdAlgTools {
 
     // ... Create parameter set for Triton inference client
     fhicl::ParameterSet TritonPset;
-    TritonPset.put("serverURL",fTritonURL);
-    TritonPset.put("verbose",fTritonVerbose);
-    TritonPset.put("modelName",fTritonModelName);
-    TritonPset.put("modelVersion",fTritonModelVersion);
-    TritonPset.put("timeout",fTritonTimeout);
-    TritonPset.put("allowedTries",fTritonAllowedTries);
-    TritonPset.put("outputs","[]");
-    
+    TritonPset.put("serverURL", fTritonURL);
+    TritonPset.put("verbose", fTritonVerbose);
+    TritonPset.put("modelName", fTritonModelName);
+    TritonPset.put("modelVersion", fTritonModelVersion);
+    TritonPset.put("timeout", fTritonTimeout);
+    TritonPset.put("allowedTries", fTritonAllowedTries);
+    TritonPset.put("outputs", "[]");
+
     // ... Create the Triton inference client
     triton_client = std::make_unique<lartriton::TritonClient>(TritonPset);
 
@@ -77,12 +77,11 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<float>
-  PointIdAlgSonicTriton::Run(std::vector<std::vector<float>> const& inp2d) const
+  std::vector<float> PointIdAlgSonicTriton::Run(std::vector<std::vector<float>> const& inp2d) const
   {
     size_t nrows = inp2d.size();
 
-    triton_client->setBatchSize(1);	// set batch size
+    triton_client->setBatchSize(1); // set batch size
 
     // ~~~~ Initialize the inputs
     auto& triton_input = triton_client->input().begin()->second;
@@ -97,8 +96,8 @@ namespace PointIdAlgTools {
       img.insert(img.end(), inp2d[ir].begin(), inp2d[ir].end());
     }
 
-    triton_input.toServer(data1);	// convert to server format
-    
+    triton_input.toServer(data1); // convert to server format
+
     // ~~~~ Send inference request
     triton_client->dispatch();
 
@@ -112,7 +111,7 @@ namespace PointIdAlgTools {
     auto ncat1 = triton_output1.sizeDims();
 
     std::vector<float> out;
-    out.reserve(ncat0+ncat1);
+    out.reserve(ncat0 + ncat1);
     out.insert(out.end(), prob0[0].begin(), prob0[0].end());
     out.insert(out.end(), prob1[0].begin(), prob1[0].end());
 
@@ -122,8 +121,9 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<std::vector<float>>
-  PointIdAlgSonicTriton::Run(std::vector<std::vector<std::vector<float>>> const& inps, int samples) const
+  std::vector<std::vector<float>> PointIdAlgSonicTriton::Run(
+    std::vector<std::vector<std::vector<float>>> const& inps,
+    int samples) const
   {
     if ((samples == 0) || inps.empty() || inps.front().empty() || inps.front().front().empty()) {
       return std::vector<std::vector<float>>();
@@ -134,7 +134,7 @@ namespace PointIdAlgTools {
     size_t usamples = samples;
     size_t nrows = inps.front().size();
 
-    triton_client->setBatchSize(usamples);	// set batch size
+    triton_client->setBatchSize(usamples); // set batch size
 
     // ~~~~ Initialize the inputs
     auto& triton_input = triton_client->input().begin()->second;
@@ -150,7 +150,7 @@ namespace PointIdAlgTools {
         img.insert(img.end(), inps[idx][ir].begin(), inps[idx][ir].end());
       }
     }
-    triton_input.toServer(data1);	// convert to server format
+    triton_input.toServer(data1); // convert to server format
 
     // ~~~~ Send inference request
     triton_client->dispatch();
@@ -166,10 +166,10 @@ namespace PointIdAlgTools {
 
     std::vector<std::vector<float>> out;
     out.reserve(usamples);
-    for(unsigned i = 0; i < usamples; i++) {
+    for (unsigned i = 0; i < usamples; i++) {
       out.emplace_back();
       auto& img = out.back();
-      img.reserve(ncat0+ncat1);
+      img.reserve(ncat0 + ncat1);
       img.insert(img.end(), prob0[i].begin(), prob0[i].end());
       img.insert(img.end(), prob1[i].begin(), prob1[i].end());
     }

@@ -10,7 +10,6 @@
 #include "lardata/ArtDataHelper/MVAReader.h"
 #include "lardataobj/RecoBase/Hit.h"
 
-#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
@@ -18,6 +17,7 @@
 #include "art/Framework/Principal/Run.h"
 #include "art/Framework/Principal/SubRun.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "art_root_io/TFileService.h"
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
 #include "fhiclcpp/ParameterSet.h"
@@ -53,9 +53,9 @@ public:
 private:
   // Declare member data here.
   // Input parameters
-  art::InputTag fNNetModuleLabel; // label of the module used for CNN tagging
-  art::InputTag fHitsModuleLabel; // label of hit finder module
-  std::vector<std::string> fNNOutputs;  // label of network outputs
+  art::InputTag fNNetModuleLabel;      // label of the module used for CNN tagging
+  art::InputTag fHitsModuleLabel;      // label of hit finder module
+  std::vector<std::string> fNNOutputs; // label of network outputs
 
   TTree* ftree;
   int run;
@@ -77,8 +77,7 @@ pdsp::CheckCNNScore::CheckCNNScore(fhicl::ParameterSet const& p)
   , fNNOutputs(p.get<std::vector<std::string>>("NNOutputs"))
 {}
 
-void
-pdsp::CheckCNNScore::analyze(art::Event const& e)
+void pdsp::CheckCNNScore::analyze(art::Event const& e)
 {
 
   run = e.run();
@@ -112,7 +111,7 @@ pdsp::CheckCNNScore::analyze(art::Event const& e)
       wire.push_back(hit->WireID().Wire);
       charge.push_back(hit->Integral());
       peakt.push_back(hit->PeakTime());
-      for (size_t i = 0; i<fNNOutputs.size(); ++i){
+      for (size_t i = 0; i < fNNOutputs.size(); ++i) {
         scores[i].push_back(cnn_out[hitResults.getIndex(fNNOutputs[i])]);
       }
       //      std::cout<<hit->WireID().TPC<<" "
@@ -126,8 +125,7 @@ pdsp::CheckCNNScore::analyze(art::Event const& e)
   if (!channel.empty()) ftree->Fill();
 }
 
-void
-pdsp::CheckCNNScore::beginJob()
+void pdsp::CheckCNNScore::beginJob()
 {
   art::ServiceHandle<art::TFileService> fileServiceHandle;
   ftree = fileServiceHandle->make<TTree>("ftree", "hit info");
@@ -140,7 +138,7 @@ pdsp::CheckCNNScore::beginJob()
   ftree->Branch("charge", &charge);
   ftree->Branch("peakt", &peakt);
   for (size_t i = 0; i < size(scores); ++i) {
-    ftree->Branch(Form("score_%ld",i), &scores[i]);
+    ftree->Branch(Form("score_%ld", i), &scores[i]);
   }
 }
 
