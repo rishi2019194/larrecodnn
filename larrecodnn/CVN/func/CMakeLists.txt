@@ -1,6 +1,6 @@
 #for classes_def.xml
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR} ) ### MIGRATE-ACTION-RECOMMENDED (migrate-3.16.00) - avoid directory-scope functions: use target_link_libraries() with target semantics or target_include_directories() whenever possible
 
 art_make( BASENAME_ONLY
 #  LIBRARY_NAME     CVNFunc
@@ -25,7 +25,7 @@ art_make( BASENAME_ONLY
   ROOT_BASIC_LIB_LIST
   DICT_LIBRARIES   lardataobj_RecoBase
   larrecodnn_CVN_func
-  )
+  ) ### MIGRATE-ACTION-RECOMMENDED (migrate-3.16.00) - deprecated: use art_make_library(), art_dictonary(), and cet_build_plugin() with explicit source lists and plugin base types
 
 install_headers()
 install_source()
