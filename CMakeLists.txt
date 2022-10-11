@@ -25,26 +25,7 @@ cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
 # needed because we call cet_make_plugin_builder
 cet_cmake_module_directories(Modules BINARY)
 
-# <<<<<<< HEAD
-# # <<<<<<< HEAD
-# find_ups_product( art )
-# find_ups_product( art_root_io )
-# find_ups_product( canvas_root_io )
-# find_ups_root()
-# find_ups_product( larcoreobj )
-# find_ups_product( larcorealg )
-# find_ups_product( larcore )
-# find_ups_product( lardataobj )
-# find_ups_product( lardataalg )
-# find_ups_product( lardata )
-# find_ups_product( larevt )
-# find_ups_product( larsim )
-# find_ups_product( larreco )
-# # =======
-# add_subdirectory(Modules)
-# =======
 find_package(larfinder REQUIRED EXPORT)
-# >>>>>>> upstream/develop
 
 find_package(larreco REQUIRED EXPORT)
 find_package(larsim REQUIRED EXPORT)
@@ -71,39 +52,10 @@ find_package(TBB REQUIRED EXPORT)
 find_package(TRITON QUIET EXPORT)
 find_package(TensorFlow 2.6.0 QUIET EXPORT)
 find_package(Threads REQUIRED EXPORT)
-# >>>>>>> upstream/develop
 
 # macros for dictionary and simple_plugin
 include(BuildPlugins)
 
-# # <<<<<<< HEAD
-# if(( DEFINED ENV{TENSORFLOW_DIR} ) OR ( DEFINED ENV{TRITON_DIR} ))
-#   find_package(Protobuf REQUIRED)
-# endif ()
-# # tensorflow is optional
-# if( DEFINED ENV{TENSORFLOW_DIR} )
-#   # find tensorflow library
-#   find_ups_product( tensorflow )
-#   cet_find_library(TENSORFLOW NAMES tensorflow PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
-#   cet_find_library(TENSORFLOW_CC NAMES tensorflow_cc PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
-#   cet_find_library(FOR_TENSORFLOW NAMES tensorflow_framework PATHS ENV TENSORFLOW_LIB NO_DEFAULT_PATH )
-# endif ()
-# # trtis_clients is optional
-# if( DEFINED ENV{TRITON_DIR} )
-#   find_ups_product(triton)
-#   find_ups_product(grpc)
-# endif ()
-#
-# if(( DEFINED ENV{TENSORFLOW_DIR} ) AND ( DEFINED ENV{TRITON_DIR} ))
-#   # find tensorflow library
-#   find_ups_product( protobuf )
-#   cet_find_library(PROTOBUF NAMES protobuf PATHS ENV PROTOBUF_LIB NO_DEFAULT_PATH )
-# endif()
-#
-# include_directories( $ENV{EIGEN_INC} )
-#
-# # =======
-# # >>>>>>> upstream/develop
 # source
 add_subdirectory(larrecodnn)
 
