@@ -2,20 +2,20 @@
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
 
-if (DEFINED ENV{TENSORFLOW_DIR})
-# For some reason we apparently need to care if larreco is checked out.
-#if (larreco_not_in_ups)
-#set (LARRECO_RECOALG_IMAGEPATTERNALGS_TF larrecodnn_ImagePatternAlgs_Tensorflow_TF)
-#else (larreco_not_in_ups)
-#cet_find_library( LARRECO_RECOALG_IMAGEPATTERNALGS_TF NAMES larrecodnn_ImagePatternAlgs_Tensorflow_TF PATHS ENV LARRECO_LIB NO_DEFAULT_PATH)
-#endif (larreco_not_in_ups)
-else(DEFINED ENV{TENSORFLOW_DIR})
-set (EXCLUDE_TF TFNetHandler.cxx)
-endif (DEFINED ENV{TENSORFLOW_DIR})
+# if (DEFINED ENV{TENSORFLOW_DIR})
+# # For some reason we apparently need to care if larreco is checked out.
+# #if (larreco_not_in_ups)
+# #set (LARRECO_RECOALG_IMAGEPATTERNALGS_TF larrecodnn_ImagePatternAlgs_Tensorflow_TF)
+# #else (larreco_not_in_ups)
+# #cet_find_library( LARRECO_RECOALG_IMAGEPATTERNALGS_TF NAMES larrecodnn_ImagePatternAlgs_Tensorflow_TF PATHS ENV LARRECO_LIB NO_DEFAULT_PATH)
+# #endif (larreco_not_in_ups)
+# else(DEFINED ENV{TENSORFLOW_DIR})
+# set (EXCLUDE_TF TFNetHandler.cxx)
+# endif (DEFINED ENV{TENSORFLOW_DIR})
 
 art_make( BASENAME_ONLY
 #  LIBRARY_NAME     CVNFunc
-  EXCLUDE ${EXCLUDE_TF}
+  # EXCLUDE ${EXCLUDE_TF}
   LIB_LIBRARIES larrecodnn_CVN_func
   larrecodnn_CVN_tf
   ART_FRAMEWORK_CORE
