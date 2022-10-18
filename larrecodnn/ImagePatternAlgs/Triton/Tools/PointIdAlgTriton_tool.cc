@@ -3,14 +3,22 @@
 // Authors:     M.Wang,                                         FNAL, 2021: Nvidia Triton inf client
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "art/Utilities/ToolMacros.h"
 #include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
+#include "art/Utilities/ToolMacros.h"
+#include "fhiclcpp/types/Table.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "cetlib_except/exception.h"
 
 // Nvidia Triton inference server client includes
 #include "grpc_client.h"
 
 namespace ni = nvidia::inferenceserver;
 namespace nic = nvidia::inferenceserver::client;
+
+#include <algorithm>
+#include <memory>
+#include <string>
+#include <vector>
 
 namespace PointIdAlgTools {
 

@@ -1,12 +1,8 @@
 #ifndef NuSonic_Triton_triton_utils
 #define NuSonic_Triton_triton_utils
 
-#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/Span.h"
-
 #include <string>
 #include <string_view>
-#include <vector>
-#include <unordered_set>
 
 #include "grpc_client.h"
 

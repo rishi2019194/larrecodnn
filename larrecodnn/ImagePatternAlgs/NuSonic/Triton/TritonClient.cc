@@ -1,11 +1,11 @@
-#include "messagefacility/MessageLogger/MessageLogger.h"
-#include "art/Framework/Services/Registry/ServiceHandle.h"
-#include "canvas/Utilities/Exception.h"
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/triton_utils.h"
 
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "cetlib_except/exception.h"
+
 #include "grpc_client.h"
-#include "grpc_service.pb.h"
 
 #include <string>
 #include <cmath>
@@ -14,7 +14,6 @@
 #include <sstream>
 #include <utility>
 #include <tuple>
-
 
 namespace ni = nvidia::inferenceserver;
 namespace nic = ni::client;

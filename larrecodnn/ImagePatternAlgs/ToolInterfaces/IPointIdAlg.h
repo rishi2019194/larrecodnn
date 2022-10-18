@@ -16,10 +16,17 @@
 #ifndef IPointIdAlg_H
 #define IPointIdAlg_H
 
+#include "larreco/RecoAlg/ImagePatternAlgs/DataProvider/DataProviderAlg.h"
+
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/types/Atom.h"
 #include "fhiclcpp/types/OptionalAtom.h"
 #include "fhiclcpp/types/OptionalSequence.h"
-#include "larreco/RecoAlg/ImagePatternAlgs/DataProvider/DataProviderAlg.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/types/Sequence.h"
+#include "cetlib_except/exception.h"
+
+#include <string>
+#include <vector>
 
 namespace PointIdAlgTools {
   class IPointIdAlg : virtual public img::DataProviderAlg {

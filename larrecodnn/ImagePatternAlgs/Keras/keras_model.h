@@ -12,10 +12,10 @@
 #ifndef KERAS_MODEL__H
 #define KERAS_MODEL__H
 
-#include <string>
-#include <vector>
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 
 namespace keras
 {

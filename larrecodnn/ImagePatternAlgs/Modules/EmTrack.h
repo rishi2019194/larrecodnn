@@ -1,18 +1,7 @@
 #ifndef EMTRACK_H
 #define EMTRACK_H
 
-#include "art/Framework/Principal/Event.h"
-#include "art/Framework/Principal/Handle.h"
-#include "art/Framework/Services/System/TriggerNamesService.h"
-#include "art/Utilities/make_tool.h"
-#include "canvas/Utilities/InputTag.h"
-#include "cetlib/container_algorithms.h"
-#include "fhiclcpp/types/Atom.h"
-#include "fhiclcpp/types/Sequence.h"
-#include "fhiclcpp/types/Table.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
-
-#include "larcore/Geometry/Geometry.h"
+#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 #include "lardata/ArtDataHelper/MVAWriter.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
@@ -20,10 +9,32 @@
 #include "lardataobj/RecoBase/Cluster.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Track.h"
-#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 
+#include "art/Framework/Core/ProducesCollector.h"
+#include "art/Framework/Principal/Event.h"
+#include "art/Framework/Principal/Handle.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "art/Framework/Services/System/TriggerNamesService.h"
+#include "art/Utilities/make_tool.h"
+#include "canvas/Persistency/Common/Assns.h"
+#include "canvas/Persistency/Common/FindManyP.h"
+#include "canvas/Persistency/Common/Ptr.h"
+#include "canvas/Utilities/InputTag.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "fhiclcpp/types/Atom.h"
+#include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/Name.h"
+#include "fhiclcpp/types/Sequence.h"
+#include "fhiclcpp/types/Table.h"
+#include "cetlib/container_algorithms.h"
+#include "cetlib_except/exception.h"
+
+#include <map>
 #include <memory>
+#include <string>
+#include <tuple>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace nnet {

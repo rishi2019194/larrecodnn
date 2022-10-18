@@ -14,12 +14,13 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include "art/Framework/Core/EDProducer.h"
-#include "art/Framework/Core/ModuleMacros.h"
-#include "art/Framework/Principal/Event.h"
-
 #include "larrecodnn/ImagePatternAlgs/Modules/EmTrack.h"
 
+#include "art/Framework/Core/EDProducer.h"
+#include "art/Framework/Core/ModuleMacros.h"
+#include "fhiclcpp/ParameterSet.h"
+
+#include <string>
 
 namespace nnet {
 

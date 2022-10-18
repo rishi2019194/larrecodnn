@@ -7,24 +7,42 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/quiet_session.h"
+
+#include "larsim/Simulation/LArG4Parameters.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
+#include "larcore/CoreUtils/ServiceUtil.h" // lar::providerFrom<>()
+#include "lardata/DetectorInfoServices/DetectorClocksService.h"
+#include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
+#include "lardataobj/RecoBase/Hit.h"
+#include "lardataobj/RecoBase/Track.h"
+#include "lardataobj/RecoBase/Wire.h"
+#include "lardataobj/Simulation/SimChannel.h"
+#include "larcorealg/Geometry/Exceptions.h" // geo::InvalidWireIDError
+#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h" // raw::InvalidChannelID
+#include "larcoreobj/SimpleTypesAndConstants/geo_types.h" // geo::TPCID
 
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "canvas/Persistency/Common/FindManyP.h"
+#include "canvas/Persistency/Common/Ptr.h"
+#include "canvas/Utilities/Exception.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
+#include "cetlib/search_path.h"
+#include "cetlib_except/exception.h"
 
-#include "larcore/CoreUtils/ServiceUtil.h" // lar::providerFrom<>()
-#include "larcorealg/Geometry/ChannelMapAlg.h"
-#include "larcorealg/Geometry/Exceptions.h" // geo::InvalidWireIDError
-#include "lardataobj/Simulation/SimChannel.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
-#include "larsim/Simulation/LArG4Parameters.h"
+#include "tensorflow/core/public/session.h"
 
-#include "CLHEP/Random/RandGauss.h"
+#include "TMath.h"
 
+#include <algorithm>
+#include <cmath>
+#include <map>
+#include <string>
 #include <sys/stat.h>
+#include <unordered_map>
+#include <vector>
 
 // ------------------------------------------------------
 // -------------------ModelInterface---------------------
@@ -995,13 +1013,12 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
           max_pdg = trackToPDG[tc.first];
         }
       }
+      
+      int tick_idx = clockData.TPCTDC2Tick(ttc.first) + fAdcDelay;
 
-      if (ttc.first < labels_size) {
-        int tick_idx = ttc.first + fAdcDelay;
-        if (tick_idx < labels_size) {
-          labels_deposit[tick_idx] = max_deposit;
-          labels_pdg[tick_idx] = max_pdg & type_pdg_mask;
-        }
+      if (tick_idx < labels_size && tick_idx >= 0) {
+        labels_deposit[tick_idx] = max_deposit;
+        labels_pdg[tick_idx] = max_pdg & type_pdg_mask;
       }
     }
 
