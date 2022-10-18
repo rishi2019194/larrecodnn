@@ -1,34 +1,33 @@
-art_make(BASENAME_ONLY
-#  LIBRARY_NAME      CVNArt
-  LIB_LIBRARIES larrecodnn_CVN_func
-  larrecodnn_CVN_tf
-  larrecodnn_CVN_module_helpers
-  ART_FRAMEWORK_CORE
-  ART_FRAMEWORK_PRINCIPAL
-  ART_FRAMEWORK_SERVICES_REGISTRY
-  ART_ROOT_IO_TFILE_SUPPORT
-  ROOT::Core
-  ART_ROOT_IO_TFILESERVICE_SERVICE
-  ART_PERSISTENCY_COMMON
-  canvas::canvas
-  art::Persistency_Provenance
-  ART_UTILITIES
-  messagefacility::MF_MessageLogger
-  z
-  fhiclcpp::fhiclcpp
-  cetlib::cetlib cetlib_except
-  ROOT_BASIC_LIB_LIST
-  lardataobj_RecoBase
-  lardata_Utilities
+
+cet_build_plugin(LArNuCVNZlibMaker art::EDAnalyzer
+  LIBRARIES PRIVATE
+  larrecodnn::CVN_func
+  larrecodnn::CVN_module_helpers
   nusimdata::SimulationBase
-  larsim_MCCheater_ParticleInventoryService_service
+  art::Framework_Core
+  art::Framework_Principal
+  art_root_io::TFileService_service
+  canvas::canvas
   Boost::filesystem
-  MODULE_LIBRARIES larrecodnn_CVN_func
-  larrecodnn_CVN_tf
-  larrecodnn_CVN_module_helpers
-  # larrecodnn_CVN_modules
-  stdc++fs
-  ) ### MIGRATE-ACTION-RECOMMENDED (migrate-3.16.00) - deprecated: use art_make_library(), art_dictonary(), and cet_build_plugin() with explicit source lists and plugin base types
+)
+
+cet_build_plugin(LArCVNHitMapper art::EDProducer
+  LIBRARIES PRIVATE
+  larrecodnn::CVN_module_helpers
+  lardataobj::RecoBase
+)
+
+cet_build_plugin(LArCVNSimMapper art::EDProducer
+  LIBRARIES PRIVATE
+  larrecodnn::CVN_module_helpers
+  nusimdata::SimulationBase
+)
+
+cet_build_plugin(LArCVNWireMapper art::EDProducer
+  LIBRARIES PRIVATE
+  larrecodnn::CVN_module_helpers
+  lardataobj::RecoBase
+)
 
 install_headers()
 install_fhicl()
