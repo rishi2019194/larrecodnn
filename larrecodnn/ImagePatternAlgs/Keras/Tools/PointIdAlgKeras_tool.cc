@@ -63,8 +63,7 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::string
-  PointIdAlgKeras::findFile(const char* fileName) const
+  std::string PointIdAlgKeras::findFile(const char* fileName) const
   {
     std::string fname_out;
     cet::search_path sp("FW_SEARCH_PATH");
@@ -79,8 +78,7 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<float>
-  PointIdAlgKeras::Run(std::vector<std::vector<float>> const& inp2d) const
+  std::vector<float> PointIdAlgKeras::Run(std::vector<std::vector<float>> const& inp2d) const
   {
     std::vector<std::vector<std::vector<float>>> inp3d;
     inp3d.push_back(inp2d); // lots of copy, should add 2D to keras...
@@ -91,8 +89,9 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<std::vector<float>>
-  PointIdAlgKeras::Run(std::vector<std::vector<std::vector<float>>> const& inps, int samples) const
+  std::vector<std::vector<float>> PointIdAlgKeras::Run(
+    std::vector<std::vector<std::vector<float>>> const& inps,
+    int samples) const
   {
 
     if ((samples == 0) || inps.empty() || inps.front().empty() || inps.front().front().empty()) {

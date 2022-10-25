@@ -13,12 +13,12 @@
 // Based on the Analyzer module written by Mike Wang.
 ////////////////////////////////////////////////////////////////////////
 
-#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IWaveformRecog.h"
-#include "larcore/Geometry/Geometry.h"
 #include "larcore/CoreUtils/ServiceUtil.h"
+#include "larcore/Geometry/Geometry.h"
 #include "lardataobj/RawData/RawDigit.h"
 #include "lardataobj/RawData/raw.h"
 #include "lardataobj/RecoBase/Wire.h"
+#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IWaveformRecog.h"
 
 #include "art/Framework/Core/EDProducer.h"
 #include "art/Framework/Core/ModuleMacros.h"
@@ -29,9 +29,9 @@
 #include "art/Utilities/make_tool.h"
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
-#include "fhiclcpp/ParameterSet.h"
 #include "cetlib_except/exception.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include <memory>
 #include <utility> // std::move()
@@ -96,8 +96,7 @@ nnet::WaveformRoiFinder::WaveformRoiFinder(fhicl::ParameterSet const& p)
   produces<std::vector<recob::Wire>>();
 }
 
-void
-nnet::WaveformRoiFinder::produce(art::Event& e)
+void nnet::WaveformRoiFinder::produce(art::Event& e)
 {
   art::Handle<std::vector<raw::RawDigit>> rawListHandle;
   std::vector<art::Ptr<raw::RawDigit>> rawlist;
@@ -178,10 +177,10 @@ nnet::WaveformRoiFinder::produce(art::Event& e)
       }
     }
     if (!sigs.empty()) { rois.add_range(roistart, std::move(sigs)); }
-    if (!wirelist.empty() && hasROI ) {
+    if (!wirelist.empty() && hasROI) {
       outwires->emplace_back(recob::Wire(rois, wirelist[ich]->Channel(), wirelist[ich]->View()));
     }
-    else if (!rawlist.empty() && hasROI ) {
+    else if (!rawlist.empty() && hasROI) {
       outwires->emplace_back(
         recob::Wire(rois, rawlist[ich]->Channel(), geo->View(rawlist[ich]->Channel())));
     }

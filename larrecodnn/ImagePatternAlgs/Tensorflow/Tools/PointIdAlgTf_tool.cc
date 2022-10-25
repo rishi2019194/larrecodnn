@@ -9,8 +9,8 @@
 
 #include "art/Utilities/ToolMacros.h"
 
-#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 #include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
+#include "larrecodnn/ImagePatternAlgs/ToolInterfaces/IPointIdAlg.h"
 #include "tensorflow/core/public/session.h"
 
 #include <sys/stat.h>
@@ -70,8 +70,7 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::string
-  PointIdAlgTf::findFile(const char* fileName) const
+  std::string PointIdAlgTf::findFile(const char* fileName) const
   {
     std::string fname_out;
     cet::search_path sp("FW_SEARCH_PATH");
@@ -86,8 +85,7 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<float>
-  PointIdAlgTf::Run(std::vector<std::vector<float>> const& inp2d) const
+  std::vector<float> PointIdAlgTf::Run(std::vector<std::vector<float>> const& inp2d) const
   {
     long long int rows = inp2d.size(), cols = inp2d.front().size();
 
@@ -108,8 +106,9 @@ namespace PointIdAlgTools {
   }
 
   // ------------------------------------------------------
-  std::vector<std::vector<float>>
-  PointIdAlgTf::Run(std::vector<std::vector<std::vector<float>>> const& inps, int samples) const
+  std::vector<std::vector<float>> PointIdAlgTf::Run(
+    std::vector<std::vector<std::vector<float>>> const& inps,
+    int samples) const
   {
 
     if ((samples == 0) || inps.empty() || inps.front().empty() || inps.front().front().empty()) {

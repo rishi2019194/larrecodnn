@@ -14,7 +14,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
+#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
 #include "lardata/ArtDataHelper/MVAWriter.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
@@ -23,7 +23,7 @@
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Track.h"
 #include "lardataobj/RecoBase/Wire.h"
-#include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
 
 #include "art/Framework/Core/EDProducer.h"
 #include "art/Framework/Core/ModuleMacros.h"
@@ -33,17 +33,17 @@
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "art/Framework/Services/System/TriggerNamesService.h"
 #include "canvas/Persistency/Common/Assns.h"
-#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Persistency/Common/FindManyP.h"
+#include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "cetlib_except/exception.h"
+#include "fhiclcpp/ParameterSet.h"
 #include "fhiclcpp/types/Atom.h"
 #include "fhiclcpp/types/Comment.h"
 #include "fhiclcpp/types/Name.h"
 #include "fhiclcpp/types/Sequence.h"
 #include "fhiclcpp/types/Table.h"
-#include "fhiclcpp/ParameterSet.h"
-#include "cetlib_except/exception.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include <iostream>
 #include <memory>
@@ -158,8 +158,7 @@ namespace nnet {
   }
   // ------------------------------------------------------
 
-  void
-  EmTrackClusterId::produce(art::Event& evt)
+  void EmTrackClusterId::produce(art::Event& evt)
   {
     mf::LogVerbatim("EmTrackClusterId") << "next event: " << evt.run() << " / " << evt.id().event();
 
@@ -416,8 +415,7 @@ namespace nnet {
   }
   // ------------------------------------------------------
 
-  bool
-  EmTrackClusterId::isViewSelected(int view) const
+  bool EmTrackClusterId::isViewSelected(int view) const
   {
     if (fViews.empty())
       return true;

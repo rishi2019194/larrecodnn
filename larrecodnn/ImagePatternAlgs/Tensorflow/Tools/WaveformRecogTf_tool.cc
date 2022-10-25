@@ -30,13 +30,16 @@ namespace wavrec_tool {
     fNNetOutputPattern =
       pset.get<std::vector<std::string>>("NNetOutputPattern", {"cnn_output", "dense_3"});
     if ((fNNetModelFilePath.length() > 3) &&
-        (fNNetModelFilePath.compare(fNNetModelFilePath.length() - 3, 3, ".pb") == 0) && !fUseBundle) {
-      g = tf::Graph::create(findFile(fNNetModelFilePath.c_str()).c_str(), fNNetOutputPattern, fUseBundle);
+        (fNNetModelFilePath.compare(fNNetModelFilePath.length() - 3, 3, ".pb") == 0) &&
+        !fUseBundle) {
+      g = tf::Graph::create(
+        findFile(fNNetModelFilePath.c_str()).c_str(), fNNetOutputPattern, fUseBundle);
       if (!g) { throw art::Exception(art::errors::Unknown) << "TF model failed."; }
       mf::LogInfo("WaveformRecogTf") << "TF model loaded.";
     }
-    else if((fNNetModelFilePath.length() > 3) && fUseBundle ) {
-      g = tf::Graph::create(findFile(fNNetModelFilePath.c_str()).c_str(), fNNetOutputPattern, fUseBundle);
+    else if ((fNNetModelFilePath.length() > 3) && fUseBundle) {
+      g = tf::Graph::create(
+        findFile(fNNetModelFilePath.c_str()).c_str(), fNNetOutputPattern, fUseBundle);
       if (!g) { throw art::Exception(art::errors::Unknown) << "TF model failed."; }
       mf::LogInfo("WaveformRecogTf") << "TF model loaded.";
     }
@@ -48,8 +51,8 @@ namespace wavrec_tool {
   }
 
   // ------------------------------------------------------
-  std::vector<std::vector<float>>
-  WaveformRecogTf::predictWaveformType(const std::vector<std::vector<float>>& waveforms) const
+  std::vector<std::vector<float>> WaveformRecogTf::predictWaveformType(
+    const std::vector<std::vector<float>>& waveforms) const
   {
     if (waveforms.empty() || waveforms.front().empty()) {
       return std::vector<std::vector<float>>();

@@ -9,8 +9,7 @@
 // from cetpkgsupport v1_10_01.
 ////////////////////////////////////////////////////////////////////////
 
-#include "larreco/Calorimetry/CalorimetryAlg.h"
-#include "larsim/Simulation/LArG4Parameters.h"
+#include "larcoreobj/SimpleTypesAndConstants/PhysicalConstants.h"
 #include "lardata/ArtDataHelper/MVAReader.h"
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
@@ -21,11 +20,11 @@
 #include "lardataobj/RecoBase/Track.h"
 #include "lardataobj/RecoBase/Wire.h"
 #include "lardataobj/Simulation/SimChannel.h"
-#include "larcoreobj/SimpleTypesAndConstants/PhysicalConstants.h"
+#include "larreco/Calorimetry/CalorimetryAlg.h"
+#include "larsim/Simulation/LArG4Parameters.h"
 #include "nusimdata/SimulationBase/MCParticle.h"
 #include "nusimdata/SimulationBase/MCTruth.h"
 
-#include "art_root_io/TFileService.h"
 #include "art/Framework/Core/EDAnalyzer.h"
 #include "art/Framework/Core/ModuleMacros.h"
 #include "art/Framework/Principal/Event.h"
@@ -33,15 +32,16 @@
 #include "art/Framework/Principal/Run.h"
 #include "art/Framework/Principal/SubRun.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "art_root_io/TFileService.h"
 #include "canvas/Persistency/Common/FindManyP.h"
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/InputTag.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "cetlib_except/exception.h"
 #include "fhiclcpp/types/Atom.h"
 #include "fhiclcpp/types/Comment.h"
 #include "fhiclcpp/types/Name.h"
 #include "fhiclcpp/types/Table.h"
-#include "cetlib_except/exception.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include "TH1.h"
 #include "TTree.h"
@@ -184,15 +184,13 @@ nnet::PointIdEffTest::PointIdEffTest(nnet::PointIdEffTest::Parameters const& con
   , fSaveHitsFile(config().SaveHitsFile())
 {}
 
-void
-nnet::PointIdEffTest::beginRun(const art::Run&)
+void nnet::PointIdEffTest::beginRun(const art::Run&)
 {
   art::ServiceHandle<sim::LArG4Parameters const> larParameters;
   fElectronsToGeV = 1. / larParameters->GeVToElectrons();
 }
 
-void
-nnet::PointIdEffTest::beginJob()
+void nnet::PointIdEffTest::beginJob()
 {
   art::ServiceHandle<art::TFileService const> tfs;
 
@@ -254,8 +252,7 @@ nnet::PointIdEffTest::beginJob()
   }
 }
 
-void
-nnet::PointIdEffTest::endJob()
+void nnet::PointIdEffTest::endJob()
 {
   if (fSaveHitsFile) fHitsOutFile.close();
 
@@ -276,8 +273,7 @@ nnet::PointIdEffTest::endJob()
   }
 }
 
-void
-nnet::PointIdEffTest::cleanup()
+void nnet::PointIdEffTest::cleanup()
 {
   fParticleMap.clear();
 
@@ -312,8 +308,7 @@ nnet::PointIdEffTest::cleanup()
   fMichelLikeIdx = -1;
 }
 
-void
-nnet::PointIdEffTest::analyze(art::Event const& e)
+void nnet::PointIdEffTest::analyze(art::Event const& e)
 {
   cleanup(); // remove everything from members
 
@@ -436,10 +431,9 @@ nnet::PointIdEffTest::analyze(art::Event const& e)
 }
 /******************************************/
 
-void
-nnet::PointIdEffTest::countTruthDep(const std::vector<sim::SimChannel>& channels,
-                                    float& emLike,
-                                    float& trackLike) const
+void nnet::PointIdEffTest::countTruthDep(const std::vector<sim::SimChannel>& channels,
+                                         float& emLike,
+                                         float& trackLike) const
 {
   emLike = 0;
   trackLike = 0;
@@ -480,14 +474,13 @@ nnet::PointIdEffTest::countTruthDep(const std::vector<sim::SimChannel>& channels
 }
 /******************************************/
 
-void
-nnet::PointIdEffTest::countPfpDep(detinfo::DetectorClocksData const& clockData,
-                                  detinfo::DetectorPropertiesData const& detProp,
-                                  const std::vector<recob::PFParticle>& pfparticles,
-                                  const art::FindManyP<recob::Cluster>& pfpclus,
-                                  const art::FindManyP<recob::Hit>& cluhits,
-                                  float& emLike,
-                                  float& trackLike) const
+void nnet::PointIdEffTest::countPfpDep(detinfo::DetectorClocksData const& clockData,
+                                       detinfo::DetectorPropertiesData const& detProp,
+                                       const std::vector<recob::PFParticle>& pfparticles,
+                                       const art::FindManyP<recob::Cluster>& pfpclus,
+                                       const art::FindManyP<recob::Hit>& cluhits,
+                                       float& emLike,
+                                       float& trackLike) const
 {
   emLike = 0;
   trackLike = 0;
@@ -514,8 +507,7 @@ nnet::PointIdEffTest::countPfpDep(detinfo::DetectorClocksData const& clockData,
 }
 /******************************************/
 
-bool
-nnet::PointIdEffTest::isMuonDecaying(
+bool nnet::PointIdEffTest::isMuonDecaying(
   const simb::MCParticle& particle,
   const std::unordered_map<int, const simb::MCParticle*>& particleMap) const
 {
@@ -544,14 +536,13 @@ nnet::PointIdEffTest::isMuonDecaying(
 }
 /******************************************/
 
-int
-nnet::PointIdEffTest::testCNN(detinfo::DetectorClocksData const& clockData,
-                              detinfo::DetectorPropertiesData const& detProp,
-                              const std::vector<sim::SimChannel>& channels,
-                              const std::vector<art::Ptr<recob::Hit>>& hits,
-                              const std::array<float, MVA_LENGTH>& cnn_out,
-                              const std::vector<anab::FeatureVector<MVA_LENGTH>>& hit_outs,
-                              size_t cidx)
+int nnet::PointIdEffTest::testCNN(detinfo::DetectorClocksData const& clockData,
+                                  detinfo::DetectorPropertiesData const& detProp,
+                                  const std::vector<sim::SimChannel>& channels,
+                                  const std::vector<art::Ptr<recob::Hit>>& hits,
+                                  const std::array<float, MVA_LENGTH>& cnn_out,
+                                  const std::vector<anab::FeatureVector<MVA_LENGTH>>& hit_outs,
+                                  size_t cidx)
 {
   fClSize = hits.size();
 

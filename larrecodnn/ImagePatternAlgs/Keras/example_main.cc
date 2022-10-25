@@ -14,11 +14,12 @@ using namespace keras;
 // To execute:
 // a.out
 
-int main() {
+int main()
+{
   cout << "This is simple example with Keras neural network model loading into C++.\n"
-           << "Keras model will be used in C++ for prediction only." << endl;
+       << "Keras model will be used in C++ for prediction only." << endl;
 
-  DataChunk *sample = new DataChunk2D();
+  DataChunk* sample = new DataChunk2D();
   sample->read_from_file("./example/sample_mnist.dat");
   std::cout << sample->get_3d().size() << std::endl;
   KerasModel m("./example/dumped.nnet");

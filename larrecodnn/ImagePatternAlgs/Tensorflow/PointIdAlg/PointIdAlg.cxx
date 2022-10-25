@@ -8,19 +8,19 @@
 
 #include "larrecodnn/ImagePatternAlgs/Tensorflow/PointIdAlg/PointIdAlg.h"
 
-#include "larsim/Simulation/LArG4Parameters.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
-#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
-#include "larcore/CoreUtils/ServiceUtil.h" // lar::providerFrom<>()
+#include "larcore/CoreUtils/ServiceUtil.h"                // lar::providerFrom<>()
+#include "larcorealg/Geometry/Exceptions.h"               // geo::InvalidWireIDError
+#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h"  // raw::InvalidChannelID
+#include "larcoreobj/SimpleTypesAndConstants/geo_types.h" // geo::TPCID
 #include "lardata/DetectorInfoServices/DetectorClocksService.h"
 #include "lardata/DetectorInfoServices/DetectorPropertiesService.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Track.h"
 #include "lardataobj/RecoBase/Wire.h"
 #include "lardataobj/Simulation/SimChannel.h"
-#include "larcorealg/Geometry/Exceptions.h" // geo::InvalidWireIDError
-#include "larcoreobj/SimpleTypesAndConstants/RawTypes.h" // raw::InvalidChannelID
-#include "larcoreobj/SimpleTypesAndConstants/geo_types.h" // geo::TPCID
+#include "larevt/CalibrationDBI/Interface/ChannelStatusProvider.h"
+#include "larevt/CalibrationDBI/Interface/ChannelStatusService.h"
+#include "larsim/Simulation/LArG4Parameters.h"
 
 #include "art/Framework/Principal/Event.h"
 #include "art/Framework/Principal/Handle.h"
@@ -28,9 +28,9 @@
 #include "canvas/Persistency/Common/FindManyP.h"
 #include "canvas/Persistency/Common/Ptr.h"
 #include "canvas/Utilities/Exception.h"
-#include "messagefacility/MessageLogger/MessageLogger.h"
 #include "cetlib/search_path.h"
 #include "cetlib_except/exception.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include "tensorflow/core/public/session.h"
 
@@ -48,8 +48,9 @@
 // -------------------ModelInterface---------------------
 // ------------------------------------------------------
 
-std::vector<std::vector<float>>
-nnet::ModelInterface::Run(std::vector<std::vector<std::vector<float>>> const& inps, int samples)
+std::vector<std::vector<float>> nnet::ModelInterface::Run(
+  std::vector<std::vector<std::vector<float>>> const& inps,
+  int samples)
 {
   if ((samples == 0) || inps.empty() || inps.front().empty() || inps.front().front().empty())
     return std::vector<std::vector<float>>();
@@ -63,8 +64,7 @@ nnet::ModelInterface::Run(std::vector<std::vector<std::vector<float>>> const& in
   return results;
 }
 
-std::string
-nnet::ModelInterface::findFile(const char* fileName) const
+std::string nnet::ModelInterface::findFile(const char* fileName) const
 {
   std::string fname_out;
   cet::search_path sp("FW_SEARCH_PATH");
@@ -89,8 +89,7 @@ nnet::KerasModelInterface::KerasModelInterface(const char* modelFileName)
 }
 // ------------------------------------------------------
 
-std::vector<float>
-nnet::KerasModelInterface::Run(std::vector<std::vector<float>> const& inp2d)
+std::vector<float> nnet::KerasModelInterface::Run(std::vector<std::vector<float>> const& inp2d)
 {
   std::vector<std::vector<std::vector<float>>> inp3d;
   inp3d.push_back(inp2d); // lots of copy, should add 2D to keras...
@@ -116,8 +115,9 @@ nnet::TfModelInterface::TfModelInterface(const char* modelFileName)
 }
 // ------------------------------------------------------
 
-std::vector<std::vector<float>>
-nnet::TfModelInterface::Run(std::vector<std::vector<std::vector<float>>> const& inps, int samples)
+std::vector<std::vector<float>> nnet::TfModelInterface::Run(
+  std::vector<std::vector<std::vector<float>>> const& inps,
+  int samples)
 {
   if ((samples == 0) || inps.empty() || inps.front().empty() || inps.front().front().empty())
     return std::vector<std::vector<float>>();
@@ -142,8 +142,7 @@ nnet::TfModelInterface::Run(std::vector<std::vector<std::vector<float>>> const& 
 }
 // ------------------------------------------------------
 
-std::vector<float>
-nnet::TfModelInterface::Run(std::vector<std::vector<float>> const& inp2d)
+std::vector<float> nnet::TfModelInterface::Run(std::vector<std::vector<float>> const& inp2d)
 {
   long long int rows = inp2d.size(), cols = inp2d.front().size();
 
@@ -204,8 +203,7 @@ nnet::PointIdAlg::~PointIdAlg()
 }
 // ------------------------------------------------------
 
-void
-nnet::PointIdAlg::resizePatch()
+void nnet::PointIdAlg::resizePatch()
 {
   fWireDriftPatch.resize(fPatchSizeW);
   for (auto& r : fWireDriftPatch)
@@ -213,8 +211,7 @@ nnet::PointIdAlg::resizePatch()
 }
 // ------------------------------------------------------
 
-float
-nnet::PointIdAlg::predictIdValue(unsigned int wire, float drift, size_t outIdx) const
+float nnet::PointIdAlg::predictIdValue(unsigned int wire, float drift, size_t outIdx) const
 {
   float result = 0.;
 
@@ -235,8 +232,7 @@ nnet::PointIdAlg::predictIdValue(unsigned int wire, float drift, size_t outIdx) 
 }
 // ------------------------------------------------------
 
-std::vector<float>
-nnet::PointIdAlg::predictIdVector(unsigned int wire, float drift) const
+std::vector<float> nnet::PointIdAlg::predictIdVector(unsigned int wire, float drift) const
 {
   std::vector<float> result;
 
@@ -254,8 +250,8 @@ nnet::PointIdAlg::predictIdVector(unsigned int wire, float drift) const
 }
 // ------------------------------------------------------
 
-std::vector<std::vector<float>>
-nnet::PointIdAlg::predictIdVectors(std::vector<std::pair<unsigned int, float>> points) const
+std::vector<std::vector<float>> nnet::PointIdAlg::predictIdVectors(
+  std::vector<std::pair<unsigned int, float>> points) const
 {
   if (points.empty() || !fNNet) { return std::vector<std::vector<float>>(); }
 
@@ -273,11 +269,10 @@ nnet::PointIdAlg::predictIdVectors(std::vector<std::pair<unsigned int, float>> p
 }
 // ------------------------------------------------------
 
-bool
-nnet::PointIdAlg::isSamePatch(unsigned int wire1,
-                              float drift1,
-                              unsigned int wire2,
-                              float drift2) const
+bool nnet::PointIdAlg::isSamePatch(unsigned int wire1,
+                                   float drift1,
+                                   unsigned int wire2,
+                                   float drift2) const
 {
   if (fDownscaleFullView) {
     size_t sd1 = (size_t)(drift1 / fDriftWindow);
@@ -291,8 +286,7 @@ nnet::PointIdAlg::isSamePatch(unsigned int wire1,
   return false; // not the same position
 }
 
-bool
-nnet::PointIdAlg::isCurrentPatch(unsigned int wire, float drift) const
+bool nnet::PointIdAlg::isCurrentPatch(unsigned int wire, float drift) const
 {
   if (fDownscaleFullView) {
     size_t sd = (size_t)(drift / fDriftWindow);
@@ -308,8 +302,7 @@ nnet::PointIdAlg::isCurrentPatch(unsigned int wire, float drift) const
 }
 // ------------------------------------------------------
 
-std::vector<float>
-nnet::PointIdAlg::flattenData2D(std::vector<std::vector<float>> const& patch)
+std::vector<float> nnet::PointIdAlg::flattenData2D(std::vector<std::vector<float>> const& patch)
 {
   std::vector<float> flat;
   if (patch.empty() || patch.front().empty()) {
@@ -330,8 +323,7 @@ nnet::PointIdAlg::flattenData2D(std::vector<std::vector<float>> const& patch)
 }
 // ------------------------------------------------------
 
-bool
-nnet::PointIdAlg::isInsideFiducialRegion(unsigned int wire, float drift) const
+bool nnet::PointIdAlg::isInsideFiducialRegion(unsigned int wire, float drift) const
 {
   size_t marginW = fPatchSizeW / 8; // fPatchSizeX/2 will make patch always completely filled
   size_t marginD = fPatchSizeD / 8;
@@ -362,8 +354,7 @@ nnet::TrainingDataAlg::TrainingDataAlg(const Config& config)
   , fEventsPerBin(100, 0)
 {
   // If no sim channel producer is set then make it the same as the simulation label
-  if(fSimChannelProducerLabel.label().empty())
-    fSimChannelProducerLabel = fSimulationProducerLabel;
+  if (fSimChannelProducerLabel.label().empty()) fSimChannelProducerLabel = fSimulationProducerLabel;
 
   fSaveSimInfo = !fSimulationProducerLabel.label().empty();
 }
@@ -372,11 +363,11 @@ nnet::TrainingDataAlg::TrainingDataAlg(const Config& config)
 nnet::TrainingDataAlg::~TrainingDataAlg() = default;
 // ------------------------------------------------------
 
-img::DataProviderAlgView
-nnet::TrainingDataAlg::resizeView(detinfo::DetectorClocksData const& clock_data,
-                                  detinfo::DetectorPropertiesData const& det_prop,
-                                  size_t wires,
-                                  size_t drifts)
+img::DataProviderAlgView nnet::TrainingDataAlg::resizeView(
+  detinfo::DetectorClocksData const& clock_data,
+  detinfo::DetectorPropertiesData const& det_prop,
+  size_t wires,
+  size_t drifts)
 {
   auto view = img::DataProviderAlg::resizeView(clock_data, det_prop, wires, drifts);
 
@@ -395,10 +386,9 @@ nnet::TrainingDataAlg::resizeView(detinfo::DetectorClocksData const& clock_data,
 }
 // ------------------------------------------------------
 
-bool
-nnet::TrainingDataAlg::setWireEdepsAndLabels(std::vector<float> const& edeps,
-                                             std::vector<int> const& pdgs,
-                                             size_t wireIdx)
+bool nnet::TrainingDataAlg::setWireEdepsAndLabels(std::vector<float> const& edeps,
+                                                  std::vector<int> const& pdgs,
+                                                  size_t wireIdx)
 {
   if ((wireIdx >= fWireDriftEdep.size()) || (edeps.size() != pdgs.size())) { return false; }
 
@@ -439,11 +429,11 @@ nnet::TrainingDataAlg::setWireEdepsAndLabels(std::vector<float> const& edeps,
 }
 // ------------------------------------------------------
 
-nnet::TrainingDataAlg::WireDrift
-nnet::TrainingDataAlg::getProjection(detinfo::DetectorClocksData const& clockData,
-                                     detinfo::DetectorPropertiesData const& detProp,
-                                     const TLorentzVector& tvec,
-                                     unsigned int plane) const
+nnet::TrainingDataAlg::WireDrift nnet::TrainingDataAlg::getProjection(
+  detinfo::DetectorClocksData const& clockData,
+  detinfo::DetectorPropertiesData const& detProp,
+  const TLorentzVector& tvec,
+  unsigned int plane) const
 {
   nnet::TrainingDataAlg::WireDrift wd;
   wd.Wire = 0;
@@ -483,8 +473,7 @@ nnet::TrainingDataAlg::getProjection(detinfo::DetectorClocksData const& clockDat
 }
 // ------------------------------------------------------
 
-bool
-nnet::TrainingDataAlg::isElectronEnd(
+bool nnet::TrainingDataAlg::isElectronEnd(
   const simb::MCParticle& particle,
   const std::unordered_map<int, const simb::MCParticle*>& particleMap) const
 {
@@ -538,8 +527,7 @@ nnet::TrainingDataAlg::isElectronEnd(
   return (trkLength2 > minElectronLength2);
 }
 
-bool
-nnet::TrainingDataAlg::isMuonDecaying(
+bool nnet::TrainingDataAlg::isMuonDecaying(
   const simb::MCParticle& particle,
   const std::unordered_map<int, const simb::MCParticle*>& particleMap) const
 {
@@ -547,7 +535,8 @@ nnet::TrainingDataAlg::isMuonDecaying(
 
   int pdg = abs(particle.PdgCode());
   //if ((pdg == 13) && (particle.EndProcess() == "FastScintillation" || particle.EndProcess() == "Decay" || particle.EndProcess() == "muMinusCaptureAtRest")) // potential muon decay at rest
-  if ((pdg == 13) && (particle.EndProcess() == "FastScintillation" || particle.EndProcess() == "Decay")) // potential muon decay at rest
+  if ((pdg == 13) && (particle.EndProcess() == "FastScintillation" ||
+                      particle.EndProcess() == "Decay")) // potential muon decay at rest
   {
     unsigned int nSec = particle.NumberDaughters();
     for (size_t d = 0; d < nSec; ++d) {
@@ -564,12 +553,11 @@ nnet::TrainingDataAlg::isMuonDecaying(
       }
     }
   }
-  
+
   return (hasElectron && hasNuMu && hasNuE);
 }
 
-void
-nnet::TrainingDataAlg::collectVtxFlags(
+void nnet::TrainingDataAlg::collectVtxFlags(
   std::unordered_map<size_t, std::unordered_map<int, int>>& wireToDriftToVtxFlags,
   detinfo::DetectorClocksData const& clockData,
   detinfo::DetectorPropertiesData const& detProp,
@@ -725,13 +713,12 @@ nnet::TrainingDataAlg::collectVtxFlags(
 }
 // ------------------------------------------------------
 
-bool
-nnet::TrainingDataAlg::setDataEventData(const art::Event& event,
-                                        detinfo::DetectorClocksData const& clockData,
-                                        detinfo::DetectorPropertiesData const& detProp,
-                                        unsigned int plane,
-                                        unsigned int tpc,
-                                        unsigned int cryo)
+bool nnet::TrainingDataAlg::setDataEventData(const art::Event& event,
+                                             detinfo::DetectorClocksData const& clockData,
+                                             detinfo::DetectorPropertiesData const& detProp,
+                                             unsigned int plane,
+                                             unsigned int tpc,
+                                             unsigned int cryo)
 {
 
   art::Handle<std::vector<recob::Wire>> wireHandle;
@@ -873,13 +860,12 @@ nnet::TrainingDataAlg::setDataEventData(const art::Event& event,
   return true;
 }
 
-bool
-nnet::TrainingDataAlg::setEventData(const art::Event& event,
-                                    detinfo::DetectorClocksData const& clockData,
-                                    detinfo::DetectorPropertiesData const& detProp,
-                                    unsigned int plane,
-                                    unsigned int tpc,
-                                    unsigned int cryo)
+bool nnet::TrainingDataAlg::setEventData(const art::Event& event,
+                                         detinfo::DetectorClocksData const& clockData,
+                                         detinfo::DetectorPropertiesData const& detProp,
+                                         unsigned int plane,
+                                         unsigned int tpc,
+                                         unsigned int cryo)
 {
   art::ValidHandle<std::vector<recob::Wire>> wireHandle =
     event.getValidHandle<std::vector<recob::Wire>>(fWireProducerLabel);
@@ -982,11 +968,11 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
               }
             }
             */
-            if (pdg == 11){ // electron, check if it is Michel or delta ray
-              if (particle.Process() == "Decay"){
+            if (pdg == 11) { // electron, check if it is Michel or delta ray
+              if (particle.Process() == "Decay") {
                 pdg |= nnet::TrainingDataAlg::kMichel; // tag Michel
               }
-              else if (particle.Process() == "muIoni"){
+              else if (particle.Process() == "muIoni") {
                 pdg |= nnet::TrainingDataAlg::kDelta; // tag delta ray
               }
             }
@@ -1013,7 +999,7 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
           max_pdg = trackToPDG[tc.first];
         }
       }
-      
+
       int tick_idx = clockData.TPCTDC2Tick(ttc.first) + fAdcDelay;
 
       if (tick_idx < labels_size && tick_idx >= 0) {
@@ -1033,12 +1019,11 @@ nnet::TrainingDataAlg::setEventData(const art::Event& event,
 }
 // ------------------------------------------------------
 
-bool
-nnet::TrainingDataAlg::findCrop(float max_e_cut,
-                                unsigned int& w0,
-                                unsigned int& w1,
-                                unsigned int& d0,
-                                unsigned int& d1) const
+bool nnet::TrainingDataAlg::findCrop(float max_e_cut,
+                                     unsigned int& w0,
+                                     unsigned int& w1,
+                                     unsigned int& d0,
+                                     unsigned int& d1) const
 {
   if (fWireDriftEdep.empty() || fWireDriftEdep.front().empty()) return false;
 
