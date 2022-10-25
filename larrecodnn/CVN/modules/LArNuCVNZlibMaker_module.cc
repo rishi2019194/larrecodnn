@@ -63,7 +63,6 @@ namespace cvn {
     void reconfigure(const fhicl::ParameterSet& pset);
 
   private:
-    bool fIsVD;
     unsigned int fTopologyHitsCut;
     std::string fGenieGenModuleLabel;
     bool fApplyFidVol;
