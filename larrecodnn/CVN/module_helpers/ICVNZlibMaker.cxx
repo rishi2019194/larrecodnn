@@ -1,17 +1,14 @@
 #include "larrecodnn/CVN/module_helpers/ICVNZlibMaker.h"
 
-namespace cvn
-{
+namespace cvn {
 
-  ICVNZlibMaker::ICVNZlibMaker(fhicl::ParameterSet const& pset)
-    : EDAnalyzer(pset)
+  ICVNZlibMaker::ICVNZlibMaker(fhicl::ParameterSet const& pset) : EDAnalyzer(pset)
   {
     this->reconfigure(pset);
   }
 
   //......................................................................
-  ICVNZlibMaker::~ICVNZlibMaker()
-  {  }
+  ICVNZlibMaker::~ICVNZlibMaker() {}
 
   //......................................................................
   void ICVNZlibMaker::reconfigure(const fhicl::ParameterSet& pset)
@@ -24,13 +21,13 @@ namespace cvn
     fPlaneLimit = pset.get<unsigned int>("PlaneLimit");
     fTDCLimit = pset.get<unsigned int>("TDCLimit");
   }
-  
+
   void ICVNZlibMaker::beginJob()
   {
     fImage = CVNImageUtils(fPlaneLimit, fTDCLimit, 3);
     fImage.SetLogScale(fSetLog);
     fImage.SetViewReversal(fReverseViews);
-    
+
     if (fOutputDir != "")
       out_dir = fOutputDir;
 
@@ -41,7 +38,6 @@ namespace cvn
     if (!fs::exists(out_dir))
       throw art::Exception(art::errors::FileOpenError)
         << "Output directory " << out_dir << " does not exist!" << std::endl;
-
   }
-  
+
 }

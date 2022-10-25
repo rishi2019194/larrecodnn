@@ -7,12 +7,9 @@
 #ifndef CVN_HITTYPE_H
 #define CVN_HITTYPE_H
 
+namespace cvn {
 
-namespace cvn
-{
-
-  typedef enum HType
-  {
+  typedef enum HType {
     kElectronHit,
     kMuonHit,
     kProtonHit,

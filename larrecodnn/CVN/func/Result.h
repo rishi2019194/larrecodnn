@@ -8,19 +8,17 @@
 #ifndef CVN_RESULT_H
 #define CVN_RESULT_H
 
+#include "larrecodnn/CVN/func/InteractionType.h"
 #include <math.h>
 #include <vector>
-#include "larrecodnn/CVN/func/InteractionType.h"
 
-namespace cvn
-{
+namespace cvn {
   /// Result, basic output of CVN neural net
-  class Result
-  {
+  class Result {
   public:
     Result(const float* output, unsigned int& nOutputs);
     // Vector version of the constructor
-    Result(const std::vector< std::vector<float> > output);
+    Result(const std::vector<std::vector<float>> output);
     //Result(const float* output, unsigned int& nOutputs, const float* features, unsigned int& nFeatures);
     Result();
 
@@ -32,10 +30,10 @@ namespace cvn
 
     /// Return the predicted is_antineutrino
     TFIsAntineutrino PredictedIsAntineutrino() const;
- 
+
     /// Return the predicted flavour
     TFFlavour PredictedFlavour() const;
-    
+
     /// Return the predicted interaction
     TFInteraction PredictedInteraction() const;
 
@@ -44,13 +42,13 @@ namespace cvn
 
     /// Return the predicted pions
     TFTopologyPions PredictedPions() const;
- 
+
     /// Return the predicted pizeros
     TFTopologyPizeros PredictedPizeros() const;
 
     /// Return the predicted neutrons
     TFTopologyNeutrons PredictedNeutrons() const;
- 
+
     /// Return the is_antineutrino probability
     float GetIsAntineutrinoProbability() const;
 
@@ -129,10 +127,8 @@ namespace cvn
     /// Number of outputs, i.e. size of vector
     unsigned int NOutput();
 
-    std::vector< std::vector<float> > fOutput;  ///< Vector of outputs from neural net
-
+    std::vector<std::vector<float>> fOutput; ///< Vector of outputs from neural net
   };
 }
 
-#endif  // CVN_RESULT_H
-
+#endif // CVN_RESULT_H

@@ -7,22 +7,19 @@
 #ifndef CVN_TFNETHANDLER_H
 #define CVN_TFNETHANDLER_H
 
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "larrecodnn/CVN/func/PixelMap.h"
-#include "larrecodnn/CVN/func/InteractionType.h"
 #include "fhiclcpp/ParameterSet.h"
+#include "larrecodnn/CVN/func/InteractionType.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/tf/tf_graph.h"
 
-namespace cvn
-{
+namespace cvn {
 
   /// Wrapper for caffe::Net which handles construction and prediction
-  class TFNetHandler
-  {
+  class TFNetHandler {
   public:
-
     /// Constructor which takes a pset with DeployProto and ModelFile fields
     TFNetHandler(const fhicl::ParameterSet& pset);
 
@@ -33,23 +30,21 @@ namespace cvn
     int NFeatures() const;
 
     /// Return prediction arrays for PixelMap
-    std::vector< std::vector<float> > Predict(const PixelMap& pm);
+    std::vector<std::vector<float>> Predict(const PixelMap& pm);
 
     /// Return four element vector with summed numu, nue, nutau and NC elements
     std::vector<float> PredictFlavour(const PixelMap& pm);
 
   private:
-
-    std::string  fLibPath;  ///< Library path (typically dune_pardata...)
-    std::string  fTFProtoBuf;  ///< location of the tf .pb file in the above path
-    bool         fUseLogChargeScale;  ///< Is the charge using a log scale?
-    unsigned int fImageWires;  ///< Number of wires for the network to classify
-    unsigned int fImageTDCs;   ///< Number of tdcs for the network to classify
-    std::vector<bool> fReverseViews; ///< Do we need to reverse any views?
+    std::string fLibPath;                ///< Library path (typically dune_pardata...)
+    std::string fTFProtoBuf;             ///< location of the tf .pb file in the above path
+    bool fUseLogChargeScale;             ///< Is the charge using a log scale?
+    unsigned int fImageWires;            ///< Number of wires for the network to classify
+    unsigned int fImageTDCs;             ///< Number of tdcs for the network to classify
+    std::vector<bool> fReverseViews;     ///< Do we need to reverse any views?
     std::unique_ptr<tf::Graph> fTFGraph; ///< Tensorflow graph
-
   };
 
 }
 
-#endif  // CVN_TFNETHANDLER_H
+#endif // CVN_TFNETHANDLER_H
