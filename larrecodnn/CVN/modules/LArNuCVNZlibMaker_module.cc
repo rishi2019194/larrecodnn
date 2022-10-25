@@ -40,7 +40,7 @@
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
-#include "larrecodnn/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/LArTrainingData.h"
 #include "larrecodnn/CVN/module_helpers/ICVNZlibMaker.h"
 
 // Compression
@@ -50,9 +50,9 @@
 #include "TH1.h"
 #include "larcoreobj/SummaryData/POTSummary.h"
 
-namespace cvn {
+namespace lcvn {
 
-  class LArNuCVNZlibMaker : public cvn::ICVNZlibMaker {
+  class LArNuCVNZlibMaker : public lcvn::ICVNZlibMaker {
   public:
     explicit LArNuCVNZlibMaker(fhicl::ParameterSet const& pset);
     ~LArNuCVNZlibMaker();
@@ -69,7 +69,7 @@ namespace cvn {
     std::vector<double> fFidMinCoords;
     std::vector<double> fFidMaxCoords;
 
-    void write_files(TrainingNuData td, std::string evtid);
+    void write_files(LArTrainingNuData td, std::string evtid);
 
     TH1D* hPOT;
     double fPOT;
@@ -128,9 +128,9 @@ namespace cvn {
   {
 
     // Get the pixel maps
-    std::vector<art::Ptr<cvn::PixelMap>> pixelmaps;
+    std::vector<art::Ptr<lcvn::PixelMap>> pixelmaps;
     art::InputTag itag1(fPixelMapInput, fPixelMapInput);
-    auto h_pixelmaps = evt.getHandle<std::vector<cvn::PixelMap>>(itag1);
+    auto h_pixelmaps = evt.getHandle<std::vector<lcvn::PixelMap>>(itag1);
     if (h_pixelmaps) art::fill_ptr_vector(pixelmaps, h_pixelmaps);
 
     // If no pixel maps, quit
@@ -182,7 +182,7 @@ namespace cvn {
                                 labels.GetTopologyType(),
                                 labels.GetTopologyTypeAlt());
 
-    TrainingNuData train(interaction, *pixelmaps[0], info);
+    LArTrainingNuData train(interaction, *pixelmaps[0], info);
 
     std::string evtid = "r" + std::to_string(evt.run()) + "_s" + std::to_string(evt.subRun()) +
                         "_e" + std::to_string(evt.event()) + "_h" + std::to_string(time(0));
@@ -190,7 +190,7 @@ namespace cvn {
   }
 
   //......................................................................
-  void LArNuCVNZlibMaker::write_files(TrainingNuData td, std::string evtid)
+  void LArNuCVNZlibMaker::write_files(LArTrainingNuData td, std::string evtid)
   {
     // cropped from 2880 x 500 to 500 x 500 here
     std::vector<unsigned char> pixel_array(3 * fPlaneLimit * fTDCLimit);
@@ -258,7 +258,7 @@ namespace cvn {
 
     free(ostream); // free allocated memory
 
-  } // cvn::LArNuCVNZlibMaker::write_files
+  } // lcvn::LArNuCVNZlibMaker::write_files
 
-  DEFINE_ART_MODULE(cvn::LArNuCVNZlibMaker)
-} // namespace cvn
+  DEFINE_ART_MODULE(lcvn::LArNuCVNZlibMaker)
+} // namespace lcvn

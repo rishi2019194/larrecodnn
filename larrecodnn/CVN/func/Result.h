@@ -5,14 +5,14 @@
 ///          Leigh Whitehead - leigh.howard.whitehead@cern.ch
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_RESULT_H
-#define CVN_RESULT_H
+#ifndef LCVN_RESULT_H
+#define LCVN_RESULT_H
 
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include <math.h>
 #include <vector>
 
-namespace cvn {
+namespace lcvn {
   /// Result, basic output of CVN neural net
   class Result {
   public:

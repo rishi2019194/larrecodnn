@@ -4,8 +4,8 @@
 /// \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_PIXELMAP_H
-#define CVN_PIXELMAP_H
+#ifndef LCVN_PIXELMAP_H
+#define LCVN_PIXELMAP_H
 
 #include <ostream>
 #include <vector>
@@ -14,7 +14,7 @@
 #include "larrecodnn/CVN/func/Boundary.h"
 #include "larrecodnn/CVN/func/HitType.h"
 
-namespace cvn {
+namespace lcvn {
 
   /// PixelMap, basic input to CVN neural net
   class PixelMap {

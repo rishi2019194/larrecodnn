@@ -5,10 +5,10 @@
 
 #include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
 
-namespace cvn {
+namespace lcvn {
 
-  typedef ICVNMapper<cvn::PixelMapWireProducer, recob::Wire> LArCVNWireMapper;
-  template class ICVNMapper<cvn::PixelMapWireProducer, recob::Wire>;
+  typedef ICVNMapper<lcvn::PixelMapWireProducer, recob::Wire> LArCVNWireMapper;
+  template class ICVNMapper<lcvn::PixelMapWireProducer, recob::Wire>;
 
-  DEFINE_ART_MODULE(cvn::LArCVNWireMapper)
+  DEFINE_ART_MODULE(lcvn::LArCVNWireMapper)
 }

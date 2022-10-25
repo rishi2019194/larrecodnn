@@ -3,8 +3,8 @@
 // \brief   Producer module for creating CVN PixelMap objects
 // \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_ICVNMAPPER_H
-#define CVN_ICVNMAPPER_H
+#ifndef LCVN_ICVNMAPPER_H
+#define LCVN_ICVNMAPPER_H
 
 // C/C++ includes
 #include <iostream>
@@ -30,7 +30,7 @@
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
 
-namespace cvn {
+namespace lcvn {
 
   template <class T, class U>
   class ICVNMapper : public art::EDProducer {

@@ -11,7 +11,7 @@
 
 #include "larrecodnn/CVN/func/Boundary.h"
 
-namespace cvn {
+namespace lcvn {
 
   Boundary::Boundary(const int& nWire,
                      const double& tRes,

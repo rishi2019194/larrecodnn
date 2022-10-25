@@ -5,10 +5,10 @@
 
 #include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
 
-namespace cvn {
+namespace lcvn {
 
-  typedef ICVNMapper<cvn::PixelMapSimProducer, sim::SimChannel> LArCVNSimMapper;
-  template class ICVNMapper<cvn::PixelMapSimProducer, sim::SimChannel>;
+  typedef ICVNMapper<lcvn::PixelMapSimProducer, sim::SimChannel> LArCVNSimMapper;
+  template class ICVNMapper<lcvn::PixelMapSimProducer, sim::SimChannel>;
 
-  DEFINE_ART_MODULE(cvn::LArCVNSimMapper)
+  DEFINE_ART_MODULE(lcvn::LArCVNSimMapper)
 }

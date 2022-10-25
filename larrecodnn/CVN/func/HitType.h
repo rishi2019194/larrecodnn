@@ -4,10 +4,10 @@
 ///
 // \author psihas@fnal.gov
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_HITTYPE_H
-#define CVN_HITTYPE_H
+#ifndef LCVN_HITTYPE_H
+#define LCVN_HITTYPE_H
 
-namespace cvn {
+namespace lcvn {
 
   typedef enum HType {
     kElectronHit,

@@ -1,10 +1,12 @@
 <lcgdict>
   
-  <class name="cvn::TDNuInfo" ClassVersion="10">
+  <class name="lcvn::TDNuInfo" ClassVersion="11">
+   <version ClassVersion="11" checksum="3462221265"/>
    <version ClassVersion="10" checksum="2956136997"/>
   </class>
 
-  <class name="cvn::TrainingNuData" ClassVersion="21" >
+  <class name="lcvn::LArTrainingNuData" ClassVersion="22" >
+   <version ClassVersion="22" checksum="3091904334"/>
    <version ClassVersion="21" checksum="1209450185"/>
    <version ClassVersion="20" checksum="4175091702"/>
    <version ClassVersion="19" checksum="1702019780"/>
@@ -19,7 +21,8 @@
    <version ClassVersion="10" checksum="16422645"/>
   </class>
 
-  <class name="cvn::PixelMap" ClassVersion="19" >
+  <class name="lcvn::PixelMap" ClassVersion="20" >
+   <version ClassVersion="20" checksum="3478958628"/>
    <version ClassVersion="19" checksum="1463336170"/>
    <version ClassVersion="18" checksum="341721657"/>
    <version ClassVersion="17" checksum="706586784"/>
@@ -32,14 +35,16 @@
    <version ClassVersion="10" checksum="197322882"/>
   </class>
 
-  <class name="cvn::Result" ClassVersion="12" >
+  <class name="lcvn::Result" ClassVersion="13" >
+   <version ClassVersion="13" checksum="4081129639"/>
    <version ClassVersion="12" checksum="2580228795"/>
    <version ClassVersion="11" checksum="3978040452"/>
    <version ClassVersion="10" checksum="197322882"/>
   </class>
 
 
-  <class name="cvn::Boundary" ClassVersion="15" >
+  <class name="lcvn::Boundary" ClassVersion="16" >
+   <version ClassVersion="16" checksum="600345389"/>
    <version ClassVersion="15" checksum="3655457929"/>
    <version ClassVersion="14" checksum="82521069"/>
    <version ClassVersion="13" checksum="2728376333"/>
@@ -53,17 +58,16 @@
   <class name="vector<vector<vector<float> > >"    />
   <class name="vector<vector<vector<int> > >"      />
 
-  <class name="std::vector<cvn::PixelMap>"         />
-  <class name="art::Ptr<cvn::PixelMap>"            />
-  <class name="std::vector<cvn::HType>"            />
-  <class name="art::Wrapper< std::vector<cvn::PixelMap> >" />
+  <class name="std::vector<lcvn::PixelMap>"         />
+  <class name="art::Ptr<lcvn::PixelMap>"            />
+  <class name="std::vector<lcvn::HType>"            />
+  <class name="art::Wrapper< std::vector<lcvn::PixelMap> >" />
 
-  <class name="std::vector<cvn::Result>"          />
-  <class name="art::Ptr<cvn::Result>"             />
-  <class name="art::Wrapper< std::vector<cvn::Result> >"    />
+  <class name="std::vector<lcvn::Result>"          />
+  <class name="art::Ptr<lcvn::Result>"             />
+  <class name="art::Wrapper< std::vector<lcvn::Result> >"    />
 
   <class name="std::vector<std::vector<float> >"   />
-  <class name="art::Wrapper< std::vector<std::vector<float> > >" />
 
   <class name="std::map<unsigned int, unsigned int>" />
 

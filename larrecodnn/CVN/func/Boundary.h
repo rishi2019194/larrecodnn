@@ -4,15 +4,15 @@
 /// \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_BOUNDARY_H
-#define CVN_BOUNDARY_H
+#ifndef LCVN_BOUNDARY_H
+#define LCVN_BOUNDARY_H
 
 #include <ostream>
 #include <vector>
 
-namespace cvn {
+namespace lcvn {
 
-  /// Boundary object intended for use with cvn::PixelMap.  Stores first and
+  /// Boundary object intended for use with lcvn::PixelMap.  Stores first and
   /// last wires, as well as first and last cell for even and odd view.
   /// CVN doesn't carefully define X/Y view, but instead simply uses
   /// odd/even wire (wire%2) as a proxy.

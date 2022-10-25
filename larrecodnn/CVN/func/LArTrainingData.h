@@ -4,8 +4,8 @@
 ///          output class type, and any other bit that goes into the ANN
 // \author   radovic -- a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_TRAININGDATA_H
-#define CVN_TRAININGDATA_H
+#ifndef LCVN_TRAININGDATA_H
+#define LCVN_TRAININGDATA_H
 
 #include <iostream>
 #include <ostream>
@@ -14,7 +14,7 @@
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
 
-namespace cvn {
+namespace lcvn {
 
   class TDNuInfo {
   public:
@@ -60,11 +60,11 @@ namespace cvn {
   ///          output class type, and any other bit that goes into the ANN
 
   template <class T>
-  class TrainingData {
+  class LArTrainingData {
 
   public:
-    TrainingData(){};
-    TrainingData(const InteractionType& interaction, const PixelMap& pMap, const T info);
+    LArTrainingData(){};
+    LArTrainingData(const InteractionType& interaction, const PixelMap& pMap, const T info);
 
     unsigned int NOutput() const { return (unsigned int)kNIntType; };
 
@@ -75,7 +75,7 @@ namespace cvn {
     T fInfo;
   };
 
-  typedef TrainingData<cvn::TDNuInfo> TrainingNuData;
+  typedef LArTrainingData<lcvn::TDNuInfo> LArTrainingNuData;
 } // end namespace
 
 #endif // CVN_TRAININGDATA_H

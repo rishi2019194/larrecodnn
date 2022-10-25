@@ -2,7 +2,7 @@
 
 #include "larrecodnn/CVN/func/AssignLabels.h"
 #include "larrecodnn/CVN/func/InteractionType.h"
-#include "larrecodnn/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/LArTrainingData.h"
 #include "larsim/MCCheater/BackTrackerService.h"
 #include "larsim/MCCheater/ParticleInventoryService.h"
 
@@ -13,7 +13,7 @@
 #include <iostream>
 #include <limits>
 
-namespace cvn {
+namespace lcvn {
   /// Default constructor
   AssignLabels::AssignLabels()
     : nProton(0), nPion(0), nPizero(0), nNeutron(0), pdgCode(0), tauMode(0)
@@ -216,31 +216,31 @@ namespace cvn {
 
     // Assign the enums based on the counters
     // switch(nProton){
-    //   case 0  : top = static_cast<cvn::TopologyType>(top | kTop0proton); break;
-    //   case 1  : top = static_cast<cvn::TopologyType>(top | kTop1proton); break;
-    //   case 2  : top = static_cast<cvn::TopologyType>(top | kTop2proton); break;
-    //   default : top = static_cast<cvn::TopologyType>(top | kTopNproton); break;
+    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0proton); break;
+    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1proton); break;
+    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2proton); break;
+    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNproton); break;
     // }
 
     // switch(nPion){
-    //   case 0  : top = static_cast<cvn::TopologyType>(top | kTop0pion); break;
-    //   case 1  : top = static_cast<cvn::TopologyType>(top | kTop1pion); break;
-    //   case 2  : top = static_cast<cvn::TopologyType>(top | kTop2pion); break;
-    //   default : top = static_cast<cvn::TopologyType>(top | kTopNpion); break;
+    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0pion); break;
+    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1pion); break;
+    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2pion); break;
+    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNpion); break;
     // }
 
     // switch(nPizero){
-    //   case 0  : top = static_cast<cvn::TopologyType>(top | kTop0pizero); break;
-    //   case 1  : top = static_cast<cvn::TopologyType>(top | kTop1pizero); break;
-    //   case 2  : top = static_cast<cvn::TopologyType>(top | kTop2pizero); break;
-    //   default : top = static_cast<cvn::TopologyType>(top | kTopNpizero); break;
+    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0pizero); break;
+    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1pizero); break;
+    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2pizero); break;
+    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNpizero); break;
     // }
 
     // switch(nNeutron){
-    //   case 0  : top = static_cast<cvn::TopologyType>(top | kTop0neutron); break;
-    //   case 1  : top = static_cast<cvn::TopologyType>(top | kTop1neutron); break;
-    //   case 2  : top = static_cast<cvn::TopologyType>(top | kTop2neutron); break;
-    //   default : top = static_cast<cvn::TopologyType>(top | kTopNneutron); break;
+    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0neutron); break;
+    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1neutron); break;
+    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2neutron); break;
+    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNneutron); break;
     // }
 
     std::cout << "Particle counts: " << nProton << ", " << nPion << ", " << nPizero << ", "
@@ -360,7 +360,7 @@ namespace cvn {
   }
 
   // Get process key.
-  int cvn::AssignLabels::GetProcessKey(std::string process) const
+  int lcvn::AssignLabels::GetProcessKey(std::string process) const
   {
 
     if (process.compare("primary") == 0)

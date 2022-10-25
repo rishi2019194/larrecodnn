@@ -4,8 +4,8 @@
 ///
 // \author  Leigh Whitehead leigh.howard.whitehead@cern.ch
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_ASSIGNLABELS_H
-#define CVN_ASSIGNLABELS_H
+#ifndef LCVN_ASSIGNLABELS_H
+#define LCVN_ASSIGNLABELS_H
 
 #include "art/Framework/Principal/Handle.h"
 
@@ -13,7 +13,7 @@
 #include "nusimdata/SimulationBase/MCParticle.h"
 #include "nusimdata/SimulationBase/MCTruth.h"
 
-namespace cvn {
+namespace lcvn {
 
   class AssignLabels {
 

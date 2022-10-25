@@ -5,8 +5,8 @@
 //          Saul Alonso-Monsalve - saul.alonso.monsalve@cern.ch
 //           - wrote the zlib code used in this module
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_ICVNZLIBMAKER_H
-#define CVN_ICVNZLIBMAKER_H
+#ifndef LCVN_ICVNZLIBMAKER_H
+#define LCVN_ICVNZLIBMAKER_H
 
 // C/C++ includes
 #include <cstdlib>
@@ -41,7 +41,7 @@
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
-#include "larrecodnn/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/LArTrainingData.h"
 
 // Compression
 #include "math.h"
@@ -51,7 +51,7 @@
 
 namespace fs = boost::filesystem;
 
-namespace cvn {
+namespace lcvn {
 
   class ICVNZlibMaker : public art::EDAnalyzer {
   public:
@@ -74,7 +74,7 @@ namespace cvn {
     CVNImageUtils fImage;
 
     template <class T>
-    void write_files(TrainingData<T> td, std::string evtid) = delete;
+    void write_files(LArTrainingData<T> td, std::string evtid) = delete;
   };
 }
 #endif

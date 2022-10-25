@@ -10,6 +10,6 @@
 
 #pragma link C++ nestedtypedef;
 
-#pragma link C++ namespace cvn;
+#pragma link C++ namespace lcvn;
 
 #endif

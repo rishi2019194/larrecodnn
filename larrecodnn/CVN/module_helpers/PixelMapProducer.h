@@ -4,8 +4,8 @@
 /// \author  Alexander Radovic - a.radovic@gmail.com
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_PIXELMAPPRODUCER_H
-#define CVN_PIXELMAPPRODUCER_H
+#ifndef LCVN_PIXELMAPPRODUCER_H
+#define LCVN_PIXELMAPPRODUCER_H
 
 #include <array>
 #include <vector>
@@ -29,7 +29,7 @@
 // namespace recob{class Hit, class Wire};
 // namespace sim{class SimChannel};
 //
-namespace cvn {
+namespace lcvn {
   typedef std::vector<std::map<double, double>> Waveform;
 
   class HitHelper {
@@ -133,9 +133,9 @@ namespace cvn {
     geo::GeometryCore const* fGeometry;
   };
 
-  typedef PixelMapProducer<recob::Hit, cvn::HitHelper> PixelMapHitProducer;
-  typedef PixelMapProducer<recob::Wire, cvn::WireHelper> PixelMapWireProducer;
-  typedef PixelMapProducer<sim::SimChannel, cvn::SimChannelHelper> PixelMapSimProducer;
+  typedef PixelMapProducer<recob::Hit, lcvn::HitHelper> PixelMapHitProducer;
+  typedef PixelMapProducer<recob::Wire, lcvn::WireHelper> PixelMapWireProducer;
+  typedef PixelMapProducer<sim::SimChannel, lcvn::SimChannelHelper> PixelMapSimProducer;
 
 }
 

@@ -5,12 +5,12 @@
 // \author   radovic -- a.radovic@gmail.com
 //           Saul Alonso Monsalve -- saul.alonso.monsalve@cern.ch
 ////////////////////////////////////////////////////////////////////////
-#ifndef CVN_INTERACTION_H
-#define CVN_INTERACTION_H
+#ifndef LCVN_INTERACTION_H
+#define LCVN_INTERACTION_H
 
 #include "larrecodnn/CVN/func/PixelMap.h"
 
-namespace cvn {
+namespace lcvn {
 
   typedef enum Interaction {
     kNumuQE,            ///< Numu CC QE interaction

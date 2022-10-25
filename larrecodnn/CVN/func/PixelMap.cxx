@@ -9,7 +9,7 @@
 #include <iostream>
 #include <ostream>
 
-namespace cvn {
+namespace lcvn {
 
   PixelMap::PixelMap(unsigned int nWire, unsigned int nTdc, const Boundary& bound)
     : fNWire(nWire)

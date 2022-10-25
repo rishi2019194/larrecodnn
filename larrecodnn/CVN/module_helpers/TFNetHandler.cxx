@@ -16,7 +16,7 @@
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
 #include "larrecodnn/CVN/module_helpers/TFNetHandler.h"
 
-namespace cvn {
+namespace lcvn {
 
   TFNetHandler::TFNetHandler(const fhicl::ParameterSet& pset)
     : fLibPath(cet::getenv(pset.get<std::string>("LibPath", "")))

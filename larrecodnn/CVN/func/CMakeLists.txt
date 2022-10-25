@@ -7,7 +7,7 @@ cet_make_library(SOURCE
   InteractionType.cxx
   PixelMap.cxx
   Result.cxx
-  TrainingData.cxx
+  LArTrainingData.cxx
   LIBRARIES
   PUBLIC
   nusimdata::SimulationBase

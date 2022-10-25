@@ -14,7 +14,7 @@
 #include "larrecodnn/CVN/func/Result.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
-namespace cvn {
+namespace lcvn {
 
   Result::Result(const float* output, unsigned int& nOutputs) : fOutput(1)
   {
@@ -150,7 +150,7 @@ namespace cvn {
         result = fOutput[0][TFResultType::kTFNC];
       }
       else {
-        mf::LogError("cvn::Result")
+        mf::LogError("lcvn::Result")
           << "Output vector too short to include an NC probability" << std::endl;
       }
       return result;

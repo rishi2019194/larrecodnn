@@ -1,3 +1,3 @@
 #include "larrecodnn/CVN/func/InteractionType.h"
 
-namespace cvn {}
+namespace lcvn {}

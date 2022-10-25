@@ -4,8 +4,8 @@
 /// \author  Leigh Whitehead
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_TFNETHANDLER_H
-#define CVN_TFNETHANDLER_H
+#ifndef LCVN_TFNETHANDLER_H
+#define LCVN_TFNETHANDLER_H
 
 #include <memory>
 #include <vector>
@@ -15,7 +15,7 @@
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/tf/tf_graph.h"
 
-namespace cvn {
+namespace lcvn {
 
   /// Wrapper for caffe::Net which handles construction and prediction
   class TFNetHandler {

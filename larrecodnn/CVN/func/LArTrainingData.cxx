@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////
-// \file    TrainingData.h
-/// \brief   The TrainingData objects contains a PixelMap and the
+// \file    LArTrainingData.h
+/// \brief   The LArTrainingData objects contains a PixelMap and the
 ///          output class type, and any other bit that goes into the ANN
 // \author   radovic -- a.radovic@gmail.com
 
 //#include "art/Framework/Services/Registry/ServiceHandle.h"
 
-#include "larrecodnn/CVN/func/TrainingData.h"
+#include "larrecodnn/CVN/func/LArTrainingData.h"
 
-namespace cvn {
+namespace lcvn {
 
   TDNuInfo::TDNuInfo()
     : fNuEnergy(0.)
@@ -92,14 +92,14 @@ namespace cvn {
   //----------------------------------------------------------------------
 
   template <class T>
-  TrainingData<T>::TrainingData(const InteractionType& interaction,
+  LArTrainingData<T>::LArTrainingData(const InteractionType& interaction,
                                 const PixelMap& pMap,
                                 const T info)
     : fInt(interaction), fPMap(pMap), fInfo(info)
   {}
 
   template <class T>
-  void TrainingData<T>::FillOutputVector(float* output) const
+  void LArTrainingData<T>::FillOutputVector(float* output) const
   {
     for (unsigned int i = 0; i < kNIntType; ++i)
       output[i] = 0;
@@ -107,6 +107,6 @@ namespace cvn {
     output[fInt] = 1;
   }
 
-  template class TrainingData<cvn::TDNuInfo>;
-} // end namespace cvn
+  template class LArTrainingData<lcvn::TDNuInfo>;
+} // end namespace lcvn
 ////////////////////////////////////////////////////////////////////////

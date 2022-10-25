@@ -1,6 +1,6 @@
 #include "larrecodnn/CVN/module_helpers/ICVNZlibMaker.h"
 
-namespace cvn {
+namespace lcvn {
 
   ICVNZlibMaker::ICVNZlibMaker(fhicl::ParameterSet const& pset) : EDAnalyzer(pset)
   {

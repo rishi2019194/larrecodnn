@@ -26,7 +26,7 @@
 #include "larsim/MCCheater/BackTrackerService.h"
 #include "larsim/MCCheater/ParticleInventoryService.h"
 
-namespace cvn {
+namespace lcvn {
 
   Waveform HitHelper::GetWaveform()
   {
@@ -316,8 +316,8 @@ namespace cvn {
     globalTDC = localTDC;
   }
 
-  template class PixelMapProducer<recob::Hit, cvn::HitHelper>;
-  template class PixelMapProducer<recob::Wire, cvn::WireHelper>;
-  template class PixelMapProducer<sim::SimChannel, cvn::SimChannelHelper>;
+  template class PixelMapProducer<recob::Hit, lcvn::HitHelper>;
+  template class PixelMapProducer<recob::Wire, lcvn::WireHelper>;
+  template class PixelMapProducer<sim::SimChannel, lcvn::SimChannelHelper>;
 
-} // namespace cvn
+} // namespace lcvn

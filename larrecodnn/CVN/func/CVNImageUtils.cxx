@@ -3,7 +3,7 @@
 
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
 
-cvn::CVNImageUtils::CVNImageUtils()
+lcvn::CVNImageUtils::CVNImageUtils()
 {
   // Set a default image size
   SetImageSize(500, 500, 3);
@@ -15,7 +15,7 @@ cvn::CVNImageUtils::CVNImageUtils()
   fDisableRegionSelection = false;
 }
 
-cvn::CVNImageUtils::CVNImageUtils(unsigned int nWires, unsigned int nTDCs, unsigned int nViews)
+lcvn::CVNImageUtils::CVNImageUtils(unsigned int nWires, unsigned int nTDCs, unsigned int nViews)
 {
   SetImageSize(nWires, nTDCs, nViews);
   SetPixelMapSize(2880, 500);
@@ -23,19 +23,19 @@ cvn::CVNImageUtils::CVNImageUtils(unsigned int nWires, unsigned int nTDCs, unsig
   fDisableRegionSelection = false;
 }
 
-cvn::CVNImageUtils::~CVNImageUtils() {}
+lcvn::CVNImageUtils::~CVNImageUtils() {}
 
-void cvn::CVNImageUtils::DisableRegionSelection()
+void lcvn::CVNImageUtils::DisableRegionSelection()
 {
   fDisableRegionSelection = true;
 }
 
-void cvn::CVNImageUtils::EnableRegionSelection()
+void lcvn::CVNImageUtils::EnableRegionSelection()
 {
   fDisableRegionSelection = false;
 }
 
-unsigned char cvn::CVNImageUtils::ConvertChargeToChar(float charge)
+unsigned char lcvn::CVNImageUtils::ConvertChargeToChar(float charge)
 {
 
   float peCorrChunk;
@@ -55,19 +55,19 @@ unsigned char cvn::CVNImageUtils::ConvertChargeToChar(float charge)
     return (unsigned char)truncateCorr;
 }
 
-void cvn::CVNImageUtils::SetImageSize(unsigned int nWires, unsigned int nTDCs, unsigned int nViews)
+void lcvn::CVNImageUtils::SetImageSize(unsigned int nWires, unsigned int nTDCs, unsigned int nViews)
 {
   fNWires = nWires;
   fNTDCs = nTDCs;
   fNViews = nViews;
 }
 
-void cvn::CVNImageUtils::SetViewReversal(bool reverseX, bool reverseY, bool reverseZ)
+void lcvn::CVNImageUtils::SetViewReversal(bool reverseX, bool reverseY, bool reverseZ)
 {
   fViewReverse = {reverseX, reverseY, reverseZ};
 }
 
-void cvn::CVNImageUtils::SetViewReversal(std::vector<bool> reverseViews)
+void lcvn::CVNImageUtils::SetViewReversal(std::vector<bool> reverseViews)
 {
   if (reverseViews.size() != 3) {
     std::cout << "Expected three views for view reversals... using defaults." << std::endl;
@@ -78,18 +78,18 @@ void cvn::CVNImageUtils::SetViewReversal(std::vector<bool> reverseViews)
   return;
 }
 
-void cvn::CVNImageUtils::SetLogScale(bool setLog)
+void lcvn::CVNImageUtils::SetLogScale(bool setLog)
 {
   fUseLogScale = setLog;
 }
 
-void cvn::CVNImageUtils::SetPixelMapSize(unsigned int nWires, unsigned int nTDCs)
+void lcvn::CVNImageUtils::SetPixelMapSize(unsigned int nWires, unsigned int nTDCs)
 {
   fPixelMapWires = nWires;
   fPixelMapTDCs = nTDCs;
 }
 
-void cvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
+void lcvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
                                                      std::vector<unsigned char>& pix)
 {
 
@@ -103,16 +103,16 @@ void cvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
   ConvertChargeVectorsToPixelArray(v0pe, v1pe, v2pe, pix);
 }
 
-void cvn::CVNImageUtils::ConvertChargeVectorsToPixelArray(std::vector<float>& v0pe,
+void lcvn::CVNImageUtils::ConvertChargeVectorsToPixelArray(std::vector<float>& v0pe,
                                                           std::vector<float>& v1pe,
                                                           std::vector<float>& v2pe,
                                                           std::vector<unsigned char>& pix)
 {
 
   // Get the vectors
-  cvn::ViewVector view0;
-  cvn::ViewVector view1;
-  cvn::ViewVector view2;
+  lcvn::ViewVector view0;
+  lcvn::ViewVector view1;
+  lcvn::ViewVector view2;
   ConvertChargeVectorsToViewVectors(v0pe, v1pe, v2pe, view0, view1, view2);
 
   // Actually write the values to the pixel array
@@ -136,8 +136,8 @@ void cvn::CVNImageUtils::ConvertChargeVectorsToPixelArray(std::vector<float>& v0
   return;
 }
 
-void cvn::CVNImageUtils::ConvertPixelMapToImageVector(const cvn::PixelMap& pm,
-                                                      cvn::ImageVector& imageVec)
+void lcvn::CVNImageUtils::ConvertPixelMapToImageVector(const lcvn::PixelMap& pm,
+                                                      lcvn::ImageVector& imageVec)
 {
 
   SetPixelMapSize(pm.fNWire, pm.fNTdc);
@@ -150,8 +150,8 @@ void cvn::CVNImageUtils::ConvertPixelMapToImageVector(const cvn::PixelMap& pm,
   ConvertChargeVectorsToImageVector(v0pe, v1pe, v2pe, imageVec);
 }
 
-void cvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const cvn::PixelMap& pm,
-                                                       cvn::ImageVectorF& imageVec)
+void lcvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const lcvn::PixelMap& pm,
+                                                       lcvn::ImageVectorF& imageVec)
 {
 
   SetPixelMapSize(pm.fNWire, pm.fNTdc);
@@ -164,51 +164,51 @@ void cvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const cvn::PixelMap& pm,
   ConvertChargeVectorsToImageVectorF(v0pe, v1pe, v2pe, imageVec);
 }
 
-void cvn::CVNImageUtils::ConvertChargeVectorsToImageVector(std::vector<float>& v0pe,
+void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVector(std::vector<float>& v0pe,
                                                            std::vector<float>& v1pe,
                                                            std::vector<float>& v2pe,
-                                                           cvn::ImageVector& imageVec)
+                                                           lcvn::ImageVector& imageVec)
 {
 
-  cvn::ViewVector view0;
-  cvn::ViewVector view1;
-  cvn::ViewVector view2;
+  lcvn::ViewVector view0;
+  lcvn::ViewVector view1;
+  lcvn::ViewVector view2;
 
   ConvertChargeVectorsToViewVectors(v0pe, v1pe, v2pe, view0, view1, view2);
 
-  cvn::ImageVector newImage = BuildImageVector(view0, view1, view2);
+  lcvn::ImageVector newImage = BuildImageVector(view0, view1, view2);
 
   imageVec = newImage;
 }
 
-void cvn::CVNImageUtils::ConvertChargeVectorsToImageVectorF(std::vector<float>& v0pe,
+void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVectorF(std::vector<float>& v0pe,
                                                             std::vector<float>& v1pe,
                                                             std::vector<float>& v2pe,
-                                                            cvn::ImageVectorF& imageVec)
+                                                            lcvn::ImageVectorF& imageVec)
 {
 
-  cvn::ViewVector view0;
-  cvn::ViewVector view1;
-  cvn::ViewVector view2;
+  lcvn::ViewVector view0;
+  lcvn::ViewVector view1;
+  lcvn::ViewVector view2;
 
   ConvertChargeVectorsToViewVectors(v0pe, v1pe, v2pe, view0, view1, view2);
 
   // Convert the ViewVector to ViewVectorF
-  cvn::ViewVectorF floatView0 = ConvertViewVecToViewVecF(view0);
-  cvn::ViewVectorF floatView1 = ConvertViewVecToViewVecF(view1);
-  cvn::ViewVectorF floatView2 = ConvertViewVecToViewVecF(view2);
+  lcvn::ViewVectorF floatView0 = ConvertViewVecToViewVecF(view0);
+  lcvn::ViewVectorF floatView1 = ConvertViewVecToViewVecF(view1);
+  lcvn::ViewVectorF floatView2 = ConvertViewVecToViewVecF(view2);
 
-  cvn::ImageVectorF newImage = BuildImageVectorF(floatView0, floatView1, floatView2);
+  lcvn::ImageVectorF newImage = BuildImageVectorF(floatView0, floatView1, floatView2);
 
   imageVec = newImage;
 }
 
-void cvn::CVNImageUtils::ConvertChargeVectorsToViewVectors(std::vector<float>& v0pe,
+void lcvn::CVNImageUtils::ConvertChargeVectorsToViewVectors(std::vector<float>& v0pe,
                                                            std::vector<float>& v1pe,
                                                            std::vector<float>& v2pe,
-                                                           cvn::ViewVector& view0,
-                                                           cvn::ViewVector& view1,
-                                                           cvn::ViewVector& view2)
+                                                           lcvn::ViewVector& view0,
+                                                           lcvn::ViewVector& view1,
+                                                           lcvn::ViewVector& view2)
 {
 
   // Reverse requested views
@@ -287,7 +287,7 @@ void cvn::CVNImageUtils::ConvertChargeVectorsToViewVectors(std::vector<float>& v
 
   // Write the values to the three vectors
   for (unsigned int view = 0; view < fNViews; ++view) {
-    cvn::ViewVector viewChargeVec;
+    lcvn::ViewVector viewChargeVec;
     for (unsigned int wire = imageStartWire[view]; wire <= imageEndWire[view]; ++wire) {
       std::vector<unsigned char> wireTDCVec;
       for (unsigned int time = imageStartTDC[view]; time <= imageEndTDC[view]; ++time) {
@@ -312,16 +312,16 @@ void cvn::CVNImageUtils::ConvertChargeVectorsToViewVectors(std::vector<float>& v
   return;
 }
 
-void cvn::CVNImageUtils::ConvertPixelArrayToImageVectorF(
+void lcvn::CVNImageUtils::ConvertPixelArrayToImageVectorF(
   const std::vector<unsigned char>& pixelArray,
-  cvn::ImageVectorF& imageVec)
+  lcvn::ImageVectorF& imageVec)
 {
 
   // The pixel arrays is built with indices i = tdc + nTDCs(wire + nWires*view)
 
-  cvn::ViewVectorF view0;
-  cvn::ViewVectorF view1;
-  cvn::ViewVectorF view2;
+  lcvn::ViewVectorF view0;
+  lcvn::ViewVectorF view1;
+  lcvn::ViewVectorF view2;
 
   for (unsigned int v = 0; v < fNViews; ++v) {
     for (unsigned int w = 0; w < fNWires; ++w) {
@@ -339,7 +339,7 @@ void cvn::CVNImageUtils::ConvertPixelArrayToImageVectorF(
   imageVec = BuildImageVectorF(view0, view1, view2);
 }
 
-void cvn::CVNImageUtils::GetMinMaxWires(std::vector<float>& wireCharges,
+void lcvn::CVNImageUtils::GetMinMaxWires(std::vector<float>& wireCharges,
                                         unsigned int& minWire,
                                         unsigned int& maxWire)
 {
@@ -385,7 +385,7 @@ void cvn::CVNImageUtils::GetMinMaxWires(std::vector<float>& wireCharges,
     << minWire << ", " << maxWire << std::endl;
 }
 
-void cvn::CVNImageUtils::GetMinMaxTDCs(std::vector<float>& tdcCharges,
+void lcvn::CVNImageUtils::GetMinMaxTDCs(std::vector<float>& tdcCharges,
                                        unsigned int& minTDC,
                                        unsigned int& maxTDC)
 {
@@ -431,7 +431,7 @@ void cvn::CVNImageUtils::GetMinMaxTDCs(std::vector<float>& tdcCharges,
             << minTDC << ", " << maxTDC << std::endl;
 }
 
-void cvn::CVNImageUtils::ReverseView(std::vector<float>& peVec)
+void lcvn::CVNImageUtils::ReverseView(std::vector<float>& peVec)
 {
 
   std::vector<float> vecCopy(peVec.size(), 0.);
@@ -453,10 +453,10 @@ void cvn::CVNImageUtils::ReverseView(std::vector<float>& peVec)
   }
 }
 
-cvn::ViewVectorF cvn::CVNImageUtils::ConvertViewVecToViewVecF(cvn::ViewVector view)
+lcvn::ViewVectorF lcvn::CVNImageUtils::ConvertViewVecToViewVecF(lcvn::ViewVector view)
 {
 
-  cvn::ViewVectorF newVec;
+  lcvn::ViewVectorF newVec;
   for (size_t w = 0; w < view.size(); ++w) {
     std::vector<float> thisWire;
     for (size_t t = 0; t < view[w].size(); ++t) {
@@ -468,12 +468,12 @@ cvn::ViewVectorF cvn::CVNImageUtils::ConvertViewVecToViewVecF(cvn::ViewVector vi
   return newVec;
 }
 
-cvn::ImageVectorF cvn::CVNImageUtils::ConvertImageVecToImageVecF(cvn::ImageVector image)
+lcvn::ImageVectorF lcvn::CVNImageUtils::ConvertImageVecToImageVecF(lcvn::ImageVector image)
 {
 
-  cvn::ImageVectorF newImage;
+  lcvn::ImageVectorF newImage;
   for (size_t w = 0; w < image.size(); ++w) {
-    cvn::ViewVectorF thisWire;
+    lcvn::ViewVectorF thisWire;
     for (size_t t = 0; t < image[w].size(); ++t) {
       std::vector<float> thisTime;
       for (size_t v = 0; v < image[w][t].size(); ++v) {
@@ -487,13 +487,13 @@ cvn::ImageVectorF cvn::CVNImageUtils::ConvertImageVecToImageVecF(cvn::ImageVecto
   return newImage;
 }
 
-cvn::ImageVector cvn::CVNImageUtils::BuildImageVector(cvn::ViewVector v0,
-                                                      cvn::ViewVector v1,
-                                                      cvn::ViewVector v2)
+lcvn::ImageVector lcvn::CVNImageUtils::BuildImageVector(lcvn::ViewVector v0,
+                                                      lcvn::ViewVector v1,
+                                                      lcvn::ViewVector v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>
-  cvn::ImageVector image;
+  lcvn::ImageVector image;
   for (unsigned int w = 0; w < v0.size(); ++w) {
     std::vector<std::vector<unsigned char>> wireVec;
     for (unsigned int t = 0; t < v0[0].size(); ++t) {
@@ -509,13 +509,13 @@ cvn::ImageVector cvn::CVNImageUtils::BuildImageVector(cvn::ViewVector v0,
   return image;
 }
 
-cvn::ImageVectorF cvn::CVNImageUtils::BuildImageVectorF(cvn::ViewVectorF v0,
-                                                        cvn::ViewVectorF v1,
-                                                        cvn::ViewVectorF v2)
+lcvn::ImageVectorF lcvn::CVNImageUtils::BuildImageVectorF(lcvn::ViewVectorF v0,
+                                                        lcvn::ViewVectorF v1,
+                                                        lcvn::ViewVectorF v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>
-  cvn::ImageVectorF image;
+  lcvn::ImageVectorF image;
   for (unsigned int w = 0; w < v0.size(); ++w) {
     std::vector<std::vector<float>> wireVec;
     for (unsigned int t = 0; t < v0[0].size(); ++t) {

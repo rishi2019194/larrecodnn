@@ -4,14 +4,14 @@
 /// \author  Leigh Whitehead - leigh.howard.whitehead@cern.ch
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef CVN_IMAGE_UTILS_H
-#define CVN_IMAGE_UTILS_H
+#ifndef LCVN_IMAGE_UTILS_H
+#define LCVN_IMAGE_UTILS_H
 
 #include <vector>
 
 #include "larrecodnn/CVN/func/PixelMap.h"
 
-namespace cvn {
+namespace lcvn {
 
   /// Useful typedefs
   typedef std::vector<std::vector<unsigned char>> ViewVector;

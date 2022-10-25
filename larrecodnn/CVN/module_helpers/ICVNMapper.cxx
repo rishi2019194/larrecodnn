@@ -1,6 +1,6 @@
 #include "larrecodnn/CVN/module_helpers/ICVNMapper.h"
 
-namespace cvn {
+namespace lcvn {
 
   template <class T, class U>
   ICVNMapper<T, U>::ICVNMapper(fhicl::ParameterSet const& pset)
@@ -11,7 +11,7 @@ namespace cvn {
     , fProducer(pset.get<fhicl::ParameterSet>("PixelMapProducer"))
   {
 
-    produces<std::vector<cvn::PixelMap>>(fClusterPMLabel);
+    produces<std::vector<lcvn::PixelMap>>(fClusterPMLabel);
   }
 
   //......................................................................
@@ -43,7 +43,7 @@ namespace cvn {
     if (hitListHandle) art::fill_ptr_vector(hitlist, hitListHandle);
 
     //Declaring containers for things to be stored in event
-    std::unique_ptr<std::vector<cvn::PixelMap>> pmCol(new std::vector<cvn::PixelMap>);
+    std::unique_ptr<std::vector<lcvn::PixelMap>> pmCol(new std::vector<lcvn::PixelMap>);
 
     auto const detProp =
       art::ServiceHandle<detinfo::DetectorPropertiesService const>()->DataFor(evt);
@@ -56,4 +56,4 @@ namespace cvn {
     evt.put(std::move(pmCol), fClusterPMLabel);
   }
 
-} //namespace cvn
+} //namespace lcvn
