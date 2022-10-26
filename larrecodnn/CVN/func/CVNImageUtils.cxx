@@ -90,7 +90,7 @@ void lcvn::CVNImageUtils::SetPixelMapSize(unsigned int nWires, unsigned int nTDC
 }
 
 void lcvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
-                                                     std::vector<unsigned char>& pix)
+                                                      std::vector<unsigned char>& pix)
 {
 
   SetPixelMapSize(pm.fNWire, pm.fNTdc);
@@ -104,9 +104,9 @@ void lcvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
 }
 
 void lcvn::CVNImageUtils::ConvertChargeVectorsToPixelArray(std::vector<float>& v0pe,
-                                                          std::vector<float>& v1pe,
-                                                          std::vector<float>& v2pe,
-                                                          std::vector<unsigned char>& pix)
+                                                           std::vector<float>& v1pe,
+                                                           std::vector<float>& v2pe,
+                                                           std::vector<unsigned char>& pix)
 {
 
   // Get the vectors
@@ -137,7 +137,7 @@ void lcvn::CVNImageUtils::ConvertChargeVectorsToPixelArray(std::vector<float>& v
 }
 
 void lcvn::CVNImageUtils::ConvertPixelMapToImageVector(const lcvn::PixelMap& pm,
-                                                      lcvn::ImageVector& imageVec)
+                                                       lcvn::ImageVector& imageVec)
 {
 
   SetPixelMapSize(pm.fNWire, pm.fNTdc);
@@ -151,7 +151,7 @@ void lcvn::CVNImageUtils::ConvertPixelMapToImageVector(const lcvn::PixelMap& pm,
 }
 
 void lcvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const lcvn::PixelMap& pm,
-                                                       lcvn::ImageVectorF& imageVec)
+                                                        lcvn::ImageVectorF& imageVec)
 {
 
   SetPixelMapSize(pm.fNWire, pm.fNTdc);
@@ -165,9 +165,9 @@ void lcvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const lcvn::PixelMap& pm
 }
 
 void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVector(std::vector<float>& v0pe,
-                                                           std::vector<float>& v1pe,
-                                                           std::vector<float>& v2pe,
-                                                           lcvn::ImageVector& imageVec)
+                                                            std::vector<float>& v1pe,
+                                                            std::vector<float>& v2pe,
+                                                            lcvn::ImageVector& imageVec)
 {
 
   lcvn::ViewVector view0;
@@ -182,9 +182,9 @@ void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVector(std::vector<float>& 
 }
 
 void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVectorF(std::vector<float>& v0pe,
-                                                            std::vector<float>& v1pe,
-                                                            std::vector<float>& v2pe,
-                                                            lcvn::ImageVectorF& imageVec)
+                                                             std::vector<float>& v1pe,
+                                                             std::vector<float>& v2pe,
+                                                             lcvn::ImageVectorF& imageVec)
 {
 
   lcvn::ViewVector view0;
@@ -204,11 +204,11 @@ void lcvn::CVNImageUtils::ConvertChargeVectorsToImageVectorF(std::vector<float>&
 }
 
 void lcvn::CVNImageUtils::ConvertChargeVectorsToViewVectors(std::vector<float>& v0pe,
-                                                           std::vector<float>& v1pe,
-                                                           std::vector<float>& v2pe,
-                                                           lcvn::ViewVector& view0,
-                                                           lcvn::ViewVector& view1,
-                                                           lcvn::ViewVector& view2)
+                                                            std::vector<float>& v1pe,
+                                                            std::vector<float>& v2pe,
+                                                            lcvn::ViewVector& view0,
+                                                            lcvn::ViewVector& view1,
+                                                            lcvn::ViewVector& view2)
 {
 
   // Reverse requested views
@@ -340,8 +340,8 @@ void lcvn::CVNImageUtils::ConvertPixelArrayToImageVectorF(
 }
 
 void lcvn::CVNImageUtils::GetMinMaxWires(std::vector<float>& wireCharges,
-                                        unsigned int& minWire,
-                                        unsigned int& maxWire)
+                                         unsigned int& minWire,
+                                         unsigned int& maxWire)
 {
 
   minWire = 0;
@@ -386,8 +386,8 @@ void lcvn::CVNImageUtils::GetMinMaxWires(std::vector<float>& wireCharges,
 }
 
 void lcvn::CVNImageUtils::GetMinMaxTDCs(std::vector<float>& tdcCharges,
-                                       unsigned int& minTDC,
-                                       unsigned int& maxTDC)
+                                        unsigned int& minTDC,
+                                        unsigned int& maxTDC)
 {
 
   minTDC = 0;
@@ -488,8 +488,8 @@ lcvn::ImageVectorF lcvn::CVNImageUtils::ConvertImageVecToImageVecF(lcvn::ImageVe
 }
 
 lcvn::ImageVector lcvn::CVNImageUtils::BuildImageVector(lcvn::ViewVector v0,
-                                                      lcvn::ViewVector v1,
-                                                      lcvn::ViewVector v2)
+                                                        lcvn::ViewVector v1,
+                                                        lcvn::ViewVector v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>
@@ -510,8 +510,8 @@ lcvn::ImageVector lcvn::CVNImageUtils::BuildImageVector(lcvn::ViewVector v0,
 }
 
 lcvn::ImageVectorF lcvn::CVNImageUtils::BuildImageVectorF(lcvn::ViewVectorF v0,
-                                                        lcvn::ViewVectorF v1,
-                                                        lcvn::ViewVectorF v2)
+                                                          lcvn::ViewVectorF v1,
+                                                          lcvn::ViewVectorF v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>

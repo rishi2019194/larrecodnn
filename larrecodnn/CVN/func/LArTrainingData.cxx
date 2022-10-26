@@ -93,8 +93,8 @@ namespace lcvn {
 
   template <class T>
   LArTrainingData<T>::LArTrainingData(const InteractionType& interaction,
-                                const PixelMap& pMap,
-                                const T info)
+                                      const PixelMap& pMap,
+                                      const T info)
     : fInt(interaction), fPMap(pMap), fInfo(info)
   {}
 
