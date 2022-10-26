@@ -19,19 +19,19 @@
 namespace lcvn {
 
   TFNetHandler::TFNetHandler(const fhicl::ParameterSet& pset)
-    : fLibPath(cet::getenv(pset.get<std::string>("LibPath", "")))
-    , fTFProtoBuf(fLibPath + "/" + pset.get<std::string>("TFProtoBuf"))
-    , fUseLogChargeScale(pset.get<bool>("ChargeLogScale"))
-    , fImageWires(pset.get<unsigned int>("NImageWires"))
-    , fImageTDCs(pset.get<unsigned int>("NImageTDCs"))
-    , fReverseViews(pset.get<std::vector<bool>>("ReverseViews"))
+    : fLibPath(cet::getenv(pset.get<std::string>("LibPath", ""))),
+    fTFProtoBuf(fLibPath + "/" + pset.get<std::string>("TFProtoBuf")),
+    fUseLogChargeScale(pset.get<bool>("ChargeLogScale")),
+    fImageWires(pset.get<unsigned int>("NImageWires")),
+    fImageTDCs(pset.get<unsigned int>("NImageTDCs")),
+    fReverseViews(pset.get<std::vector<bool>>("ReverseViews"))
   {
 
     // Construct the TF Graph object. The empty vector {} is used since the protobuf
     // file gives the names of the output layer nodes
     mf::LogInfo("TFNetHandler") << "Loading network: " << fTFProtoBuf << std::endl;
     fTFGraph = tf::Graph::create(
-      fTFProtoBuf.c_str(), {}, pset.get<int>("NInputs"), pset.get<int>("NOutputs"));
+      fTFProtoBuf.c_str(), {}, false, pset.get<int>("NInputs"), pset.get<int>("NOutputs"));
     if (!fTFGraph) {
       art::Exception(art::errors::Unknown) << "Tensorflow model not found or incorrect";
     }
@@ -86,7 +86,7 @@ namespace lcvn {
 
     do { // do until it gets a correct result
       // std::cout << "Number of CVN result vectors " << cvnResults.size() << " with " << cvnResults[0].size() << " categories" << std::endl;
-      cvnResults = fTFGraph->run(vecForTF);
+      cvnResults = fTFGraph->runMulti(vecForTF);
       status = check(cvnResults[0]);
       //std::cout << "Status: " << status << std::endl;
       counter++;

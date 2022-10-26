@@ -13,7 +13,7 @@
 #include "fhiclcpp/ParameterSet.h"
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
-#include "larrecodnn/CVN/tf/tf_graph.h"
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
 
 namespace lcvn {
 

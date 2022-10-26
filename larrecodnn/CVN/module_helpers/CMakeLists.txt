@@ -23,7 +23,7 @@ cet_make_library(SOURCE
   lardata::DetectorPropertiesService
   larcore::Geometry_Geometry_service
   larcorealg::Geometry
-  larrecodnn::CVN_tf
+  larrecodnn::ImagePatternAlgs_Tensorflow_TF
   ${ZLIB_LIBRARIES}
   PRIVATE
   larsim::MCCheater_BackTrackerService_service
