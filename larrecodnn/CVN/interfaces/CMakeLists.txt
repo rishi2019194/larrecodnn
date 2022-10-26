@@ -3,7 +3,7 @@ cet_make_library(SOURCE
   ICVNMapper.cxx
   ICVNZlibMaker.cxx
   PixelMapProducer.cxx
-  TFNetHandler.cxx
+  ITFNetHandler.h
   LIBRARIES
   PUBLIC
   larrecodnn::CVN_func

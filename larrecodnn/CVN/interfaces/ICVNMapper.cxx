@@ -1,4 +1,4 @@
-#include "larrecodnn/CVN/module_helpers/ICVNMapper.h"
+#include "larrecodnn/CVN/interfaces/ICVNMapper.h"
 
 namespace lcvn {
 

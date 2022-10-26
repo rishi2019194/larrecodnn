@@ -2,7 +2,7 @@
 cet_build_plugin(LArNuCVNZlibMaker art::EDAnalyzer
   LIBRARIES PRIVATE
   larrecodnn::CVN_func
-  larrecodnn::CVN_module_helpers
+  larrecodnn::CVN_interfaces
   nusimdata::SimulationBase
   art::Framework_Core
   art::Framework_Principal
@@ -13,19 +13,19 @@ cet_build_plugin(LArNuCVNZlibMaker art::EDAnalyzer
 
 cet_build_plugin(LArCVNHitMapper art::EDProducer
   LIBRARIES PRIVATE
-  larrecodnn::CVN_module_helpers
+  larrecodnn::CVN_interfaces
   lardataobj::RecoBase
 )
 
 cet_build_plugin(LArCVNSimMapper art::EDProducer
   LIBRARIES PRIVATE
-  larrecodnn::CVN_module_helpers
+  larrecodnn::CVN_interfaces
   nusimdata::SimulationBase
 )
 
 cet_build_plugin(LArCVNWireMapper art::EDProducer
   LIBRARIES PRIVATE
-  larrecodnn::CVN_module_helpers
+  larrecodnn::CVN_interfaces
   lardataobj::RecoBase
 )
 

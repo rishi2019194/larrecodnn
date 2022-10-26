@@ -1,9 +1,9 @@
-#include "larrecodnn/CVN/module_helpers/ICVNMapper.cxx"
-#include "larrecodnn/CVN/module_helpers/ICVNMapper.h"
+#include "larrecodnn/CVN/interfaces/ICVNMapper.cxx"
+#include "larrecodnn/CVN/interfaces/ICVNMapper.h"
 
 #include "lardataobj/RecoBase/Wire.h"
 
-#include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
+#include "larrecodnn/CVN/interfaces/PixelMapProducer.h"
 
 namespace lcvn {
 

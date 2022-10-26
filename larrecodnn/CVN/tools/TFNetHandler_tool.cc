@@ -10,13 +10,35 @@
 #include <iostream>
 #include <string>
 
+#include "art/Utilities/ToolMacros.h"
+#include "fhiclcpp/ParameterSet.h"
 #include "canvas/Utilities/Exception.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
-#include "larrecodnn/CVN/module_helpers/TFNetHandler.h"
+#include "larrecodnn/CVN/interfaces/ITFNetHandler.h"
+#include "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.h"
 
 namespace lcvn {
+  
+  /// Wrapper for caffe::Net which handles construction and prediction
+  class TFNetHandler : public ITFNetHandler {
+  public:
+    /// Constructor which takes a pset with DeployProto and ModelFile fields
+    explicit TFNetHandler(const fhicl::ParameterSet& pset);
+
+    /// Return prediction arrays for PixelMap
+    std::vector<std::vector<float>> Predict(const PixelMap& pm) const override;
+
+  private:
+    std::string fLibPath;                ///< Library path (typically dune_pardata...)
+    std::string fTFProtoBuf;             ///< location of the tf .pb file in the above path
+    bool fUseLogChargeScale;             ///< Is the charge using a log scale?
+    unsigned int fImageWires;            ///< Number of wires for the network to classify
+    unsigned int fImageTDCs;             ///< Number of tdcs for the network to classify
+    std::vector<bool> fReverseViews;     ///< Do we need to reverse any views?
+    std::unique_ptr<tf::Graph> fTFGraph; ///< Tensorflow graph
+  };
 
   TFNetHandler::TFNetHandler(const fhicl::ParameterSet& pset)
     : fLibPath(cet::getenv(pset.get<std::string>("LibPath", ""))),
@@ -112,30 +134,5 @@ namespace lcvn {
     return cvnResults[0];
   }
 
-  /*
-  // The standard output has 13 elements, this function sums the convenient ones
-  std::vector<float> TFNetHandler::PredictFlavour(const PixelMap& pm){
-
-    std::vector<float> fullResults = this->Predict(pm);
-
-    std::vector<float> flavourResults;
-
-    // First element is CC numu
-    float sumNumu  = fullResults[0] + fullResults[1] + fullResults[2] + fullResults[3];
-    // Then CC nue
-    float sumNue   = fullResults[4] + fullResults[5] + fullResults[6] + fullResults[7];
-    // Then CC nutau
-    float sumNutau = fullResults[8] + fullResults[9] + fullResults[10] + fullResults[11];
-    // End with NC
-    float sumNC    = fullResults[12];
-
-    flavourResults.push_back(sumNumu);
-    flavourResults.push_back(sumNue);
-    flavourResults.push_back(sumNutau);
-    flavourResults.push_back(sumNC);
-
-    return flavourResults;
-  }
-  */
-
 }
+DEFINE_ART_CLASS_TOOL(lcvn::TFNetHandler)

@@ -28,7 +28,7 @@
 #include "lardataobj/Simulation/SimChannel.h"
 
 #include "larrecodnn/CVN/func/PixelMap.h"
-#include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
+#include "larrecodnn/CVN/interfaces/PixelMapProducer.h"
 
 namespace lcvn {
 

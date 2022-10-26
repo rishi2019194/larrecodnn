@@ -18,7 +18,7 @@
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/SpacePoint.h"
 #include "larrecodnn/CVN/func/AssignLabels.h"
-#include "larrecodnn/CVN/module_helpers/PixelMapProducer.h"
+#include "larrecodnn/CVN/interfaces/PixelMapProducer.h"
 
 #include "larcore/Geometry/Geometry.h"
 #include "larcorealg/Geometry/GeometryCore.h"

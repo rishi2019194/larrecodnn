@@ -41,7 +41,7 @@
 #include "larrecodnn/CVN/func/InteractionType.h"
 #include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/LArTrainingData.h"
-#include "larrecodnn/CVN/module_helpers/ICVNZlibMaker.h"
+#include "larrecodnn/CVN/interfaces/ICVNZlibMaker.h"
 
 // Compression
 #include "math.h"

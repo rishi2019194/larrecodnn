@@ -1,4 +1,4 @@
-#include "larrecodnn/CVN/module_helpers/ICVNZlibMaker.h"
+#include "larrecodnn/CVN/interfaces/ICVNZlibMaker.h"
 
 namespace lcvn {
 
