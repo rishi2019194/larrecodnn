@@ -26,7 +26,7 @@ tf::Graph::Graph(const char* graph_file_name,
 {
   fUseBundle = use_bundle;
   success = false; // until all is done correctly
-  
+
   n_inputs = ninputs;
   n_outputs = noutputs;
 
@@ -65,7 +65,7 @@ tf::Graph::Graph(const char* graph_file_name,
 
   size_t ng = graph_def.node().size();
   fInputName = graph_def.node()[0].name();
-  
+
   for (int i = 0; i < n_inputs; ++i) {
     fInputNames.push_back(graph_def.node()[i].name());
   }

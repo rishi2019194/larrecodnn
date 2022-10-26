@@ -18,11 +18,9 @@ namespace lcvn {
   /// Wrapper for caffe::Net which handles construction and prediction
   class ITFNetHandler {
   public:
-
     virtual ~ITFNetHandler() noexcept = default;
     /// Return prediction arrays for PixelMap
     virtual std::vector<std::vector<float>> Predict(const PixelMap& pm) const = 0;
-
   };
 
 }

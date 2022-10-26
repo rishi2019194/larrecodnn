@@ -40,8 +40,8 @@
 #include "larrecodnn/CVN/func/AssignLabels.h"
 #include "larrecodnn/CVN/func/CVNImageUtils.h"
 #include "larrecodnn/CVN/func/InteractionType.h"
-#include "larrecodnn/CVN/func/PixelMap.h"
 #include "larrecodnn/CVN/func/LArTrainingData.h"
+#include "larrecodnn/CVN/func/PixelMap.h"
 
 // Compression
 #include "math.h"
