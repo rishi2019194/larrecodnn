@@ -181,9 +181,8 @@ namespace nnet {
   {
     fGeometry = &*(art::ServiceHandle<geo::Geometry const>());
 
-    const size_t TPC_CNT = (size_t)fGeometry->NTPC(0);
     if (fSelectedTPC.empty()) {
-      for (size_t tpc = 0; tpc < TPC_CNT; ++tpc)
+      for (size_t tpc = 0; tpc < fGeometry->NTPC(); ++tpc)
         fSelectedTPC.push_back(tpc);
     }
 
