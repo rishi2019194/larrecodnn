@@ -42,11 +42,11 @@ namespace lcvn {
 
   TFNetHandler::TFNetHandler(const fhicl::ParameterSet& pset)
     : fLibPath(cet::getenv(pset.get<std::string>("LibPath", "")))
-      fTFProtoBuf(fLibPath + "/" + pset.get<std::string>("TFProtoBuf")),
-      fUseLogChargeScale(pset.get<bool>("ChargeLogScale")),
-      fImageWires(pset.get<unsigned int>("NImageWires")),
-      fImageTDCs(pset.get<unsigned int>("NImageTDCs")),
-      fReverseViews(pset.get<std::vector<bool>>("ReverseViews"))
+    , fTFProtoBuf(fLibPath + "/" + pset.get<std::string>("TFProtoBuf"))
+    , fUseLogChargeScale(pset.get<bool>("ChargeLogScale"))
+    , fImageWires(pset.get<unsigned int>("NImageWires"))
+    , fImageTDCs(pset.get<unsigned int>("NImageTDCs"))
+    , fReverseViews(pset.get<std::vector<bool>>("ReverseViews"))
   {
 
     // Construct the TF Graph object. The empty vector {} is used since the protobuf
