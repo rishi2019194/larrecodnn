@@ -1,6 +1,6 @@
 BEGIN_PROLOG
 
-#   This file defines the configuration for the CVNMapper modules
+#   This file defines the configuration for the larcvnmapper modules
 standard_pixelmapproducer:
 {
   TdcWidth:      500
@@ -10,7 +10,7 @@ standard_pixelmapproducer:
   MultipleDrifts: false
 }
 
-standard_cvnmapper:
+standard_larcvnmapper:
 {
   module_type:        LArCVNHitMapper
   #==================
@@ -21,7 +21,7 @@ standard_cvnmapper:
   PixelMapProducer: @local::standard_pixelmapproducer
 }
 
-standard_cvnmapper_wire:
+standard_larcvnmapper_wire:
 {
   module_type:        LArCVNWireMapper
   #==================
@@ -36,7 +36,7 @@ standard_cvnmapper_wire:
   }
 }
 
-standard_cvnmapper_sim:
+standard_larcvnmapper_sim:
 {
   module_type:        LArCVNSimMapper
   #==================

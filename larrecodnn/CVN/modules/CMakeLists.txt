@@ -11,6 +11,17 @@ cet_build_plugin(LArNuCVNZlibMaker art::EDAnalyzer
   Boost::filesystem
 )
 
+cet_build_plugin(LArCVNEvaluator art::EDProducer
+  LIBRARIES PRIVATE
+  larrecodnn::CVN_func
+  larrecodnn::CVN_interfaces
+  art_plugin_support::toolMaker
+  art::Framework_Core
+  art::Framework_Principal
+  art_root_io::TFileService_service
+  canvas::canvas
+)
+
 cet_build_plugin(LArCVNHitMapper art::EDProducer
   LIBRARIES PRIVATE
   larrecodnn::CVN_interfaces

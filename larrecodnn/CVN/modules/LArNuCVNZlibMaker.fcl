@@ -1,0 +1,20 @@
+BEGIN_PROLOG
+ 
+standard_larcvnzlibmaker:
+{
+  module_type: LArNuCVNZlibMaker
+  #==================
+  # OutputDir: "."
+  PixelMapInput: "cvnmap"
+  SetLog: false
+  ReverseViews: [false,false,false]
+  TopologyHitsCut: 100
+  GenieGenModuleLabel: "generator"
+  PlaneLimit: 500
+  TDCLimit: 500
+  ApplyFidVol: false
+  FidMinCoords: [-1., -1., -1.]
+  FidMaxCoords: [-1., -1., -1.]
+}
+
+END_PROLOG
