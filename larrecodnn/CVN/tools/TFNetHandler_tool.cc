@@ -84,7 +84,7 @@ namespace lcvn {
     return;
   }
 
-  std::vector<std::vector<float>> TFNetHandler::Predict(const PixelMap& pm)
+  std::vector<std::vector<float>> TFNetHandler::Predict(const PixelMap& pm) const
   {
 
     CVNImageUtils imageUtils(fImageWires, fImageTDCs, 3);
