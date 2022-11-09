@@ -61,8 +61,10 @@ namespace wavrec_tool {
     long long int samples = waveforms.size(), numtcks = waveforms.front().size();
 
     //std::cout<<"Samples: "<<samples<<", Ticks: "<<numtcks<<std::endl;
-    tensorflow::Tensor _x(tensorflow::DT_FLOAT, tensorflow::TensorShape({samples, numtcks, 1}));
-    auto input_map = _x.tensor<float, 3>();
+    std::vector<tensorflow::Tensor> _x;
+    _x.push_back(tensorflow::Tensor(tensorflow::DT_FLOAT,
+                                    tensorflow::TensorShape({samples , numtcks, 1})));
+    auto input_map = _x[0].tensor<float, 3>();
     for (long long int s = 0; s < samples; ++s) {
       const auto& wvfrm = waveforms[s];
       for (long long int t = 0; t < numtcks; ++t) {
@@ -70,7 +72,11 @@ namespace wavrec_tool {
       }
     }
 
-    return g->run(_x);
+    auto out = g->run(_x);
+    if (!out.empty())
+      return out.front();
+    else
+      return std::vector<std::vector<float>>();
   }
 
 }

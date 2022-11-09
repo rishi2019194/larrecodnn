@@ -107,7 +107,7 @@ namespace lcvn {
     int counter = 0;
 
     while (status == false) { // do until it gets a correct result
-      cvnResults = fTFGraph->runMulti(vecForTF);
+      cvnResults = fTFGraph->run(vecForTF);
       status = check(cvnResults[0]);
 
       counter++;

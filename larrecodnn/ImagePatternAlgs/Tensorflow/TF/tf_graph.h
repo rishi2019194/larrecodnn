@@ -3,6 +3,7 @@
 //// Authors:     R.Sulej (Robert.Sulej@cern.ch), from DUNE, FNAL/NCBJ, Sept. 2017
 ////              P.Plonski,                      from DUNE, WUT, Sept. 2017
 ////              T.Cai (tejinc@yorku.ca)         from DUNE, YorkU, March 2022
+////              B.N.Nayak (nayakb@uci.edu)      from DUNE, BNL, November 2022
 ////
 //// Iterface to run Tensorflow graph saved to a file. First attempts, almost functional.
 ////
@@ -42,20 +43,15 @@ namespace tf {
 
     ~Graph();
 
-    std::vector<float> run(const std::vector<std::vector<float>>& x);
+    std::vector<std::vector<float>> run(const std::vector<std::vector<float>>& x);
 
     // process vector of 3D inputs, return vector of 1D outputs; use all inputs
-    // if samples = -1, or only the specified number of first samples
-    std::vector<std::vector<float>> run(
+    // if samples = -1, or only the specified number of first samples;
+    // can deal with multiple inputs
+    std::vector<std::vector<std::vector<float>>> run(
       const std::vector<std::vector<std::vector<std::vector<float>>>>& x,
       long long int samples = -1);
-    std::vector<std::vector<float>> run(const tensorflow::Tensor& x);
-
-    // use versions for multiple inputs -- needed for CVN
-    std::vector<std::vector<std::vector<float>>> runMulti(
-      const std::vector<std::vector<std::vector<std::vector<float>>>>& x,
-      long long int samples = -1);
-    std::vector<std::vector<std::vector<float>>> runMulti(const std::vector<tensorflow::Tensor>& x);
+    std::vector<std::vector<std::vector<float>>> run(const std::vector<tensorflow::Tensor>& x);
 
   private:
     int n_inputs;
