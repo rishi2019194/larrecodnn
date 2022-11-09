@@ -70,8 +70,6 @@ namespace lcvn {
     TH2F* ToLabTH2() const;
     TH2F* SingleViewToTH2(const unsigned int& view) const;
 
-    unsigned int fNWire;        ///< Number of wires, length of pixel map
-    unsigned int fNTdc;         ///< Number of tdcs, width of pixel map
     std::vector<float> fPE;     ///< Vector of PE measurements for pixels
     std::vector<float> fPEX;    ///< Vector of X PE measurements for pixels
     std::vector<float> fPEY;    ///< Vector of Y PE measurements for pixels
@@ -84,7 +82,11 @@ namespace lcvn {
     std::vector<HitType> fLabX; ///< Vector of X Truth labels for pixels
     std::vector<HitType> fLabY; ///< Vector of Y Truth labels for pixels
     std::vector<HitType> fLabZ; ///< Vector of Y Truth labels for pixels
-    unsigned int fTotHits;      ///< Number of hits that make up the pixel map
+
+  private:
+    unsigned int fNWire;   ///< Number of wires, length of pixel map
+    unsigned int fNTdc;    ///< Number of tdcs, width of pixel map
+    unsigned int fTotHits; ///< Number of hits that make up the pixel map
 
     Boundary fBound; //< Boundary of pixel map
   };

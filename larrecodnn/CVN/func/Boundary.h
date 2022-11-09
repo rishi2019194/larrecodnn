@@ -21,23 +21,23 @@ namespace lcvn {
   public:
     /// Create new Boundary object based on number of wires, number of cells,
     /// minumum wire and mean cell in odd and even view.
-    Boundary(const int& nWire,
-             const double& tRes,
-             const int& minWireX,
-             const int& minWireY,
-             const int& minWireZ,
-             const double& centerTDCX,
-             const double& centerTDCY,
-             const double& centerTDCZ);
+    Boundary(const int nWire,
+             const double tRes,
+             const int minWireX,
+             const int minWireY,
+             const int minWireZ,
+             const double centerTDCX,
+             const double centerTDCY,
+             const double centerTDCZ);
 
     Boundary(){};
 
-    bool IsWithin(const unsigned int& wire, const double& cell, const unsigned int& view);
+    bool IsWithin(const unsigned int wire, const double cell, const unsigned int view);
 
-    int FirstWire(const unsigned int& view) const { return fFirstWire[view]; };
-    int LastWire(const unsigned int& view) const { return fLastWire[view]; };
-    double FirstTDC(const unsigned int& view) const { return fFirstTDC[view]; };
-    double LastTDC(const unsigned int& view) const { return fLastTDC[view]; };
+    int FirstWire(const unsigned int view) const { return fFirstWire[view]; };
+    int LastWire(const unsigned int view) const { return fLastWire[view]; };
+    double FirstTDC(const unsigned int view) const { return fFirstTDC[view]; };
+    double LastTDC(const unsigned int view) const { return fLastTDC[view]; };
 
   private:
     int fFirstWire[3];   ///< Minimum wire, inclusive

@@ -1,5 +1,7 @@
 #include "larrecodnn/CVN/interfaces/ICVNZlibMaker.h"
 
+namespace fs = boost::filesystem;
+
 namespace lcvn {
 
   ICVNZlibMaker::ICVNZlibMaker(fhicl::ParameterSet const& pset) : EDAnalyzer(pset)

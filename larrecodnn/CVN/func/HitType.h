@@ -9,7 +9,7 @@
 
 namespace lcvn {
 
-  typedef enum HType {
+  enum HitType {
     kElectronHit,
     kMuonHit,
     kProtonHit,
@@ -20,7 +20,7 @@ namespace lcvn {
     kOtherPDGhit,
     kUnknownHit,
     kEmptyHit
-  } HitType;
+  };
 
 }
 

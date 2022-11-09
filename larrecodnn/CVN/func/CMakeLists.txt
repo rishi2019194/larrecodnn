@@ -3,8 +3,8 @@ cet_make_library(SOURCE
   AssignLabels.cxx
   Boundary.cxx
   CVNImageUtils.cxx
-  HitType.cxx
-  InteractionType.cxx
+  HitType.h
+  InteractionType.h
   PixelMap.cxx
   Result.cxx
   LArTrainingData.cxx

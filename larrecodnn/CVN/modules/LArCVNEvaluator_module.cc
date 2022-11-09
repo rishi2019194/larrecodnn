@@ -33,11 +33,8 @@ namespace lcvn {
   class LArCVNEvaluator : public art::EDProducer {
   public:
     explicit LArCVNEvaluator(fhicl::ParameterSet const& pset);
-    ~LArCVNEvaluator();
 
     void produce(art::Event& evt);
-    void beginJob();
-    void endJob();
 
   private:
     /// Module label for input pixel maps
@@ -72,20 +69,6 @@ namespace lcvn {
   {
     produces<std::vector<lcvn::Result>>(fResultLabel);
   }
-  //......................................................................
-  LArCVNEvaluator::~LArCVNEvaluator()
-  {
-    //======================================================================
-    // Clean up any memory allocated by your module
-    //======================================================================
-  }
-
-  //......................................................................
-  void LArCVNEvaluator::beginJob() {}
-
-  //......................................................................
-  void LArCVNEvaluator::endJob() {}
-
   //......................................................................
   void LArCVNEvaluator::produce(art::Event& evt)
   {

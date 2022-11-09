@@ -24,7 +24,6 @@ namespace lcvn {
   public:
     CVNImageUtils();
     CVNImageUtils(unsigned int nWires, unsigned int nTDCs, unsigned int nViews);
-    ~CVNImageUtils();
 
     /// Disable the selection of the wire region and just use the first 500 wires
     void DisableRegionSelection();
@@ -89,8 +88,8 @@ namespace lcvn {
                                            ViewVector& view2);
 
     /// Make the image vector from the view vectors
-    ImageVector BuildImageVector(ViewVector v0, ViewVector v1, ViewVector v2);
-    ImageVectorF BuildImageVectorF(ViewVectorF v0, ViewVectorF v1, ViewVectorF v2);
+    ImageVector BuildImageVector(ViewVector& v0, ViewVector& v1, ViewVector& v2);
+    ImageVectorF BuildImageVectorF(ViewVectorF& v0, ViewVectorF& v1, ViewVectorF& v2);
 
     /// Get the minimum and maximum wires from the pixel map needed to make the image
     void GetMinMaxWires(std::vector<float>& wireCharges,
@@ -104,10 +103,10 @@ namespace lcvn {
     void ReverseView(std::vector<float>& peVec);
 
     /// Convert a ViewVector into a ViewVectorF
-    ViewVectorF ConvertViewVecToViewVecF(ViewVector view);
+    ViewVectorF ConvertViewVecToViewVecF(ViewVector& view);
 
     /// Convert a ImageVector into a ImageVectorF
-    ImageVectorF ConvertImageVecToImageVecF(ImageVector image);
+    ImageVectorF ConvertImageVecToImageVecF(ImageVector& image);
 
     /// Number of views of each event
     unsigned int fNViews;

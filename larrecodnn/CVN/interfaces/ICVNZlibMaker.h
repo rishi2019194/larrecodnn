@@ -49,8 +49,6 @@
 
 #include "TH1.h"
 
-namespace fs = boost::filesystem;
-
 namespace lcvn {
 
   class ICVNZlibMaker : public art::EDAnalyzer {

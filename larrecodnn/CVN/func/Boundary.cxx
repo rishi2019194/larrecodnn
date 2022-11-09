@@ -13,14 +13,14 @@
 
 namespace lcvn {
 
-  Boundary::Boundary(const int& nWire,
-                     const double& tRes,
-                     const int& minWireX,
-                     const int& minWireY,
-                     const int& minWireZ,
-                     const double& centerTDCX,
-                     const double& centerTDCY,
-                     const double& centerTDCZ)
+  Boundary::Boundary(const int nWire,
+                     const double tRes,
+                     const int minWireX,
+                     const int minWireY,
+                     const int minWireZ,
+                     const double centerTDCX,
+                     const double centerTDCY,
+                     const double centerTDCZ)
     : fFirstWire{minWireX, minWireY, minWireZ}
     , fLastWire{minWireX + nWire - 1, minWireY + nWire - 1, minWireZ + nWire - 1}
     , fFirstTDC{centerTDCX - tRes, // For odd nTDC, we will truncate 0.5,
@@ -37,7 +37,7 @@ namespace lcvn {
     assert(fLastWire[2] - fFirstWire[2] == nWire - 1);
   }
 
-  bool Boundary::IsWithin(const unsigned int& wire, const double& cell, const unsigned int& view)
+  bool Boundary::IsWithin(const unsigned int wire, const double cell, const unsigned int view)
   {
     bool inWireRcvne = (int)wire >= fFirstWire[view] && (int)wire <= fLastWire[view];
     bool inTDCRcvne = (double)cell >= fFirstTDC[view] && (double)cell <= fLastTDC[view];

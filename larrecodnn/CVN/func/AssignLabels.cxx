@@ -21,11 +21,9 @@ namespace lcvn {
 
   /// Get Interaction_t from pdg, mode and iscc.
   /// Setting pdg and mode to zero triggers cosmic ray
-  InteractionType AssignLabels::GetInteractionType(simb::MCNeutrino& truth)
+  InteractionType AssignLabels::GetInteractionType(simb::MCNeutrino& truth) const
   {
 
-    //if(truth->NeutrinoSet())
-    //{
     int pdg = truth.Nu().PdgCode();
     bool iscc = truth.CCNC() == simb::kCC;
     int trueMode = truth.Mode();
@@ -59,40 +57,36 @@ namespace lcvn {
     else if (trueMode == simb::kNuElectronElastic) {
       return kNuElectronElastic;
     }
-    else
-      return kNC;
-    //}
-    //else return kCosmic;
 
-    return kOther;
+    return kNC;
   }
 
-  InteractionType AssignLabels::GetInteractionTypeFromSlice(int pdg, bool iscc, int trueMode)
+  InteractionType AssignLabels::GetInteractionTypeFromSlice(int pdg, bool iscc, int trueMode) const
   {
 
     if (iscc) {
 
       if (abs(pdg) == 14) {
         switch (trueMode) {
-        case simb::kQE: return kNumuQE; break;
-        case simb::kRes: return kNumuRes; break;
-        case simb::kDIS: return kNumuDIS; break;
+        case simb::kQE: return kNumuQE;
+        case simb::kRes: return kNumuRes;
+        case simb::kDIS: return kNumuDIS;
         default: return kNumuOther;
         }
       }
       else if (abs(pdg) == 12) {
         switch (trueMode) {
-        case simb::kQE: return kNueQE; break;
-        case simb::kRes: return kNueRes; break;
-        case simb::kDIS: return kNueDIS; break;
+        case simb::kQE: return kNueQE;
+        case simb::kRes: return kNueRes;
+        case simb::kDIS: return kNueDIS;
         default: return kNueOther;
         }
       }
       else if (abs(pdg) == 16) {
         switch (trueMode) {
-        case simb::kQE: return kNutauQE; break;
-        case simb::kRes: return kNutauRes; break;
-        case simb::kDIS: return kNutauDIS; break;
+        case simb::kQE: return kNutauQE;
+        case simb::kRes: return kNutauRes;
+        case simb::kDIS: return kNutauDIS;
         default: return kNutauOther;
         }
       }
@@ -100,10 +94,8 @@ namespace lcvn {
     else if (trueMode == simb::kNuElectronElastic) {
       return kNuElectronElastic;
     }
-    else
-      return kNC;
 
-    return kOther;
+    return kNC;
   }
 
   // This function uses purely the information from the neutrino generator to
@@ -144,9 +136,6 @@ namespace lcvn {
       }
     }
 
-    //    std::cout << "Neutrino PDG code is " << pdgCode
-    //      << ", tau interaction type is " << tauMode << std::endl;
-
     // Now we need to do some final state particle counting.
     //    unsigned int nParticle = truth.NParticles();
 
@@ -160,10 +149,8 @@ namespace lcvn {
     art::ServiceHandle<cheat::ParticleInventoryService> partService;
 
     // Loop over all of the particles
-    //    for(unsigned int p = 0; p < nParticle; ++p){
     for (auto const thisPart : partService->MCTruthToParticles_Ps(truth)) {
 
-      //      const simb::MCParticle& part = truth.GetParticle(p);
       const simb::MCParticle& part = *thisPart;
 
       int pdg = part.PdgCode();
@@ -191,19 +178,14 @@ namespace lcvn {
 
       // Special case for pi-zeros since it is the decay photons and their pair produced electrons that deposit energy
       if (pdg == 111 || pdg == 2112) {
-        //        unsigned int nDummyHits = GetNeutralDaughterHitsRecursive(part);
-        //        std::cout << "New method of neutral daughters for " << pdg << " = " << nDummyHits << std::endl;
         // Decay photons
         for (int d = 0; d < part.NumberDaughters(); ++d) {
           nSimIDE += backTrack->TrackIdToSimIDEs_Ps(part.Daughter(d)).size();
         }
-        //        std::cout << "Old method of neutral daughters for " << pdg << " = " << nSimIDE << std::endl;
       }
 
       // Do we pass the number of hits cut?
       if (nSimIDE < nTopologyHits) { continue; }
-
-      //      std::cout << "Final state particle " << pdg << " with ke " << ke << " GeV, " << nSimIDE << " true hits and " << part.NumberDaughters() << " daughters" << std::endl;
 
       switch (abs(pdg)) {
       case 111: ++nPizero; break;
@@ -214,39 +196,8 @@ namespace lcvn {
       }
     }
 
-    // Assign the enums based on the counters
-    // switch(nProton){
-    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0proton); break;
-    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1proton); break;
-    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2proton); break;
-    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNproton); break;
-    // }
-
-    // switch(nPion){
-    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0pion); break;
-    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1pion); break;
-    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2pion); break;
-    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNpion); break;
-    // }
-
-    // switch(nPizero){
-    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0pizero); break;
-    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1pizero); break;
-    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2pizero); break;
-    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNpizero); break;
-    // }
-
-    // switch(nNeutron){
-    //   case 0  : top = static_cast<lcvn::TopologyType>(top | kTop0neutron); break;
-    //   case 1  : top = static_cast<lcvn::TopologyType>(top | kTop1neutron); break;
-    //   case 2  : top = static_cast<lcvn::TopologyType>(top | kTop2neutron); break;
-    //   default : top = static_cast<lcvn::TopologyType>(top | kTopNneutron); break;
-    // }
-
     std::cout << "Particle counts: " << nProton << ", " << nPion << ", " << nPizero << ", "
               << nNeutron << std::endl;
-
-    // return top;
   }
 
   void AssignLabels::PrintTopology()
@@ -269,16 +220,7 @@ namespace lcvn {
     std::cout << " - Alternate topology type is " << GetTopologyTypeAlt() << std::endl;
   }
 
-  bool AssignLabels::IsAntineutrino()
-  {
-
-    if (pdgCode < 0)
-      return true;
-    else
-      return false;
-  }
-
-  unsigned short AssignLabels::GetTopologyType()
+  unsigned short AssignLabels::GetTopologyType() const
   {
 
     if (abs(pdgCode) == 12) return kTopNue;
@@ -292,7 +234,7 @@ namespace lcvn {
     throw std::runtime_error("Topology type not recognised!");
   }
 
-  unsigned short AssignLabels::GetTopologyTypeAlt()
+  unsigned short AssignLabels::GetTopologyTypeAlt() const
   {
 
     if (abs(pdgCode) == 12) return kTopNueLike;
@@ -363,79 +305,45 @@ namespace lcvn {
   int lcvn::AssignLabels::GetProcessKey(std::string process) const
   {
 
-    if (process.compare("primary") == 0)
-      return 0;
-    else if (process.compare("hadElastic") == 0)
-      return 1;
-    else if (process.compare("pi-Inelastic") == 0)
-      return 2;
-    else if (process.compare("pi+Inelastic") == 0)
-      return 3;
-    else if (process.compare("kaon-Inelastic") == 0)
-      return 4;
-    else if (process.compare("kaon+Inelastic") == 0)
-      return 5;
-    else if (process.compare("protonInelastic") == 0)
-      return 6;
-    else if (process.compare("neutronInelastic") == 0)
-      return 7;
-    else if (process.compare("kaon0SInelastic") == 0)
-      return 8;
-    else if (process.compare("kaon0LInelastic") == 0)
-      return 9;
-    else if (process.compare("lambdaInelastic") == 0)
-      return 10;
-    else if (process.compare("omega-Inelastic") == 0)
-      return 11;
-    else if (process.compare("sigma+Inelastic") == 0)
-      return 12;
-    else if (process.compare("sigma-Inelastic") == 0)
-      return 13;
-    else if (process.compare("sigma0Inelastic") == 0)
-      return 14;
-    else if (process.compare("xi-Inelastic") == 0)
-      return 15;
-    else if (process.compare("xi0Inelastic") == 0)
-      return 16;
-    else if (process.compare("anti_protonInelastic") == 0)
-      return 20;
-    else if (process.compare("anti_neutronInelastic") == 0)
-      return 21;
-    else if (process.compare("anti_lambdaInelastic") == 0)
-      return 22;
-    else if (process.compare("anti_omega-Inelastic") == 0)
-      return 23;
-    else if (process.compare("anti_sigma+Inelastic") == 0)
-      return 24;
-    else if (process.compare("anti_sigma-Inelastic") == 0)
-      return 25;
-    else if (process.compare("anti_xi-Inelastic") == 0)
-      return 26;
-    else if (process.compare("anti_xi0Inelastic") == 0)
-      return 27;
+    if (process.compare("primary") == 0) return 0;
+    if (process.compare("hadElastic") == 0) return 1;
+    if (process.compare("pi-Inelastic") == 0) return 2;
+    if (process.compare("pi+Inelastic") == 0) return 3;
+    if (process.compare("kaon-Inelastic") == 0) return 4;
+    if (process.compare("kaon+Inelastic") == 0) return 5;
+    if (process.compare("protonInelastic") == 0) return 6;
+    if (process.compare("neutronInelastic") == 0) return 7;
+    if (process.compare("kaon0SInelastic") == 0) return 8;
+    if (process.compare("kaon0LInelastic") == 0) return 9;
+    if (process.compare("lambdaInelastic") == 0) return 10;
+    if (process.compare("omega-Inelastic") == 0) return 11;
+    if (process.compare("sigma+Inelastic") == 0) return 12;
+    if (process.compare("sigma-Inelastic") == 0) return 13;
+    if (process.compare("sigma0Inelastic") == 0) return 14;
+    if (process.compare("xi-Inelastic") == 0) return 15;
+    if (process.compare("xi0Inelastic") == 0) return 16;
+    if (process.compare("anti_protonInelastic") == 0) return 20;
+    if (process.compare("anti_neutronInelastic") == 0) return 21;
+    if (process.compare("anti_lambdaInelastic") == 0) return 22;
+    if (process.compare("anti_omega-Inelastic") == 0) return 23;
+    if (process.compare("anti_sigma+Inelastic") == 0) return 24;
+    if (process.compare("anti_sigma-Inelastic") == 0) return 25;
+    if (process.compare("anti_xi-Inelastic") == 0) return 26;
+    if (process.compare("anti_xi0Inelastic") == 0) return 27;
 
-    else if (process.compare("Decay") == 0)
-      return 30;
-    else if (process.compare("FastScintillation") == 0)
-      return 31;
-    else if (process.compare("nKiller") == 0)
+    if (process.compare("Decay") == 0) return 30;
+    if (process.compare("FastScintillation") == 0) return 31;
+    if (process.compare("nKiller") == 0)
       return 32; // Remove unwanted neutrons: neutron kinetic energy threshold (default 0) or time limit for neutron track
-    else if (process.compare("nCapture") == 0)
-      return 33; // Neutron capture
+    if (process.compare("nCapture") == 0) return 33; // Neutron capture
 
-    else if (process.compare("compt") == 0)
-      return 40; // Compton Scattering
-    else if (process.compare("rayleigh") == 0)
-      return 41; // Rayleigh Scattering
-    else if (process.compare("phot") == 0)
-      return 42; // Photoelectric Effect
-    else if (process.compare("conv") == 0)
-      return 43; // Pair production
-    else if (process.compare("CoupledTransportation") == 0)
-      return 44; //
+    if (process.compare("compt") == 0) return 40;                 // Compton Scattering
+    if (process.compare("rayleigh") == 0) return 41;              // Rayleigh Scattering
+    if (process.compare("phot") == 0) return 42;                  // Photoelectric Effect
+    if (process.compare("conv") == 0) return 43;                  // Pair production
+    if (process.compare("CoupledTransportation") == 0) return 44; //
 
-    else
-      return -1;
+    return -1;
   }
 
   // Recursive function to get all hits from daughters of a given neutral particle

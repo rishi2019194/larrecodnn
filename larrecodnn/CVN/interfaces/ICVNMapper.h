@@ -36,11 +36,8 @@ namespace lcvn {
   class ICVNMapper : public art::EDProducer {
   public:
     explicit ICVNMapper(fhicl::ParameterSet const& pset);
-    ~ICVNMapper();
 
     void produce(art::Event& evt);
-    void beginJob();
-    void endJob();
 
   protected:
     /// Module lablel for input clusters

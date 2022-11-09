@@ -5,7 +5,8 @@
    <version ClassVersion="10" checksum="2956136997"/>
   </class>
 
-  <class name="lcvn::LArTrainingNuData" ClassVersion="22" >
+  <class name="lcvn::LArTrainingNuData" ClassVersion="23" >
+   <version ClassVersion="23" checksum="1427696672"/>
    <version ClassVersion="22" checksum="3091904334"/>
    <version ClassVersion="21" checksum="1209450185"/>
    <version ClassVersion="20" checksum="4175091702"/>
@@ -21,7 +22,8 @@
    <version ClassVersion="10" checksum="16422645"/>
   </class>
 
-  <class name="lcvn::PixelMap" ClassVersion="20" >
+  <class name="lcvn::PixelMap" ClassVersion="21" >
+   <version ClassVersion="21" checksum="3867324758"/>
    <version ClassVersion="20" checksum="3478958628"/>
    <version ClassVersion="19" checksum="1463336170"/>
    <version ClassVersion="18" checksum="341721657"/>
@@ -60,7 +62,7 @@
 
   <class name="std::vector<lcvn::PixelMap>"         />
   <class name="art::Ptr<lcvn::PixelMap>"            />
-  <class name="std::vector<lcvn::HType>"            />
+  <class name="std::vector<lcvn::HitType>"            />
   <class name="art::Wrapper< std::vector<lcvn::PixelMap> >" />
 
   <class name="std::vector<lcvn::Result>"          />

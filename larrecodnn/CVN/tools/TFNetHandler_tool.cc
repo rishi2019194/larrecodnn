@@ -77,10 +77,10 @@ namespace lcvn {
   // Fill outputs with value -3
   void fillEmpty(std::vector<std::vector<float>>& outputs)
   {
-    for (size_t o = 0; o < outputs.size(); ++o) {
-      for (size_t i = 0; i < outputs[o].size(); ++i)
-        outputs[o][i] = -3.0;
+    for (auto& output : outputs) {
+      output.assign(output.size(), -3.0);
     }
+
     return;
   }
 
@@ -106,11 +106,10 @@ namespace lcvn {
 
     int counter = 0;
 
-    do { // do until it gets a correct result
-      // std::cout << "Number of CVN result vectors " << cvnResults.size() << " with " << cvnResults[0].size() << " categories" << std::endl;
+    while (status == false) { // do until it gets a correct result
       cvnResults = fTFGraph->runMulti(vecForTF);
       status = check(cvnResults[0]);
-      //std::cout << "Status: " << status << std::endl;
+
       counter++;
       if (counter == 10) {
         std::cout << "Error, CVN never outputing a correct result. Filling result with zeros.";
@@ -118,7 +117,7 @@ namespace lcvn {
         fillEmpty(cvnResults[0]);
         break;
       }
-    } while (status == false);
+    };
 
     std::cout << "Classifier summary: ";
     std::cout << std::endl;

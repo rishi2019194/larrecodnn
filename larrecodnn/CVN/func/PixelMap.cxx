@@ -12,9 +12,7 @@
 namespace lcvn {
 
   PixelMap::PixelMap(unsigned int nWire, unsigned int nTdc, const Boundary& bound)
-    : fNWire(nWire)
-    , fNTdc(nTdc)
-    , fPE(nWire * nTdc)
+    : fPE(nWire * nTdc)
     , fPEX(nWire * nTdc)
     , fPEY(nWire * nTdc)
     , fPEZ(nWire * nTdc)
@@ -26,6 +24,8 @@ namespace lcvn {
     , fLabX(nWire * nTdc)
     , fLabY(nWire * nTdc)
     , fLabZ(nWire * nTdc)
+    , fNWire(nWire)
+    , fNTdc(nTdc)
     , fBound(bound)
   {
     fTotHits = 0;

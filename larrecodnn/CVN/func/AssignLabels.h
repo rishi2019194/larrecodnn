@@ -19,23 +19,22 @@ namespace lcvn {
 
   public:
     AssignLabels();
-    ~AssignLabels(){};
 
-    InteractionType GetInteractionType(simb::MCNeutrino& truth);
-    InteractionType GetInteractionTypeFromSlice(int nuPDG, bool nuCCNC, int nuMode);
+    InteractionType GetInteractionType(simb::MCNeutrino& truth) const;
+    InteractionType GetInteractionTypeFromSlice(int nuPDG, bool nuCCNC, int nuMode) const;
 
     // Use the topology information
     void GetTopology(const art::Ptr<simb::MCTruth> truth, unsigned int nTopologyHits);
     void PrintTopology();
-    unsigned short GetNProtons() { return nProton; };
-    unsigned short GetNPions() { return nPion; };
-    unsigned short GetNPizeros() { return nPizero; };
-    unsigned short GetNNeutrons() { return nNeutron; };
-    short GetPDG() { return pdgCode; };
-    unsigned short TauMode() { return tauMode; };
-    bool IsAntineutrino();
-    unsigned short GetTopologyType();
-    unsigned short GetTopologyTypeAlt();
+    unsigned short GetNProtons() const { return nProton; };
+    unsigned short GetNPions() const { return nPion; };
+    unsigned short GetNPizeros() const { return nPizero; };
+    unsigned short GetNNeutrons() const { return nNeutron; };
+    short GetPDG() const { return pdgCode; };
+    unsigned short TauMode() const { return tauMode; };
+    bool IsAntineutrino() const { return pdgCode < 0; };
+    unsigned short GetTopologyType() const;
+    unsigned short GetTopologyTypeAlt() const;
 
     // Get the pion interaction mode for ProtoDUNE specific code
     unsigned short GetProtoDUNEBeamInteractionType(const simb::MCParticle& particle) const;
@@ -45,7 +44,6 @@ namespace lcvn {
     unsigned int GetNeutralDaughterHitsRecursive(const simb::MCParticle& particle) const;
 
     int GetProcessKey(std::string process) const;
-    // unused unsigned int fTopologyHitsCut;
 
     unsigned short nProton;
     unsigned short nPion;

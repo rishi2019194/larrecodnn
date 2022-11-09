@@ -23,8 +23,6 @@ lcvn::CVNImageUtils::CVNImageUtils(unsigned int nWires, unsigned int nTDCs, unsi
   fDisableRegionSelection = false;
 }
 
-lcvn::CVNImageUtils::~CVNImageUtils() {}
-
 void lcvn::CVNImageUtils::DisableRegionSelection()
 {
   fDisableRegionSelection = true;
@@ -93,7 +91,7 @@ void lcvn::CVNImageUtils::ConvertPixelMapToPixelArray(const PixelMap& pm,
                                                       std::vector<unsigned char>& pix)
 {
 
-  SetPixelMapSize(pm.fNWire, pm.fNTdc);
+  SetPixelMapSize(pm.NWire(), pm.NTdc());
 
   // Strip out the charge vectors and use these
   std::vector<float> v0pe = pm.fPEX;
@@ -140,7 +138,7 @@ void lcvn::CVNImageUtils::ConvertPixelMapToImageVector(const lcvn::PixelMap& pm,
                                                        lcvn::ImageVector& imageVec)
 {
 
-  SetPixelMapSize(pm.fNWire, pm.fNTdc);
+  SetPixelMapSize(pm.NWire(), pm.NTdc());
 
   // Strip out the charge vectors and use these
   std::vector<float> v0pe = pm.fPEX;
@@ -154,7 +152,7 @@ void lcvn::CVNImageUtils::ConvertPixelMapToImageVectorF(const lcvn::PixelMap& pm
                                                         lcvn::ImageVectorF& imageVec)
 {
 
-  SetPixelMapSize(pm.fNWire, pm.fNTdc);
+  SetPixelMapSize(pm.NWire(), pm.NTdc());
 
   // Strip out the charge vectors and use these
   std::vector<float> v0pe = pm.fPEX;
@@ -447,85 +445,91 @@ void lcvn::CVNImageUtils::ReverseView(std::vector<float>& peVec)
   }
 
   // Copy the values back into the original vector
-  for (unsigned int e = 0; e < peVec.size(); ++e) {
-    float val = vecCopy[e];
-    peVec[e] = val;
-  }
+  peVec = move(vecCopy);
 }
 
-lcvn::ViewVectorF lcvn::CVNImageUtils::ConvertViewVecToViewVecF(lcvn::ViewVector view)
+lcvn::ViewVectorF lcvn::CVNImageUtils::ConvertViewVecToViewVecF(lcvn::ViewVector& view)
 {
 
   lcvn::ViewVectorF newVec;
+  newVec.reserve(view.size());
   for (size_t w = 0; w < view.size(); ++w) {
     std::vector<float> thisWire;
+    thisWire.reserve(view[w].size());
     for (size_t t = 0; t < view[w].size(); ++t) {
       float chargeSC = static_cast<float>(view[w][t]);
       thisWire.push_back(chargeSC);
     }
-    newVec.push_back(thisWire);
+    newVec.push_back(move(thisWire));
   }
   return newVec;
 }
 
-lcvn::ImageVectorF lcvn::CVNImageUtils::ConvertImageVecToImageVecF(lcvn::ImageVector image)
+lcvn::ImageVectorF lcvn::CVNImageUtils::ConvertImageVecToImageVecF(lcvn::ImageVector& image)
 {
 
   lcvn::ImageVectorF newImage;
+  newImage.reserve(image.size());
   for (size_t w = 0; w < image.size(); ++w) {
     lcvn::ViewVectorF thisWire;
+    thisWire.reserve(image[w].size());
     for (size_t t = 0; t < image[w].size(); ++t) {
       std::vector<float> thisTime;
+      thisTime.reserve(image[w][t].size());
       for (size_t v = 0; v < image[w][t].size(); ++v) {
         float chargeSC = static_cast<float>(image[w][t][v]);
         thisTime.push_back(chargeSC);
       }
-      thisWire.push_back(thisTime);
+      thisWire.push_back(move(thisTime));
     }
-    newImage.push_back(thisWire);
+    newImage.push_back(move(thisWire));
   }
   return newImage;
 }
 
-lcvn::ImageVector lcvn::CVNImageUtils::BuildImageVector(lcvn::ViewVector v0,
-                                                        lcvn::ViewVector v1,
-                                                        lcvn::ViewVector v2)
+lcvn::ImageVector lcvn::CVNImageUtils::BuildImageVector(lcvn::ViewVector& v0,
+                                                        lcvn::ViewVector& v1,
+                                                        lcvn::ViewVector& v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>
   lcvn::ImageVector image;
+  image.reserve(v0.size());
   for (unsigned int w = 0; w < v0.size(); ++w) {
     std::vector<std::vector<unsigned char>> wireVec;
+    wireVec.reserve(v0[0].size());
     for (unsigned int t = 0; t < v0[0].size(); ++t) {
       std::vector<unsigned char> timeVec;
       timeVec.push_back(v0[w][t]);
       timeVec.push_back(v1[w][t]);
       timeVec.push_back(v2[w][t]);
-      wireVec.push_back(timeVec);
+      wireVec.push_back(move(timeVec));
     } // Loop over tdcs
-    image.push_back(wireVec);
+    image.push_back(move(wireVec));
   } // Loop over wires
 
   return image;
 }
 
-lcvn::ImageVectorF lcvn::CVNImageUtils::BuildImageVectorF(lcvn::ViewVectorF v0,
-                                                          lcvn::ViewVectorF v1,
-                                                          lcvn::ViewVectorF v2)
+lcvn::ImageVectorF lcvn::CVNImageUtils::BuildImageVectorF(lcvn::ViewVectorF& v0,
+                                                          lcvn::ViewVectorF& v1,
+                                                          lcvn::ViewVectorF& v2)
 {
 
   // Tensorflow wants things in the arrangement <wires, TDCs, views>
   lcvn::ImageVectorF image;
+  image.reserve(v0.size());
   for (unsigned int w = 0; w < v0.size(); ++w) {
     std::vector<std::vector<float>> wireVec;
+    wireVec.reserve(v0[0].size());
     for (unsigned int t = 0; t < v0[0].size(); ++t) {
       std::vector<float> timeVec;
       timeVec.push_back(v0[w][t]);
       timeVec.push_back(v1[w][t]);
       timeVec.push_back(v2[w][t]);
-      wireVec.push_back(timeVec);
+      wireVec.push_back(move(timeVec));
     } // Loop over tdcs
-    image.push_back(wireVec);
+    image.push_back(move(wireVec));
   } // Loop over wires
 
   return image;

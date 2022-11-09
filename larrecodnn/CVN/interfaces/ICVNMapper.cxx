@@ -16,25 +16,6 @@ namespace lcvn {
 
   //......................................................................
   template <class T, class U>
-  ICVNMapper<T, U>::~ICVNMapper()
-  {
-    //======================================================================
-    // Clean up any memory allocated by your module
-    //======================================================================
-  }
-
-  //......................................................................
-  template <class T, class U>
-  void ICVNMapper<T, U>::beginJob()
-  {}
-
-  //......................................................................
-  template <class T, class U>
-  void ICVNMapper<T, U>::endJob()
-  {}
-
-  //......................................................................
-  template <class T, class U>
   void ICVNMapper<T, U>::produce(art::Event& evt)
   {
 

@@ -12,7 +12,7 @@
 
 namespace lcvn {
 
-  typedef enum Interaction {
+  enum InteractionType {
     kNumuQE,            ///< Numu CC QE interaction
     kNumuRes,           ///< Numu CC Resonant interaction
     kNumuDIS,           ///< Numu CC DIS interaction
@@ -30,10 +30,10 @@ namespace lcvn {
     kCosmic,            ///< Cosmic ray background
     kOther,             ///< Something else.  Tau?  Hopefully we don't use this
     kNIntType           ///< Number of interaction types, used like a vector size
-  } InteractionType;
+  };
 
   /// Enumeration to describe the order of the TF network output
-  typedef enum TFResult {
+  enum TFResultType {
     kTFNumuQE,     ///< Numu CC QE interaction
     kTFNumuRes,    ///< Numu CC Resonant interaction
     kTFNumuDIS,    ///< Numu CC DIS interaction
@@ -47,58 +47,35 @@ namespace lcvn {
     kTFNutauDIS,   ///< Nutau CC DIS interaction
     kTFNutauOther, ///< Nutau CC, other than above
     kTFNC          ///< NC interaction
-  } TFResultType;
+  };
 
   // Enumeration to describe the different outputs of the TF multioutput network
-  typedef enum TFMultioutputs {
-    is_antineutrino,
-    flavour,
-    interaction,
-    protons,
-    pions,
-    pizeros,
-    neutrons
-  } TFMultioutputsType;
+  enum TFMultioutputs { is_antineutrino, flavour, interaction, protons, pions, pizeros, neutrons };
 
   // Enumeration to describe the is_antineutrino-reduced TF multioutput network
-  typedef enum TFIsAntineutrino { kNeutrino, kAntineutrino } TFIsAntineutrinoType;
+  enum TFIsAntineutrino { kNeutrino, kAntineutrino };
 
   // Enumeration to describe the flavour-reduced TF multioutput network
-  typedef enum TFFlavour { kFlavNumuCC, kFlavNueCC, kFlavNutauCC, kFlavNC } TFFlavourType;
+  enum TFFlavour { kFlavNumuCC, kFlavNueCC, kFlavNutauCC, kFlavNC };
 
   // Enumeration to describe the interaction-reduced TF multioutput network
-  typedef enum TFInteraction { kInteQECC, kInteResCC, kInteDISCC, kInteOtherCC } TFInteractionType;
+  enum TFInteraction { kInteQECC, kInteResCC, kInteDISCC, kInteOtherCC };
 
   // Enumeration to describe the protons (topology information) TF multioutput network
-  typedef enum TFTopologyProtons {
-    kTop0proton,
-    kTop1proton,
-    kTop2proton,
-    kTopNproton
-  } TFTopologyProtonsType;
+  enum TFTopologyProtons { kTop0proton, kTop1proton, kTop2proton, kTopNproton };
 
   // Enumeration to describe the pions (topology information) TF multioutput network
-  typedef enum TFTopologyPions { kTop0pion, kTop1pion, kTop2pion, kTopNpion } TFTopologyPionsType;
+  enum TFTopologyPions { kTop0pion, kTop1pion, kTop2pion, kTopNpion };
 
   // Enumeration to describe the pizeros (topology information) TF multioutput network
-  typedef enum TFTopologyPizeros {
-    kTop0pizero,
-    kTop1pizero,
-    kTop2pizero,
-    kTopNpizero
-  } TFTopologyPizerosType;
+  enum TFTopologyPizeros { kTop0pizero, kTop1pizero, kTop2pizero, kTopNpizero };
 
   // Enumeration to describe the neutrons (topology information) TF multioutput network
-  typedef enum TFTopologyNeutrons {
-    kTop0neutron,
-    kTop1neutron,
-    kTop2neutron,
-    kTopNneutron
-  } TFTopologyNeutronsType;
+  enum TFTopologyNeutrons { kTop0neutron, kTop1neutron, kTop2neutron, kTopNneutron };
 
   // // It might be a good idea to consider topology information.
   // // We should use base two here so we can & and | results.
-  // typedef enum Topology
+  // enum Topology
   // {
   //   kTopUnset    = 0x000000,
   //   // Flavours
@@ -135,30 +112,13 @@ namespace lcvn {
   //   // Antineutrino
   //   kTopIsAntiNeutrino = 0x1000000
 
-  // } TopologyType;
+  // };
 
-  // typedef enum sign {
-  //   kNeutrino,
-  //   kAntineutrino
-  // } Sign;
+  enum TauType { kNotNutau, kNutauE, kNutauMu, kNutauHad };
 
-  typedef enum tau_type { kNotNutau, kNutauE, kNutauMu, kNutauHad } TauType;
+  enum TopologyType { kTopNue, kTopNumu, kTopNutauE, kTopNutauMu, kTopNutauHad, kTopNC };
 
-  typedef enum topology_type {
-    kTopNue,
-    kTopNumu,
-    kTopNutauE,
-    kTopNutauMu,
-    kTopNutauHad,
-    kTopNC
-  } TopologyType;
-
-  typedef enum topology_type_alt {
-    kTopNueLike,
-    kTopNumuLike,
-    kTopNutauLike,
-    kTopNCLike
-  } TopologyTypeAlt;
+  enum TopologyTypeAlt { kTopNueLike, kTopNumuLike, kTopNutauLike, kTopNCLike };
 
 }
 

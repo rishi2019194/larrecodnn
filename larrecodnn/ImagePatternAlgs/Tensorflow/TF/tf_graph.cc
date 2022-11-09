@@ -64,12 +64,11 @@ tf::Graph::Graph(const char* graph_file_name,
   }
 
   size_t ng = graph_def.node().size();
-  fInputName = graph_def.node()[0].name();
-
+  
   for (int i = 0; i < n_inputs; ++i) {
     fInputNames.push_back(graph_def.node()[i].name());
   }
-  //if(fUseBundle) fInputName="serving_default_"+fInputName;
+  
   if (fUseBundle) {
     auto sig_map = fBundle->meta_graph_def.signature_def();
     std::string sig_def = "serving_default";
@@ -83,12 +82,9 @@ tf::Graph::Graph(const char* graph_file_name,
     auto inputs = model_def.inputs();
     for (auto const& p : inputs) {
       input_keys.push_back(p.first);
-      fInputName = p.second.name();
       fInputNames.push_back(p.second.name());
     }
-    std::cout << "tf_graph InputName: " << fInputName << std::endl;
-    //auto input = model_def.inputs().at( inputs.front() );
-    //fInputName=input.name();
+    std::cout << "tf_graph InputName: " << fInputNames[0] << std::endl;
   }
 
   // last node as output if no specific name provided
@@ -205,21 +201,14 @@ std::vector<std::vector<float>> tf::Graph::run(
 std::vector<std::vector<float>> tf::Graph::run(const tensorflow::Tensor& x)
 {
   std::vector<std::pair<std::string, tensorflow::Tensor>> inputs = {
-    {fInputName, x}
-    //{ "conv1d_input", x }
+    {fInputNames[0], x}
   };
-
-  //std::cout << x.DebugString() << std::endl;
-  //std::cout << "run session" << std::endl;
-  //std::cout << "fInputName " << fInputName << std::endl;
 
   std::vector<tensorflow::Tensor> outputs;
   std::vector<std::string> outputNames;
   auto status = (fUseBundle) ?
                   fBundle->GetSession()->Run(inputs, fOutputNames, outputNames, &outputs) :
                   fSession->Run(inputs, fOutputNames, outputNames, &outputs);
-
-  //std::cout << "out size " << outputs.size() << std::endl;
 
   if (status.ok()) {
     size_t samples = 0, nouts = 0;
@@ -230,7 +219,6 @@ std::vector<std::vector<float>> tf::Graph::run(const tensorflow::Tensor& x)
       }
       nouts += outputs[o].dim_size(1);
     }
-    //std::cout << "samples " << samples << " nouts " << nouts << std::endl;
 
     std::vector<std::vector<float>> result;
     result.resize(samples, std::vector<float>(nouts));
@@ -296,8 +284,6 @@ std::vector<std::vector<std::vector<float>>> tf::Graph::runMulti(
                                       tensorflow::TensorShape({samples, rows, cols, 1})));
     }
 
-    //tensorflow::Tensor _x(tensorflow::DT_FLOAT, tensorflow::TensorShape({ samples, rows, cols, depth }));
-
     for (int view = 0; view < depth; ++view) {
       auto input_map = _x[view].tensor<float, 4>();
       for (long long int s = 0; s < samples; ++s) {
@@ -327,19 +313,9 @@ std::vector<std::vector<std::vector<float>>> tf::Graph::runMulti(
     inputs.push_back({fInputNames[i], x[i]});
   }
 
-  /*
-    // print input/outputs
-    for(int i = 0; i<n_inputs; ++i)
-        std::cout << inputs[i].first << std::endl;
-    for(int i = 0; i<n_outputs; ++i)
-        std::cout << fOutputNames[i] << std::endl;
-    */
-  //std::cout << "run session" << std::endl;
 
   std::vector<tensorflow::Tensor> outputs;
   auto status = fSession->Run(inputs, fOutputNames, {}, &outputs);
-
-  //std::cout << "out size " << outputs.size() << std::endl;
 
   if (status.ok()) {
     size_t samples = 0;

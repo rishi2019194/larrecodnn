@@ -25,8 +25,6 @@ namespace tf {
 
   class Graph {
   public:
-    int n_inputs = 1;
-    int n_outputs = 1;
 
     static std::unique_ptr<Graph> create(const char* graph_file_name,
                                          const std::vector<std::string>& outputs = {},
@@ -61,6 +59,8 @@ namespace tf {
     std::vector<std::vector<std::vector<float>>> runMulti(const std::vector<tensorflow::Tensor>& x);
 
   private:
+    int n_inputs;
+    int n_outputs;
     /// Not-throwing constructor.
     Graph(const char* graph_file_name,
           const std::vector<std::string>& outputs,
@@ -72,7 +72,6 @@ namespace tf {
     tensorflow::Session* fSession;
     bool fUseBundle;
     tensorflow::SavedModelBundle* fBundle;
-    std::string fInputName;
     std::vector<std::string> fInputNames;
     std::vector<std::string> fOutputNames;
   };
