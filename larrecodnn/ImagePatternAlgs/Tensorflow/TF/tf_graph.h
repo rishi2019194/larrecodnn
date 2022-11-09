@@ -25,7 +25,6 @@ namespace tf {
 
   class Graph {
   public:
-
     static std::unique_ptr<Graph> create(const char* graph_file_name,
                                          const std::vector<std::string>& outputs = {},
                                          bool use_bundle = false,

@@ -64,11 +64,11 @@ tf::Graph::Graph(const char* graph_file_name,
   }
 
   size_t ng = graph_def.node().size();
-  
+
   for (int i = 0; i < n_inputs; ++i) {
     fInputNames.push_back(graph_def.node()[i].name());
   }
-  
+
   if (fUseBundle) {
     auto sig_map = fBundle->meta_graph_def.signature_def();
     std::string sig_def = "serving_default";
@@ -200,9 +200,7 @@ std::vector<std::vector<float>> tf::Graph::run(
 
 std::vector<std::vector<float>> tf::Graph::run(const tensorflow::Tensor& x)
 {
-  std::vector<std::pair<std::string, tensorflow::Tensor>> inputs = {
-    {fInputNames[0], x}
-  };
+  std::vector<std::pair<std::string, tensorflow::Tensor>> inputs = {{fInputNames[0], x}};
 
   std::vector<tensorflow::Tensor> outputs;
   std::vector<std::string> outputNames;
@@ -312,7 +310,6 @@ std::vector<std::vector<std::vector<float>>> tf::Graph::runMulti(
   for (int i = 0; i < n_inputs; ++i) {
     inputs.push_back({fInputNames[i], x[i]});
   }
-
 
   std::vector<tensorflow::Tensor> outputs;
   auto status = fSession->Run(inputs, fOutputNames, {}, &outputs);
