@@ -31,13 +31,14 @@ namespace lcvn {
     std::vector<std::vector<float>> Predict(const PixelMap& pm) const override;
 
   private:
-    std::string fLibPath;                ///< Library path (typically dune_pardata...)
-    std::string fTFProtoBuf;             ///< location of the tf .pb file in the above path or the directory containing model files in SavedModel format (set UseBundle = true in this case)
-    bool fUseLogChargeScale;             ///< Is the charge using a log scale?
-    unsigned int fImageWires;            ///< Number of wires for the network to classify
-    unsigned int fImageTDCs;             ///< Number of tdcs for the network to classify
-    std::vector<bool> fReverseViews;     ///< Do we need to reverse any views?
-    bool fUseBundle;                     ///< Use a bundled model saved in the SavedModel format from Tensorflow
+    std::string fLibPath; ///< Library path (typically dune_pardata...)
+    std::string
+      fTFProtoBuf; ///< location of the tf .pb file in the above path or the directory containing model files in SavedModel format (set UseBundle = true in this case)
+    bool fUseLogChargeScale;         ///< Is the charge using a log scale?
+    unsigned int fImageWires;        ///< Number of wires for the network to classify
+    unsigned int fImageTDCs;         ///< Number of tdcs for the network to classify
+    std::vector<bool> fReverseViews; ///< Do we need to reverse any views?
+    bool fUseBundle; ///< Use a bundled model saved in the SavedModel format from Tensorflow
     std::unique_ptr<tf::Graph> fTFGraph; ///< Tensorflow graph
   };
 
