@@ -70,9 +70,7 @@ tf::Graph::Graph(const char* graph_file_name,
     for (auto const& p : model_def.inputs()) {
       fInputNames.push_back(p.second.name());
       std::cout << "tf_graph InputName: " << fInputNames.back() << std::endl;
-      std::cout << "  key: " << p.first
-                << " value: " << p.second.name()
-                << std::endl;
+      std::cout << "  key: " << p.first << " value: " << p.second.name() << std::endl;
     }
 
     // ... Get the output names
@@ -81,9 +79,7 @@ tf::Graph::Graph(const char* graph_file_name,
       std::cout << "tf_graph using all outputs:" << std::endl;
       for (auto const& p : model_def.outputs()) {
         fOutputNames.push_back(p.second.name());
-        std::cout << "  key: " << p.first
-                  << " value: " << p.second.name()
-                  << std::endl;
+        std::cout << "  key: " << p.first << " value: " << p.second.name() << std::endl;
       }
     }
     //  .. or use only the outputs whose keys are specified
@@ -93,9 +89,7 @@ tf::Graph::Graph(const char* graph_file_name,
         for (auto const& p : model_def.outputs()) {
           if (p.first == s) {
             fOutputNames.push_back(p.second.name());
-            std::cout << "  key: " << p.first
-                      << " value: " << p.second.name()
-                      << std::endl;
+            std::cout << "  key: " << p.first << " value: " << p.second.name() << std::endl;
           }
         }
       }
@@ -104,7 +98,6 @@ tf::Graph::Graph(const char* graph_file_name,
       std::cout << "tf_graph did not find outputs in SaveModelBundle." << std::endl;
       return;
     }
-
   }
   else {
 
@@ -179,8 +172,8 @@ std::vector<std::vector<float>> tf::Graph::run(const std::vector<std::vector<flo
   long long int rows = x.size(), cols = x.front().size();
 
   std::vector<tensorflow::Tensor> _x;
-  _x.push_back(tensorflow::Tensor(tensorflow::DT_FLOAT,
-                                  tensorflow::TensorShape({1, rows, cols, 1})));
+  _x.push_back(
+    tensorflow::Tensor(tensorflow::DT_FLOAT, tensorflow::TensorShape({1, rows, cols, 1})));
   auto input_map = _x[0].tensor<float, 4>();
 
   for (long long int r = 0; r < rows; ++r) {

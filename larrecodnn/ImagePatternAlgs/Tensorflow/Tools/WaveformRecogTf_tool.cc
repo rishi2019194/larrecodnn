@@ -62,8 +62,8 @@ namespace wavrec_tool {
 
     //std::cout<<"Samples: "<<samples<<", Ticks: "<<numtcks<<std::endl;
     std::vector<tensorflow::Tensor> _x;
-    _x.push_back(tensorflow::Tensor(tensorflow::DT_FLOAT,
-                                    tensorflow::TensorShape({samples , numtcks, 1})));
+    _x.push_back(
+      tensorflow::Tensor(tensorflow::DT_FLOAT, tensorflow::TensorShape({samples, numtcks, 1})));
     auto input_map = _x[0].tensor<float, 3>();
     for (long long int s = 0; s < samples; ++s) {
       const auto& wvfrm = waveforms[s];
