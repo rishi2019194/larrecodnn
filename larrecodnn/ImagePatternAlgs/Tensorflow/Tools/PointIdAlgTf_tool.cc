@@ -100,9 +100,9 @@ namespace PointIdAlgTools {
       }
     }
 
-    auto out = g->run(_x);
+    auto out = g->runx(_x);
     if (!out.empty())
-      return out.front().front();
+      return out.front();
     else
       return std::vector<float>();
   }
@@ -134,11 +134,7 @@ namespace PointIdAlgTools {
         }
       }
     }
-    auto out = g->run(_x);
-    if (!out.empty())
-      return out.front();
-    else
-      return std::vector<std::vector<float>>();
+    return g->runx(_x);
   }
 
 }

@@ -52,6 +52,7 @@ namespace tf {
       const std::vector<std::vector<std::vector<std::vector<float>>>>& x,
       long long int samples = -1);
     std::vector<std::vector<std::vector<float>>> run(const std::vector<tensorflow::Tensor>& x);
+    std::vector<std::vector<float>> runx(const std::vector<tensorflow::Tensor>& x);
 
   private:
     int n_inputs;

@@ -72,11 +72,7 @@ namespace wavrec_tool {
       }
     }
 
-    auto out = g->run(_x);
-    if (!out.empty())
-      return out.front();
-    else
-      return std::vector<std::vector<float>>();
+    return g->runx(_x);
   }
 
 }

@@ -307,3 +307,54 @@ std::vector<std::vector<std::vector<float>>> tf::Graph::run(
     return std::vector<std::vector<std::vector<float>>>();
   }
 }
+// -------------------------------------------------------------------
+
+std::vector<std::vector<float>> tf::Graph::runx(
+  const std::vector<tensorflow::Tensor>& x)
+{
+  std::vector<std::pair<std::string, tensorflow::Tensor>> inputs;
+  for (int i = 0; i < n_inputs; ++i) {
+    inputs.push_back({fInputNames[i], x[i]});
+  }
+
+  std::vector<tensorflow::Tensor> outputs;
+  std::vector<std::string> outputNames;
+  auto status = (fUseBundle) ?
+                  fBundle->GetSession()->Run(inputs, fOutputNames, outputNames, &outputs) :
+                  fSession->Run(inputs, fOutputNames, outputNames, &outputs);
+
+  if (status.ok()) {
+    size_t samples = 0, nouts = 0;
+
+    for (size_t o = 0; o < outputs.size(); ++o) {
+      if (o == 0) { samples = outputs[o].dim_size(0); }
+      else if ((int)samples != outputs[o].dim_size(0)) {
+        throw std::string("TF outputs size inconsistent.");
+      }
+      nouts += outputs[o].dim_size(1);
+    }
+
+    std::vector<std::vector<float>> result;
+    result.resize(samples, std::vector< float >(nouts));
+
+    size_t idx0 = 0;
+    for (size_t o = 0; o < outputs.size(); ++o) {
+      auto output_map = outputs[o].tensor<float, 2>();
+
+      size_t n = outputs[o].dim_size(1);
+      for (size_t s = 0; s < samples; ++s) {
+        std::vector< float > & vs = result[s];
+        for (size_t i = 0; i < n; ++i) {
+          vs[idx0 + i] = output_map(s, i);
+        }
+      }
+      idx0 += n;
+    }
+
+    return result;
+  }
+  else {
+    std::cout << status.ToString() << std::endl;
+    return std::vector<std::vector<float>>();
+  }
+}
