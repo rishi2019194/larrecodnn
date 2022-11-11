@@ -302,8 +302,7 @@ std::vector<std::vector<std::vector<float>>> tf::Graph::run(
 }
 // -------------------------------------------------------------------
 
-std::vector<std::vector<float>> tf::Graph::runx(
-  const std::vector<tensorflow::Tensor>& x)
+std::vector<std::vector<float>> tf::Graph::runx(const std::vector<tensorflow::Tensor>& x)
 {
   std::vector<std::pair<std::string, tensorflow::Tensor>> inputs;
   for (int i = 0; i < n_inputs; ++i) {
@@ -328,7 +327,7 @@ std::vector<std::vector<float>> tf::Graph::runx(
     }
 
     std::vector<std::vector<float>> result;
-    result.resize(samples, std::vector< float >(nouts));
+    result.resize(samples, std::vector<float>(nouts));
 
     size_t idx0 = 0;
     for (size_t o = 0; o < outputs.size(); ++o) {
@@ -336,7 +335,7 @@ std::vector<std::vector<float>> tf::Graph::runx(
 
       size_t n = outputs[o].dim_size(1);
       for (size_t s = 0; s < samples; ++s) {
-        std::vector< float > & vs = result[s];
+        std::vector<float>& vs = result[s];
         for (size_t i = 0; i < n; ++i) {
           vs[idx0 + i] = output_map(s, i);
         }
