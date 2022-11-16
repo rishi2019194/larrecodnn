@@ -126,8 +126,10 @@ std::vector<std::vector<float>> nnet::TfModelInterface::Run(
 
   long long int rows = inps.front().size(), cols = inps.front().front().size();
 
-  tensorflow::Tensor _x(tensorflow::DT_FLOAT, tensorflow::TensorShape({samples, rows, cols, 1}));
-  auto input_map = _x.tensor<float, 4>();
+  std::vector<tensorflow::Tensor> _x;
+  _x.push_back(
+    tensorflow::Tensor(tensorflow::DT_FLOAT, tensorflow::TensorShape({samples, rows, cols, 1})));
+  auto input_map = _x[0].tensor<float, 4>();
   for (long long int s = 0; s < samples; ++s) {
     const auto& sample = inps[s];
     for (long long int r = 0; r < rows; ++r) {
@@ -138,7 +140,7 @@ std::vector<std::vector<float>> nnet::TfModelInterface::Run(
     }
   }
 
-  return g->run(_x);
+  return g->runx(_x);
 }
 // ------------------------------------------------------
 
@@ -146,8 +148,10 @@ std::vector<float> nnet::TfModelInterface::Run(std::vector<std::vector<float>> c
 {
   long long int rows = inp2d.size(), cols = inp2d.front().size();
 
-  tensorflow::Tensor _x(tensorflow::DT_FLOAT, tensorflow::TensorShape({1, rows, cols, 1}));
-  auto input_map = _x.tensor<float, 4>();
+  std::vector<tensorflow::Tensor> _x;
+  _x.push_back(
+    tensorflow::Tensor(tensorflow::DT_FLOAT, tensorflow::TensorShape({1, rows, cols, 1})));
+  auto input_map = _x[0].tensor<float, 4>();
   for (long long int r = 0; r < rows; ++r) {
     const auto& row = inp2d[r];
     for (long long int c = 0; c < cols; ++c) {
@@ -155,7 +159,7 @@ std::vector<float> nnet::TfModelInterface::Run(std::vector<std::vector<float>> c
     }
   }
 
-  auto out = g->run(_x);
+  auto out = g->runx(_x);
   if (!out.empty())
     return out.front();
   else

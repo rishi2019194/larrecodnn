@@ -54,6 +54,8 @@ find_package(TensorFlow 2.6.0 QUIET EXPORT)
 find_package(Threads REQUIRED EXPORT)
 
 # macros for dictionary and simple_plugin
+include(ArtDictionary)
+include(CetMake)
 include(BuildPlugins)
 
 # source

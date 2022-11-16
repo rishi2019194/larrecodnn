@@ -308,12 +308,12 @@ end_product_list
 #
 ####################################
 qualifier	larreco		tensorflow	triton	larfinder
-c7:debug	c7:debug	c7:p392		c7      -nq-
-c7:prof 	c7:prof		c7:p392		c7      -nq-
-e19:debug	e19:debug	e19:p392	e19     -nq-
-e19:prof	e19:prof	e19:p392	e19     -nq-
-e20:debug	e20:debug	e20:p392	e20     -nq-
-e20:prof	e20:prof	e20:p392	e20     -nq-
+c7:debug	c7:debug	c7:p392		c7	-nq-
+c7:prof		c7:prof		c7:p392		c7	-nq-
+e19:debug	e19:debug	e19:p392	e19	-nq-
+e19:prof	e19:prof	e19:p392	e19	-nq-
+e20:debug	e20:debug	e20:p392	e20	-nq-
+e20:prof	e20:prof	e20:p392	e20	-nq-
 end_qualifier_list
 ####################################
 

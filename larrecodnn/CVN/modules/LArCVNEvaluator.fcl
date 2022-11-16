@@ -1,0 +1,31 @@
+BEGIN_PROLOG
+
+#   This file defines the configuration for the CVNEventDump module
+standard_lartfnethandler:
+{
+  LibPath: "PWD"
+  TFProtoBuf: ""
+  ChargeLogScale: false
+  NImageWires: 500
+  NImageTDCs  : 500
+  ReverseViews: [false,false,false]
+  UseBundle: false
+  NInputs: 3
+  NOutputs: 7
+}
+
+standard_larcvnevaluator:
+{
+  module_type:  LArCVNEvaluator
+  #==================
+  PixelMapInput: "cvnmap"
+  ResultLabel: "cvnresult"
+  CVNType: "Tensorflow"
+  MultiplePMs: false
+  TFHandler: {
+    tool_type: TFNetHandler
+    @table::standard_lartfnethandler
+  }
+}
+
+END_PROLOG

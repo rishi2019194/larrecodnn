@@ -1,0 +1,34 @@
+
+cet_make_library(SOURCE
+  ICVNMapper.cxx
+  ICVNZlibMaker.cxx
+  PixelMapProducer.cxx
+  ITFNetHandler.h
+  LIBRARIES
+  PUBLIC
+  larrecodnn::CVN_func
+  lardataobj::RecoBase
+  lardataobj::Simulation
+  art::Framework_Services_Registry
+  art::Framework_Core
+  art::Framework_Principal
+  canvas::canvas
+  messagefacility::MF_MessageLogger
+  fhiclcpp::fhiclcpp
+  art_plugin_types::module
+  Boost::filesystem
+  art_root_io::tfile_support
+  nusimdata::SimulationBase
+  ROOT::Hist
+  lardata::DetectorPropertiesService
+  larcore::Geometry_Geometry_service
+  larcorealg::Geometry
+  larrecodnn::ImagePatternAlgs_Tensorflow_TF
+  ${ZLIB_LIBRARIES}
+  PRIVATE
+  larsim::MCCheater_BackTrackerService_service
+  larsim::MCCheater_ParticleInventoryService_service
+)
+
+install_headers()
+install_source()

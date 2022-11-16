@@ -1,0 +1,54 @@
+BEGIN_PROLOG
+
+#   This file defines the configuration for the larcvnmapper modules
+standard_pixelmapproducer:
+{
+  TdcWidth:      500
+  WireLength:    2880 #Unwrapped collection view max (6 x 480)
+  TimeResolution: 1600
+  Threshold: 0
+  MultipleDrifts: false
+}
+
+standard_larcvnmapper:
+{
+  module_type:        LArCVNHitMapper
+  #==================
+#  HitsModuleLabel:   "gaushit"
+  HitsModuleLabel:   "hitfd"
+  ClusterPMLabel: "cvnmap"
+  MinClusterHits: 100
+  PixelMapProducer: @local::standard_pixelmapproducer
+}
+
+standard_larcvnmapper_wire:
+{
+  module_type:        LArCVNWireMapper
+  #==================
+  HitsModuleLabel:   "wclsdatanfsp:gauss"
+  ClusterPMLabel: "cvnmap"
+  MinClusterHits: 100
+  PixelMapProducer:
+  {
+    @table::standard_pixelmapproducer
+    TimeResolution: 1500
+    Threshold: 0.6
+  }
+}
+
+standard_larcvnmapper_sim:
+{
+  module_type:        LArCVNSimMapper
+  #==================
+  HitsModuleLabel:   "tpcrawdecoder:simpleSC"
+  ClusterPMLabel: "cvnmap"
+  MinClusterHits: 100
+  PixelMapProducer:
+  {
+    @table::standard_pixelmapproducer
+    TimeResolution: 1500
+    Threshold: 0.6
+  }
+}
+
+END_PROLOG
