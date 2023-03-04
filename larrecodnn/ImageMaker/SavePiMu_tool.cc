@@ -100,7 +100,7 @@ namespace dnn {
             //std::cout<<vhit[ihit]->WireID().toString()<<std::endl;
             auto endwire = vhit[ihit]->WireID();
             float endtime = vhit[ihit]->PeakTime();
-            float adc[50][50] = {0.};
+            float adc[50][50] = {{0.}};
             for (auto& wire : wires) {
               int channel = wire->Channel();
               auto wireids = geom->ChannelToWire(channel);
