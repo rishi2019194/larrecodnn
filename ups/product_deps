@@ -252,7 +252,7 @@ larreco		v09_17_04	-
 larfinder       v09_00_01       -
 cetmodules	v3_20_00	-	only_for_build
 tensorflow	v2_6_0		-	optional
-triton		v2_25_0		-	optional
+triton		v2_25_0a		-	optional
 end_product_list
 ####################################
 
