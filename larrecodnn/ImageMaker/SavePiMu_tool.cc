@@ -53,31 +53,26 @@ namespace dnn {
 
     // Get image information
     // * tracks
-    std::vector<art::Ptr<recob::Track>> tracklist;
+    auto const& tracks = e.getProduct<std::vector<recob::Track>>("pandoraTrack");
     auto trackListHandle = e.getHandle<std::vector<recob::Track>>("pandoraTrack");
-    if (trackListHandle) art::fill_ptr_vector(tracklist, trackListHandle);
-
     art::FindManyP<recob::Hit, recob::TrackHitMeta> fmthm(trackListHandle, e, "pandoraTrack");
 
-    std::vector<art::Ptr<recob::Wire>> wires;
-    auto wireListHandle = e.getHandle<std::vector<recob::Wire>>("wclsdatasp:gauss");
-    if (wireListHandle) { art::fill_ptr_vector(wires, wireListHandle); }
+    // * wires
+    auto const& wires = e.getProduct<std::vector<recob::Wire>>("wclsdatasp:gauss");
 
-    // * MC truth information
-    std::vector<art::Ptr<simb::MCTruth>> mclist;
-    auto mctruthListHandle = e.getHandle<std::vector<simb::MCTruth>>("generator");
-    if (mctruthListHandle) art::fill_ptr_vector(mclist, mctruthListHandle);
+    // * MC truth
+    auto const& mclist = e.getProduct<std::vector<simb::MCTruth>>("generator");
 
     unsigned short flag = 999;
     if (!mclist.empty()) {
-      auto particle = mclist[0]->GetParticle(0);
+      auto particle = mclist[0].GetParticle(0);
       //std::cout<<"pdg = "<<particle.PdgCode()<<std::endl;
       if (std::abs(particle.PdgCode()) == 13) flag = 0;
       if (std::abs(particle.PdgCode()) == 211) flag = 1;
     }
 
-    if (!tracklist.empty()) {
-      auto trkend = tracklist[0]->End();
+    if (!tracks.empty()) {
+      auto trkend = tracks[0].End();
       if (trkend.X() > -360 + 50 && trkend.X() < 360 - 50 && trkend.Y() > 50 &&
           trkend.Y() < 610 - 50 && trkend.Z() > 50 && trkend.Z() < 710 - 50) {
         //std::cout<<trkend.X()<<" "<<trkend.Y()<<" "<<trkend.Z()<<std::endl;
@@ -102,14 +97,14 @@ namespace dnn {
             float endtime = vhit[ihit]->PeakTime();
             float adc[50][50] = {{0.}};
             for (auto& wire : wires) {
-              int channel = wire->Channel();
+              int channel = wire.Channel();
               auto wireids = geom->ChannelToWire(channel);
               //std::cout<<wireids[0].toString()<<std::endl;
               if (wireids[0].Plane == 2 && wireids[0].TPC == endwire.TPC &&
                   wireids[0].Wire >= endwire.Wire - 25 && wireids[0].Wire < endwire.Wire + 25) {
                 int idx = wireids[0].Wire - endwire.Wire + 25;
                 //std::cout<<"idx = "<<idx<<std::endl;
-                const recob::Wire::RegionsOfInterest_t& signalROI = wire->SignalROI();
+                const recob::Wire::RegionsOfInterest_t& signalROI = wire.SignalROI();
                 int lasttick = 0;
                 for (const auto& range : signalROI.get_ranges()) {
                   const auto& waveform = range.data();
