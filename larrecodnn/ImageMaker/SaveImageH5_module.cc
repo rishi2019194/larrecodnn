@@ -39,7 +39,6 @@ public:
   void beginJob() override;
 
 private:
-
   hep_hpc::hdf5::File hdffile;
   std::function<decltype(dnn::saveImage)> saveImage_;
   std::string fHDF5FileName;
@@ -50,8 +49,7 @@ dnn::SaveImageH5::SaveImageH5(fhicl::ParameterSet const& p)
   , saveImage_{art::make_tool<decltype(dnn::saveImage)>(p.get<fhicl::ParameterSet>("imageMaker"),
                                                         "saveImage")}
   , fHDF5FileName(p.get<std::string>("HDF5NAME"))
-{
-}
+{}
 
 dnn::SaveImageH5::~SaveImageH5() noexcept {}
 
