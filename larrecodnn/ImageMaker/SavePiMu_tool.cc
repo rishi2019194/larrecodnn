@@ -66,7 +66,6 @@ namespace dnn {
     unsigned short flag = 999;
     if (!mclist.empty()) {
       auto particle = mclist[0].GetParticle(0);
-      //std::cout<<"pdg = "<<particle.PdgCode()<<std::endl;
       if (std::abs(particle.PdgCode()) == 13) flag = 0;
       if (std::abs(particle.PdgCode()) == 211) flag = 1;
     }
@@ -75,7 +74,6 @@ namespace dnn {
       auto trkend = tracks[0].End();
       if (trkend.X() > -360 + 50 && trkend.X() < 360 - 50 && trkend.Y() > 50 &&
           trkend.Y() < 610 - 50 && trkend.Z() > 50 && trkend.Z() < 710 - 50) {
-        //std::cout<<trkend.X()<<" "<<trkend.Y()<<" "<<trkend.Z()<<std::endl;
         if (fmthm.isValid()) {
           auto vhit = fmthm.at(0);
           auto vmeta = fmthm.data(0);
@@ -83,7 +81,6 @@ namespace dnn {
           int maxindex = -1;
           for (size_t i = 0; i < vhit.size(); ++i) {
             if (vmeta[i]->Index() == std::numeric_limits<int>::max()) { continue; }
-            //std::cout<<i<<" "<<vmeta[i]->Index()<<std::endl;
             if (vhit[i]->WireID().Plane == 2) {
               if (int(vmeta[i]->Index()) > maxindex) {
                 maxindex = vmeta[i]->Index();
@@ -92,18 +89,15 @@ namespace dnn {
             }
           }
           if (ihit >= 0) {
-            //std::cout<<vhit[ihit]->WireID().toString()<<std::endl;
             auto endwire = vhit[ihit]->WireID();
             float endtime = vhit[ihit]->PeakTime();
             float adc[50][50] = {{0.}};
             for (auto& wire : wires) {
               int channel = wire.Channel();
               auto wireids = geom->ChannelToWire(channel);
-              //std::cout<<wireids[0].toString()<<std::endl;
               if (wireids[0].Plane == 2 && wireids[0].TPC == endwire.TPC &&
                   wireids[0].Wire >= endwire.Wire - 25 && wireids[0].Wire < endwire.Wire + 25) {
                 int idx = wireids[0].Wire - endwire.Wire + 25;
-                //std::cout<<"idx = "<<idx<<std::endl;
                 const recob::Wire::RegionsOfInterest_t& signalROI = wire.SignalROI();
                 int lasttick = 0;
                 for (const auto& range : signalROI.get_ranges()) {
@@ -119,7 +113,6 @@ namespace dnn {
                   for (size_t i = 0; i < waveform.size(); ++i) {
                     if (lasttick >= int(endtime) - 25 && lasttick < int(endtime) + 25) {
                       adc[idx][lasttick - int(endtime) + 25] = waveform[i];
-                      //std::cout<<idx<<" "<<lasttick-int(endtime)-25<<" "<<waveform[i]<<std::endl;
                       ++lasttick;
                     }
                   }
