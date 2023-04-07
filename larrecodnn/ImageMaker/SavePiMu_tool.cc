@@ -80,7 +80,7 @@ namespace dnn {
           int ihit = -1;
           int maxindex = -1;
           for (size_t i = 0; i < vhit.size(); ++i) {
-            if (vmeta[i]->Index() == std::numeric_limits<int>::max()) { continue; }
+            if (vmeta[i]->Index() == std::numeric_limits<unsigned int>::max()) { continue; }
             if (vhit[i]->WireID().Plane == 2) {
               if (int(vmeta[i]->Index()) > maxindex) {
                 maxindex = vmeta[i]->Index();
