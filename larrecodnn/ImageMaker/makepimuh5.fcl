@@ -1,0 +1,36 @@
+#include "services_dune.fcl"
+
+process_name: HDF5Ana
+
+services:
+{
+  MemoryTracker:     {}
+  TimeTracker:       {}
+  @table::protodune_services
+}
+
+source:
+{
+  module_type: RootInput
+  maxEvents:  10        # Number of events to create
+}
+
+physics:
+{
+ analyzers:
+{
+}
+ ana:  [ pimuh5 ]
+
+ end_paths:     [ana]
+}
+
+physics.analyzers.pimuh5: {
+    module_type: "SaveImageH5"
+    HDF5NAME: "test.h5"
+    imageMaker:{
+        tool_type: SavePiMu
+    }
+}
+
+services.BackTrackerService.BackTracker.SimChannelModuleLabel: "tpcrawdecoder:simpleSC"
