@@ -1,10 +1,11 @@
 
+# at this time, hep_hpc does not define target libraries
 include_directories($ENV{HEP_HPC_INC})
-include_directories($ENV{HDF5_INC})
+
 cet_build_plugin(SaveImageH5 art::EDAnalyzer
   LIBRARIES PRIVATE
-  hep_hpc_hdf5
-  hdf5_libraries
+  ${HEP_HPC_HDF5}
+  HDF5::HDF5
 )
 
 cet_build_plugin(SavePiMu art::tool
@@ -14,8 +15,8 @@ cet_build_plugin(SavePiMu art::tool
   larcorealg::Geometry
   lardataobj::RecoBase
   nusimdata::SimulationBase
-  hep_hpc_hdf5
-  hdf5_libraries
+  ${HEP_HPC_HDF5}
+  HDF5::HDF5
 )
 
 

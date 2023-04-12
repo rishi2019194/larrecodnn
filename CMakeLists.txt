@@ -54,7 +54,7 @@ find_package(TRITON QUIET EXPORT)
 find_package(TensorFlow 2.6.0 QUIET EXPORT)
 find_package(Threads REQUIRED EXPORT)
 
-find_package(hdf5 REQUIRED EXPORT) 
+find_package(HDF5 REQUIRED EXPORT)
 find_package(hep_hpc REQUIRED EXPORT) 
 
 # macros for dictionary and simple_plugin
