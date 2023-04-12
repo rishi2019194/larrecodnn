@@ -177,7 +177,7 @@ namespace nnet {
     , fNone(config().None())
     , fStopTrk(config().StopTrk())
     , fCleanTrk(config().CleanTrk())
-    , fEngine(art::ServiceHandle<rndm::NuRandomService>()->createEngine(*this))
+    , fEngine(art::ServiceHandle<rndm::NuRandomService>()->registerAndSeedEngine(createEngine(0)))
   {
     fGeometry = &*(art::ServiceHandle<geo::Geometry const>());
 
