@@ -1,3 +1,5 @@
 add_subdirectory(ImagePatternAlgs)
-add_subdirectory(CVN)
+if (TensorFlow_FOUND)
+  add_subdirectory(CVN)
+endif()
 add_subdirectory(ImageMaker)
