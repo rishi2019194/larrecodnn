@@ -552,8 +552,8 @@ void nnet::RawWaveformClnSigDump::analyze(art::Event const& evt)
       for (auto const& itpr : tchpv) {
         if (signalchancount==fMaxSignalChannelsPerEvent) break;
         int i = fRandFlat.fireInt(
-          itpr.second.size()); // randomly select one channel with a signal from this particle
-        chnum = itpr.second[i];
+          itpr->second.size()); // randomly select one channel with a signal from this particle
+        chnum = itpr->second[i];
 
         if (not selected_channels.insert(chnum).second) { continue; }
 
