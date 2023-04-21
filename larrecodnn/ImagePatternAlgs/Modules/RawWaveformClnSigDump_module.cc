@@ -133,6 +133,7 @@ private:
   int fMaxNumberOfElectrons;
   int fMinPureSignalADCs;
   bool fSaveSignal;
+  int fMaxSignalChannelsPerEvent;
   int fMaxNoiseChannelsPerEvent;
   std::string fCollectionPlaneLabel;
   art::ServiceHandle<geo::Geometry> fgeom;
@@ -207,6 +208,7 @@ nnet::RawWaveformClnSigDump::RawWaveformClnSigDump(fhicl::ParameterSet const& p)
   , fMaxNumberOfElectrons(p.get<int>("MaxNumberOfElectrons", -1))
   , fMinPureSignalADCs(p.get<int>("MinPureSignalADCs", 0))
   , fSaveSignal(p.get<bool>("SaveSignal", true))
+  , fMaxSignalChannelsPerEvent(p.get<int>("MaxSignalChannelsPerEvent", -1))
   , fMaxNoiseChannelsPerEvent(p.get<int>("MaxNoiseChannelsPerEvent"))
   , fCollectionPlaneLabel(p.get<std::string>("CollectionPlaneLabel"))
   , fRandFlat{createEngine(art::ServiceHandle<rndm::NuRandomService> {}
@@ -536,10 +538,22 @@ void nnet::RawWaveformClnSigDump::analyze(art::Event const& evt)
 
     // ... Now write out the signal waveforms for each track
     if (!Trk2ChVecMap.empty()) {
+      // .. first put each pair of the map in a new vector of pairs, then randomly shuffle that vector;
+      //    after that loop over the shuffled vector of pairs
+      using trk2chvecpair = std::pair<const int, std::vector<raw::ChannelID_t>>;
+      std::vector<const trk2chvecpair*> tchpv;
       for (auto const& ittrk : Trk2ChVecMap) {
+        tchpv.emplace_back(&ittrk);
+      }
+      auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+      std::shuffle(std::begin(tchpv), std::end(tchpv),std::mt19937(seed));
+
+      int signalchancount = 0;
+      for (auto const& itpr : tchpv) {
+        if (signalchancount==fMaxSignalChannelsPerEvent) break;
         int i = fRandFlat.fireInt(
-          ittrk.second.size()); // randomly select one channel with a signal from this particle
-        chnum = ittrk.second[i];
+          itpr.second.size()); // randomly select one channel with a signal from this particle
+        chnum = itpr.second[i];
 
         if (not selected_channels.insert(chnum).second) { continue; }
 
@@ -618,6 +632,7 @@ void nnet::RawWaveformClnSigDump::analyze(art::Event const& evt)
             for (unsigned int itck = 0; itck < dataSize; ++itck) {
               c2numpy_int16(&npywriter2, adcvec2[itck]);
             }
+            ++signalchancount;
           }
           else {
 
@@ -747,7 +762,7 @@ void nnet::RawWaveformClnSigDump::analyze(art::Event const& evt)
                    ++itck) {
                 c2numpy_int16(&npywriter2, adcvec2[itck]);
               }
-
+              ++signalchancount;
             } // foundmaxsig
           }
         }
