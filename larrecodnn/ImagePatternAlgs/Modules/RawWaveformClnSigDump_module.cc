@@ -546,11 +546,11 @@ void nnet::RawWaveformClnSigDump::analyze(art::Event const& evt)
         tchpv.emplace_back(&ittrk);
       }
       auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-      std::shuffle(std::begin(tchpv), std::end(tchpv),std::mt19937(seed));
+      std::shuffle(std::begin(tchpv), std::end(tchpv), std::mt19937(seed));
 
       int signalchancount = 0;
       for (auto const& itpr : tchpv) {
-        if (signalchancount==fMaxSignalChannelsPerEvent) break;
+        if (signalchancount == fMaxSignalChannelsPerEvent) break;
         int i = fRandFlat.fireInt(
           itpr->second.size()); // randomly select one channel with a signal from this particle
         chnum = itpr->second[i];
