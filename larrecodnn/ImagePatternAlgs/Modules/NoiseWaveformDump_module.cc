@@ -191,23 +191,21 @@ void nnet::NoiseWaveformDump::analyze(art::Event const& evt)
     art::ServiceHandle<detinfo::DetectorPropertiesService const>()->DataFor(evt, clockData);
 
   // ... Use the handle to get a particular (0th) element of collection.
-  unsigned int dataSize;
-  art::Ptr<raw::RawDigit> digitVec0(digitVecHandle, 0);
-  dataSize = digitVec0->Samples(); //size of raw data vectors
+  std::vector<raw::RawDigit> const& rawDigits = *digitVecHandle;
+  raw::RawDigit const& digitVec0 = rawDigits[0];
+  unsigned int dataSize = digitVec0.Samples(); //size of raw data vectors
   if (dataSize != detProp.ReadOutWindowSize()) {
     throw cet::exception("NoiseWaveformDumpNoiseWaveformDump") << "Bad dataSize: " << dataSize;
-    return;
   }
 
   // ... Build a map from channel number -> rawdigitVec
-  std::map<raw::ChannelID_t, art::Ptr<raw::RawDigit>> rawdigitMap;
+  std::map<raw::ChannelID_t, raw::RawDigit const*> rawdigitMap;
   raw::ChannelID_t chnum = raw::InvalidChannelID; // channel number
-  for (size_t rdIter = 0; rdIter < digitVecHandle->size(); ++rdIter) {
-    art::Ptr<raw::RawDigit> digitVec(digitVecHandle, rdIter);
-    chnum = digitVec->Channel();
+  for (size_t rdIter = 0; rdIter < rawDigits.size(); ++rdIter) {
+    chnum = rawDigits[rdIter].Channel();
     if (chnum == raw::InvalidChannelID) continue;
     if (geo::PlaneGeo::ViewName(fgeom->View(chnum)) != fPlaneToDump[0]) continue;
-    rawdigitMap[chnum] = digitVec;
+    rawdigitMap[chnum] = &rawDigits[rdIter];
   }
 
   // ... Read in sim channel list
@@ -236,10 +234,8 @@ void nnet::NoiseWaveformDump::analyze(art::Event const& evt)
 
     // ... Loop over all ticks with ionization energy deposited
     auto const& timeSlices = channel.TDCIDEMap();
-    for (auto const& timeSlice : timeSlices) {
+    for (auto const& [tpctime, energyDeposits] : timeSlices) {
 
-      auto const& energyDeposits = timeSlice.second;
-      auto const tpctime = timeSlice.first;
       unsigned int tdctick = static_cast<unsigned int>(clockData.TPCTDC2Tick(double(tpctime)));
       if (tdctick < 0 || tdctick > (dataSize - 1)) continue;
 
@@ -257,7 +253,7 @@ void nnet::NoiseWaveformDump::analyze(art::Event const& evt)
   } // loop over SimChannels
 
   // .. Now construct noise channel vector from updated rawdigitMap
-  for (std::map<raw::ChannelID_t, art::Ptr<raw::RawDigit>>::iterator iter = rawdigitMap.begin();
+  for (std::map<raw::ChannelID_t, raw::RawDigit const*>::iterator iter = rawdigitMap.begin();
        iter != rawdigitMap.end();
        ++iter) {
     noisechannels.push_back(iter->first);
