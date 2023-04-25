@@ -21,25 +21,23 @@ using namespace hep_hpc::hdf5;
 
 namespace dnn {
 
-  class SavePiMu : public ImageMaker{
+  class SavePiMu : public ImageMaker {
   public:
-
     explicit SavePiMu(fhicl::ParameterSet const& ps);
-    
+
     void saveImage(art::Event const& e, hep_hpc::hdf5::File& hdffile) override;
 
   private:
     art::InputTag fTrackModuleLabel;
     art::InputTag fWireModuleLabel;
     art::InputTag fMCTruthLabel;
-
   };
 
   SavePiMu::SavePiMu(fhicl::ParameterSet const& ps)
     : fTrackModuleLabel{ps.get<art::InputTag>("TrackModuleLabel")}
     , fWireModuleLabel{ps.get<art::InputTag>("WireModuleLabel")}
     , fMCTruthLabel{ps.get<art::InputTag>("MCTruthLabel")}
-{}
+  {}
 
   void SavePiMu::saveImage(art::Event const& e, hep_hpc::hdf5::File& hdffile)
   {

@@ -3,7 +3,7 @@
 
 namespace dnn {
 
-  class ImageMaker{
+  class ImageMaker {
   public:
     virtual ~ImageMaker() noexcept = default;
     virtual void saveImage(art::Event const&, hep_hpc::hdf5::File&) = 0;
