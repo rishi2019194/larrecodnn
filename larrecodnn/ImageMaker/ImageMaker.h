@@ -3,6 +3,9 @@
 
 namespace dnn {
 
-  void saveImage(art::Event const&, hep_hpc::hdf5::File&);
-
+  class ImageMaker{
+  public:
+    virtual ~ImageMaker() noexcept = default;
+    virtual void saveImage(art::Event const&, hep_hpc::hdf5::File&) = 0;
+  };
 }

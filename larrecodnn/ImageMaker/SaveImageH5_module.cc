@@ -40,14 +40,13 @@ public:
 
 private:
   hep_hpc::hdf5::File hdffile;
-  std::function<decltype(dnn::saveImage)> saveImage_;
+  std::unique_ptr<dnn::ImageMaker> saveImage_;
   std::string fHDF5FileName;
 };
 
 dnn::SaveImageH5::SaveImageH5(fhicl::ParameterSet const& p)
   : EDAnalyzer{p}
-  , saveImage_{art::make_tool<decltype(dnn::saveImage)>(p.get<fhicl::ParameterSet>("imageMaker"),
-                                                        "saveImage")}
+  , saveImage_{art::make_tool<dnn::ImageMaker>(p.get<fhicl::ParameterSet>("imageMaker"))}
   , fHDF5FileName(p.get<std::string>("HDF5NAME"))
 {}
 
@@ -55,7 +54,7 @@ dnn::SaveImageH5::~SaveImageH5() noexcept {}
 
 void dnn::SaveImageH5::analyze(art::Event const& e)
 {
-  saveImage_(e, hdffile);
+  saveImage_->saveImage(e, hdffile);
 }
 
 void dnn::SaveImageH5::beginJob()

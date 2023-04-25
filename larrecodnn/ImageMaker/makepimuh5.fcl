@@ -30,6 +30,9 @@ physics.analyzers.pimuh5: {
     HDF5NAME: "test.h5"
     imageMaker:{
         tool_type: SavePiMu
+        TrackModuleLabel: "pandoraTrack"
+        WireModuleLabel: "wclsdatasp:gauss"
+        MCTruthLabel: "generator"
     }
 }
 

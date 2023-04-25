@@ -21,7 +21,27 @@ using namespace hep_hpc::hdf5;
 
 namespace dnn {
 
-  void saveImage(art::Event const& e, hep_hpc::hdf5::File& hdffile)
+  class SavePiMu : public ImageMaker{
+  public:
+
+    explicit SavePiMu(fhicl::ParameterSet const& ps);
+    
+    void saveImage(art::Event const& e, hep_hpc::hdf5::File& hdffile) override;
+
+  private:
+    art::InputTag fTrackModuleLabel;
+    art::InputTag fWireModuleLabel;
+    art::InputTag fMCTruthLabel;
+
+  };
+
+  SavePiMu::SavePiMu(fhicl::ParameterSet const& ps)
+    : fTrackModuleLabel{ps.get<art::InputTag>("TrackModuleLabel")}
+    , fWireModuleLabel{ps.get<art::InputTag>("WireModuleLabel")}
+    , fMCTruthLabel{ps.get<art::InputTag>("MCTruthLabel")}
+{}
+
+  void SavePiMu::saveImage(art::Event const& e, hep_hpc::hdf5::File& hdffile)
   {
 
     art::ServiceHandle<geo::Geometry> geom;
@@ -53,15 +73,15 @@ namespace dnn {
 
     // Get image information
     // * tracks
-    auto const& tracks = e.getProduct<std::vector<recob::Track>>("pandoraTrack");
-    auto trackListHandle = e.getHandle<std::vector<recob::Track>>("pandoraTrack");
-    art::FindManyP<recob::Hit, recob::TrackHitMeta> fmthm(trackListHandle, e, "pandoraTrack");
+    auto const& tracks = e.getProduct<std::vector<recob::Track>>(fTrackModuleLabel);
+    auto trackListHandle = e.getHandle<std::vector<recob::Track>>(fTrackModuleLabel);
+    art::FindManyP<recob::Hit, recob::TrackHitMeta> fmthm(trackListHandle, e, fTrackModuleLabel);
 
     // * wires
-    auto const& wires = e.getProduct<std::vector<recob::Wire>>("wclsdatasp:gauss");
+    auto const& wires = e.getProduct<std::vector<recob::Wire>>(fWireModuleLabel);
 
     // * MC truth
-    auto const& mclist = e.getProduct<std::vector<simb::MCTruth>>("generator");
+    auto const& mclist = e.getProduct<std::vector<simb::MCTruth>>(fMCTruthLabel);
 
     unsigned short flag = 999;
     if (!mclist.empty()) {
@@ -137,4 +157,4 @@ namespace dnn {
   }
 }
 
-DEFINE_ART_FUNCTION_TOOL(dnn::saveImage, "saveImage")
+DEFINE_ART_CLASS_TOOL(dnn::SavePiMu)
