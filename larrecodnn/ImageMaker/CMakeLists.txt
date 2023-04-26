@@ -19,7 +19,6 @@ cet_build_plugin(SavePiMu art::tool
   HDF5::HDF5
 )
 
-
 install_headers()
 install_fhicl()
 install_source()
