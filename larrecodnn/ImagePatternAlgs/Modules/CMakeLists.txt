@@ -133,6 +133,28 @@ cet_build_plugin(RawWaveformDump art::EDAnalyzer
   CLHEP::Random
 )
 
+cet_build_plugin(NoiseWaveformDump art::EDAnalyzer
+  LIBRARIES PRIVATE
+  larsim::MCCheater_ParticleInventoryService_service
+  larevt::ChannelStatusProvider
+  larevt::ChannelStatusService
+  lardata::DetectorClocksService
+  lardata::DetectorPropertiesService
+  larcorealg::Geometry
+  lardataobj::RawData
+  lardataobj::RecoBase
+  lardataobj::Simulation
+  larcoreobj::SimpleTypesAndConstants
+  nusimdata::SimulationBase
+  nurandom::RandomUtils_NuRandomService_service
+  art::Framework_Services_Registry
+  canvas::canvas
+  messagefacility::MF_MessageLogger
+  fhiclcpp::fhiclcpp
+  cetlib_except::cetlib_except
+  CLHEP::Random
+)
+
 cet_build_plugin(WaveformRoiFinder art::EDProducer
   LIBRARIES PRIVATE
   larrecodnn::WaveformRecognizer
