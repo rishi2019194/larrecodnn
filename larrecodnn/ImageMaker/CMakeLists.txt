@@ -4,7 +4,7 @@ include_directories($ENV{HEP_HPC_INC})
 
 cet_build_plugin(SaveImageH5 art::EDAnalyzer
   LIBRARIES PRIVATE
-  hep_hpc_hdf5
+  ${HEP_HPC_HDF5}
   HDF5::HDF5
 )
 
@@ -15,7 +15,7 @@ cet_build_plugin(SavePiMu art::tool
   larcorealg::Geometry
   lardataobj::RecoBase
   nusimdata::SimulationBase
-  hep_hpc_hdf5
+  ${HEP_HPC_HDF5}
   HDF5::HDF5
 )
 
