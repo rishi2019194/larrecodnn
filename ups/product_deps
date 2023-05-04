@@ -313,8 +313,8 @@ c14:debug	c14:debug	c14:p3913	c14     -nq-       c14:debug
 c14:prof 	c14:prof	c14:p3913	c14     -nq-       c14:prof
 c7:debug	c7:debug	c7:p3913	c7      -nq-       c7:debug
 c7:prof 	c7:prof		c7:p3913	c7      -nq-       c7:prof
-e26:debug	e26:debug	e26:p3913	e26     -nq-       e26:prof
-e26:prof	e26:prof	e26:p3913	e26     -nq-       e26:debug
+e26:debug	e26:debug	e26:p3913	e26     -nq-       e26:debug
+e26:prof	e26:prof	e26:p3913	e26     -nq-       e26:prof
 e20:debug	e20:debug	e20:p3913	e20     -nq-       e20:debug
 e20:prof	e20:prof	e20:p3913	e20     -nq-       e20:prof
 end_qualifier_list
