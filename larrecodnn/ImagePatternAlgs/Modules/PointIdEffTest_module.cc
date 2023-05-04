@@ -555,7 +555,7 @@ int nnet::PointIdEffTest::testCNN(detinfo::DetectorClocksData const& clockData,
   double p_michel = 0;
   if (fMichelLikeIdx >= 0) { fpMichel_cl = cnn_out[fMichelLikeIdx]; }
 
-  double totEnSh = 0, totEnTrk = 0, totEnMichel = 0;
+  double totEnSh = 0, totEnTrk = 0;
   for (auto const& hit : hits) {
     // the channel associated with this hit.
     auto hitChannelNumber = hit->Channel();
@@ -616,7 +616,6 @@ int nnet::PointIdEffTest::testCNN(detinfo::DetectorClocksData const& clockData,
     }
     totEnSh += hitEnSh;
     totEnTrk += hitEnTrk;
-    totEnMichel += hitEnMichel;
 
     double hitAdc =
       hit->SummedADC() * fCalorimetryAlg.LifetimeCorrection(clockData, detProp, hit->PeakTime());
