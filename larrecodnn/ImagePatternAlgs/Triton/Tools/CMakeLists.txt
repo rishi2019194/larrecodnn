@@ -10,8 +10,8 @@ cet_build_plugin(PointIdAlgSonicTriton lar::PointIdAlgorithm
 
 cet_build_plugin(PointIdAlgTriton lar::PointIdAlgorithm
   LIBRARIES PRIVATE
-  TRITON::grpcclient
-  gRPC::grpc # Should be a transitive (INTERFACE) dependency of TRITON::grpcclient
+  TritonClient::grpcclient
+  gRPC::grpc # Should be a transitive (INTERFACE) dependency of TritonClient::grpcclient
   messagefacility::MF_MessageLogger
   fhiclcpp::types
   fhiclcpp::fhiclcpp
