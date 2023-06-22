@@ -13,6 +13,8 @@ namespace fhicl {
 
 #include "grpc_client.h"
 
+namespace nic = triton::client;
+
 namespace lartriton {
 
   class TritonClient {
@@ -50,7 +52,7 @@ namespace lartriton {
 
   protected:
     //helper
-    bool getResults(std::shared_ptr<nvidia::inferenceserver::client::InferResult> results);
+    bool getResults(std::shared_ptr<nic::InferResult> results);
 
     void start();
     void evaluate();
@@ -73,12 +75,12 @@ namespace lartriton {
     bool verbose_;
 
     //IO pointers for triton
-    std::vector<nvidia::inferenceserver::client::InferInput*> inputsTriton_;
-    std::vector<const nvidia::inferenceserver::client::InferRequestedOutput*> outputsTriton_;
+    std::vector<nic::InferInput*> inputsTriton_;
+    std::vector<const nic::InferRequestedOutput*> outputsTriton_;
 
-    std::unique_ptr<nvidia::inferenceserver::client::InferenceServerGrpcClient> client_;
+    std::unique_ptr<nic::InferenceServerGrpcClient> client_;
     //stores timeout, model name and version
-    nvidia::inferenceserver::client::InferOptions options_;
+    nic::InferOptions options_;
   };
 
 }

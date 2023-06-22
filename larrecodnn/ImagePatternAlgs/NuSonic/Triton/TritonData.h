@@ -12,6 +12,9 @@
 #include <vector>
 
 #include "grpc_client.h"
+#include "triton/common/model_config.h"
+
+namespace nic = triton::client;
 
 namespace lartriton {
 
@@ -28,7 +31,7 @@ namespace lartriton {
   template <typename IO>
   class TritonData {
   public:
-    using Result = nvidia::inferenceserver::client::InferResult;
+    using Result = nic::InferResult;
     using TensorMetadata = inference::ModelMetadataResponse_TensorMetadata;
     using ShapeType = std::vector<int64_t>;
     using ShapeView = triton_span::Span<ShapeType::const_iterator>;
@@ -97,9 +100,9 @@ namespace lartriton {
     std::shared_ptr<Result> result_;
   };
 
-  using TritonInputData = TritonData<nvidia::inferenceserver::client::InferInput>;
+  using TritonInputData = TritonData<nic::InferInput>;
   using TritonInputMap = std::unordered_map<std::string, TritonInputData>;
-  using TritonOutputData = TritonData<nvidia::inferenceserver::client::InferRequestedOutput>;
+  using TritonOutputData = TritonData<nic::InferRequestedOutput>;
   using TritonOutputMap = std::unordered_map<std::string, TritonOutputData>;
 
   template <>
@@ -107,14 +110,14 @@ namespace lartriton {
   template <>
   void TritonOutputData::reset();
   template <>
-  void TritonInputData::createObject(nvidia::inferenceserver::client::InferInput** ioptr) const;
+  void TritonInputData::createObject(nic::InferInput** ioptr) const;
   template <>
   void TritonOutputData::createObject(
-    nvidia::inferenceserver::client::InferRequestedOutput** ioptr) const;
+    nic::InferRequestedOutput** ioptr) const;
 
   //explicit template instantiation declarations
-  extern template class TritonData<nvidia::inferenceserver::client::InferInput>;
-  extern template class TritonData<nvidia::inferenceserver::client::InferRequestedOutput>;
+  extern template class TritonData<nic::InferInput>;
+  extern template class TritonData<nic::InferRequestedOutput>;
 
 }
 #endif

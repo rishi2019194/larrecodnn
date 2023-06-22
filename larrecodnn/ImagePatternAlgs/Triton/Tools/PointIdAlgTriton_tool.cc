@@ -12,8 +12,7 @@
 // Nvidia Triton inference server client includes
 #include "grpc_client.h"
 
-namespace ni = nvidia::inferenceserver;
-namespace nic = nvidia::inferenceserver::client;
+namespace nic = triton::client;
 
 #include <algorithm>
 #include <memory>
