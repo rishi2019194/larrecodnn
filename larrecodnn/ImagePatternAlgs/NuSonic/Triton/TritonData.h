@@ -112,8 +112,7 @@ namespace lartriton {
   template <>
   void TritonInputData::createObject(nic::InferInput** ioptr) const;
   template <>
-  void TritonOutputData::createObject(
-    nic::InferRequestedOutput** ioptr) const;
+  void TritonOutputData::createObject(nic::InferRequestedOutput** ioptr) const;
 
   //explicit template instantiation declarations
   extern template class TritonData<nic::InferInput>;
