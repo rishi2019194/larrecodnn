@@ -9,14 +9,6 @@
 namespace ni = triton::common;
 namespace nic = triton::client;
 
-namespace triton {
-  namespace common {
-    //in libgrpcclient.so, but corresponding header src/core/model_config.h not available
-    size_t GetDataTypeByteSize(const inference::DataType dtype);
-    inference::DataType ProtocolStringToDataType(const std::string& dtype);
-  } // namespace common
-} // namespace triton
-
 namespace lartriton {
 
   //dims: kept constant, represents config.pbtxt parameters of model (converted from google::protobuf::RepeatedField to vector)
