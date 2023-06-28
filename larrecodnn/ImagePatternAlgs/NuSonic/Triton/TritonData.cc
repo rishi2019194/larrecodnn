@@ -6,16 +6,8 @@
 #include <cstring>
 #include <sstream>
 
-namespace ni = nvidia::inferenceserver;
-namespace nic = ni::client;
-
-namespace nvidia {
-  namespace inferenceserver {
-    //in libgrpcclient.so, but corresponding header src/core/model_config.h not available
-    size_t GetDataTypeByteSize(const inference::DataType dtype);
-    inference::DataType ProtocolStringToDataType(const std::string& dtype);
-  } // namespace inferenceserver
-} // namespace nvidia
+namespace ni = triton::common;
+namespace nic = triton::client;
 
 namespace lartriton {
 

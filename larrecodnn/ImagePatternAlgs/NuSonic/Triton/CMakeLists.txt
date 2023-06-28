@@ -6,6 +6,7 @@ cet_make_library(SOURCE
   PUBLIC
   TritonClient::grpcclient
   gRPC::grpc # Should be a transitive (INTERFACE) dependency of TritonClient::grpcclient
+  TritonCommon::triton-common-model-config
   PRIVATE
   messagefacility::MF_MessageLogger
   fhiclcpp::fhiclcpp

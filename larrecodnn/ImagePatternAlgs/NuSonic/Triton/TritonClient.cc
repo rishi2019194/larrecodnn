@@ -15,8 +15,7 @@
 #include <tuple>
 #include <utility>
 
-namespace ni = nvidia::inferenceserver;
-namespace nic = ni::client;
+namespace nic = triton::client;
 
 //based on https://github.com/triton-inference-server/server/blob/v2.3.0/src/clients/c++/examples/simple_grpc_async_infer_client.cc
 //and https://github.com/triton-inference-server/server/blob/v2.3.0/src/clients/c++/perf_client/perf_client.cc
@@ -224,9 +223,6 @@ namespace lartriton {
 
     std::shared_ptr<nic::InferResult> results_ptr(results);
     status = getResults(results_ptr);
-
-    //status = getResults(std::make_shared<nvidia::inferenceserver::client::InferResult> (results));
-    //status = getResults(std::make_shared<nic::InferResult> (results));
 
     finish(status);
   }
