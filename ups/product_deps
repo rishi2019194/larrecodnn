@@ -248,7 +248,7 @@ fwdir	product_dir	config_data
 #
 ####################################
 product		version		qual	flags		<table_format=2>
-larreco		v09_20_02	-
+larreco		v09_20_03	-
 larfinder       v09_00_01       -
 cetmodules	v3_20_00	-	only_for_build
 tensorflow	v2_6_4		-	optional
