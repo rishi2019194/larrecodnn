@@ -87,7 +87,7 @@
 #>  define_pythonpath
 ####################################
 parent		larrecodnn
-defaultqual	e20
+defaultqual	e26
 ####################################
 
 ####################################
@@ -248,7 +248,7 @@ fwdir	product_dir	config_data
 #
 ####################################
 product		version		qual	flags		<table_format=2>
-larreco		v09_22_03	-
+larreco		v09_22_04	-
 larfinder       v09_00_01       -
 cetmodules	v3_20_00	-	only_for_build
 tensorflow	v2_6_4		-	optional
@@ -311,12 +311,8 @@ end_product_list
 qualifier	larreco		tensorflow	triton	larfinder  hep_hpc
 c14:debug	c14:debug	c14:p3913	c14     -nq-       c14:debug
 c14:prof 	c14:prof	c14:p3913	c14     -nq-       c14:prof
-c7:debug	c7:debug	c7:p3913	c7      -nq-       c7:debug
-c7:prof 	c7:prof		c7:p3913	c7      -nq-       c7:prof
 e26:debug	e26:debug	e26:p3913	e26     -nq-       e26:debug
 e26:prof	e26:prof	e26:p3913	e26     -nq-       e26:prof
-e20:debug	e20:debug	e20:p3913	e20     -nq-       e20:debug
-e20:prof	e20:prof	e20:p3913	e20     -nq-       e20:prof
 end_qualifier_list
 ####################################
 
