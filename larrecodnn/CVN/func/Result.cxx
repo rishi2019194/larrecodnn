@@ -24,7 +24,10 @@ namespace lcvn {
     }
   }
 
-  Result::Result(const std::vector<std::vector<float>> output) { fOutput = output; }
+  Result::Result(const std::vector<std::vector<float>> output)
+  {
+    fOutput = output;
+  }
 
   Result::Result() : fOutput() {}
 

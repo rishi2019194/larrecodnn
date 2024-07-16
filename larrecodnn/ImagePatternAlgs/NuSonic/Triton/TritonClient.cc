@@ -185,7 +185,10 @@ namespace lartriton {
     return true;
   }
 
-  void TritonClient::start() { tries_ = 0; }
+  void TritonClient::start()
+  {
+    tries_ = 0;
+  }
 
   //default case for sync and pseudo async
   void TritonClient::evaluate()

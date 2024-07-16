@@ -46,7 +46,10 @@ namespace nnet {
   {}
   // ------------------------------------------------------
 
-  void EmTrackClusterId3outTl::produce(art::Event& evt) { fEmTrack.produce(evt); }
+  void EmTrackClusterId3outTl::produce(art::Event& evt)
+  {
+    fEmTrack.produce(evt);
+  }
   // ------------------------------------------------------
 
   DEFINE_ART_MODULE(EmTrackClusterId3outTl)

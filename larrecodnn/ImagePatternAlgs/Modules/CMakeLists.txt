@@ -168,6 +168,22 @@ cet_build_plugin(WaveformRoiFinder art::EDProducer
   cetlib_except::cetlib_except
 )
 
+cet_build_plugin(WaveformDenoiseTest art::EDProducer
+  LIBRARIES PRIVATE
+  larrecodnn::WaveformRecognizer
+  larrecodnn::WaveformDenoiser
+  larcore::Geometry_Geometry_service
+  lardata::DetectorClocksService
+  lardata::DetectorPropertiesService
+  lardataobj::RawData
+  lardataobj::RecoBase
+  art_plugin_support::toolMaker
+  canvas::canvas
+  messagefacility::MF_MessageLogger
+  fhiclcpp::fhiclcpp
+  cetlib_except::cetlib_except
+)
+
 install_headers()
 install_fhicl()
 install_source()

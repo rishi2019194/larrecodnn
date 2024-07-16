@@ -1,0 +1,3 @@
+#include "testinference_uB_slice_job.fcl"
+
+physics.producers.NuGraph: @local::NuGraphTriton

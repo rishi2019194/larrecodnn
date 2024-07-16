@@ -38,7 +38,10 @@ namespace lcvn {
     return ret;
   }
 
-  geo::WireID HitHelper::GetID() { return fHit.WireID(); }
+  geo::WireID HitHelper::GetID()
+  {
+    return fHit.WireID();
+  }
 
   Waveform WireHelper::GetWaveform()
   {

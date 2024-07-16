@@ -189,10 +189,11 @@ nnet::RawWaveformDump::RawWaveformDump(fhicl::ParameterSet const& p)
   , fSaveSignal(p.get<bool>("SaveSignal", true))
   , fMaxNoiseChannelsPerEvent(p.get<int>("MaxNoiseChannelsPerEvent"))
   , fCollectionPlaneLabel(p.get<std::string>("CollectionPlaneLabel"))
-  , fRandFlat{createEngine(art::ServiceHandle<rndm::NuRandomService> {}
-                             ->declareEngine(instanceName, p, "SeedForRawWaveformDump"),
-                           "HepJamesRandom",
-                           instanceName)}
+  , fRandFlat{createEngine(
+      art::ServiceHandle<rndm::NuRandomService> {}
+      -> declareEngine(instanceName, p, "SeedForRawWaveformDump"),
+      "HepJamesRandom",
+      instanceName)}
 {
   if (std::getenv("CLUSTER") && std::getenv("PROCESS")) {
     fDumpWaveformsFileName +=

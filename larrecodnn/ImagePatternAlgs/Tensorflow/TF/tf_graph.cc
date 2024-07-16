@@ -350,3 +350,45 @@ std::vector<std::vector<float>> tf::Graph::runx(const std::vector<tensorflow::Te
     return std::vector<std::vector<float>>();
   }
 }
+// -------------------------------------------------------------------
+
+std::vector<std::vector<float>> tf::Graph::runae(const std::vector<tensorflow::Tensor>& x)
+{
+  std::vector<std::pair<std::string, tensorflow::Tensor>> inputs;
+  for (int i = 0; i < n_inputs; ++i) {
+    inputs.push_back({fInputNames[i], x[i]});
+  }
+
+  std::vector<tensorflow::Tensor> outputs;
+  std::vector<std::string> outputNames;
+  auto status = (fUseBundle) ?
+                  fBundle->GetSession()->Run(inputs, fOutputNames, outputNames, &outputs) :
+                  fSession->Run(inputs, fOutputNames, outputNames, &outputs);
+
+  if (status.ok()) {
+    size_t samples = 0, npoints = 0;
+
+    if (outputs.size() > 1) { throw std::string("TF runae: detected more than one output."); }
+
+    samples = outputs[0].dim_size(0);
+    npoints = outputs[0].dim_size(1);
+
+    std::vector<std::vector<float>> result;
+    result.resize(samples, std::vector<float>(npoints));
+
+    auto output_map = outputs[0].tensor<float, 3>();
+
+    for (size_t s = 0; s < samples; ++s) {
+      std::vector<float>& vs = result[s];
+      for (size_t i = 0; i < npoints; ++i) {
+        vs[i] = output_map(s, i, 0);
+      }
+    }
+
+    return result;
+  }
+  else {
+    std::cout << status.ToString() << std::endl;
+    return std::vector<std::vector<float>>();
+  }
+}

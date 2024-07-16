@@ -98,10 +98,11 @@ nnet::NoiseWaveformDump::NoiseWaveformDump(fhicl::ParameterSet const& p)
   , fShortWaveformSize(p.get<unsigned int>("ShortWaveformSize"))
   , fPlaneToDump(p.get<std::string>("PlaneToDump"))
   , fMaxNoiseChannelsPerEvent(p.get<int>("MaxNoiseChannelsPerEvent"))
-  , fRandFlat{createEngine(art::ServiceHandle<rndm::NuRandomService> {}
-                             ->declareEngine(instanceName, p, "SeedForNoiseWaveformDump"),
-                           "HepJamesRandom",
-                           instanceName)}
+  , fRandFlat{createEngine(
+      art::ServiceHandle<rndm::NuRandomService> {}
+      -> declareEngine(instanceName, p, "SeedForNoiseWaveformDump"),
+      "HepJamesRandom",
+      instanceName)}
 {
   if (std::getenv("CLUSTER") && std::getenv("PROCESS")) {
     fDumpWaveformsFileName +=
@@ -210,49 +211,44 @@ void nnet::NoiseWaveformDump::analyze(art::Event const& evt)
 
   // ... Read in sim channel list
   auto simChannelHandle = evt.getValidHandle<std::vector<sim::SimChannel>>(fSimChannelLabel);
-
   std::cout << " !!!!! Size of simChannelHandle: " << simChannelHandle->size() << std::endl;
-  if (!simChannelHandle->size()) return;
 
-  std::string dummystr6 = "none  ";
-  std::string dummystr7 = "none   ";
+  if (simChannelHandle->size() > 0) {
 
-  // ... Create a vector to hold channels numbers of signal and noise channels
-  std::vector<raw::ChannelID_t> signalchannels;
-  std::vector<raw::ChannelID_t> noisechannels;
+    // ... Loop over simChannels to find all signal channels and erase them
+    //     from the rawdigitMap
+    for (auto const& channel : (*simChannelHandle)) {
 
-  // ... Loop over simChannels to find all signal channels and erase them
-  //     from the rawdigitMap
-  for (auto const& channel : (*simChannelHandle)) {
+      // .. get simChannel channel number
+      const raw::ChannelID_t ch1 = channel.Channel();
+      if (ch1 == raw::InvalidChannelID) continue;
+      if (geo::PlaneGeo::ViewName(fgeom->View(ch1)) != fPlaneToDump[0]) continue;
 
-    // .. get simChannel channel number
-    const raw::ChannelID_t ch1 = channel.Channel();
-    if (ch1 == raw::InvalidChannelID) continue;
-    if (geo::PlaneGeo::ViewName(fgeom->View(ch1)) != fPlaneToDump[0]) continue;
+      bool hasEnergyDeposit = false;
 
-    bool hasEnergyDeposit = false;
+      // ... Loop over all ticks with ionization energy deposited
+      auto const& timeSlices = channel.TDCIDEMap();
+      for (auto const& [tpctime, energyDeposits] : timeSlices) {
 
-    // ... Loop over all ticks with ionization energy deposited
-    auto const& timeSlices = channel.TDCIDEMap();
-    for (auto const& [tpctime, energyDeposits] : timeSlices) {
+        unsigned int tdctick = static_cast<unsigned int>(clockData.TPCTDC2Tick(double(tpctime)));
+        if (tdctick < 0 || tdctick > (dataSize - 1)) continue;
 
-      unsigned int tdctick = static_cast<unsigned int>(clockData.TPCTDC2Tick(double(tpctime)));
-      if (tdctick < 0 || tdctick > (dataSize - 1)) continue;
-
-      // ... Loop over all energy depositions in this tick
-      for (auto const& energyDeposit : energyDeposits) {
-        if ((energyDeposit.energy > 0) || (energyDeposit.numElectrons > 0)) {
-          hasEnergyDeposit = true;
-          break;
+        // ... Loop over all energy depositions in this tick
+        for (auto const& energyDeposit : energyDeposits) {
+          if ((energyDeposit.energy > 0) || (energyDeposit.numElectrons > 0)) {
+            hasEnergyDeposit = true;
+            break;
+          }
         }
+        if (hasEnergyDeposit) break;
       }
-      if (hasEnergyDeposit) break;
-    }
-    if (hasEnergyDeposit) rawdigitMap.erase(ch1);
+      if (hasEnergyDeposit) rawdigitMap.erase(ch1);
 
-  } // loop over SimChannels
+    } // loop over SimChannels
+  }
 
   // .. Now construct noise channel vector from updated rawdigitMap
+  std::vector<raw::ChannelID_t> noisechannels;
   for (std::map<raw::ChannelID_t, raw::RawDigit const*>::iterator iter = rawdigitMap.begin();
        iter != rawdigitMap.end();
        ++iter) {
@@ -271,6 +267,9 @@ void nnet::NoiseWaveformDump::analyze(art::Event const& evt)
   for (size_t i = 0; i < noisechannels.size(); ++i)
     randigitmap.push_back(i);
   std::shuffle(randigitmap.begin(), randigitmap.end(), std::mt19937(seed));
+
+  std::string dummystr6 = "none  ";
+  std::string dummystr7 = "none   ";
 
   for (size_t rdIter = 0; rdIter < noisechannels.size(); ++rdIter) {
 
