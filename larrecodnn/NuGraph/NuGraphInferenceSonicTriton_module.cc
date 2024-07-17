@@ -17,11 +17,14 @@
 #include "canvas/Utilities/InputTag.h"
 #include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
+#include "art/Utilities/ToolMacros.h"
+#include "fhiclcpp/types/Table.h"
 
 #include <array>
 #include <limits>
 #include <memory>
 
+#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
 #include "lardataobj/AnalysisBase/MVAOutput.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/SpacePoint.h"
@@ -35,10 +38,11 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <torch/torch.h>
 
 #include "grpc_client.h"
 
-class NuGraphInferenceSonicTriton;
+class NuGraphInferenceTriton;
 
 using anab::FeatureVector;
 using anab::MVADescription;
@@ -104,15 +108,15 @@ void printFloatArray(const float* data, size_t num_elements) {
 }
 
 
-class NuGraphInferenceSonicTriton : public art::EDProducer {
+class NuGraphInferenceTriton : public art::EDProducer {
 public:
-  explicit NuGraphInferenceSonicTriton(fhicl::ParameterSet const& p);
+  explicit NuGraphInferenceTriton(fhicl::ParameterSet const& p);
 
   // Plugins should not be copied or assigned.
-  NuGraphInferenceSonicTriton(NuGraphInferenceSonicTriton const&) = delete;
-  NuGraphInferenceSonicTriton(NuGraphInferenceSonicTriton&&) = delete;
-  NuGraphInferenceSonicTriton& operator=(NuGraphInferenceSonicTriton const&) = delete;
-  NuGraphInferenceSonicTriton& operator=(NuGraphInferenceSonicTriton&&) = delete;
+  NuGraphInferenceTriton(NuGraphInferenceTriton const&) = delete;
+  NuGraphInferenceTriton(NuGraphInferenceTriton&&) = delete;
+  NuGraphInferenceTriton& operator=(NuGraphInferenceTriton const&) = delete;
+  NuGraphInferenceTriton& operator=(NuGraphInferenceTriton&&) = delete;
 
   // Required functions.
   void produce(art::Event& e) override;
@@ -130,7 +134,7 @@ private:
   bool vertexDecoder;
 };
 
-NuGraphInferenceSonicTriton::NuGraphInferenceSonicTriton(fhicl::ParameterSet const& p)
+NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
   : EDProducer{p}
   , planes(p.get<vector<std::string>>("planes"))
   , hitInput(p.get<art::InputTag>("hitInput"))
@@ -157,7 +161,7 @@ NuGraphInferenceSonicTriton::NuGraphInferenceSonicTriton(fhicl::ParameterSet con
   if (vertexDecoder) { produces<vector<recob::Vertex>>("vertex"); }
 }
 
-void NuGraphInferenceSonicTriton::produce(art::Event& e)
+void NuGraphInferenceTriton::produce(art::Event& e)
 {
 
   art::Handle<vector<Hit>> hitListHandle;
@@ -186,6 +190,12 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
     if (vertexDecoder) { e.put(std::move(vertcol), "vertex"); }
     return;
   }
+  vector<vector<size_t>> idsmap(planes.size(), vector<size_t>());
+  vector<size_t> idsmapRev(hitlist.size(), hitlist.size());
+  for (auto h : hitlist) {
+    idsmap[h->View()].push_back(h.key());
+    idsmapRev[h.key()] = idsmap[h->View()].size() - 1;
+  }
 
   // event id
   int run = e.id().run();
@@ -198,10 +208,10 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   evtID[2] = event;  
 
   // hit table
-  vector<size_t> hit_table_hit_id_data;
-  vector<size_t> hit_table_local_plane_data;
+  vector<int32_t> hit_table_hit_id_data;
+  vector<int32_t> hit_table_local_plane_data;
   vector<float>  hit_table_local_time_data;
-  vector<size_t> hit_table_local_wire_data;
+  vector<int32_t> hit_table_local_wire_data;
   vector<float>  hit_table_integral_data;
   vector<float>  hit_table_rms_data;
   for (auto h : hitlist) {
@@ -228,10 +238,10 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   }
 
   // space point table
-  vector<size_t> spacepoint_table_spacepoint_id_data;
-  vector<int> spacepoint_table_hit_id_u_data;
-  vector<int> spacepoint_table_hit_id_v_data;
-  vector<int> spacepoint_table_hit_id_y_data;
+  vector<int32_t> spacepoint_table_spacepoint_id_data;
+  vector<int32_t> spacepoint_table_hit_id_u_data;
+  vector<int32_t> spacepoint_table_hit_id_v_data;
+  vector<int32_t> spacepoint_table_hit_id_y_data;
   for (size_t i = 0; i < splist.size(); ++i) {
     spacepoint_table_spacepoint_id_data.push_back(i);
     spacepoint_table_hit_id_u_data.push_back(-1);
@@ -244,394 +254,58 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
     }
   }
 
+  std::cout<<hit_table_hit_id_data.size()<<std::endl;
+  std::cout<<hit_table_local_plane_data.size()<<std::endl;
+  std::cout<<hit_table_local_time_data.size()<<std::endl;
+  std::cout<<hit_table_local_wire_data.size()<<std::endl;
+  std::cout<<hit_table_integral_data.size()<<std::endl;
+  std::cout<<hit_table_rms_data.size()<<std::endl;
+  std::cout<<spacepoint_table_spacepoint_id_data.size()<<std::endl;
+  std::cout<<spacepoint_table_hit_id_u_data.size()<<std::endl; 
+  std::cout<<spacepoint_table_hit_id_v_data.size()<<std::endl;
+  std::cout<<spacepoint_table_hit_id_y_data.size()<<std::endl;
+
 
   //Here the input should be sent to Triton
-  bool verbose = false;
-  std::string url("triton.fnal.gov:443");
-  tc::Headers http_headers;
-  uint32_t client_timeout = 0;
-  bool use_ssl = true;
-  std::string root_certificates;
-  std::string private_key;
-  std::string certificate_chain;
-  grpc_compression_algorithm compression_algorithm =
-      grpc_compression_algorithm::GRPC_COMPRESS_NONE;
-  bool test_use_cached_channel = false;
-  bool use_cached_channel = true;
+  std::string fTritonModelName = "nugraph2";
+  std::string fTritonURL = "triton.fnal.gov:443";
+  bool fTritonVerbose = false;
+  std::string fTritonModelVersion = "";
+  unsigned fTritonTimeout = 1000;
+  unsigned fTritonAllowedTries = 1;
+  std::unique_ptr<lartriton::TritonClient> triton_client;
 
-  // the element-wise difference.
-  std::string model_name = "nugraph2";
-  std::string model_version = "";
+  // ... Create parameter set for Triton inference client
+  fhicl::ParameterSet TritonPset;
+  TritonPset.put("serverURL", fTritonURL);
+  TritonPset.put("verbose", fTritonVerbose);
+  TritonPset.put("modelName", fTritonModelName);
+  TritonPset.put("modelVersion", fTritonModelVersion);
+  TritonPset.put("timeout", fTritonTimeout);
+  TritonPset.put("allowedTries", fTritonAllowedTries);
+  TritonPset.put("outputs", "[]");
 
-  // Create a InferenceServerGrpcClient instance to communicate with the
-  // server using gRPC protocol.
-  std::unique_ptr<tc::InferenceServerGrpcClient> client;
-  tc::SslOptions ssl_options = tc::SslOptions();
-  std::string err;
-  if (use_ssl) {
-    ssl_options.root_certificates = root_certificates;
-    ssl_options.private_key = private_key;
-    ssl_options.certificate_chain = certificate_chain;
-    err = "unable to create secure grpc client";
-  } else {
-    err = "unable to create grpc client";
+  // ... Create the Triton inference client
+  triton_client = std::make_unique<lartriton::TritonClient>(TritonPset);
+
+  triton_client->setBatchSize(1); // set batch size
+
+  // ~~~~ Initialize the inputs
+  auto& triton_input = triton_client->input().begin()->second;
+
+  // Create data1
+  auto data1 = std::make_shared<lartriton::TritonInput<int32_t>>();
+  data1->reserve(1); 
+
+  // Emplace back hit_table_hit_id_data into data1
+  auto& img = data1->emplace_back(); 
+
+  // Fill img with elements from hit_table_hit_id_data
+  for (size_t i = 0; i < hit_table_hit_id_data.size(); ++i) {
+      img.push_back(hit_table_hit_id_data[i]); 
   }
-  // Run with the same name to ensure cached channel is not used
-  int numRuns = test_use_cached_channel ? 2 : 1;
-  for (int i = 0; i < numRuns; ++i) {
-    FAIL_IF_ERR(
-        tc::InferenceServerGrpcClient::Create(
-            &client, url, verbose, use_ssl, ssl_options, tc::KeepAliveOptions(),
-            use_cached_channel),
-        err);
-
-
-
-    std::vector<int64_t> hit_table_shape{int64_t(hit_table_hit_id_data.size())};
-    std::vector<int64_t> spacepoint_table_shape{int64_t(spacepoint_table_spacepoint_id_data.size())};
-  
-    // Initialize the inputs with the data.
-    tc::InferInput* hit_table_hit_id;
-    tc::InferInput* hit_table_local_plane;
-    tc::InferInput* hit_table_local_time;
-    tc::InferInput* hit_table_local_wire;
-    tc::InferInput* hit_table_integral;
-    tc::InferInput* hit_table_rms;
-
-    tc::InferInput* spacepoint_table_spacepoint_id;
-    tc::InferInput* spacepoint_table_hit_id_u;
-    tc::InferInput* spacepoint_table_hit_id_v;
-    tc::InferInput* spacepoint_table_hit_id_y;
-
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_hit_id, "hit_table_hit_id", hit_table_shape, "INT32"),
-        "unable to get hit_table_hit_id");
-    std::shared_ptr<tc::InferInput> hit_table_hit_id_ptr;
-    hit_table_hit_id_ptr.reset(hit_table_hit_id);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_local_plane, "hit_table_local_plane", hit_table_shape, "INT32"),
-        "unable to get hit_table_local_plane");
-    std::shared_ptr<tc::InferInput> hit_table_local_plane_ptr;
-    hit_table_local_plane_ptr.reset(hit_table_local_plane);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_local_time, "hit_table_local_time", hit_table_shape, "FP32"),
-        "unable to get hit_table_local_time");
-    std::shared_ptr<tc::InferInput> hit_table_local_time_ptr;
-    hit_table_local_time_ptr.reset(hit_table_local_time);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_local_wire, "hit_table_local_wire", hit_table_shape, "INT32"),
-        "unable to get hit_table_local_wire");
-    std::shared_ptr<tc::InferInput> hit_table_local_wire_ptr;
-    hit_table_local_wire_ptr.reset(hit_table_local_wire);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_integral, "hit_table_integral", hit_table_shape, "FP32"),
-        "unable to get hit_table_integral");
-    std::shared_ptr<tc::InferInput> hit_table_integral_ptr;
-    hit_table_integral_ptr.reset(hit_table_integral);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&hit_table_rms, "hit_table_rms", hit_table_shape, "FP32"),
-        "unable to get hit_table_rms");
-    std::shared_ptr<tc::InferInput> hit_table_rms_ptr;
-    hit_table_rms_ptr.reset(hit_table_rms);
-
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&spacepoint_table_spacepoint_id, "spacepoint_table_spacepoint_id", spacepoint_table_shape, "INT32"),
-        "unable to get spacepoint_table_spacepoint_id");
-    std::shared_ptr<tc::InferInput> spacepoint_table_spacepoint_id_ptr;
-    spacepoint_table_spacepoint_id_ptr.reset(spacepoint_table_spacepoint_id);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&spacepoint_table_hit_id_u, "spacepoint_table_hit_id_u", spacepoint_table_shape, "INT32"),
-        "unable to get spacepoint_table_spacepoint_hit_id_u");
-    std::shared_ptr<tc::InferInput> spacepoint_table_hit_id_u_ptr;
-    spacepoint_table_hit_id_u_ptr.reset(spacepoint_table_hit_id_u);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&spacepoint_table_hit_id_v, "spacepoint_table_hit_id_v", spacepoint_table_shape, "INT32"),
-        "unable to get spacepoint_table_spacepoint_hit_id_v");
-    std::shared_ptr<tc::InferInput> spacepoint_table_hit_id_v_ptr;
-    spacepoint_table_hit_id_v_ptr.reset(spacepoint_table_hit_id_v);
-
-    FAIL_IF_ERR(
-        tc::InferInput::Create(&spacepoint_table_hit_id_y, "spacepoint_table_hit_id_y", spacepoint_table_shape, "INT32"),
-        "unable to get spacepoint_table_spacepoint_hit_id_y");
-    std::shared_ptr<tc::InferInput> spacepoint_table_hit_id_y_ptr;
-    spacepoint_table_hit_id_y_ptr.reset(spacepoint_table_hit_id_y);
-
-
-
-    FAIL_IF_ERR(
-        hit_table_hit_id_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_hit_id_data[0]),
-            hit_table_hit_id_data.size() * sizeof(float)),
-        "unable to set data for hit_table_hit_id");
-
-    FAIL_IF_ERR(
-        hit_table_local_plane_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_local_plane_data[0]),
-            hit_table_local_plane_data.size() * sizeof(float)),
-        "unable to set data for hit_table_local_plane");
-    
-    FAIL_IF_ERR(
-        hit_table_local_time_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_local_time_data[0]),
-            hit_table_local_time_data.size() * sizeof(float)),
-        "unable to set data for hit_table_local_time");
-
-    FAIL_IF_ERR(
-        hit_table_local_wire_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_local_wire_data[0]),
-            hit_table_local_wire_data.size() * sizeof(float)),
-        "unable to set data for hit_table_local_wire");
-
-    FAIL_IF_ERR(
-        hit_table_integral_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_integral_data[0]),
-            hit_table_integral_data.size() * sizeof(float)),
-        "unable to set data for hit_table_integral");
-
-    FAIL_IF_ERR(
-        hit_table_rms_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&hit_table_rms_data[0]),
-            hit_table_rms_data.size() * sizeof(float)),
-        "unable to set data for hit_table_rms");
-
-    FAIL_IF_ERR(
-        spacepoint_table_spacepoint_id_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&spacepoint_table_spacepoint_id_data[0]),
-            spacepoint_table_spacepoint_id_data.size() * sizeof(float)),
-        "unable to set data for spacepoint_table_spacepoint_id");
-
-    FAIL_IF_ERR(
-        spacepoint_table_hit_id_u_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&spacepoint_table_hit_id_u_data[0]),
-            spacepoint_table_hit_id_u_data.size() * sizeof(float)),
-        "unable to set data for spacepoint_table_hit_id_u");
-
-    FAIL_IF_ERR(
-        spacepoint_table_hit_id_v_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&spacepoint_table_hit_id_v_data[0]),
-            spacepoint_table_hit_id_v_data.size() * sizeof(float)),
-        "unable to set data for spacepoint_table_hit_id_v");
-
-    FAIL_IF_ERR(
-        spacepoint_table_hit_id_y_ptr->AppendRaw(
-            reinterpret_cast<uint8_t*>(&spacepoint_table_hit_id_y_data[0]),
-            spacepoint_table_hit_id_y_data.size() * sizeof(float)),
-        "unable to set data for spacepoint_table_hit_id_y");
-
-    // Generate the outputs to be requested.
-    tc::InferRequestedOutput* x_semantic_u;
-    tc::InferRequestedOutput* x_semantic_v;
-    tc::InferRequestedOutput* x_semantic_y;
-    tc::InferRequestedOutput* x_filter_u;
-    tc::InferRequestedOutput* x_filter_v;
-    tc::InferRequestedOutput* x_filter_y;
-
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_semantic_u, "x_semantic_u"),
-        "unable to get 'x_semantic_u'");
-    std::shared_ptr<tc::InferRequestedOutput> x_semantic_u_ptr;
-    x_semantic_u_ptr.reset(x_semantic_u);
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_semantic_v, "x_semantic_v"),
-        "unable to get 'x_semantic_v'");
-    std::shared_ptr<tc::InferRequestedOutput> x_semantic_v_ptr;
-    x_semantic_v_ptr.reset(x_semantic_v);
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_semantic_y, "x_semantic_y"),
-        "unable to get 'x_semantic_y'");
-    std::shared_ptr<tc::InferRequestedOutput> x_semantic_y_ptr;
-    x_semantic_y_ptr.reset(x_semantic_y);
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_filter_u, "x_filter_u"),
-        "unable to get 'x_filter_u'");
-    std::shared_ptr<tc::InferRequestedOutput> x_filter_u_ptr;
-    x_filter_u_ptr.reset(x_filter_u);
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_filter_v, "x_filter_v"),
-        "unable to get 'x_filter_v'");
-    std::shared_ptr<tc::InferRequestedOutput> x_filter_v_ptr;
-    x_filter_v_ptr.reset(x_filter_v);
-
-    FAIL_IF_ERR(
-        tc::InferRequestedOutput::Create(&x_filter_y, "x_filter_y"),
-        "unable to get 'x_filter_y'");
-    std::shared_ptr<tc::InferRequestedOutput> x_filter_y_ptr;
-    x_filter_y_ptr.reset(x_filter_y);
-
-
-    // The inference settings. Will be using default for now.
-    tc::InferOptions options(model_name);
-    options.model_version_ = model_version;
-    options.client_timeout_ = client_timeout;
-
-    std::vector<tc::InferInput*> inputs = {hit_table_hit_id_ptr.get(), hit_table_local_plane_ptr.get(), hit_table_local_time_ptr.get(), \
-                                          hit_table_local_wire_ptr.get(), hit_table_integral_ptr.get(), hit_table_rms_ptr.get(), \
-                                          spacepoint_table_spacepoint_id_ptr.get(), spacepoint_table_hit_id_u_ptr.get(), \
-                                          spacepoint_table_hit_id_v_ptr.get(), spacepoint_table_hit_id_y_ptr.get()};
-
-    std::vector<const tc::InferRequestedOutput*> outputs = {
-        x_semantic_u_ptr.get(), x_semantic_v_ptr.get(), \
-        x_semantic_y_ptr.get(), x_filter_u_ptr.get(), x_filter_v_ptr.get(), \
-        x_filter_y_ptr.get()};
-
-    tc::InferResult* results;
-    FAIL_IF_ERR(
-        client->Infer(
-            &results, options, inputs, outputs, http_headers,
-            compression_algorithm),
-        "unable to run model");
-    std::shared_ptr<tc::InferResult> results_ptr;
-    results_ptr.reset(results);
-
-    // Get pointers to the result returned...
-
-
-    const float* x_semantic_u_data;
-    size_t x_semantic_u_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_semantic_u", (const uint8_t**)&x_semantic_u_data, &x_semantic_u_byte_size),
-        "unable to get result data for 'x_semantic_u'");
-
-    const float* x_semantic_v_data;
-    size_t x_semantic_v_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_semantic_v", (const uint8_t**)&x_semantic_v_data, &x_semantic_v_byte_size),
-        "unable to get result data for 'x_semantic_v'");
-
-    const float* x_semantic_y_data;
-    size_t x_semantic_y_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_semantic_y", (const uint8_t**)&x_semantic_y_data, &x_semantic_y_byte_size),
-        "unable to get result data for 'x_semantic_y'");
-
-    const float* x_filter_u_data;
-    size_t x_filter_u_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_filter_u", (const uint8_t**)&x_filter_u_data, &x_filter_u_byte_size),
-        "unable to get result data for 'x_filter_u'");
-
-    const float* x_filter_v_data;
-    size_t x_filter_v_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_filter_v", (const uint8_t**)&x_filter_v_data, &x_filter_v_byte_size),
-        "unable to get result data for 'x_filter_v'");
-
-    const float* x_filter_y_data;
-    size_t x_filter_y_byte_size;
-    FAIL_IF_ERR(
-        results_ptr->RawData(
-            "x_filter_y", (const uint8_t**)&x_filter_y_data, &x_filter_y_byte_size),
-        "unable to get result data for 'x_filter_y'");
-
-
-
-    std::cout<<"Trition output: "<<std::endl;  
-
-    std::cout<<"x_semantic_u: "<<std::endl;
-    printFloatArray(x_semantic_u_data, x_semantic_u_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-    std::cout<<"x_semantic_v: "<<std::endl;
-    printFloatArray(x_semantic_v_data, x_semantic_v_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-    std::cout<<"x_semantic_y: "<<std::endl;
-    printFloatArray(x_semantic_y_data, x_semantic_y_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-    std::cout<<"x_filter_u: "<<std::endl;
-    printFloatArray(x_filter_u_data, x_filter_u_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-    std::cout<<"x_filter_v: "<<std::endl;
-    printFloatArray(x_filter_v_data, x_filter_v_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-    std::cout<<"x_filter_y: "<<std::endl;
-    printFloatArray(x_filter_y_data, x_filter_y_byte_size/sizeof(float));
-    std::cout << std::endl;
-
-  }
-  //This needs to be replaced with the Triton output
-  /*
-  auto outputs = model.forward(inputs).toGenericDict();
-
-  if (debug) std::cout << "output =" << outputs << std::endl;
-  if (semanticDecoder) {
-    for (size_t p = 0; p < planes.size(); p++) {
-      torch::Tensor s = outputs.at("x_semantic").toGenericDict().at(planes[p]).toTensor();
-      for (int i = 0; i < s.sizes()[0]; ++i) {
-        size_t idx = idsmap[p][i];
-        std::array<float, 5> input({s[i][0].item<float>(),
-                                    s[i][1].item<float>(),
-                                    s[i][2].item<float>(),
-                                    s[i][3].item<float>(),
-                                    s[i][4].item<float>()});
-        softmax(input);
-        FeatureVector<5> semt = FeatureVector<5>(input);
-        (*semtcol)[idx] = semt;
-      }
-      if (debug) {
-        for (int j = 0; j < 5; j++) {
-          std::cout << "x_semantic category=" << j << " : ";
-          for (size_t p = 0; p < planes.size(); p++) {
-            torch::Tensor s = outputs.at("x_semantic").toGenericDict().at(planes[p]).toTensor();
-            for (int i = 0; i < s.sizes()[0]; ++i)
-              std::cout << s[i][j].item<float>() << ", ";
-          }
-          std::cout << std::endl;
-        }
-      }
-    }
-  }
-  if (filterDecoder) {
-    for (size_t p = 0; p < planes.size(); p++) {
-      torch::Tensor f = outputs.at("x_filter").toGenericDict().at(planes[p]).toTensor();
-      for (int i = 0; i < f.numel(); ++i) {
-        size_t idx = idsmap[p][i];
-        std::array<float, 1> input({f[i].item<float>()});
-        (*filtcol)[idx] = FeatureVector<1>(input);
-      }
-    }
-    if (debug) {
-      std::cout << "x_filter : ";
-      for (size_t p = 0; p < planes.size(); p++) {
-        torch::Tensor f = outputs.at("x_filter").toGenericDict().at(planes[p]).toTensor();
-        for (int i = 0; i < f.numel(); ++i)
-          std::cout << f[i].item<float>() << ", ";
-      }
-      std::cout << std::endl;
-    }
-  }
-  if (vertexDecoder) {
-    torch::Tensor v = outputs.at("x_vtx").toGenericDict().at("evt").toTensor()[0];
-    double vpos[3];
-    vpos[0] = v[0].item<float>();
-    vpos[1] = v[1].item<float>();
-    vpos[2] = v[2].item<float>();
-    vertcol->push_back(recob::Vertex(vpos));
-  }
-  */
-
+  std::cout<<data1->size()<<std::endl;
+  triton_input.toServer(data1); // convert to server format
   if (filterDecoder) { e.put(std::move(filtcol), "filter"); }
   if (semanticDecoder) {
     e.put(std::move(semtcol), "semantic");
@@ -640,4 +314,4 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   if (vertexDecoder) { e.put(std::move(vertcol), "vertex"); }
 }
 
-DEFINE_ART_MODULE(NuGraphInferenceSonicTriton)
+DEFINE_ART_MODULE(NuGraphInferenceTriton)

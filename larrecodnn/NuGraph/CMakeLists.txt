@@ -82,6 +82,7 @@ cet_build_plugin(NuGraphInferenceSonicTriton art::EDProducer
     ${FHICLCPP}
     ${ROOT_BASIC_LIB_LIST}
     lardataobj::RecoBase
+    larrecodnn_ImagePatternAlgs_NuSonic_Triton
     ${TORCH_LIBRARIES}
     TorchScatter::TorchScatter
     TritonClient::grpcclient
