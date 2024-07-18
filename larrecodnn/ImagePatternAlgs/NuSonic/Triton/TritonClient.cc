@@ -26,6 +26,7 @@ namespace lartriton {
     : allowedTries_(params.get<unsigned>("allowedTries", 0))
     , serverURL_(params.get<std::string>("serverURL"))
     , verbose_(params.get<bool>("verbose"))
+    , ssl_(params.get<bool>("ssl"))
     , options_(params.get<std::string>("modelName"))
   {
     //get appropriate server for this model
@@ -33,8 +34,22 @@ namespace lartriton {
 
     //connect to the server
     //TODO: add SSL options
-    triton_utils::throwIfError(nic::InferenceServerGrpcClient::Create(&client_, serverURL_, false),
+    if(ssl_) {
+      std::cout<<"HI"<<std::endl;
+      std::string root_certificates;
+      std::string private_key;
+      std::string certificate_chain;
+      nic::SslOptions ssl_options = nic::SslOptions();
+      ssl_options.root_certificates = root_certificates;
+      ssl_options.private_key = private_key;
+      ssl_options.certificate_chain = certificate_chain;
+      triton_utils::throwIfError(nic::InferenceServerGrpcClient::Create(&client_, serverURL_, verbose_, ssl_, ssl_options),
                                "TritonClient(): unable to create inference context");
+    }
+    else{
+      triton_utils::throwIfError(nic::InferenceServerGrpcClient::Create(&client_, serverURL_, verbose_, ssl_),
+                               "TritonClient(): unable to create inference context");
+    }
 
     //set options
     options_.model_version_ = params.get<std::string>("modelVersion");

@@ -73,6 +73,7 @@ namespace lartriton {
     unsigned batchSize_;
     bool noBatch_;
     bool verbose_;
+    bool ssl_;
 
     //IO pointers for triton
     std::vector<nic::InferInput*> inputsTriton_;

@@ -270,7 +270,8 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   //Here the input should be sent to Triton
   std::string fTritonModelName = "nugraph2";
   std::string fTritonURL = "triton.fnal.gov:443";
-  bool fTritonVerbose = false;
+  bool fTritonVerbose = true;
+  bool fTritonSSL = true;
   std::string fTritonModelVersion = "";
   unsigned fTritonTimeout = 1000;
   unsigned fTritonAllowedTries = 1;
@@ -280,6 +281,7 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   fhicl::ParameterSet TritonPset;
   TritonPset.put("serverURL", fTritonURL);
   TritonPset.put("verbose", fTritonVerbose);
+  TritonPset.put("ssl", fTritonSSL);
   TritonPset.put("modelName", fTritonModelName);
   TritonPset.put("modelVersion", fTritonModelVersion);
   TritonPset.put("timeout", fTritonTimeout);
@@ -295,7 +297,7 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
   auto& triton_input = triton_client->input().begin()->second;
 
   // Create data1
-  auto data1 = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto data1 = std::make_shared<lartriton::TritonInput<float>>();
   data1->reserve(1); 
 
   // Emplace back hit_table_hit_id_data into data1
