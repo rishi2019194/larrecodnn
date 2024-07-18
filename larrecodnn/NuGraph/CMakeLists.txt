@@ -1,4 +1,9 @@
 
+cet_set_compiler_flags(DIAGS VIGILANT DWARF_VER 4
+  WERROR
+  NO_UNDEFINED
+  EXTRA_FLAGS -pedantic)
+
 cet_build_plugin(NuGraphInference art::EDProducer
     LIBRARIES PRIVATE
     ${ART_FRAMEWORK_PRINCIPAL}
@@ -67,6 +72,7 @@ cet_build_plugin(NuGraphAnalyzer art::EDAnalyzer
 
 cet_build_plugin(NuGraphInferenceSonicTriton art::EDProducer
     LIBRARIES PRIVATE
+    ${MRB_BUILDDIR}
     ${ART_FRAMEWORK_PRINCIPAL}
     ${ART_FRAMEWORK_SERVICES_REGISTRY}
     ${ART_FRAMEWORK_SERVICES_BASIC}
@@ -92,6 +98,7 @@ cet_build_plugin(NuGraphInferenceSonicTriton art::EDProducer
 
 cet_build_plugin(NuGraphInferenceTriton art::EDProducer
     LIBRARIES PRIVATE
+    ${MRB_BUILDDIR}
     ${ART_FRAMEWORK_PRINCIPAL}
     ${ART_FRAMEWORK_SERVICES_REGISTRY}
     ${ART_FRAMEWORK_SERVICES_BASIC}

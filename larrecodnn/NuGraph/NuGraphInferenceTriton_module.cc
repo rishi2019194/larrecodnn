@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////
-// Class:       NuGraphInferenceSonicTriton
+// Class:       NuGraphInferenceTriton
 // Plugin Type: producer (Unknown Unknown)
-// File:        NuGraphInferenceSonicTriton_module.cc
+// File:        NuGraphInferenceTriton_module.cc
 //
 // Generated at Tue Nov 14 14:41:30 2023 by Giuseppe Cerati using cetskelgen
 // from  version .

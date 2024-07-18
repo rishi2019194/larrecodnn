@@ -25,6 +25,7 @@
 #include <memory>
 
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonClient.h"
+#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/TritonData.h"
 #include "lardataobj/AnalysisBase/MVAOutput.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/SpacePoint.h"
@@ -42,7 +43,7 @@
 
 #include "grpc_client.h"
 
-class NuGraphInferenceTriton;
+class NuGraphInferenceSonicTriton;
 
 using anab::FeatureVector;
 using anab::MVADescription;
@@ -108,15 +109,15 @@ void printFloatArray(const float* data, size_t num_elements) {
 }
 
 
-class NuGraphInferenceTriton : public art::EDProducer {
+class NuGraphInferenceSonicTriton : public art::EDProducer {
 public:
-  explicit NuGraphInferenceTriton(fhicl::ParameterSet const& p);
+  explicit NuGraphInferenceSonicTriton(fhicl::ParameterSet const& p);
 
   // Plugins should not be copied or assigned.
-  NuGraphInferenceTriton(NuGraphInferenceTriton const&) = delete;
-  NuGraphInferenceTriton(NuGraphInferenceTriton&&) = delete;
-  NuGraphInferenceTriton& operator=(NuGraphInferenceTriton const&) = delete;
-  NuGraphInferenceTriton& operator=(NuGraphInferenceTriton&&) = delete;
+  NuGraphInferenceSonicTriton(NuGraphInferenceSonicTriton const&) = delete;
+  NuGraphInferenceSonicTriton(NuGraphInferenceSonicTriton&&) = delete;
+  NuGraphInferenceSonicTriton& operator=(NuGraphInferenceSonicTriton const&) = delete;
+  NuGraphInferenceSonicTriton& operator=(NuGraphInferenceSonicTriton&&) = delete;
 
   // Required functions.
   void produce(art::Event& e) override;
@@ -134,7 +135,7 @@ private:
   bool vertexDecoder;
 };
 
-NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
+NuGraphInferenceSonicTriton::NuGraphInferenceSonicTriton(fhicl::ParameterSet const& p)
   : EDProducer{p}
   , planes(p.get<vector<std::string>>("planes"))
   , hitInput(p.get<art::InputTag>("hitInput"))
@@ -161,7 +162,7 @@ NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
   if (vertexDecoder) { produces<vector<recob::Vertex>>("vertex"); }
 }
 
-void NuGraphInferenceTriton::produce(art::Event& e)
+void NuGraphInferenceSonicTriton::produce(art::Event& e)
 {
 
   art::Handle<vector<Hit>> hitListHandle;
@@ -314,4 +315,4 @@ void NuGraphInferenceTriton::produce(art::Event& e)
   if (vertexDecoder) { e.put(std::move(vertcol), "vertex"); }
 }
 
-DEFINE_ART_MODULE(NuGraphInferenceTriton)
+DEFINE_ART_MODULE(NuGraphInferenceSonicTriton)
