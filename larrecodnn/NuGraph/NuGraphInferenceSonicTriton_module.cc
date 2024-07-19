@@ -293,22 +293,119 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
 
   triton_client->setBatchSize(1); // set batch size
 
-  // ~~~~ Initialize the inputs
-  auto& triton_input = triton_client->input().begin()->second;
+  auto hit_table_hit_id_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto hit_table_local_plane_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto hit_table_local_time_ptr = std::make_shared<lartriton::TritonInput<float>>();
+  auto hit_table_local_wire_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto hit_table_integral_ptr = std::make_shared<lartriton::TritonInput<float>>();
+  auto hit_table_rms_ptr = std::make_shared<lartriton::TritonInput<float>>();
+  auto spacepoint_table_spacepoint_id_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto spacepoint_table_hit_id_u_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto spacepoint_table_hit_id_v_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
+  auto spacepoint_table_hit_id_y_ptr = std::make_shared<lartriton::TritonInput<int32_t>>();
 
-  // Create data1
-  auto data1 = std::make_shared<lartriton::TritonInput<float>>();
-  data1->reserve(1); 
+  hit_table_hit_id_ptr->reserve(1);
+  hit_table_local_plane_ptr->reserve(1);
+  hit_table_local_time_ptr->reserve(1);
+  hit_table_local_wire_ptr->reserve(1);
+  hit_table_integral_ptr->reserve(1);
+  hit_table_rms_ptr->reserve(1);
+  spacepoint_table_spacepoint_id_ptr->reserve(1);
+  spacepoint_table_hit_id_u_ptr->reserve(1);
+  spacepoint_table_hit_id_v_ptr->reserve(1);
+  spacepoint_table_hit_id_y_ptr->reserve(1);
 
-  // Emplace back hit_table_hit_id_data into data1
-  auto& img = data1->emplace_back(); 
+  auto& hit_table_hit_id = hit_table_hit_id_ptr->emplace_back(); 
+  auto& hit_table_local_plane = hit_table_local_plane_ptr->emplace_back();
+  auto& hit_table_local_time = hit_table_local_time_ptr->emplace_back();
+  auto& hit_table_local_wire = hit_table_local_wire_ptr->emplace_back();
+  auto& hit_table_integral = hit_table_integral_ptr->emplace_back();
+  auto& hit_table_rms = hit_table_rms_ptr->emplace_back();
+  auto& spacepoint_table_spacepoint_id = spacepoint_table_spacepoint_id_ptr->emplace_back();
+  auto& spacepoint_table_hit_id_u = spacepoint_table_hit_id_u_ptr->emplace_back();
+  auto& spacepoint_table_hit_id_v = spacepoint_table_hit_id_v_ptr->emplace_back();
+  auto& spacepoint_table_hit_id_y = spacepoint_table_hit_id_y_ptr->emplace_back();
 
-  // Fill img with elements from hit_table_hit_id_data
-  for (size_t i = 0; i < hit_table_hit_id_data.size(); ++i) {
-      img.push_back(hit_table_hit_id_data[i]); 
+  auto& inputs = triton_client->input();
+  for (auto& input_pair : inputs) {
+      const std::string& key = input_pair.first;
+      auto& triton_input = input_pair.second;   
+
+      if(key == "hit_table_hit_id"){
+        for (size_t i = 0; i < hit_table_hit_id_data.size(); ++i) {
+            hit_table_hit_id.push_back(hit_table_hit_id_data[i]); 
+        }
+        triton_input.toServer(hit_table_hit_id_ptr);
+      }
+      else if(key == "hit_table_local_plane"){
+        for (size_t i = 0; i < hit_table_local_plane_data.size(); ++i) {
+            hit_table_local_plane.push_back(hit_table_local_plane_data[i]); 
+        }
+        triton_input.toServer(hit_table_local_plane_ptr);
+      }
+      else if(key == "hit_table_local_time"){
+        for (size_t i = 0; i < hit_table_local_time_data.size(); ++i) {
+            hit_table_local_time.push_back(hit_table_local_time_data[i]); 
+        }
+        triton_input.toServer(hit_table_local_time_ptr);
+      }
+      else if(key == "hit_table_local_wire"){
+        for (size_t i = 0; i < hit_table_local_wire_data.size(); ++i) {
+            hit_table_local_wire.push_back(hit_table_local_wire_data[i]); 
+        }
+        triton_input.toServer(hit_table_local_wire_ptr);
+      }
+      else if(key == "hit_table_integral"){
+        for (size_t i = 0; i < hit_table_integral_data.size(); ++i) {
+            hit_table_integral.push_back(hit_table_integral_data[i]); 
+        }
+        triton_input.toServer(hit_table_integral_ptr);
+      }
+      else if(key == "hit_table_rms"){
+        for (size_t i = 0; i < hit_table_rms_data.size(); ++i) {
+            hit_table_rms.push_back(hit_table_rms_data[i]); 
+        }
+        triton_input.toServer(hit_table_rms_ptr);
+      }
+      else if(key == "spacepoint_table_spacepoint_id"){
+        for (size_t i = 0; i < spacepoint_table_spacepoint_id_data.size(); ++i) {
+            spacepoint_table_spacepoint_id.push_back(spacepoint_table_spacepoint_id_data[i]); 
+        }
+        triton_input.toServer(spacepoint_table_spacepoint_id_ptr);
+      }
+      else if(key == "spacepoint_table_hit_id_u"){
+        for (size_t i = 0; i < spacepoint_table_hit_id_u_data.size(); ++i) {
+            spacepoint_table_hit_id_u.push_back(spacepoint_table_hit_id_u_data[i]); 
+        }
+        triton_input.toServer(spacepoint_table_hit_id_u_ptr);
+      }
+      else if(key == "spacepoint_table_hit_id_v"){
+        for (size_t i = 0; i < spacepoint_table_hit_id_v_data.size(); ++i) {
+            spacepoint_table_hit_id_v.push_back(spacepoint_table_hit_id_v_data[i]); 
+        }
+        triton_input.toServer(spacepoint_table_hit_id_v_ptr);
+      }
+      else if(key == "spacepoint_table_hit_id_y"){
+        for (size_t i = 0; i < spacepoint_table_hit_id_y_data.size(); ++i) {
+            spacepoint_table_hit_id_y.push_back(spacepoint_table_hit_id_y_data[i]); 
+        }
+        triton_input.toServer(spacepoint_table_hit_id_y_ptr);
+      }
   }
-  std::cout<<data1->size()<<std::endl;
-  triton_input.toServer(data1); // convert to server format
+
+
+  // ~~~~ Send inference request
+  std::cout<<"sending"<<std::endl;
+  triton_client->dispatch();
+  std::cout<<"sent"<<std::endl;
+
+  // ~~~~ Retrieve inference results
+  const auto& triton_output0 = triton_client->output().at("x_semantic_u");
+  const auto& prob0 = triton_output0.fromServer<float>();
+  auto ncat0 = triton_output0.sizeDims();
+
+  std::cout<<ncat0<<std::endl;
+
   if (filterDecoder) { e.put(std::move(filtcol), "filter"); }
   if (semanticDecoder) {
     e.put(std::move(semtcol), "semantic");

@@ -35,7 +35,6 @@ namespace lartriton {
     //connect to the server
     //TODO: add SSL options
     if(ssl_) {
-      std::cout<<"HI"<<std::endl;
       std::string root_certificates;
       std::string private_key;
       std::string certificate_chain;
@@ -43,7 +42,9 @@ namespace lartriton {
       ssl_options.root_certificates = root_certificates;
       ssl_options.private_key = private_key;
       ssl_options.certificate_chain = certificate_chain;
-      triton_utils::throwIfError(nic::InferenceServerGrpcClient::Create(&client_, serverURL_, verbose_, ssl_, ssl_options),
+      bool use_cached_channel = true;
+      triton_utils::throwIfError(nic::InferenceServerGrpcClient::Create(&client_, serverURL_, verbose_, ssl_, ssl_options, \
+                                                        nic::KeepAliveOptions(), use_cached_channel),
                                "TritonClient(): unable to create inference context");
     }
     else{
@@ -181,6 +182,7 @@ namespace lartriton {
     }
   }
 
+
   bool TritonClient::getResults(std::shared_ptr<nic::InferResult> results)
   {
     for (auto& [oname, output] : output_) {
@@ -220,9 +222,15 @@ namespace lartriton {
     //blocking call
     auto t1 = std::chrono::steady_clock::now();
     nic::InferResult* results;
+
+    std::cout<<"Starting Inference"<<std::endl;
+    nic::Headers http_headers;
+    grpc_compression_algorithm compression_algorithm =
+        grpc_compression_algorithm::GRPC_COMPRESS_NONE;
     bool status =
-      triton_utils::warnIfError(client_->Infer(&results, options_, inputsTriton_, outputsTriton_),
+      triton_utils::warnIfError(client_->Infer(&results, options_, inputsTriton_, outputsTriton_, http_headers, compression_algorithm),
                                 "evaluate(): unable to run and/or get result");
+    std::cout<<status<<std::endl;
     if (!status) {
       finish(false);
       return;

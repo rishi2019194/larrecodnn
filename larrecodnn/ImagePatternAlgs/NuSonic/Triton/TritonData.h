@@ -2,6 +2,7 @@
 #define NuSonic_Triton_TritonData
 
 #include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/Span.h"
+#include "larrecodnn/ImagePatternAlgs/NuSonic/Triton/triton_utils.h"
 
 #include <algorithm>
 #include <any>
@@ -45,7 +46,33 @@ namespace lartriton {
 
     //io accessors
     template <typename DT>
-    void toServer(std::shared_ptr<TritonInput<DT>> ptr);
+    void toServer(std::shared_ptr<TritonInput<DT>> ptr) {
+        // Access the actual data inside the shared_ptr
+        const auto& data_in = *ptr;
+
+        // Assume 'data_' is a member variable or accessible globally
+        // Set the shape of the data if necessary
+        data_->SetShape(fullShape_);
+
+        // Check byte size consistency
+        if (byteSize_ != sizeof(DT)) {
+            throw std::runtime_error("Byte size inconsistency");
+        }
+
+        // Iterate through each element in the batch
+        int64_t nInput = sizeShape();
+        for (unsigned i0 = 0; i0 < batchSize_; ++i0) {
+            const DT* arr = data_in[i0].data(); // Access raw data pointer
+            // Append raw data to Triton server
+            triton_utils::throwIfError(
+                data_->AppendRaw(reinterpret_cast<const uint8_t*>(arr), nInput * byteSize_),
+                "Failed to set data for batch entry " + std::to_string(i0));
+        }
+
+        // Store the shared_ptr to keep it in scope
+        holder_ = std::move(ptr);
+    }
+
     template <typename DT>
     TritonOutput<DT> fromServer() const;
 
