@@ -98,14 +98,17 @@ int stoi(const std::string &str) {
     return num;
 }
 
-void printFloatArray(const float* data, size_t num_elements) {
-    for (size_t i = 0; i < num_elements; ++i) {
-        std::cout << data[i];
-        if (i < num_elements - 1) {
-            std::cout << " ";
-        }
-    }
-    std::cout << std::endl;
+// Function to print elements of a vector<float>
+void printVector(const std::vector<float>& vec) {
+  for (size_t i = 0; i < vec.size(); ++i) {
+      std::cout << vec[i];
+      // Print space unless it's the last element
+      if (i != vec.size() - 1) {
+          std::cout << " ";
+      }
+  }
+  std::cout << std::endl;
+  std::cout << std::endl;
 }
 
 
@@ -255,25 +258,14 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
     }
   }
 
-  std::cout<<hit_table_hit_id_data.size()<<std::endl;
-  std::cout<<hit_table_local_plane_data.size()<<std::endl;
-  std::cout<<hit_table_local_time_data.size()<<std::endl;
-  std::cout<<hit_table_local_wire_data.size()<<std::endl;
-  std::cout<<hit_table_integral_data.size()<<std::endl;
-  std::cout<<hit_table_rms_data.size()<<std::endl;
-  std::cout<<spacepoint_table_spacepoint_id_data.size()<<std::endl;
-  std::cout<<spacepoint_table_hit_id_u_data.size()<<std::endl; 
-  std::cout<<spacepoint_table_hit_id_v_data.size()<<std::endl;
-  std::cout<<spacepoint_table_hit_id_y_data.size()<<std::endl;
-
 
   //Here the input should be sent to Triton
   std::string fTritonModelName = "nugraph2";
   std::string fTritonURL = "triton.fnal.gov:443";
-  bool fTritonVerbose = true;
+  bool fTritonVerbose = false;
   bool fTritonSSL = true;
   std::string fTritonModelVersion = "";
-  unsigned fTritonTimeout = 1000;
+  unsigned fTritonTimeout = 0;
   unsigned fTritonAllowedTries = 1;
   std::unique_ptr<lartriton::TritonClient> triton_client;
 
@@ -395,16 +387,140 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
 
 
   // ~~~~ Send inference request
-  std::cout<<"sending"<<std::endl;
   triton_client->dispatch();
-  std::cout<<"sent"<<std::endl;
 
   // ~~~~ Retrieve inference results
   const auto& triton_output0 = triton_client->output().at("x_semantic_u");
   const auto& prob0 = triton_output0.fromServer<float>();
-  auto ncat0 = triton_output0.sizeDims();
+  size_t triton_input0_elements = std::distance(prob0[0].begin(), prob0[0].end());
 
-  std::cout<<ncat0<<std::endl;
+  const auto& triton_output1 = triton_client->output().at("x_semantic_v");
+  const auto& prob1 = triton_output1.fromServer<float>();
+  size_t triton_input1_elements = std::distance(prob1[0].begin(), prob1[0].end());
+
+  const auto& triton_output2 = triton_client->output().at("x_semantic_y");
+  const auto& prob2 = triton_output2.fromServer<float>();
+  size_t triton_input2_elements = std::distance(prob2[0].begin(), prob2[0].end());
+
+  const auto& triton_output3 = triton_client->output().at("x_filter_u");
+  const auto& prob3 = triton_output3.fromServer<float>();
+  size_t triton_input3_elements = std::distance(prob3[0].begin(), prob3[0].end());
+
+  const auto& triton_output4 = triton_client->output().at("x_filter_v");
+  const auto& prob4 = triton_output4.fromServer<float>();
+  size_t triton_input4_elements = std::distance(prob4[0].begin(), prob4[0].end());
+
+  const auto& triton_output5 = triton_client->output().at("x_filter_y");
+  const auto& prob5 = triton_output5.fromServer<float>();
+  size_t triton_input5_elements = std::distance(prob5[0].begin(), prob5[0].end());
+  
+  // putting in the resp output vectors
+  std::vector<float> x_semantic_u_data;
+  x_semantic_u_data.reserve(triton_input0_elements);
+  x_semantic_u_data.insert(x_semantic_u_data.end(), prob0[0].begin(), prob0[0].end());
+
+  std::vector<float> x_semantic_v_data;
+  x_semantic_v_data.reserve(triton_input1_elements);
+  x_semantic_v_data.insert(x_semantic_v_data.end(), prob1[0].begin(), prob1[0].end());
+
+  std::vector<float> x_semantic_y_data;
+  x_semantic_y_data.reserve(triton_input2_elements);
+  x_semantic_y_data.insert(x_semantic_y_data.end(), prob2[0].begin(), prob2[0].end());
+
+  std::vector<float> x_filter_u_data;
+  x_filter_u_data.reserve(triton_input3_elements);
+  x_filter_u_data.insert(x_filter_u_data.end(), prob3[0].begin(), prob3[0].end());
+
+  std::vector<float> x_filter_v_data;
+  x_filter_v_data.reserve(triton_input4_elements);
+  x_filter_v_data.insert(x_filter_v_data.end(), prob4[0].begin(), prob4[0].end());
+
+  std::vector<float> x_filter_y_data;
+  x_filter_y_data.reserve(triton_input5_elements);
+  x_filter_y_data.insert(x_filter_y_data.end(), prob5[0].begin(), prob5[0].end());
+
+  std::cout<<"Triton Input: "<<std::endl;
+
+  std::cout<<"x_semantic_u: "<<std::endl;
+  printVector(x_semantic_u_data);
+
+  std::cout<<"x_semantic_v: "<<std::endl;
+  printVector(x_semantic_v_data);
+
+  std::cout<<"x_semantic_y: "<<std::endl;
+  printVector(x_semantic_y_data);
+
+  std::cout<<"x_filter_u: "<<std::endl;
+  printVector(x_filter_u_data);
+
+  std::cout<<"x_filter_v: "<<std::endl;
+  printVector(x_filter_v_data);
+
+  std::cout<<"x_filter_y: "<<std::endl;
+  printVector(x_filter_y_data);
+
+  // writing the outputs to the output root file
+  if (semanticDecoder) {
+    size_t n_cols = 5;
+    for (size_t p = 0; p < planes.size(); p++) {
+      torch::Tensor s;
+      torch::TensorOptions options = torch::TensorOptions().dtype(torch::kFloat32);
+      if(planes[p]=="u"){
+        size_t n_rows = x_semantic_u_data.size() / n_cols;
+        s = torch::from_blob(x_semantic_u_data.data(), {static_cast<int64_t>(n_rows), static_cast<int64_t>(n_cols)}, options);
+      }
+      else if(planes[p]=="v"){
+        size_t n_rows = x_semantic_v_data.size() / n_cols;
+        s = torch::from_blob(x_semantic_v_data.data(), {static_cast<int64_t>(n_rows), static_cast<int64_t>(n_cols)}, options);
+      }
+      else if(planes[p]=="y"){
+        size_t n_rows = x_semantic_y_data.size() / n_cols;
+        s = torch::from_blob(x_semantic_y_data.data(), {static_cast<int64_t>(n_rows), static_cast<int64_t>(n_cols)}, options);
+      }
+      else{
+        std::cout<<"Error!!"<<std::endl;
+      }
+
+      for (int i = 0; i < s.sizes()[0]; ++i) {
+        size_t idx = idsmap[p][i];
+        std::array<float, 5> input({s[i][0].item<float>(),
+                                    s[i][1].item<float>(),
+                                    s[i][2].item<float>(),
+                                    s[i][3].item<float>(),
+                                    s[i][4].item<float>()});
+        softmax(input);
+        FeatureVector<5> semt = FeatureVector<5>(input);
+        (*semtcol)[idx] = semt;
+      }
+    }
+  }
+  if (filterDecoder) {
+    for (size_t p = 0; p < planes.size(); p++) {
+      torch::Tensor f;
+      torch::TensorOptions options = torch::TensorOptions().dtype(torch::kFloat32);
+      if(planes[p]=="u"){
+        int64_t num_elements = x_filter_u_data.size();
+        f = torch::from_blob(x_filter_u_data.data(), {num_elements}, options);
+      }
+      else if(planes[p]=="v"){
+        int64_t num_elements = x_filter_v_data.size();
+        f = torch::from_blob(x_filter_v_data.data(), {num_elements}, options);
+      }
+      else if(planes[p]=="y"){
+        int64_t num_elements = x_filter_y_data.size();
+        f = torch::from_blob(x_filter_y_data.data(), {num_elements}, options);
+      }
+      else{
+        std::cout<<"error!"<<std::endl;
+      }
+
+      for (int i = 0; i < f.numel(); ++i) {
+        size_t idx = idsmap[p][i];
+        std::array<float, 1> input({f[i].item<float>()});
+        (*filtcol)[idx] = FeatureVector<1>(input);
+      }
+    }
+  }
 
   if (filterDecoder) { e.put(std::move(filtcol), "filter"); }
   if (semanticDecoder) {

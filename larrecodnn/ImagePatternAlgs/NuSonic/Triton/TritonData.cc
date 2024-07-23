@@ -159,6 +159,7 @@ namespace lartriton {
     size_t expectedContentByteSize = nOutput * byteSize_ * batchSize_;
     triton_utils::throwIfError(result_->RawData(name_, &r0, &contentByteSize),
                                "output(): unable to get raw");
+    
     if (contentByteSize != expectedContentByteSize) {
       throw cet::exception("TritonDataError")
         << name_ << " output(): unexpected content byte size " << contentByteSize << " (expected "

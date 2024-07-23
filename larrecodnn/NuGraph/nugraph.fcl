@@ -16,7 +16,7 @@ NuGraph: {
    semanticDecoder: true
    vertexDecoder:   false
    modelFileName: "model.pt"
-   module_type: "NuGraphInferenceTriton"
+   module_type: "NuGraphInference"
 }
 
 NuGraphTriton: { 

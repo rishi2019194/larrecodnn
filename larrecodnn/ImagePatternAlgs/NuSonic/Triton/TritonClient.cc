@@ -193,6 +193,7 @@ namespace lartriton {
           triton_utils::warnIfError(results->Shape(oname, &tmp_shape),
                                     "getResults(): unable to get output shape for " + oname);
         if (!status) return status;
+
         output.setShape(tmp_shape, false);
       }
       //extend lifetime
@@ -223,14 +224,13 @@ namespace lartriton {
     auto t1 = std::chrono::steady_clock::now();
     nic::InferResult* results;
 
-    std::cout<<"Starting Inference"<<std::endl;
     nic::Headers http_headers;
     grpc_compression_algorithm compression_algorithm =
         grpc_compression_algorithm::GRPC_COMPRESS_NONE;
+
     bool status =
       triton_utils::warnIfError(client_->Infer(&results, options_, inputsTriton_, outputsTriton_, http_headers, compression_algorithm),
                                 "evaluate(): unable to run and/or get result");
-    std::cout<<status<<std::endl;
     if (!status) {
       finish(false);
       return;

@@ -251,17 +251,6 @@ void NuGraphInferenceTriton::produce(art::Event& e)
     }
   }
 
-  std::cout<<hit_table_hit_id_data.size()<<std::endl;
-  std::cout<<hit_table_local_plane_data.size()<<std::endl;
-  std::cout<<hit_table_local_time_data.size()<<std::endl;
-  std::cout<<hit_table_local_wire_data.size()<<std::endl;
-  std::cout<<hit_table_integral_data.size()<<std::endl;
-  std::cout<<hit_table_rms_data.size()<<std::endl;
-  std::cout<<spacepoint_table_spacepoint_id_data.size()<<std::endl;
-  std::cout<<spacepoint_table_hit_id_u_data.size()<<std::endl; 
-  std::cout<<spacepoint_table_hit_id_v_data.size()<<std::endl;
-  std::cout<<spacepoint_table_hit_id_y_data.size()<<std::endl;
-
 
   //Here the input should be sent to Triton
   bool verbose = false;
@@ -496,15 +485,33 @@ void NuGraphInferenceTriton::produce(art::Event& e)
     options.model_version_ = model_version;
     options.client_timeout_ = client_timeout;
 
+    std::cout<<options.model_name_<<std::endl;
+    std::cout<<options.model_version_<<std::endl;
+    std::cout<<options.client_timeout_<<std::endl;
+
     std::vector<tc::InferInput*> inputs = {hit_table_hit_id_ptr.get(), hit_table_local_plane_ptr.get(), hit_table_local_time_ptr.get(), \
                                           hit_table_local_wire_ptr.get(), hit_table_integral_ptr.get(), hit_table_rms_ptr.get(), \
                                           spacepoint_table_spacepoint_id_ptr.get(), spacepoint_table_hit_id_u_ptr.get(), \
                                           spacepoint_table_hit_id_v_ptr.get(), spacepoint_table_hit_id_y_ptr.get()};
 
+    // Iterate over the vector and print each InferInput object's value
+    for (size_t i = 0; i < inputs.size(); ++i) {
+        // Assuming tc::InferInput has a method or member variable to get its value
+        // Replace 'getValue()' with the appropriate method or member access to get the value.
+        std::cout << "Element " << inputs[i]->Name() << ": " << inputs[i]->Shape() << std::endl;
+    }
+
     std::vector<const tc::InferRequestedOutput*> outputs = {
         x_semantic_u_ptr.get(), x_semantic_v_ptr.get(), \
         x_semantic_y_ptr.get(), x_filter_u_ptr.get(), x_filter_v_ptr.get(), \
         x_filter_y_ptr.get()};
+
+    // Iterate over the vector and print each InferInput object's value
+    for (size_t i = 0; i < outputs.size(); ++i) {
+        // Assuming tc::InferInput has a method or member variable to get its value
+        // Replace 'getValue()' with the appropriate method or member access to get the value.
+        std::cout << "Element " << outputs[i]->Name() << std::endl;
+    }
 
     tc::InferResult* results;
     FAIL_IF_ERR(

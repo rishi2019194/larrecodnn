@@ -52,7 +52,7 @@ namespace lartriton {
 
         // Assume 'data_' is a member variable or accessible globally
         // Set the shape of the data if necessary
-        data_->SetShape(fullShape_);
+        data_->SetShape({static_cast<long int>(data_in[0].size())});
 
         // Check byte size consistency
         if (byteSize_ != sizeof(DT)) {
@@ -60,12 +60,11 @@ namespace lartriton {
         }
 
         // Iterate through each element in the batch
-        int64_t nInput = sizeShape();
         for (unsigned i0 = 0; i0 < batchSize_; ++i0) {
             const DT* arr = data_in[i0].data(); // Access raw data pointer
             // Append raw data to Triton server
             triton_utils::throwIfError(
-                data_->AppendRaw(reinterpret_cast<const uint8_t*>(arr), nInput * byteSize_),
+                data_->AppendRaw(reinterpret_cast<const uint8_t*>(arr), data_in[i0].size() * byteSize_),
                 "Failed to set data for batch entry " + std::to_string(i0));
         }
 
