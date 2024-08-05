@@ -96,6 +96,34 @@ cet_build_plugin(NuGraphInferenceSonicTriton art::EDProducer
     IMPL_TARGET_VAR NuGraphInferenceSonicTriton_module
 )
 
+cet_build_plugin(NuGraphApptainerInferenceSonicTriton art::EDProducer
+    LIBRARIES PRIVATE
+    ${MRB_BUILDDIR}
+    ${ART_FRAMEWORK_PRINCIPAL}
+    ${ART_FRAMEWORK_SERVICES_REGISTRY}
+    ${ART_FRAMEWORK_SERVICES_BASIC}
+    ${ART_FRAMEWORK_SERVICES_OPTIONAL}
+    ${ART_PERSISTENCY_PROVENANCE}
+    ${ART_ROOT_IO_TFILE_SUPPORT}
+    ${ROOT_CORE}
+    ${ROOT_MATH}
+    ${ART_ROOT_IO_TFILESERVICE_SERVICE}
+    ${ART_PERSISTENCY_COMMON}
+    ${ART_UTILITIES}
+    ${MF_MESSAGELOGGER}
+    ${FHICLCPP}
+    ${ROOT_BASIC_LIB_LIST}
+    lardataobj::RecoBase
+    larrecodnn_ImagePatternAlgs_NuSonic_Triton
+    ${TORCH_LIBRARIES}
+    TorchScatter::TorchScatter
+    TritonClient::grpcclient
+    gRPC::grpc # Should be a transitive (INTERFACE) dependency of TritonClient::grpcclient
+    IMPL_TARGET_VAR NuGraphApptainerInferenceSonicTriton_module
+)
+
+
+
 cet_build_plugin(NuGraphInferenceTriton art::EDProducer
     LIBRARIES PRIVATE
     ${MRB_BUILDDIR}
@@ -119,6 +147,31 @@ cet_build_plugin(NuGraphInferenceTriton art::EDProducer
     TritonClient::grpcclient
     gRPC::grpc # Should be a transitive (INTERFACE) dependency of TritonClient::grpcclient
     IMPL_TARGET_VAR NuGraphInferenceTriton_module
+)
+
+cet_build_plugin(NuGraphApptainerInferenceTriton art::EDProducer
+    LIBRARIES PRIVATE
+    ${MRB_BUILDDIR}
+    ${ART_FRAMEWORK_PRINCIPAL}
+    ${ART_FRAMEWORK_SERVICES_REGISTRY}
+    ${ART_FRAMEWORK_SERVICES_BASIC}
+    ${ART_FRAMEWORK_SERVICES_OPTIONAL}
+    ${ART_PERSISTENCY_PROVENANCE}
+    ${ART_ROOT_IO_TFILE_SUPPORT}
+    ${ROOT_CORE}
+    ${ROOT_MATH}
+    ${ART_ROOT_IO_TFILESERVICE_SERVICE}
+    ${ART_PERSISTENCY_COMMON}
+    ${ART_UTILITIES}
+    ${MF_MESSAGELOGGER}
+    ${FHICLCPP}
+    ${ROOT_BASIC_LIB_LIST}
+    lardataobj::RecoBase
+    ${TORCH_LIBRARIES}
+    TorchScatter::TorchScatter
+    TritonClient::grpcclient
+    gRPC::grpc # Should be a transitive (INTERFACE) dependency of TritonClient::grpcclient
+    IMPL_TARGET_VAR NuGraphApptainerInferenceTriton_module
 )
 
 install_headers()
