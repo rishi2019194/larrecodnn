@@ -28,6 +28,50 @@ NuGraphTriton: {
    filterDecoder:   true
    semanticDecoder: true
    vertexDecoder:   false
+   url: "triton.fnal.gov:443"
+   ssl: true
+   module_type: "NuGraphInferenceTriton"
+}
+
+ApptainerNuGraphTriton: { 
+   planes: ["u","v","y"]
+   hitInput: "nuslhits"
+   spsInput: "sps"
+   minHits: 10
+   debug: false
+   filterDecoder:   true
+   semanticDecoder: true
+   vertexDecoder:   false
+   url: "localhost:8001"
+   ssl: false
+   module_type: "NuGraphInferenceTriton"
+}
+
+NuGraphNuSonicTriton: { 
+   planes: ["u","v","y"]
+   hitInput: "nuslhits"
+   spsInput: "sps"
+   minHits: 10
+   debug: false
+   filterDecoder:   true
+   semanticDecoder: true
+   vertexDecoder:   false
+   url: "triton.fnal.gov:443"
+   ssl: true
+   module_type: "NuGraphInferenceSonicTriton"
+}
+
+ApptainerNuGraphNuSonicTriton: { 
+   planes: ["u","v","y"]
+   hitInput: "nuslhits"
+   spsInput: "sps"
+   minHits: 10
+   debug: false
+   filterDecoder:   true
+   semanticDecoder: true
+   vertexDecoder:   false
+   url: "localhost:8001"
+   ssl: false
    module_type: "NuGraphInferenceSonicTriton"
 }
 

@@ -136,6 +136,8 @@ private:
   bool filterDecoder;
   bool semanticDecoder;
   bool vertexDecoder;
+  std::string inference_url;
+  bool inference_ssl;
 };
 
 NuGraphInferenceSonicTriton::NuGraphInferenceSonicTriton(fhicl::ParameterSet const& p)
@@ -148,6 +150,8 @@ NuGraphInferenceSonicTriton::NuGraphInferenceSonicTriton(fhicl::ParameterSet con
   , filterDecoder(p.get<bool>("filterDecoder"))
   , semanticDecoder(p.get<bool>("semanticDecoder"))
   , vertexDecoder(p.get<bool>("vertexDecoder"))
+  , inference_url(p.get<std::string>("url"))
+  , inference_ssl(p.get<bool>("ssl"))
 {
 
   // for (size_t ip = 0; ip < planes.size(); ++ip) {
@@ -261,9 +265,9 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
 
   //Here the input should be sent to Triton
   std::string fTritonModelName = "nugraph2";
-  std::string fTritonURL = "triton.fnal.gov:443";
+  std::string fTritonURL = inference_url;
   bool fTritonVerbose = false;
-  bool fTritonSSL = true;
+  bool fTritonSSL = inference_ssl;
   std::string fTritonModelVersion = "";
   unsigned fTritonTimeout = 0;
   unsigned fTritonAllowedTries = 1;

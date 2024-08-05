@@ -129,6 +129,8 @@ private:
   bool filterDecoder;
   bool semanticDecoder;
   bool vertexDecoder;
+  std::string inference_url;
+  bool inference_ssl;
 };
 
 NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
@@ -141,6 +143,8 @@ NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
   , filterDecoder(p.get<bool>("filterDecoder"))
   , semanticDecoder(p.get<bool>("semanticDecoder"))
   , vertexDecoder(p.get<bool>("vertexDecoder"))
+  , inference_url(p.get<std::string>("url"))
+  , inference_ssl(p.get<bool>("ssl"))
 {
 
   // for (size_t ip = 0; ip < planes.size(); ++ip) {
@@ -254,10 +258,10 @@ void NuGraphInferenceTriton::produce(art::Event& e)
 
   //Here the input should be sent to Triton
   bool verbose = false;
-  std::string url("triton.fnal.gov:443");
+  std::string url(inference_url);
   tc::Headers http_headers;
   uint32_t client_timeout = 0;
-  bool use_ssl = true;
+  bool use_ssl = inference_ssl;
   std::string root_certificates;
   std::string private_key;
   std::string certificate_chain;
