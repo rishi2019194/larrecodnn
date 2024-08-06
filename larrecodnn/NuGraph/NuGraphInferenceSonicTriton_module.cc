@@ -35,6 +35,7 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <chrono>
 #include <string>
 #include <fstream>
 #include <vector>
@@ -389,9 +390,13 @@ void NuGraphInferenceSonicTriton::produce(art::Event& e)
       }
   }
 
-
+  auto start = std::chrono::high_resolution_clock::now();
   // ~~~~ Send inference request
   triton_client->dispatch();
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = end - start;
+  std::cout << "Time taken for inference: " << elapsed.count() << " seconds" << std::endl;
+
 
   // ~~~~ Retrieve inference results
   const auto& triton_output0 = triton_client->output().at("x_semantic_u");

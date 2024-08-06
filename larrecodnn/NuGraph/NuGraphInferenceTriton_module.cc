@@ -30,6 +30,7 @@
 #include <getopt.h>
 #include <unistd.h>
 
+#include <chrono>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -131,6 +132,7 @@ private:
   bool vertexDecoder;
   std::string inference_url;
   bool inference_ssl;
+  std::string inference_model_name;
 };
 
 NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
@@ -145,6 +147,7 @@ NuGraphInferenceTriton::NuGraphInferenceTriton(fhicl::ParameterSet const& p)
   , vertexDecoder(p.get<bool>("vertexDecoder"))
   , inference_url(p.get<std::string>("url"))
   , inference_ssl(p.get<bool>("ssl"))
+  , inference_model_name(p.get<std::string>("modelName"))
 {
 
   // for (size_t ip = 0; ip < planes.size(); ++ip) {
@@ -271,7 +274,7 @@ void NuGraphInferenceTriton::produce(art::Event& e)
   bool use_cached_channel = true;
 
   // the element-wise difference.
-  std::string model_name = "nugraph2";
+  std::string model_name = inference_model_name;
   std::string model_version = "";
 
   // Create a InferenceServerGrpcClient instance to communicate with the
@@ -489,40 +492,29 @@ void NuGraphInferenceTriton::produce(art::Event& e)
     options.model_version_ = model_version;
     options.client_timeout_ = client_timeout;
 
-    std::cout<<options.model_name_<<std::endl;
-    std::cout<<options.model_version_<<std::endl;
-    std::cout<<options.client_timeout_<<std::endl;
 
     std::vector<tc::InferInput*> inputs = {hit_table_hit_id_ptr.get(), hit_table_local_plane_ptr.get(), hit_table_local_time_ptr.get(), \
                                           hit_table_local_wire_ptr.get(), hit_table_integral_ptr.get(), hit_table_rms_ptr.get(), \
                                           spacepoint_table_spacepoint_id_ptr.get(), spacepoint_table_hit_id_u_ptr.get(), \
                                           spacepoint_table_hit_id_v_ptr.get(), spacepoint_table_hit_id_y_ptr.get()};
 
-    // Iterate over the vector and print each InferInput object's value
-    for (size_t i = 0; i < inputs.size(); ++i) {
-        // Assuming tc::InferInput has a method or member variable to get its value
-        // Replace 'getValue()' with the appropriate method or member access to get the value.
-        std::cout << "Element " << inputs[i]->Name() << ": " << inputs[i]->Shape() << std::endl;
-    }
 
     std::vector<const tc::InferRequestedOutput*> outputs = {
         x_semantic_u_ptr.get(), x_semantic_v_ptr.get(), \
         x_semantic_y_ptr.get(), x_filter_u_ptr.get(), x_filter_v_ptr.get(), \
         x_filter_y_ptr.get()};
 
-    // Iterate over the vector and print each InferInput object's value
-    for (size_t i = 0; i < outputs.size(); ++i) {
-        // Assuming tc::InferInput has a method or member variable to get its value
-        // Replace 'getValue()' with the appropriate method or member access to get the value.
-        std::cout << "Element " << outputs[i]->Name() << std::endl;
-    }
 
     tc::InferResult* results;
+    auto start = std::chrono::high_resolution_clock::now();
     FAIL_IF_ERR(
         client->Infer(
             &results, options, inputs, outputs, http_headers,
             compression_algorithm),
         "unable to run model");
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "Time taken for inference: " << elapsed.count() << " seconds" << std::endl;
     std::shared_ptr<tc::InferResult> results_ptr;
     results_ptr.reset(results);
 

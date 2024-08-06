@@ -30,6 +30,22 @@ NuGraphTriton: {
    vertexDecoder:   false
    url: "triton.fnal.gov:443"
    ssl: true
+   modelName: "nugraph2"
+   module_type: "NuGraphInferenceTriton"
+}
+
+CPUNuGraphTriton: { 
+   planes: ["u","v","y"]
+   hitInput: "nuslhits"
+   spsInput: "sps"
+   minHits: 10
+   debug: false
+   filterDecoder:   true
+   semanticDecoder: true
+   vertexDecoder:   false
+   url: "triton.fnal.gov:443"
+   ssl: true
+   modelName: "nugraph2_cpu"
    module_type: "NuGraphInferenceTriton"
 }
 
@@ -44,6 +60,7 @@ ApptainerNuGraphTriton: {
    vertexDecoder:   false
    url: "localhost:8001"
    ssl: false
+   modelName: "nugraph2"
    module_type: "NuGraphInferenceTriton"
 }
 
@@ -58,6 +75,22 @@ NuGraphNuSonicTriton: {
    vertexDecoder:   false
    url: "triton.fnal.gov:443"
    ssl: true
+   modelName: "nugraph2"
+   module_type: "NuGraphInferenceSonicTriton"
+}
+
+CPUNuGraphNuSonicTriton: { 
+   planes: ["u","v","y"]
+   hitInput: "nuslhits"
+   spsInput: "sps"
+   minHits: 10
+   debug: false
+   filterDecoder:   true
+   semanticDecoder: true
+   vertexDecoder:   false
+   url: "triton.fnal.gov:443"
+   ssl: true
+   modelName: "nugraph2_cpu"
    module_type: "NuGraphInferenceSonicTriton"
 }
 
@@ -72,6 +105,7 @@ ApptainerNuGraphNuSonicTriton: {
    vertexDecoder:   false
    url: "localhost:8001"
    ssl: false
+   modelName: "nugraph2"
    module_type: "NuGraphInferenceSonicTriton"
 }
 
