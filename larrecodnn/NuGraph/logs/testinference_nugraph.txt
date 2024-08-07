@@ -1,0 +1,685 @@
+%MSG-i MF_INIT_OK:  Early 07-Aug-2024 12:02:56 CDT JobSetup
+Messagelogger initialization complete.
+%MSG
+%MSG-i AuxDetGeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+New detector geometry loaded from 
+	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
+	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
+
+%MSG
+Using channel statuses from conditions database
+Using channel statuses from conditions database
+Using pedestals from conditions database
+%MSG-i GeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+New detector geometry loaded from 
+	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
+	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12_nowires.gdml
+
+%MSG
+%MSG-i GeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+Sorting volumes...
+%MSG
+%MSG-i ChannelMapStandardAlg:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+Initializing Standard ChannelMap...
+%MSG
+%MSG-i setupProvider<DetectorPropertiesStandard>:  Early  07-Aug-2024 12:03:09 CDT JobSetup
+Asked to ignore 1 keys: 'InheritNumberTimeSamples'
+%MSG
+Using default electronics calibrations for properly-configured channels, and database for misconfigured channels
+Using light yield from conditions database
+%MSG-w OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+    OpDigiProperties using analytical function for WF generation.
+%MSG
+%MSG-w OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+    Generating gain for each pmt.
+        High gain mean: 20 ADC/p.e.
+        Low  gain mean: 2 ADC/p.e.
+        PMT-to-PMT gain spread : 0.05 
+        Intrinsic gain spread  : 0.05 
+
+%MSG
+%MSG-i OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+Ch. Number ... Pedestal   ... High Gain  ... Low Gain  
+0          ... 2050       ... 19.0395    ... 2.03061   
+1          ... 2049       ... 20.1801    ... 1.99985   
+2          ... 2048       ... 19.374     ... 1.96602   
+3          ... 2045       ... 19.9007    ... 2.12443   
+4          ... 2046       ... 19.7958    ... 2.06198   
+5          ... 2046       ... 20.1465    ... 1.88923   
+6          ... 2053       ... 19.1837    ... 2.03339   
+7          ... 2047       ... 21.1272    ... 2.19248   
+8          ... 2044       ... 19.798     ... 1.82941   
+9          ... 2043       ... 20.0743    ... 2.0882    
+10         ... 2049       ... 20.7912    ... 2.03558   
+11         ... 2041       ... 19.3128    ... 1.97118   
+12         ... 2047       ... 21.8724    ... 1.83629   
+13         ... 2051       ... 17.342     ... 1.89881   
+14         ... 2050       ... 19.5908    ... 1.92828   
+15         ... 2047       ... 19.9337    ... 1.86131   
+16         ... 2039       ... 21.0838    ... 2.02103   
+17         ... 2045       ... 18.9965    ... 1.84012   
+18         ... 2045       ... 18.685     ... 1.8884    
+19         ... 2046       ... 20.587     ... 2.00359   
+20         ... 2049       ... 20.2237    ... 1.99033   
+21         ... 2052       ... 20.807     ... 2.07501   
+22         ... 2050       ... 20.9606    ... 1.96443   
+23         ... 2045       ... 20.545     ... 2.05168   
+24         ... 2053       ... 19.6917    ... 2.01494   
+25         ... 2047       ... 19.9543    ... 1.75505   
+26         ... 2046       ... 19.164     ... 2.12061   
+27         ... 2048       ... 18.8865    ... 1.93018   
+28         ... 2048       ... 18.866     ... 1.98676   
+29         ... 2047       ... 18.6715    ... 1.86428   
+30         ... 2049       ... 18.9705    ... 1.82144   
+31         ... 2053       ... 20.4044    ... 2.00979   
+32         ... 2053       ... 19.6688    ... 1.99063   
+33         ... 2051       ... 20.4432    ... 2.03139   
+34         ... 2050       ... 20.7113    ... 1.96044   
+35         ... 2042       ... 20.8464    ... 1.96536   
+36         ... 2049       ... 19.2503    ... 2.28886   
+37         ... 2051       ... 20.2987    ... 2.09728   
+38         ... 2051       ... 19.4403    ... 2.04688   
+39         ... 2048       ... 18.9342    ... 1.86769   
+40         ... 2041       ... 21.4349    ... 1.87309   
+41         ... 2053       ... 19.1238    ... 2.07304   
+42         ... 2042       ... 20.7517    ... 1.88612   
+43         ... 2048       ... 18.4506    ... 2.07765   
+44         ... 2047       ... 19.6289    ... 2.03148   
+45         ... 2051       ... 19.6889    ... 1.91093   
+46         ... 2038       ... 20.9237    ... 2.048     
+47         ... 2044       ... 19.8772    ... 2.02634   
+48         ... 2046       ... 19.4978    ... 2.00458   
+49         ... 2050       ... 21.2158    ... 2.00392   
+50         ... 2054       ... 18.1071    ... 2.11719   
+51         ... 2049       ... 20.176     ... 2.0162    
+52         ... 2043       ... 20.0744    ... 2.13446   
+53         ... 2046       ... 20.0134    ... 1.90753   
+54         ... 2047       ... 19.6388    ... 1.93351   
+55         ... 2049       ... 16.7986    ... 2.05497   
+56         ... 2050       ... 22.6072    ... 1.93221   
+57         ... 2052       ... 20.0609    ... 1.93442   
+58         ... 2048       ... 21.3481    ... 1.95975   
+59         ... 2048       ... 19.9385    ... 2.13208   
+60         ... 2051       ... 20.5332    ... 1.95892   
+61         ... 2050       ... 21.4224    ... 1.9935    
+62         ... 2044       ... 21.0266    ... 1.94317   
+63         ... 2041       ... 19.134     ... 1.95685   
+64         ... 2049       ... 19.7927    ... 2.12738   
+65         ... 2043       ... 18.4658    ... 2.04533   
+66         ... 2048       ... 17.824     ... 2.08118   
+67         ... 2051       ... 19.893     ... 2.13469   
+68         ... 2050       ... 17.6049    ... 1.88284   
+69         ... 2053       ... 22.2413    ... 2.01025   
+70         ... 2048       ... 19.3903    ... 1.79305   
+71         ... 2050       ... 20.019     ... 1.92966   
+72         ... 2049       ... 19.1484    ... 2.00029   
+73         ... 2041       ... 20.4444    ... 1.87462   
+74         ... 2046       ... 18.9956    ... 2.00759   
+75         ... 2048       ... 19.0198    ... 2.10267   
+76         ... 2044       ... 18.8856    ... 1.94022   
+77         ... 2046       ... 18.662     ... 1.98558   
+78         ... 2054       ... 18.8829    ... 2.031     
+79         ... 2053       ... 20.9792    ... 2.05173   
+80         ... 2045       ... 20.5597    ... 1.90354   
+81         ... 2045       ... 20.0363    ... 1.99959   
+82         ... 2048       ... 20.7504    ... 2.05186   
+83         ... 2046       ... 19.1419    ... 2.03922   
+84         ... 2049       ... 19.5798    ... 2.26503   
+85         ... 2051       ... 20.4743    ... 2.04051   
+86         ... 2047       ... 20.7227    ... 1.97863   
+87         ... 2045       ... 20.5924    ... 1.99457   
+88         ... 2056       ... 19.9799    ... 2.02168   
+89         ... 2047       ... 19.6222    ... 1.91814   
+90         ... 2050       ... 19.0029    ... 1.9389    
+91         ... 2043       ... 20.0882    ... 1.97666   
+92         ... 2050       ... 21.0694    ... 2.11222   
+93         ... 2043       ... 19.9374    ... 1.93165   
+94         ... 2046       ... 19.3263    ... 2.04278   
+95         ... 2047       ... 21.5538    ... 2.08557   
+96         ... 2051       ... 18.665     ... 2.02926   
+97         ... 2049       ... 19.5659    ... 2.09727   
+98         ... 2046       ... 20.9936    ... 1.73713   
+99         ... 2048       ... 21.9142    ... 1.95788   
+100        ... 2054       ... 20.5803    ... 2.0276    
+101        ... 2057       ... 21.1435    ... 1.92435   
+102        ... 2048       ... 21.7154    ... 1.97085   
+103        ... 2046       ... 21.3232    ... 1.89491   
+104        ... 2047       ... 17.4561    ... 1.91423   
+105        ... 2046       ... 19.8251    ... 2.00093   
+106        ... 2051       ... 20.3175    ... 1.89107   
+107        ... 2046       ... 20.881     ... 2.04279   
+108        ... 2045       ... 21.4939    ... 1.88332   
+109        ... 2049       ... 19.3095    ... 2.06327   
+110        ... 2049       ... 21.5945    ... 1.85904   
+111        ... 2049       ... 19.126     ... 2.18454   
+112        ... 2039       ... 21.8519    ... 2.07839   
+113        ... 2041       ... 20.6835    ... 1.86774   
+114        ... 2047       ... 20.6399    ... 2.08116   
+115        ... 2051       ... 20.2289    ... 1.92331   
+116        ... 2049       ... 21.9296    ... 1.8548    
+117        ... 2050       ... 19.2196    ... 2.07088   
+118        ... 2052       ... 19.8018    ... 2.07896   
+119        ... 2052       ... 19.0025    ... 2.07271   
+120        ... 2053       ... 21.4057    ... 2.00066   
+121        ... 2046       ... 18.9736    ... 1.89889   
+122        ... 2047       ... 20.5656    ... 1.96032   
+123        ... 2051       ... 19.201     ... 1.98042   
+124        ... 2052       ... 20.0987    ... 1.88854   
+125        ... 2057       ... 22.2359    ... 2.02713   
+126        ... 2042       ... 19.9306    ... 1.97116   
+127        ... 2048       ... 19.9929    ... 2.01452   
+128        ... 2041       ... 19.8653    ... 1.97992   
+129        ... 2044       ... 20.7056    ... 1.92646   
+130        ... 2047       ... 19.5599    ... 1.99049   
+131        ... 2045       ... 18.9187    ... 2.06762   
+132        ... 2051       ... 20.9639    ... 2.12914   
+133        ... 2049       ... 18.7107    ... 2.0029    
+134        ... 2044       ... 20.5486    ... 2.00218   
+135        ... 2053       ... 20.5059    ... 2.00947   
+136        ... 2047       ... 19.2579    ... 2.11353   
+137        ... 2046       ... 19.5147    ... 1.96088   
+138        ... 2051       ... 20.4787    ... 1.98828   
+139        ... 2045       ... 19.8874    ... 1.99718   
+140        ... 2045       ... 19.4866    ... 2.12125   
+141        ... 2046       ... 18.9995    ... 1.9912    
+142        ... 2048       ... 20.5062    ... 2.01444   
+143        ... 2049       ... 18.8446    ... 2.16513   
+
+%MSG
+%MSG-i PhotonVisibilityService:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+PhotonVisbilityService initializing
+%MSG
+Using pmt gains from conditions database
+%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+Getting Filters from .fcl file
+%MSG
+%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+Getting 2D Filters from .fcl file
+%MSG
+Current E field = 0.2739 KV/cm, Ratio of drift velocities = 0.997979, timeScaleFactor = 0.998371
+%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+ using the field response provided from a .root file 
+%MSG
+For view 0 and response nominal toffset is: 30.5004
+For view 0 and response shortedY toffset is: 30.5004
+For view 1 and response nominal toffset is: 32.584
+For view 1 and response shortedU toffset is: 32.584
+For view 1 and response shortedY toffset is: 32.584
+For view 2 and response nominal toffset is: 35.4777
+For view 2 and response shortedU toffset is: 35.4777
+Using electron lifetime from conditions database
+07-Aug-2024 12:03:10 CDT  Initiating request to open input file "inputfile.root"
+%MSG-i Root_Information:  TriggerResultInserter:TriggerResults@Construction  TClass::Init() 07-Aug-2024 12:03:11 CDT ModuleConstruction
+no dictionary for class sim::IDE is available
+ROOT severity: 2000
+%MSG
+07-Aug-2024 12:03:11 CDT  Opened input file "inputfile.root"
+%MSG-i DetectorPropertiesServiceStandard:  OpenFile 07-Aug-2024 12:03:12 CDT  BeforeEvents
+Overriding configuration parameter NumberTimeSamples using historical value.
+  Configured value:        6400
+  Historical (used) value: 9600
+
+%MSG
+Begin processing the 1st record. run: 7010 subRun: 1705 event: 85251 at 07-Aug-2024 12:03:12 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:12 CDT run: 7010 subRun: 1705 event: 85251
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 14070 XUs and 6168 XVs -> 93 XUVs
+93 XUVs total
+44 collection wire objects
+93 potential space points
+Neighbour search...
+2937 tests to find 2054 neighbours
+Iterating with no regularization...
+Begin: 930640
+0 354604
+1 331864
+2 328459
+3 327899
+4 327611
+Now with regularization...
+Begin: -252592
+0 -252801
+Time taken for inference: 0.549382 seconds
+07-Aug-2024 12:03:13 CDT  Opened output file with pattern "%ifb_%tc-%p.root"
+%MSG-w FastCloning:  PostProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85251
+Fast cloning has been deactivated for the following reasons:
+ - There are fewer events to process than are present in the event tree.
+%MSG
+Begin processing the 2nd record. run: 7010 subRun: 1705 event: 85252 at 07-Aug-2024 12:03:13 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:13 CDT run: 7010 subRun: 1705 event: 85252
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 102277 XUs and 83546 XVs -> 703 XUVs
+703 XUVs total
+183 collection wire objects
+672 potential space points
+Neighbour search...
+36478 tests to find 22108 neighbours
+Iterating with no regularization...
+Begin: 8.00296e+06
+0 6.15216e+06
+1 5.99743e+06
+2 5.98214e+06
+3 5.97717e+06
+Now with regularization...
+Begin: 3.46675e+06
+0 3.46054e+06
+1 3.45915e+06
+Time taken for inference: 0.828199 seconds
+Begin processing the 3rd record. run: 7010 subRun: 1705 event: 85253 at 07-Aug-2024 12:03:15 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:15 CDT run: 7010 subRun: 1705 event: 85253
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 90411 XUs and 26711 XVs -> 420 XUVs
+420 XUVs total
+185 collection wire objects
+392 potential space points
+Neighbour search...
+13748 tests to find 8642 neighbours
+Iterating with no regularization...
+Begin: 4.03356e+06
+0 2.55287e+06
+1 2.48079e+06
+2 2.47483e+06
+3 2.47374e+06
+Now with regularization...
+Begin: 1.59995e+06
+0 1.60003e+06
+Warning: metric increased
+Time taken for inference: 0.253266 seconds
+Begin processing the 4th record. run: 7010 subRun: 1705 event: 85254 at 07-Aug-2024 12:03:15 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 5th record. run: 7010 subRun: 1705 event: 85255 at 07-Aug-2024 12:03:15 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:16 CDT run: 7010 subRun: 1705 event: 85255
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 131050 XUs and 52919 XVs -> 1304 XUVs
+1304 XUVs total
+436 collection wire objects
+1233 potential space points
+Neighbour search...
+101207 tests to find 60318 neighbours
+Iterating with no regularization...
+Begin: 1.76391e+07
+0 1.15387e+07
+1 1.12109e+07
+2 1.11559e+07
+3 1.11368e+07
+4 1.11287e+07
+Now with regularization...
+Begin: 8.02532e+06
+0 8.01932e+06
+Time taken for inference: 0.504812 seconds
+Begin processing the 6th record. run: 7010 subRun: 1705 event: 85256 at 07-Aug-2024 12:03:17 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:17 CDT run: 7010 subRun: 1705 event: 85256
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 95614 XUs and 69261 XVs -> 2626 XUVs
+2626 XUVs total
+334 collection wire objects
+2363 potential space points
+Neighbour search...
+628411 tests to find 381158 neighbours
+Iterating with no regularization...
+Begin: 8.35602e+06
+0 4.96981e+06
+1 4.6842e+06
+2 4.62809e+06
+3 4.60948e+06
+4 4.59993e+06
+5 4.59348e+06
+6 4.58902e+06
+Now with regularization...
+Begin: 395325
+0 394290
+1 386759
+2 382261
+3 379362
+4 376820
+5 374515
+6 372537
+7 370973
+8 369435
+9 368179
+10 367081
+11 366120
+12 365161
+13 364336
+14 363758
+15 363085
+16 362412
+17 361925
+18 361349
+19 360744
+20 360153
+21 359600
+22 359121
+23 358686
+24 358279
+25 357871
+26 357470
+27 357091
+28 356736
+Time taken for inference: 0.593915 seconds
+Begin processing the 7th record. run: 7010 subRun: 1705 event: 85257 at 07-Aug-2024 12:03:18 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 8th record. run: 7010 subRun: 1705 event: 85258 at 07-Aug-2024 12:03:18 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 9th record. run: 7010 subRun: 1705 event: 85259 at 07-Aug-2024 12:03:18 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 10th record. run: 7010 subRun: 1705 event: 85260 at 07-Aug-2024 12:03:18 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:18 CDT run: 7010 subRun: 1705 event: 85260
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+292 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 141408 XUs and 141730 XVs -> 1998 XUVs
+1998 XUVs total
+302 collection wire objects
+1786 potential space points
+Neighbour search...
+144270 tests to find 93032 neighbours
+Iterating with no regularization...
+Begin: 9.92253e+06
+0 6.92506e+06
+1 6.62055e+06
+2 6.60066e+06
+3 6.59658e+06
+Now with regularization...
+Begin: 3.76515e+06
+0 3.80816e+06
+Warning: metric increased
+Time taken for inference: 0.639363 seconds
+07-Aug-2024 12:03:20 CDT  Closed output file "inputfile_20240807T170320-testinference.root"
+07-Aug-2024 12:03:20 CDT  Closed input file "inputfile.root"
+
+================================================================================================================================
+TimeTracker printout (sec)                        Min           Avg           Max         Median          RMS         nEvts   
+================================================================================================================================
+Full event                                     0.0165531     0.776678       1.61971      0.801785      0.680167        10     
+--------------------------------------------------------------------------------------------------------------------------------
+source:RootInput(read)                        0.000352312    0.011499      0.0956513    0.000617897    0.028357        10     
+reco:nuslhits:NuSliceHitsProducer              0.0153016     0.0428595     0.131595      0.0272045     0.0378279       10     
+reco:sps:SpacePointSolver                     5.3471e-05     0.328861      0.881062      0.276486      0.320234        10     
+reco:NuGraph:NuGraphInference                 2.0088e-05     0.388158      0.934071      0.436574      0.350498        10     
+[art]:TriggerResults:TriggerResultInserter     5.35e-06     1.82123e-05   5.9972e-05    1.53945e-05   1.50044e-05      10     
+end_path:rootOutput:RootOutput                 1.062e-06    4.5103e-06    2.5748e-05     2.695e-06    7.11021e-06      10     
+end_path:rootOutput:RootOutput(write)         0.000564772   0.00489371     0.011126     0.00528786    0.00384932       10     
+================================================================================================================================
+%MSG-i NuRandomService:  RootOutput:rootOutput@EndJob 07-Aug-2024 12:03:20 CDT  ModuleEndJob
+
+Summary of seeds computed by the NuRandomService
+Random policy: 'random'
+  master seed: 3444561
+  seed within: [ 1 ; 900000000 ]
+
+%MSG
+
+====================================================================================================
+MemoryTracker summary (base-10 MB units used)
+
+  Peak virtual memory usage (VmPeak)  : 3105.02 MB
+  Peak resident set size usage (VmHWM): 1738.47 MB
+====================================================================================================
+
+TrigReport ---------- Event summary -------------
+TrigReport Events total = 10 passed = 10 failed = 0
+
+TrigReport ---------- Modules in End-path ----------
+TrigReport        Run    Success      Error Name
+TrigReport         10         10          0 rootOutput
+
+TimeReport ---------- Time summary [sec] -------
+TimeReport CPU = 7.466196 Real = 8.620298
+
+MemReport  ---------- Memory summary [base-10 MB] ------
+MemReport  VmPeak = 3105.02 VmHWM = 1738.47
+
+Art has completed and will exit with status 0.

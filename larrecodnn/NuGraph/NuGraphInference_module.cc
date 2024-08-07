@@ -18,6 +18,12 @@
 #include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
+#include <chrono>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <sstream>
 #include <array>
 #include <limits>
 #include <memory>
@@ -347,7 +353,11 @@ void NuGraphInference::produce(art::Event& e)
   inputs.push_back(nexus);
   inputs.push_back(batch);
   if (debug) std::cout << "FORWARD!" << std::endl;
+  auto start = std::chrono::high_resolution_clock::now();
   auto outputs = model.forward(inputs).toGenericDict();
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = end - start;
+  std::cout << "Time taken for inference: " << elapsed.count() << " seconds" << std::endl;
   if (debug) std::cout << "output =" << outputs << std::endl;
   if (semanticDecoder) {
     for (size_t p = 0; p < planes.size(); p++) {
