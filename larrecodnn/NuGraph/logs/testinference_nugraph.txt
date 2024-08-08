@@ -1,7 +1,7 @@
-%MSG-i MF_INIT_OK:  Early 07-Aug-2024 12:02:56 CDT JobSetup
+%MSG-i MF_INIT_OK:  Early 08-Aug-2024 13:53:24 CDT JobSetup
 Messagelogger initialization complete.
 %MSG
-%MSG-i AuxDetGeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i AuxDetGeometryCore:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 New detector geometry loaded from 
 	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
 	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
@@ -10,27 +10,27 @@ New detector geometry loaded from
 Using channel statuses from conditions database
 Using channel statuses from conditions database
 Using pedestals from conditions database
-%MSG-i GeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i GeometryCore:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 New detector geometry loaded from 
 	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12.gdml
 	/cvmfs/uboone.opensciencegrid.org/products/ubcore/v09_90_02/gdml/microboonev12_nowires.gdml
 
 %MSG
-%MSG-i GeometryCore:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i GeometryCore:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 Sorting volumes...
 %MSG
-%MSG-i ChannelMapStandardAlg:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i ChannelMapStandardAlg:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 Initializing Standard ChannelMap...
 %MSG
-%MSG-i setupProvider<DetectorPropertiesStandard>:  Early  07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i setupProvider<DetectorPropertiesStandard>:  Early  08-Aug-2024 13:53:36 CDT JobSetup
 Asked to ignore 1 keys: 'InheritNumberTimeSamples'
 %MSG
 Using default electronics calibrations for properly-configured channels, and database for misconfigured channels
 Using light yield from conditions database
-%MSG-w OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-w OpDigiProperties:  Early 08-Aug-2024 13:53:36 CDT JobSetup
     OpDigiProperties using analytical function for WF generation.
 %MSG
-%MSG-w OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-w OpDigiProperties:  Early 08-Aug-2024 13:53:36 CDT JobSetup
     Generating gain for each pmt.
         High gain mean: 20 ADC/p.e.
         Low  gain mean: 2 ADC/p.e.
@@ -38,7 +38,7 @@ Using light yield from conditions database
         Intrinsic gain spread  : 0.05 
 
 %MSG
-%MSG-i OpDigiProperties:  Early 07-Aug-2024 12:03:09 CDT JobSetup
+%MSG-i OpDigiProperties:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 Ch. Number ... Pedestal   ... High Gain  ... Low Gain  
 0          ... 2050       ... 19.0395    ... 2.03061   
 1          ... 2049       ... 20.1801    ... 1.99985   
@@ -186,18 +186,18 @@ Ch. Number ... Pedestal   ... High Gain  ... Low Gain
 143        ... 2049       ... 18.8446    ... 2.16513   
 
 %MSG
-%MSG-i PhotonVisibilityService:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+%MSG-i PhotonVisibilityService:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 PhotonVisbilityService initializing
 %MSG
 Using pmt gains from conditions database
-%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+%MSG-i SignalShapingServiceMicroBooNE:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 Getting Filters from .fcl file
 %MSG
-%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+%MSG-i SignalShapingServiceMicroBooNE:  Early 08-Aug-2024 13:53:36 CDT JobSetup
 Getting 2D Filters from .fcl file
 %MSG
 Current E field = 0.2739 KV/cm, Ratio of drift velocities = 0.997979, timeScaleFactor = 0.998371
-%MSG-i SignalShapingServiceMicroBooNE:  Early 07-Aug-2024 12:03:10 CDT JobSetup
+%MSG-i SignalShapingServiceMicroBooNE:  Early 08-Aug-2024 13:53:36 CDT JobSetup
  using the field response provided from a .root file 
 %MSG
 For view 0 and response nominal toffset is: 30.5004
@@ -208,478 +208,2047 @@ For view 1 and response shortedY toffset is: 32.584
 For view 2 and response nominal toffset is: 35.4777
 For view 2 and response shortedU toffset is: 35.4777
 Using electron lifetime from conditions database
-07-Aug-2024 12:03:10 CDT  Initiating request to open input file "inputfile.root"
-%MSG-i Root_Information:  TriggerResultInserter:TriggerResults@Construction  TClass::Init() 07-Aug-2024 12:03:11 CDT ModuleConstruction
+08-Aug-2024 13:53:37 CDT  Initiating request to open input file "/pnfs/uboone/persistent/PublicAccess/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2/PhysicsRun-2016_8_4_9_58_37-0007057-00054_20160805T143830_ext_unbiased_20160805T151937_merged_gen_20190429T025234_g4_detsim_mix_r1a_r1b_postdlmctruth__20e23309-cd04-4d34-9dca-080bea59a02f.root"
+%MSG-i Root_Information:  TriggerResultInserter:TriggerResults@Construction  TClass::Init() 08-Aug-2024 13:53:37 CDT ModuleConstruction
 no dictionary for class sim::IDE is available
 ROOT severity: 2000
 %MSG
-07-Aug-2024 12:03:11 CDT  Opened input file "inputfile.root"
-%MSG-i DetectorPropertiesServiceStandard:  OpenFile 07-Aug-2024 12:03:12 CDT  BeforeEvents
+08-Aug-2024 13:53:38 CDT  Opened input file "/pnfs/uboone/persistent/PublicAccess/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2/PhysicsRun-2016_8_4_9_58_37-0007057-00054_20160805T143830_ext_unbiased_20160805T151937_merged_gen_20190429T025234_g4_detsim_mix_r1a_r1b_postdlmctruth__20e23309-cd04-4d34-9dca-080bea59a02f.root"
+%MSG-i DetectorPropertiesServiceStandard:  OpenFile 08-Aug-2024 13:53:38 CDT  BeforeEvents
 Overriding configuration parameter NumberTimeSamples using historical value.
   Configured value:        6400
   Historical (used) value: 9600
 
 %MSG
-Begin processing the 1st record. run: 7010 subRun: 1705 event: 85251 at 07-Aug-2024 12:03:12 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+Begin processing the 1st record. run: 7057 subRun: 54 event: 2726 at 08-Aug-2024 13:53:38 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:12 CDT  run: 7010 subRun: 1705 event: 85251
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:38 CDT  run: 7057 subRun: 54 event: 2726
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:12 CDT run: 7010 subRun: 1705 event: 85251
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:38 CDT run: 7057 subRun: 54 event: 2726
 SIOVChannelStatusProvider::DBUpdate called with new timestamp.
 %MSG
-292 X, 406 U, 95 V bad channels
+293 X, 405 U, 95 V bad channels
 Finding XUV coincidences...
-C:0 T:0 14070 XUs and 6168 XVs -> 93 XUVs
-93 XUVs total
-44 collection wire objects
-93 potential space points
+C:0 T:0 169231 XUs and 52960 XVs -> 4702 XUVs
+4702 XUVs total
+468 collection wire objects
+2333 potential space points
 Neighbour search...
-2937 tests to find 2054 neighbours
+826951 tests to find 406932 neighbours
 Iterating with no regularization...
-Begin: 930640
-0 354604
-1 331864
-2 328459
-3 327899
-4 327611
+Begin: 5.8191e+06
+0 3.4989e+06
+1 3.38609e+06
+2 3.37428e+06
+3 3.37055e+06
+4 3.36851e+06
 Now with regularization...
-Begin: -252592
-0 -252801
-Time taken for inference: 0.549382 seconds
-07-Aug-2024 12:03:13 CDT  Opened output file with pattern "%ifb_%tc-%p.root"
-%MSG-w FastCloning:  PostProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85251
-Fast cloning has been deactivated for the following reasons:
- - There are fewer events to process than are present in the event tree.
+Begin: 1.62204e+06
+0 1.58943e+06
+1 1.58355e+06
+2 1.57972e+06
+3 1.57655e+06
+4 1.5742e+06
+5 1.57201e+06
+6 1.56991e+06
+7 1.56788e+06
+8 1.56583e+06
+9 1.56378e+06
+10 1.56166e+06
+11 1.55952e+06
+12 1.55729e+06
+13 1.55518e+06
+14 1.5531e+06
+15 1.55098e+06
+16 1.54902e+06
+17 1.54742e+06
+18 1.54583e+06
+19 1.54439e+06
+Time taken for inference: 0.650267 seconds
+08-Aug-2024 13:53:40 CDT  Opened output file with pattern "%ifb_%tc-%p.root"
+%MSG-i FastCloning:  PostProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2726
+Fast cloning event data products from input file.
 %MSG
-Begin processing the 2nd record. run: 7010 subRun: 1705 event: 85252 at 07-Aug-2024 12:03:13 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i Root_Information:  PostProcessEvent TClass::Init()  08-Aug-2024 13:53:40 CDT run: 7057 subRun: 54 event: 2726
+no dictionary for class pair<unsigned char,vector<pair<int,float> > > is available
+ROOT severity: 2000
+%MSG
+Begin processing the 2nd record. run: 7057 subRun: 54 event: 2729 at 08-Aug-2024 13:53:40 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:13 CDT  run: 7010 subRun: 1705 event: 85252
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2729
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:13 CDT run: 7010 subRun: 1705 event: 85252
-SIOVChannelStatusProvider::DBUpdate called with new timestamp.
-%MSG
-292 X, 406 U, 95 V bad channels
-Finding XUV coincidences...
-C:0 T:0 102277 XUs and 83546 XVs -> 703 XUVs
-703 XUVs total
-183 collection wire objects
-672 potential space points
-Neighbour search...
-36478 tests to find 22108 neighbours
-Iterating with no regularization...
-Begin: 8.00296e+06
-0 6.15216e+06
-1 5.99743e+06
-2 5.98214e+06
-3 5.97717e+06
-Now with regularization...
-Begin: 3.46675e+06
-0 3.46054e+06
-1 3.45915e+06
-Time taken for inference: 0.828199 seconds
-Begin processing the 3rd record. run: 7010 subRun: 1705 event: 85253 at 07-Aug-2024 12:03:15 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+Begin processing the 3rd record. run: 7057 subRun: 54 event: 2731 at 08-Aug-2024 13:53:40 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85253
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:40 CDT  run: 7057 subRun: 54 event: 2731
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:15 CDT run: 7010 subRun: 1705 event: 85253
+08-Aug-2024 13:53:41 CDT  Closed output file "PhysicsRun-2016_8_4_9_58_37-0007057-00054_20160805T143830_ext_unbiased_20160805T151937_merged_gen_20190429T025234_g4_detsim_mix_r1a_r1b_postdlmctruth__20e23309-cd04-4d34-9dca-080bea59a02f_20240808T185341-testinference.root"
+08-Aug-2024 13:53:41 CDT  Closed input file "/pnfs/uboone/persistent/PublicAccess/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2/PhysicsRun-2016_8_4_9_58_37-0007057-00054_20160805T143830_ext_unbiased_20160805T151937_merged_gen_20190429T025234_g4_detsim_mix_r1a_r1b_postdlmctruth__20e23309-cd04-4d34-9dca-080bea59a02f.root"
+08-Aug-2024 13:53:41 CDT  Initiating request to open input file "/pnfs/uboone/persistent/PublicAccess/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2/PhysicsRun-2016_8_5_22_6_57-0007078-00002_20160806T043641_ext_unbiased_20160806T183857_merged_gen_20190511T213207_g4_detsim_mix_r1a_r1b_postdlmctruth__d96aec74-c11f-4f13-9e7c-9a8c1819e1c2.root"
+08-Aug-2024 13:53:41 CDT  Opened input file "/pnfs/uboone/persistent/PublicAccess/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2/PhysicsRun-2016_8_5_22_6_57-0007078-00002_20160806T043641_ext_unbiased_20160806T183857_merged_gen_20190511T213207_g4_detsim_mix_r1a_r1b_postdlmctruth__d96aec74-c11f-4f13-9e7c-9a8c1819e1c2.root"
+Begin processing the 4th record. run: 7078 subRun: 0 event: 4 at 08-Aug-2024 13:53:41 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+08-Aug-2024 13:53:41 CDT  Opened output file with pattern "%ifb_%tc-%p.root"
+%MSG-i FastCloning:  PostProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 4
+Fast cloning event data products from input file.
+%MSG
+Begin processing the 5th record. run: 7078 subRun: 0 event: 15 at 08-Aug-2024 13:53:41 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 15
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 6th record. run: 7078 subRun: 0 event: 30 at 08-Aug-2024 13:53:41 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 30
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 7th record. run: 7078 subRun: 0 event: 31 at 08-Aug-2024 13:53:41 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:41 CDT  run: 7078 subRun: 0 event: 31
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:41 CDT run: 7078 subRun: 0 event: 31
 SIOVChannelStatusProvider::DBUpdate called with new timestamp.
 %MSG
-292 X, 406 U, 95 V bad channels
+324 X, 406 U, 95 V bad channels
 Finding XUV coincidences...
-C:0 T:0 90411 XUs and 26711 XVs -> 420 XUVs
-420 XUVs total
-185 collection wire objects
-392 potential space points
+C:0 T:0 83394 XUs and 111377 XVs -> 1414 XUVs
+1414 XUVs total
+381 collection wire objects
+1394 potential space points
 Neighbour search...
-13748 tests to find 8642 neighbours
+248742 tests to find 111622 neighbours
 Iterating with no regularization...
-Begin: 4.03356e+06
-0 2.55287e+06
-1 2.48079e+06
-2 2.47483e+06
-3 2.47374e+06
+Begin: 6.0592e+06
+0 3.62317e+06
+1 3.57667e+06
+2 3.57134e+06
+3 3.5692e+06
 Now with regularization...
-Begin: 1.59995e+06
-0 1.60003e+06
+Begin: 1.41495e+06
+0 1.3621e+06
+1 1.34893e+06
+2 1.34374e+06
+3 1.34136e+06
+4 1.34029e+06
+Time taken for inference: 0.705846 seconds
+Begin processing the 8th record. run: 7078 subRun: 0 event: 32 at 08-Aug-2024 13:53:42 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 0 event: 32
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 9th record. run: 7078 subRun: 1 event: 51 at 08-Aug-2024 13:53:42 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 51
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 10th record. run: 7078 subRun: 1 event: 56 at 08-Aug-2024 13:53:42 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:42 CDT  run: 7078 subRun: 1 event: 56
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:42 CDT run: 7078 subRun: 1 event: 56
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 86313 XUs and 34212 XVs -> 577 XUVs
+577 XUVs total
+229 collection wire objects
+566 potential space points
+Neighbour search...
+33902 tests to find 24794 neighbours
+Iterating with no regularization...
+Begin: 4.73506e+06
+0 3.19169e+06
+1 3.04685e+06
+2 3.02279e+06
+3 3.0157e+06
+4 3.01307e+06
+Now with regularization...
+Begin: 1.34162e+06
+0 1.33462e+06
+1 1.33292e+06
+2 1.33173e+06
+Time taken for inference: 0.317549 seconds
+Begin processing the 11th record. run: 7078 subRun: 1 event: 63 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 63
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 12th record. run: 7078 subRun: 1 event: 76 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 76
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 13th record. run: 7078 subRun: 1 event: 77 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 77
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:43 CDT run: 7078 subRun: 1 event: 77
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 150948 XUs and 30278 XVs -> 903 XUVs
+903 XUVs total
+379 collection wire objects
+857 potential space points
+Neighbour search...
+61879 tests to find 34708 neighbours
+Iterating with no regularization...
+Begin: 3.74869e+06
+0 2.99082e+06
+1 2.97731e+06
+2 2.97666e+06
+Now with regularization...
+Begin: 1.76678e+06
+0 1.75783e+06
+1 1.75751e+06
+Time taken for inference: 0.231083 seconds
+Begin processing the 14th record. run: 7078 subRun: 1 event: 81 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 1 event: 81
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 15th record. run: 7078 subRun: 2 event: 115 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 115
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 16th record. run: 7078 subRun: 2 event: 136 at 08-Aug-2024 13:53:43 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:43 CDT  run: 7078 subRun: 2 event: 136
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:43 CDT run: 7078 subRun: 2 event: 136
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 19687 XUs and 55570 XVs -> 1044 XUVs
+1044 XUVs total
+95 collection wire objects
+1029 potential space points
+Neighbour search...
+427421 tests to find 247824 neighbours
+Iterating with no regularization...
+Begin: 3.80838e+06
+0 566323
+1 359156
+2 281200
+3 236643
+4 212267
+5 198923
+6 187028
+7 176068
+8 166048
+9 156753
+10 147797
+11 139569
+12 132217
+13 125850
+14 120189
+15 117141
+16 115954
+17 115442
+18 115141
+19 114970
+20 114939
+Now with regularization...
+Begin: -754553
+0 -757422
+1 -770209
+2 -774425
+3 -777133
+4 -779566
+5 -781428
+6 -782794
+7 -783787
+8 -784859
+9 -786996
+10 -788608
+11 -789936
+12 -791140
+13 -792270
+14 -793305
+15 -794294
+16 -795211
+17 -796136
+18 -796841
+Time taken for inference: 0.154401 seconds
+Begin processing the 17th record. run: 7078 subRun: 2 event: 137 at 08-Aug-2024 13:53:44 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 2 event: 137
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 18th record. run: 7078 subRun: 3 event: 155 at 08-Aug-2024 13:53:44 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:53:44 CDT  run: 7078 subRun: 3 event: 155
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:53:44 CDT run: 7078 subRun: 3 event: 155
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 202113 XUs and 46841 XVs -> 17969 XUVs
+17969 XUVs total
+477 collection wire objects
+15152 potential space points
+Neighbour search...
+23471990 tests to find 11464830 neighbours
+Iterating with no regularization...
+Begin: 3.97145e+06
+0 1.56549e+06
+1 1.37161e+06
+2 1.33384e+06
+3 1.3179e+06
+4 1.30901e+06
+5 1.30341e+06
+6 1.29893e+06
+7 1.29558e+06
+8 1.29278e+06
+9 1.29036e+06
+10 1.28835e+06
+11 1.28674e+06
+12 1.28539e+06
+13 1.28412e+06
+Now with regularization...
+Begin: -18868.8
+0 -43318.1
+1 -62370.7
+2 -82166.4
+3 -98818.2
+4 -112855
+5 -124473
+6 -134292
+7 -142976
+8 -150527
+9 -157239
+10 -163508
+11 -169446
+12 -174665
+13 -179260
+14 -183755
+15 -188063
+16 -192176
+17 -195753
+18 -199088
+19 -202350
+20 -205518
+21 -208577
+22 -211474
+23 -214296
+24 -216754
+25 -219071
+26 -221354
+27 -223499
+28 -225486
+29 -227431
+30 -229200
+31 -230823
+32 -232335
+33 -233772
+34 -235190
+35 -236583
+36 -237937
+37 -239220
+38 -240481
+39 -241715
+40 -242871
+41 -243955
+42 -245043
+43 -246091
+44 -247094
+45 -248086
+46 -249028
+47 -249910
+48 -250772
+49 -251579
+50 -252365
+51 -253112
+52 -253854
+53 -254595
+54 -255331
+55 -256067
+56 -256790
+57 -257491
+58 -258179
+59 -258834
+60 -259483
+61 -260123
+62 -260752
+63 -261360
+64 -261948
+65 -262545
+66 -263148
+67 -263745
+68 -264334
+69 -264930
+70 -265524
+71 -266127
+72 -266733
+73 -267335
+74 -267937
+75 -268543
+76 -269152
+77 -269740
+78 -270310
+79 -270889
+80 -271483
+81 -272091
+82 -272676
+83 -273235
+84 -273795
+85 -274365
+86 -274934
+87 -275499
+88 -276050
+89 -276605
+90 -277163
+91 -277677
+92 -278160
+93 -278630
+94 -279095
+95 -279558
+96 -280022
+97 -280452
+98 -280877
+99 -281302
+Time taken for inference: 0.36414 seconds
+Begin processing the 19th record. run: 7078 subRun: 3 event: 160 at 08-Aug-2024 13:54:05 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:05 CDT  run: 7078 subRun: 3 event: 160
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:05 CDT run: 7078 subRun: 3 event: 160
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 53811 XUs and 45140 XVs -> 864 XUVs
+864 XUVs total
+163 collection wire objects
+837 potential space points
+Neighbour search...
+83871 tests to find 66926 neighbours
+Iterating with no regularization...
+Begin: 1.84799e+06
+0 371556
+1 297397
+2 280642
+3 273123
+4 268986
+5 266498
+6 264978
+7 263975
+8 263308
+9 262780
+10 262364
+11 262014
+12 261700
+13 261427
+14 261191
+Now with regularization...
+Begin: -357788
+0 -358736
+1 -359057
+Time taken for inference: 0.218788 seconds
+Begin processing the 20th record. run: 7078 subRun: 3 event: 163 at 08-Aug-2024 13:54:06 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:06 CDT  run: 7078 subRun: 3 event: 163
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:06 CDT run: 7078 subRun: 3 event: 163
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 79287 XUs and 324414 XVs -> 4456 XUVs
+4456 XUVs total
+715 collection wire objects
+3901 potential space points
+Neighbour search...
+1122705 tests to find 473150 neighbours
+Iterating with no regularization...
+Begin: 8.31292e+07
+0 6.11436e+07
+1 5.92753e+07
+2 5.89888e+07
+3 5.88999e+07
+4 5.88608e+07
+Now with regularization...
+Begin: 4.41457e+07
+0 4.39798e+07
+1 4.3935e+07
+2 4.39105e+07
+Time taken for inference: 0.812434 seconds
+Begin processing the 21st record. run: 7078 subRun: 3 event: 165 at 08-Aug-2024 13:54:07 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 165
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 22nd record. run: 7078 subRun: 3 event: 168 at 08-Aug-2024 13:54:07 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 168
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 23rd record. run: 7078 subRun: 3 event: 172 at 08-Aug-2024 13:54:07 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:07 CDT  run: 7078 subRun: 3 event: 172
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:07 CDT run: 7078 subRun: 3 event: 172
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 11897 XUs and 29371 XVs -> 267 XUVs
+267 XUVs total
+71 collection wire objects
+233 potential space points
+Neighbour search...
+12927 tests to find 8240 neighbours
+Iterating with no regularization...
+Begin: 1.75261e+07
+0 1.06448e+07
+1 1.05622e+07
+2 1.05512e+07
+3 1.05493e+07
+Now with regularization...
+Begin: 9.81825e+06
+0 9.8139e+06
+Time taken for inference: 0.0913608 seconds
+Begin processing the 24th record. run: 7078 subRun: 3 event: 194 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 194
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 25th record. run: 7078 subRun: 3 event: 197 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 197
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 26th record. run: 7078 subRun: 3 event: 198 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 3 event: 198
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:08 CDT run: 7078 subRun: 3 event: 198
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 67072 XUs and 11300 XVs -> 80 XUVs
+80 XUVs total
+51 collection wire objects
+80 potential space points
+Neighbour search...
+1408 tests to find 832 neighbours
+Iterating with no regularization...
+Begin: 5.7294e+06
+0 5.45292e+06
+1 5.44544e+06
+2 5.44454e+06
+Now with regularization...
+Begin: 4.85531e+06
+0 4.85522e+06
+Time taken for inference: 0.129356 seconds
+Begin processing the 27th record. run: 7078 subRun: 4 event: 228 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 228
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:08 CDT run: 7078 subRun: 4 event: 228
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 27553 XUs and 64078 XVs -> 1236 XUVs
+1236 XUVs total
+174 collection wire objects
+1186 potential space points
+Neighbour search...
+227822 tests to find 133314 neighbours
+Iterating with no regularization...
+Begin: 1.52085e+06
+0 849507
+1 803304
+2 793027
+3 788718
+4 786430
+5 785032
+6 784085
+7 783410
+Now with regularization...
+Begin: -489447
+0 -503435
+1 -505250
+2 -506258
+3 -506969
+4 -507494
+5 -507923
+Time taken for inference: 0.253235 seconds
+Begin processing the 28th record. run: 7078 subRun: 4 event: 232 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 232
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 29th record. run: 7078 subRun: 4 event: 234 at 08-Aug-2024 13:54:08 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:08 CDT  run: 7078 subRun: 4 event: 234
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:08 CDT run: 7078 subRun: 4 event: 234
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 19232 XUs and 29594 XVs -> 111 XUVs
+111 XUVs total
+32 collection wire objects
+111 potential space points
+Neighbour search...
+7783 tests to find 5832 neighbours
+Iterating with no regularization...
+Begin: 1.0096e+06
+0 284163
+1 202281
+2 182513
+3 175435
+4 172998
+5 172036
+6 171536
+7 171258
+8 171096
+Now with regularization...
+Begin: -737742
+0 -738434
+Time taken for inference: 0.131429 seconds
+Begin processing the 30th record. run: 7078 subRun: 4 event: 249 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 4 event: 249
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 31st record. run: 7078 subRun: 5 event: 257 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 257
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 32nd record. run: 7078 subRun: 5 event: 272 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 272
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 33rd record. run: 7078 subRun: 5 event: 273 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 273
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 34th record. run: 7078 subRun: 5 event: 281 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 281
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:09 CDT run: 7078 subRun: 5 event: 281
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 58868 XUs and 13056 XVs -> 146 XUVs
+146 XUVs total
+27 collection wire objects
+133 potential space points
+Neighbour search...
+2617 tests to find 2452 neighbours
+Iterating with no regularization...
+Begin: 3.32031e+06
+0 3.10086e+06
+1 3.09054e+06
+2 3.09042e+06
+Now with regularization...
+Begin: 3.01786e+06
+0 3.0185e+06
 Warning: metric increased
-Time taken for inference: 0.253266 seconds
-Begin processing the 4th record. run: 7010 subRun: 1705 event: 85254 at 07-Aug-2024 12:03:15 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+Time taken for inference: 0.127754 seconds
+Begin processing the 35th record. run: 7078 subRun: 5 event: 285 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85254
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 285
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-Begin processing the 5th record. run: 7010 subRun: 1705 event: 85255 at 07-Aug-2024 12:03:15 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+Begin processing the 36th record. run: 7078 subRun: 5 event: 290 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:15 CDT  run: 7010 subRun: 1705 event: 85255
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 290
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:16 CDT run: 7010 subRun: 1705 event: 85255
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:09 CDT run: 7078 subRun: 5 event: 290
 SIOVChannelStatusProvider::DBUpdate called with new timestamp.
 %MSG
-292 X, 406 U, 95 V bad channels
+324 X, 406 U, 95 V bad channels
 Finding XUV coincidences...
-C:0 T:0 131050 XUs and 52919 XVs -> 1304 XUVs
-1304 XUVs total
-436 collection wire objects
-1233 potential space points
+C:0 T:0 50899 XUs and 102351 XVs -> 666 XUVs
+666 XUVs total
+125 collection wire objects
+628 potential space points
 Neighbour search...
-101207 tests to find 60318 neighbours
+91452 tests to find 76310 neighbours
 Iterating with no regularization...
-Begin: 1.76391e+07
-0 1.15387e+07
-1 1.12109e+07
-2 1.11559e+07
-3 1.11368e+07
-4 1.11287e+07
+Begin: 1.36816e+06
+0 765502
+1 709472
+2 696046
+3 691673
+4 688774
+5 686621
+6 685096
+7 683975
+8 683084
+9 682378
+10 681789
 Now with regularization...
-Begin: 8.02532e+06
-0 8.01932e+06
-Time taken for inference: 0.504812 seconds
-Begin processing the 6th record. run: 7010 subRun: 1705 event: 85256 at 07-Aug-2024 12:03:17 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+Begin: -55063.8
+0 -68260.1
+1 -71838.8
+2 -73232.2
+3 -74396.3
+4 -75345
+5 -76110.6
+6 -76750.4
+7 -77347.2
+8 -77924.6
+9 -78471.7
+10 -78994.5
+11 -79436.5
+12 -79857
+13 -80275
+14 -80619.3
+15 -80964.2
+16 -81323
+17 -81646.3
+18 -81924.9
+19 -82194.9
+20 -82394.1
+21 -82557.3
+22 -82718.3
+23 -82875.7
+24 -83006.2
+25 -83113.2
+26 -83206.8
+27 -83302
+28 -83391.4
+29 -83484.3
+30 -83570.4
+31 -83659.1
+32 -83749.2
+33 -83840.6
+34 -83933.6
+35 -84028.3
+36 -84124.8
+37 -84216.2
+38 -84288.1
+Time taken for inference: 0.281807 seconds
+Begin processing the 37th record. run: 7078 subRun: 5 event: 291 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 DetPedestalRetrievalAlg::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 UbooneElectronicsCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 UbooneLightYieldProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 UboonePmtGainProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:17 CDT  run: 7010 subRun: 1705 event: 85256
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 291
 UbooneElectronLifetimeProvider::UpdateTimeStamp called.
 %MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:17 CDT run: 7010 subRun: 1705 event: 85256
+Begin processing the 38th record. run: 7078 subRun: 5 event: 293 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 5 event: 293
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 39th record. run: 7078 subRun: 6 event: 303 at 08-Aug-2024 13:54:09 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:09 CDT  run: 7078 subRun: 6 event: 303
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:09 CDT run: 7078 subRun: 6 event: 303
 SIOVChannelStatusProvider::DBUpdate called with new timestamp.
 %MSG
-292 X, 406 U, 95 V bad channels
+324 X, 406 U, 95 V bad channels
 Finding XUV coincidences...
-C:0 T:0 95614 XUs and 69261 XVs -> 2626 XUVs
-2626 XUVs total
-334 collection wire objects
-2363 potential space points
+C:0 T:0 58756 XUs and 87661 XVs -> 546 XUVs
+546 XUVs total
+295 collection wire objects
+527 potential space points
 Neighbour search...
-628411 tests to find 381158 neighbours
+31017 tests to find 17262 neighbours
 Iterating with no regularization...
-Begin: 8.35602e+06
-0 4.96981e+06
-1 4.6842e+06
-2 4.62809e+06
-3 4.60948e+06
-4 4.59993e+06
-5 4.59348e+06
-6 4.58902e+06
+Begin: 3.90866e+06
+0 3.49979e+06
+1 3.49254e+06
+2 3.49235e+06
 Now with regularization...
-Begin: 395325
-0 394290
-1 386759
-2 382261
-3 379362
-4 376820
-5 374515
-6 372537
-7 370973
-8 369435
-9 368179
-10 367081
-11 366120
-12 365161
-13 364336
-14 363758
-15 363085
-16 362412
-17 361925
-18 361349
-19 360744
-20 360153
-21 359600
-22 359121
-23 358686
-24 358279
-25 357871
-26 357470
-27 357091
-28 356736
-Time taken for inference: 0.593915 seconds
-Begin processing the 7th record. run: 7010 subRun: 1705 event: 85257 at 07-Aug-2024 12:03:18 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-DetPedestalRetrievalAlg::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-UbooneElectronicsCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-UbooneLightYieldProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-UboonePmtGainProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85257
-UbooneElectronLifetimeProvider::UpdateTimeStamp called.
-%MSG
-Begin processing the 8th record. run: 7010 subRun: 1705 event: 85258 at 07-Aug-2024 12:03:18 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-DetPedestalRetrievalAlg::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-UbooneElectronicsCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-UbooneLightYieldProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-UboonePmtGainProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85258
-UbooneElectronLifetimeProvider::UpdateTimeStamp called.
-%MSG
-Begin processing the 9th record. run: 7010 subRun: 1705 event: 85259 at 07-Aug-2024 12:03:18 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-DetPedestalRetrievalAlg::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-UbooneElectronicsCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-UbooneLightYieldProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-UboonePmtGainProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85259
-UbooneElectronLifetimeProvider::UpdateTimeStamp called.
-%MSG
-Begin processing the 10th record. run: 7010 subRun: 1705 event: 85260 at 07-Aug-2024 12:03:18 CDT
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i SIOVChannelStatusProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-SIOVChannelStatusProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-DetPedestalRetrievalAlg::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-UbooneElectronicsCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneLightYieldProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-UbooneLightYieldProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UboonePmtGainProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-UboonePmtGainProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 07-Aug-2024 12:03:18 CDT  run: 7010 subRun: 1705 event: 85260
-UbooneElectronLifetimeProvider::UpdateTimeStamp called.
-%MSG
-%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  07-Aug-2024 12:03:18 CDT run: 7010 subRun: 1705 event: 85260
-SIOVChannelStatusProvider::DBUpdate called with new timestamp.
-%MSG
-292 X, 406 U, 95 V bad channels
-Finding XUV coincidences...
-C:0 T:0 141408 XUs and 141730 XVs -> 1998 XUVs
-1998 XUVs total
-302 collection wire objects
-1786 potential space points
-Neighbour search...
-144270 tests to find 93032 neighbours
-Iterating with no regularization...
-Begin: 9.92253e+06
-0 6.92506e+06
-1 6.62055e+06
-2 6.60066e+06
-3 6.59658e+06
-Now with regularization...
-Begin: 3.76515e+06
-0 3.80816e+06
+Begin: 888227
+0 875599
+1 876440
 Warning: metric increased
-Time taken for inference: 0.639363 seconds
-07-Aug-2024 12:03:20 CDT  Closed output file "inputfile_20240807T170320-testinference.root"
-07-Aug-2024 12:03:20 CDT  Closed input file "inputfile.root"
-
-================================================================================================================================
-TimeTracker printout (sec)                        Min           Avg           Max         Median          RMS         nEvts   
-================================================================================================================================
-Full event                                     0.0165531     0.776678       1.61971      0.801785      0.680167        10     
---------------------------------------------------------------------------------------------------------------------------------
-source:RootInput(read)                        0.000352312    0.011499      0.0956513    0.000617897    0.028357        10     
-reco:nuslhits:NuSliceHitsProducer              0.0153016     0.0428595     0.131595      0.0272045     0.0378279       10     
-reco:sps:SpacePointSolver                     5.3471e-05     0.328861      0.881062      0.276486      0.320234        10     
-reco:NuGraph:NuGraphInference                 2.0088e-05     0.388158      0.934071      0.436574      0.350498        10     
-[art]:TriggerResults:TriggerResultInserter     5.35e-06     1.82123e-05   5.9972e-05    1.53945e-05   1.50044e-05      10     
-end_path:rootOutput:RootOutput                 1.062e-06    4.5103e-06    2.5748e-05     2.695e-06    7.11021e-06      10     
-end_path:rootOutput:RootOutput(write)         0.000564772   0.00489371     0.011126     0.00528786    0.00384932       10     
-================================================================================================================================
-%MSG-i NuRandomService:  RootOutput:rootOutput@EndJob 07-Aug-2024 12:03:20 CDT  ModuleEndJob
-
-Summary of seeds computed by the NuRandomService
-Random policy: 'random'
-  master seed: 3444561
-  seed within: [ 1 ; 900000000 ]
-
+Time taken for inference: 0.318158 seconds
+Begin processing the 40th record. run: 7078 subRun: 6 event: 305 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+SIOVChannelStatusProvider::UpdateTimeStamp called.
 %MSG
-
-====================================================================================================
-MemoryTracker summary (base-10 MB units used)
-
-  Peak virtual memory usage (VmPeak)  : 3105.02 MB
-  Peak resident set size usage (VmHWM): 1738.47 MB
-====================================================================================================
-
-TrigReport ---------- Event summary -------------
-TrigReport Events total = 10 passed = 10 failed = 0
-
-TrigReport ---------- Modules in End-path ----------
-TrigReport        Run    Success      Error Name
-TrigReport         10         10          0 rootOutput
-
-TimeReport ---------- Time summary [sec] -------
-TimeReport CPU = 7.466196 Real = 8.620298
-
-MemReport  ---------- Memory summary [base-10 MB] ------
-MemReport  VmPeak = 3105.02 VmHWM = 1738.47
-
-Art has completed and will exit with status 0.
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 305
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 41st record. run: 7078 subRun: 6 event: 308 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 308
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 42nd record. run: 7078 subRun: 6 event: 311 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 311
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 43rd record. run: 7078 subRun: 6 event: 326 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 326
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 44th record. run: 7078 subRun: 6 event: 335 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 335
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:10 CDT run: 7078 subRun: 6 event: 335
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 49522 XUs and 28456 XVs -> 540 XUVs
+540 XUVs total
+206 collection wire objects
+539 potential space points
+Neighbour search...
+31645 tests to find 16596 neighbours
+Iterating with no regularization...
+Begin: 1.05675e+07
+0 8.47106e+06
+1 8.42195e+06
+2 8.41748e+06
+Now with regularization...
+Begin: 7.52014e+06
+0 7.51882e+06
+Time taken for inference: 0.221456 seconds
+Begin processing the 45th record. run: 7078 subRun: 6 event: 346 at 08-Aug-2024 13:54:10 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:10 CDT  run: 7078 subRun: 6 event: 346
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 46th record. run: 7078 subRun: 6 event: 348 at 08-Aug-2024 13:54:11 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 6 event: 348
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 47th record. run: 7078 subRun: 7 event: 351 at 08-Aug-2024 13:54:11 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 351
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:11 CDT run: 7078 subRun: 7 event: 351
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 46182 XUs and 32653 XVs -> 253 XUVs
+253 XUVs total
+60 collection wire objects
+238 potential space points
+Neighbour search...
+6672 tests to find 4502 neighbours
+Iterating with no regularization...
+Begin: 789192
+0 585608
+1 582781
+2 582535
+Now with regularization...
+Begin: 376660
+0 374648
+1 374505
+Time taken for inference: 0.172174 seconds
+Begin processing the 48th record. run: 7078 subRun: 7 event: 356 at 08-Aug-2024 13:54:11 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 356
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+Begin processing the 49th record. run: 7078 subRun: 7 event: 364 at 08-Aug-2024 13:54:11 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 364
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:11 CDT run: 7078 subRun: 7 event: 364
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 69741 XUs and 49118 XVs -> 2421 XUVs
+2421 XUVs total
+316 collection wire objects
+2308 potential space points
+Neighbour search...
+618304 tests to find 392456 neighbours
+Iterating with no regularization...
+Begin: 2.045e+06
+0 675525
+1 263268
+2 239668
+3 233706
+4 227619
+5 225165
+6 223343
+7 221866
+8 220709
+9 219982
+10 219229
+11 218648
+12 218123
+13 217664
+14 217296
+15 216917
+16 216568
+17 216297
+18 215972
+19 215671
+20 215417
+21 215147
+22 214904
+23 214679
+24 214476
+Now with regularization...
+Begin: -988108
+0 -989250
+1 -998031
+2 -998780
+Time taken for inference: 0.269353 seconds
+Begin processing the 50th record. run: 7078 subRun: 7 event: 366 at 08-Aug-2024 13:54:11 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:11 CDT  run: 7078 subRun: 7 event: 366
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:11 CDT run: 7078 subRun: 7 event: 366
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 143892 XUs and 14504 XVs -> 992 XUVs
+992 XUVs total
+369 collection wire objects
+908 potential space points
+Neighbour search...
+82018 tests to find 49678 neighbours
+Iterating with no regularization...
+Begin: 1.82594e+06
+0 759542
+1 709889
+2 700620
+3 698502
+4 697735
+5 697415
+Now with regularization...
+Begin: -421444
+0 -427784
+1 -427994
+Time taken for inference: 0.216173 seconds
+Begin processing the 51st record. run: 7078 subRun: 7 event: 367 at 08-Aug-2024 13:54:12 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:12 CDT  run: 7078 subRun: 7 event: 367
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:12 CDT run: 7078 subRun: 7 event: 367
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 131350 XUs and 141053 XVs -> 3239 XUVs
+3239 XUVs total
+654 collection wire objects
+2597 potential space points
+Neighbour search...
+778725 tests to find 499000 neighbours
+Iterating with no regularization...
+Begin: 8.5805e+06
+0 4.40069e+06
+1 4.16601e+06
+2 4.10786e+06
+3 4.09361e+06
+4 4.09036e+06
+Now with regularization...
+Begin: 1.37337e+06
+0 1.306e+06
+1 1.30125e+06
+2 1.3004e+06
+Time taken for inference: 0.652468 seconds
+Begin processing the 52nd record. run: 7078 subRun: 7 event: 373 at 08-Aug-2024 13:54:13 CDT
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+SIOVChannelStatusProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i DetPedestalRetrievalAlg:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+DetPedestalRetrievalAlg::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronicsCalibProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+UbooneElectronicsCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneLightYieldProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+UbooneLightYieldProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UboonePmtGainProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+UboonePmtGainProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneTPCEnergyCalibProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+UbooneTPCEnergyCalibProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i UbooneElectronLifetimeProvider:  ProcessEvent 08-Aug-2024 13:54:13 CDT  run: 7078 subRun: 7 event: 373
+UbooneElectronLifetimeProvider::UpdateTimeStamp called.
+%MSG
+%MSG-i SIOVChannelStatusProvider:  SpacePointSolver:sps@BeginModule  08-Aug-2024 13:54:13 CDT run: 7078 subRun: 7 event: 373
+SIOVChannelStatusProvider::DBUpdate called with new timestamp.
+%MSG
+324 X, 406 U, 95 V bad channels
+Finding XUV coincidences...
+C:0 T:0 84507 XUs and 141981 XVs -> 1977 XUVs
+1977 XUVs total
+142 collection wire objects
+1896 potential space points
+Neighbour search...
+396872 tests to find 208550 neighbours
+Iterating with no regularization...
+Begin: 1.90428e+06
+0 1.06934e+06
+1 1.00242e+06
+2 992168
+3 990447
+4 989850
+Now with regularization...
+Begin: -627885
+0 -629599
+1 -629949
+Time taken for inference: 0.397268 seconds
