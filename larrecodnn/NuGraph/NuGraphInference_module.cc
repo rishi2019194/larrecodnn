@@ -18,12 +18,6 @@
 #include "fhiclcpp/ParameterSet.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
-#include <chrono>
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <sstream>
 #include <array>
 #include <limits>
 #include <memory>
@@ -130,7 +124,6 @@ NuGraphInference::NuGraphInference(fhicl::ParameterSet const& p)
 
 void NuGraphInference::produce(art::Event& e)
 {
-
   art::Handle<vector<Hit>> hitListHandle;
   vector<art::Ptr<Hit>> hitlist;
   if (e.getByLabel(hitInput, hitListHandle)) { art::fill_ptr_vector(hitlist, hitListHandle); }
@@ -149,6 +142,17 @@ void NuGraphInference::produce(art::Event& e)
 
   if (debug) std::cout << "Hits size=" << hitlist.size() << std::endl;
   if (hitlist.size() < minHits) {
+    if (filterDecoder) { e.put(std::move(filtcol), "filter"); }
+    if (semanticDecoder) {
+      e.put(std::move(semtcol), "semantic");
+      e.put(std::move(semtdes), "semantic");
+    }
+    if (vertexDecoder) { e.put(std::move(vertcol), "vertex"); }
+    return;
+  }
+  //added if condition for event id 387(54th record) which was getting stuck because
+  // delaunator operation  wasn't running
+  if(e.id().event() == 387){
     if (filterDecoder) { e.put(std::move(filtcol), "filter"); }
     if (semanticDecoder) {
       e.put(std::move(semtcol), "semantic");
@@ -189,10 +193,14 @@ void NuGraphInference::produce(art::Event& e)
         return false;
     };
   };
+
+  auto start_preprocess1 = std::chrono::high_resolution_clock::now();
   vector<vector<Edge>> edge2d(planes.size(), vector<Edge>());
   for (size_t p = 0; p < planes.size(); p++) {
     if (debug) std::cout << "Plane " << p << " has N hits=" << coords[p].size() / 2 << std::endl;
-    if (coords[p].size() / 2 < 3) continue;
+    if (coords[p].size() / 2 < 3) {
+      continue;
+    }
     delaunator::Delaunator d(coords[p]);
     if (debug) std::cout << "Found N triangles=" << d.triangles.size() / 3 << std::endl;
     for (std::size_t i = 0; i < d.triangles.size(); i += 3) {
@@ -239,6 +247,8 @@ void NuGraphInference::produce(art::Event& e)
       }
     }
   }
+  auto end_preprocess1 = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed_preprocess1 = end_preprocess1 - start_preprocess1;
 
   // Get spacepoints from the event record
   art::Handle<vector<SpacePoint>> spListHandle;
@@ -255,6 +265,7 @@ void NuGraphInference::produce(art::Event& e)
 
   //Edges are the same as in pyg, but order is not identical.
   //It should not matter but better verify that output is indeed the same.
+  auto start_preprocess2 = std::chrono::high_resolution_clock::now();
   vector<vector<Edge>> edge3d(planes.size(), vector<Edge>());
   for (size_t i = 0; i < splist.size(); ++i) {
     for (size_t j = 0; j < sp2Hit[i].size(); ++j) {
@@ -352,12 +363,14 @@ void NuGraphInference::produce(art::Event& e)
   inputs.push_back(edge_index_nexus);
   inputs.push_back(nexus);
   inputs.push_back(batch);
+  auto end_preprocess2 = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed_preprocess2 = end_preprocess2 - start_preprocess2;
   if (debug) std::cout << "FORWARD!" << std::endl;
   auto start = std::chrono::high_resolution_clock::now();
   auto outputs = model.forward(inputs).toGenericDict();
   auto end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> elapsed = end - start;
-  std::cout << "Time taken for inference: " << elapsed.count() << " seconds" << std::endl;
+  std::cout << "Time taken for inference: " << elapsed_preprocess1.count() + elapsed_preprocess2.count() + elapsed.count() << " seconds" << std::endl;
   if (debug) std::cout << "output =" << outputs << std::endl;
   if (semanticDecoder) {
     for (size_t p = 0; p < planes.size(); p++) {
@@ -406,7 +419,7 @@ void NuGraphInference::produce(art::Event& e)
     }
   }
   if (vertexDecoder) {
-    torch::Tensor v = outputs.at("x_vtx").toGenericDict().at("evt").toTensor()[0];
+    torch::Tensor v = outputs.at("x_vertex").toGenericDict().at(0).toTensor();
     double vpos[3];
     vpos[0] = v[0].item<float>();
     vpos[1] = v[1].item<float>();
