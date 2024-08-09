@@ -28,7 +28,7 @@ NuGraphTriton: {
    filterDecoder:   true
    semanticDecoder: true
    vertexDecoder:   false
-   url: "triton.fnal.gov:443"
+   url: "test-1-eaf.fnal.gov:443"
    ssl: true
    modelName: "nugraph2"
    module_type: "NuGraphInferenceTriton"
@@ -43,7 +43,7 @@ CPUNuGraphTriton: {
    filterDecoder:   true
    semanticDecoder: true
    vertexDecoder:   false
-   url: "triton.fnal.gov:443"
+   url: "test-1-eaf.fnal.gov:443"
    ssl: true
    modelName: "nugraph2_cpu"
    module_type: "NuGraphInferenceTriton"
@@ -73,7 +73,7 @@ NuGraphNuSonicTriton: {
    filterDecoder:   true
    semanticDecoder: true
    vertexDecoder:   false
-   url: "triton.fnal.gov:443"
+   url: "test-1-eaf.fnal.gov:443"
    ssl: true
    modelName: "nugraph2"
    module_type: "NuGraphInferenceSonicTriton"
@@ -88,7 +88,7 @@ CPUNuGraphNuSonicTriton: {
    filterDecoder:   true
    semanticDecoder: true
    vertexDecoder:   false
-   url: "triton.fnal.gov:443"
+   url: "test-1-eaf.fnal.gov:443"
    ssl: true
    modelName: "nugraph2_cpu"
    module_type: "NuGraphInferenceSonicTriton"
